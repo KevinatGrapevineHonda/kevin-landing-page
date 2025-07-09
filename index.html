@@ -1,213 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin | Grapevine Honda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      position: relative;
-      z-index: 1;
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #0052cc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #003d99;
+      outline: none;
+    }
+
+    /* Watermark Logo and Slogan */
     .watermark-logo,
     .watermark-slogan {
       position: fixed;
       pointer-events: none;
-      opacity: 0.07;
+      opacity: 0.05;
       z-index: 0;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      user-select: none;
     }
     .watermark-logo {
-      top: 15%;
+      top: 20%;
       left: 50%;
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       transform: translateX(-50%);
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg');
     }
     .watermark-slogan {
-      bottom: 15%;
+      bottom: 20%;
       left: 50%;
-      width: 300px;
-      height: 100px;
+      width: 320px;
+      height: 120px;
       transform: translateX(-50%);
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Honda_slogan_power_of_dreams.svg/1200px-Honda_slogan_power_of_dreams.svg.png');
     }
+
+    /* Header */
     header {
-      background-color: #007bff;
+      background: linear-gradient(90deg, #003366 0%, #0052cc 100%);
       color: white;
+      padding: 3rem 1rem 4rem;
       text-align: center;
-      padding: 2rem 1rem;
       position: relative;
       z-index: 1;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     }
-    h1 {
-      margin: 0;
+    header h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin: 0 0 0.3rem;
+      letter-spacing: 1.2px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    header p.slogan {
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin: 0 0 1rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    header img.dealership {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-top: 1.5rem;
+      border: 2px solid #004080;
+    }
+
+    /* Main container */
+    main.container {
+      max-width: 820px;
+      margin: -4rem auto 3rem;
+      background: white;
+      padding: 2.5rem 3rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* About Me Section */
+    section.about-me {
+      margin-bottom: 3rem;
+      color: #222;
+    }
+    section.about-me h2 {
       font-size: 2rem;
-      font-weight: 700;
-    }
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .about-me, .contact-box {
-      background-color: white;
-      border-radius: 10px;
-      padding: 2rem 1.5rem;
-      margin: 2rem auto;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      color: #333;
-      max-width: 800px;
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      min-height: 320px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .about-me h2 {
-      margin-top: 0;
-      font-size: 1.9rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
       color: #003366;
+      margin-bottom: 0.7rem;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 6px;
+      font-weight: 700;
     }
-    .about-me p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
+    section.about-me p {
+      font-size: 1.15rem;
+      margin-bottom: 1.8rem;
+      max-width: 720px;
     }
-    .about-me ul {
+    section.about-me ul {
+      max-width: 720px;
+      padding-left: 1.6rem;
       list-style-type: disc;
-      padding-left: 1.5rem;
       font-size: 1.1rem;
-      line-height: 1.6;
-      color: #333;
+      line-height: 1.55;
+      color: #2c3e50;
       margin-top: 0;
+    }
+    section.about-me ul li {
+      margin-bottom: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Buttons Grid */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
     .button {
-      display: inline-block;
-      margin: 0.5rem 0.25rem;
-      padding: 0.75rem 1.5rem;
       background-color: #007bff;
+      border: none;
+      border-radius: 10px;
       color: white;
-      text-decoration: none;
-      border-radius: 8px;
+      font-size: 1.1rem;
       font-weight: 700;
-      transition: background-color 0.3s;
+      padding: 0.85rem 1.5rem;
       cursor: pointer;
       text-align: center;
-    }
-    .button:hover {
-      background-color: #0056b3;
-    }
-    .contact-info a {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #007bff;
+      box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
-      font-weight: 600;
+      user-select: none;
     }
-    .contact-info a:hover {
-      text-decoration: underline;
+    .button:hover,
+    .button:focus {
+      background-color: #0056b3;
+      box-shadow: 0 7px 20px rgba(0,86,179,0.5);
+      outline: none;
     }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
-      flex-shrink: 0;
+
+    /* Contact Box/Form */
+    .contact-box {
+      background: #f9fbfd;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+      max-width: 720px;
+      margin: 0 auto;
+      color: #222;
     }
-    form h2 {
-      margin-bottom: 1rem;
+    .contact-box h2 {
+      font-size: 1.9rem;
       font-weight: 700;
       color: #003366;
-      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 4px;
     }
+    .contact-info {
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .contact-info a {
+      display: inline-block;
+      margin-right: 1.4rem;
+      color: #0052cc;
+      font-size: 1.1rem;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      color: #003d99;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin: 0 0 18px 0;
+      font-size: 1rem;
+      border: 1.8px solid #cfd8e3;
+      border-radius: 10px;
+      transition: border-color 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0,123,255,0.25);
+    }
+    form textarea {
+      min-height: 110px;
+    }
+    form button {
+      width: 100%;
+      font-weight: 700;
+      padding: 14px;
+      background-color: #007bff;
+      border-radius: 10px;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,123,255,0.35);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    form button:hover,
+    form button:focus {
+      background-color: #0056b3;
+      box-shadow: 0 8px 22px rgba(0,86,179,0.6);
+      outline: none;
+    }
+
+    /* Footer */
     footer {
-      text-align: center;
-      margin-top: 2rem;
-      padding: 1rem;
+      margin-top: auto;
+      padding: 1.5rem 1rem;
+      background-color: #e9ebee;
       font-size: 0.9rem;
-      color: #666;
-      position: relative;
-      z-index: 1;
+      color: #555;
+      text-align: center;
+      user-select: none;
+      border-top: 1px solid #ccc;
     }
     .footer-link {
-      display: block;
-      margin-top: 1rem;
-      color: #007bff;
-      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.7rem;
+      color: #0052cc;
       font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .footer-link:hover {
+    .footer-link:hover,
+    .footer-link:focus {
+      color: #003d99;
       text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p.slogan {
+        font-size: 1rem;
+      }
+      main.container {
+        padding: 2rem 1.5rem 2rem;
+        margin: -3rem 1rem 2rem;
+      }
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-box {
+        padding: 1.8rem 1.8rem;
+      }
+      form button {
+        font-size: 1.1rem;
+        padding: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="watermark-logo"></div>
-  <div class="watermark-slogan"></div>
-  <header>
+  <div class="watermark-logo" aria-hidden="true"></div>
+  <div class="watermark-slogan" aria-hidden="true"></div>
+
+  <header role="banner">
     <h1>Kevin | Grapevine Honda</h1>
     <p>Your Trusted Honda Sales Professional</p>
-    <img src="https://github.com/KevinatGrapevineHonda/kevin-landing-page/blob/main/Grapevine-honda.jpg?raw=true" alt="Grapevine Honda Dealership" style="max-width: 100%; height: auto; margin-top: 1rem; border-radius: 10px;" />
+    <p class="slogan" aria-label="Honda slogan">The Power of Dreams</p>
+    <img
+      src="https://github.com/KevinatGrapevineHonda/kevin-landing-page/blob/main/Grapevine-honda.jpg?raw=true"
+      alt="Grapevine Honda Dealership"
+      class="dealership"
+      loading="lazy"
+    />
   </header>
-  <section class="about-me">
-    <h2>About Me</h2>
-    <p>Hi, I’m Kevin, your dedicated sales professional at Grapevine Honda. I specialize in helping customers find the perfect New Honda or Pre-Owned vehicle that fits their lifestyle and budget. Whether you’re looking for the latest model or a reliable used car, I’m here to make your car buying experience smooth and enjoyable.</p>
-    <h2>Why Buy From Me</h2>
-    <ul>
-      <li>Personalized service tailored to your needs</li>
-      <li>Honest and transparent</li>
-      <li>Hassle-free buying experience</li>
-      <li>Committed to getting you the best deal possible</li>
-      <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
-    </ul>
-  </section>
-  <div class="container">
-    <div class="contact-box">
-      <h2>Start Your Journey</h2>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank">New Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank">Used Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue" target="_blank">Value My Trade</a>
-      <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank">Apply for Financing</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank">New Vehicle Specials</a>
-    </div>
-    <div class="contact-box">
-      <form action="mailto:kevinhoward@lithia.com" method="POST" enctype="text/plain">
-        <h2>Quick Contact</h2>
+
+  <main class="container" role="main">
+    <section class="about-me" aria-labelledby="about-me-title">
+      <h2 id="about-me-title">About Me</h2>
+      <p>
+        Hi, I’m Kevin, your dedicated sales professional at Grapevine Honda. I specialize in helping customers find the perfect New Honda or Pre-Owned vehicle that fits their lifestyle and budget. Whether you’re looking for the latest model or a reliable used car, I’m here to make your car buying experience smooth and enjoyable.
+      </p>
+      <h2 id="why-buy-title">Why Buy From Me</h2>
+      <ul aria-labelledby="why-buy-title">
+        <li>Personalized service tailored to your needs</li>
+        <li>Honest and transparent</li>
+        <li>Hassle-free buying experience</li>
+        <li>Committed to getting you the best deal possible</li>
+        <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="start-journey-title" class="contact-box">
+      <h2 id="start-journey-title">Start Your Journey</h2>
+      <div class="button-grid">
+        <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
+        <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
+        <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue" target="_blank" rel="noopener">Value My Trade</a>
+        <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank" rel="noopener">Apply for Financing</a>
+        <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
+      </div>
+    </section>
+
+    <section class="contact-box" aria-labelledby="quick-contact-title">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" aria-describedby="contact-desc">
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <h2 id="quick-contact-title">Quick Contact</h2>
+        <p id="contact-desc" style="margin-bottom:1rem; color:#555;">
+          Have questions? Reach out via the contact info or send me a message below.
+        </p>
+
         <div class="contact-info">
           <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
           <a href="tel:12125420771">📞 (212) 542-0771</a>
         </div>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        <textarea name="message" placeholder="What are you looking to buy?" rows="4"></textarea>
-        <button type="submit" class="button">Send to Kevin</button>
+
+        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+        <input type="tel" name="phone" placeholder="Your Phone Number" required aria-required="true" />
+        <textarea name="message" placeholder="What are you looking to buy?" rows="5"></textarea>
+
+        <button type="submit" class="button" aria-label="Send message to Kevin">Send to Kevin</button>
       </form>
-    </div>
-  </div>
-  <footer>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
     <p>All customer interactions are tracked through eLeads. Be sure to mention Kevin as your salesperson to ensure VIP treatment.</p>
-    <a href="https://www.grapevinehonda.com/" class="footer-link" target="_blank">Visit Grapevine Honda Website</a>
+    <a href="https://www.grapevinehonda.com/" class="footer-link" target="_blank" rel="noopener">Visit Grapevine Honda Website</a>
   </footer>
 </body>
 </html>
