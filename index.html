@@ -78,6 +78,16 @@
       justify-content: flex-start;
       min-height: 380px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;           /* For fade-in */
+      transform: translateY(30px); /* For fade-in */
+      transition-property: opacity, transform, box-shadow;
+      transition-duration: 0.8s;
+      transition-timing-function: ease-out;
+    }
+    .contact-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 15px 38px rgba(0,0,0,0.17);
     }
     .contact-box:hover {
       transform: translateY(-8px);
@@ -249,7 +259,7 @@
       <h2>Start Your Journey</h2>
       <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener noreferrer">New Car Inventory</a>
       <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener noreferrer">Used Car Inventory</a>
-       <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank" rel="noopener noreferrer">Apply for Financing</a>
+      <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank" rel="noopener noreferrer">Apply for Financing</a>
       <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue" target="_blank" rel="noopener noreferrer">Value My Trade</a>
       <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener noreferrer">New Vehicle Specials</a>
       <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener noreferrer">Pre-Owned Specials</a>
@@ -260,6 +270,9 @@
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
         <a href="tel:12125420771">📞 (212) 542-0771</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener noreferrer">
+          📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
+        </a>
       </div>
       <form method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field" action="/">
         <input type="hidden" name="form-name" value="contact" />
@@ -278,5 +291,22 @@
     <p>All customer interactions are tracked through eLeads. Be sure to mention Kevin as your salesperson to ensure VIP treatment.</p>
     <a href="https://www.grapevinehonda.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Visit Grapevine Honda Website</a>
   </footer>
+
+  <script>
+    // Fade-in on scroll for contact boxes
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('.contact-box');
+      const options = { threshold: 0.1 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      boxes.forEach(box => observer.observe(box));
+    });
+  </script>
 </body>
 </html>
