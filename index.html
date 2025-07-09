@@ -89,6 +89,9 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2.8rem;
+      grid-template-areas: 
+        "about journey"
+        "contact contact";
     }
     /* Boxes */
     .contact-box {
@@ -101,8 +104,8 @@
       justify-content: flex-start;
       min-height: 380px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
-      opacity: 0;           /* For fade-in */
-      transform: translateY(30px); /* For fade-in */
+      opacity: 0;           
+      transform: translateY(30px); 
     }
     .contact-box.visible {
       opacity: 1;
@@ -113,6 +116,19 @@
       transform: translateY(-8px);
       box-shadow: 0 15px 38px rgba(0,0,0,0.17);
     }
+    /* Assign grid areas */
+    .contact-box.about {
+      grid-area: about;
+    }
+    .contact-box.journey {
+      grid-area: journey;
+    }
+    .contact-box.contact {
+      grid-area: contact;
+      min-height: auto;
+      padding-bottom: 2.5rem;
+    }
+    /* Headings */
     .contact-box h2 {
       margin-bottom: 1.4rem;
       color: #003366;
@@ -235,20 +251,13 @@
     }
 
     /* Responsive tweaks */
-    @media (max-width: 520px) {
-      header h1 {
-        font-size: 2.1rem;
-      }
-      header p.slogan {
-        font-size: 1.2rem;
-      }
-      .contact-box {
-        min-height: auto;
-        padding: 2rem 1.6rem;
-      }
-      .button {
-        font-size: 1rem;
-        padding: 0.9rem 1.5rem;
+    @media (max-width: 720px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "about"
+          "journey"
+          "contact";
       }
     }
   </style>
@@ -266,7 +275,7 @@
 
   <div class="container">
 
-    <div class="contact-box">
+    <div class="contact-box about">
       <h2>About Me</h2>
       <p>I sell new Honda or pre-owned vehicles with dedication and integrity, committed to helping you find the perfect fit.</p>
       <h2 style="margin-top: 2.4rem;">Why Buy From Me?</h2>
@@ -279,7 +288,7 @@
       </ul>
     </div>
 
-    <div class="contact-box">
+    <div class="contact-box journey">
       <h2>Start Your Journey</h2>
       <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener noreferrer">New Car Inventory</a>
       <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener noreferrer">Used Car Inventory</a>
@@ -289,7 +298,7 @@
       <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener noreferrer">Pre-Owned Specials</a>
     </div>
 
-    <div class="contact-box">
+    <div class="contact-box contact">
       <h2>Quick Contact</h2>
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
