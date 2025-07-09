@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin | Grapevine Honda</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       color: #333;
     }
     header {
@@ -18,30 +17,55 @@
       color: white;
       text-align: center;
       padding: 2rem 1rem;
+      position: relative;
     }
     header img.logo {
       width: 60px;
       margin-top: 1rem;
     }
-    h1 {
-      margin: 0;
+    header h1 {
+      margin: 0.5rem 0 0;
       font-size: 2rem;
     }
+    header p.slogan {
+      font-style: italic;
+      font-weight: 600;
+      margin: 0.5rem 0 1rem;
+      font-size: 1.25rem;
+      color: #f0c419; /* Honda yellow-gold accent */
+    }
+    header img.dealership-photo {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
     .container {
-      max-width: 800px;
+      max-width: 840px;
       margin: 2rem auto;
       padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.5rem;
     }
     .contact-box {
       background: white;
       border-radius: 10px;
       padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .contact-box form, .contact-box > div, .contact-box > h2, .contact-box > a {
+      margin-bottom: 1rem;
+      flex-grow: 1;
     }
     .button {
       display: inline-block;
-      margin: 0.5rem 0.25rem;
+      margin: 0.5rem 0.25rem 0 0;
       padding: 0.75rem 1.5rem;
       background-color: #007bff;
       color: white;
@@ -49,15 +73,20 @@
       border-radius: 8px;
       font-weight: bold;
       transition: background-color 0.3s;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
     }
-    .button:hover {
+    .button:hover, .button:focus {
       background-color: #0056b3;
+      outline: none;
     }
     .contact-info a {
       display: block;
       margin-bottom: 0.5rem;
       color: #007bff;
       text-decoration: none;
+      font-weight: 600;
     }
     .contact-info a:hover {
       text-decoration: underline;
@@ -68,20 +97,26 @@
       margin: 5px 0 15px;
       border: 1px solid #ccc;
       border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      resize: vertical;
     }
     form h2 {
       margin-bottom: 1rem;
+      font-weight: 700;
+      color: #003366;
     }
     footer {
       text-align: center;
-      margin-top: 2rem;
+      margin: 3rem auto 2rem;
       padding: 1rem;
       font-size: 0.9rem;
       color: #666;
+      max-width: 840px;
     }
     .footer-link {
-      display: block;
-      margin-top: 1rem;
+      display: inline-block;
+      margin-top: 0.5rem;
       color: #007bff;
       text-decoration: none;
       font-weight: bold;
@@ -95,17 +130,16 @@
   <header>
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg" alt="Honda Logo" class="logo" />
     <h1>Kevin | Grapevine Honda</h1>
-    <p>Your Trusted Honda Sales Professional</p>
-    <img src="https://media.ed.edmunds-media.com/grapevine-honda/01.jpg" alt="Grapevine Honda Dealership" style="max-width: 100%; height: auto; margin-top: 1rem; border-radius: 10px;" />
+    <p class="slogan">The Power of Dreams</p>
+    <img src="https://cdn.motor1.com/images/mgl/6xK1B/s1/grapevine-honda.jpg" alt="Grapevine Honda Dealership" class="dealership-photo" />
   </header>
 
   <div class="container">
+
     <div class="contact-box">
-      <form name="pre-finance-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+      <form name="pre-finance-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
         <input type="hidden" name="form-name" value="pre-finance-lead" />
-        <p hidden>
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
         <h2>Apply for Financing</h2>
         <p>Enter your info and we’ll take you to the finance application.</p>
         <input type="text" name="name" placeholder="Your Full Name" required />
@@ -116,11 +150,9 @@
     </div>
 
     <div class="contact-box">
-      <form name="pre-specials-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/specials-redirect">
+      <form name="pre-specials-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/specials-redirect.html">
         <input type="hidden" name="form-name" value="pre-specials-lead" />
-        <p hidden>
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
         <h2>Special Offers</h2>
         <p>Get access to our limited-time specials by submitting your info.</p>
         <input type="text" name="name" placeholder="Your Full Name" required />
@@ -131,11 +163,9 @@
     </div>
 
     <div class="contact-box">
-      <form name="pre-trade-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/trade-redirect">
+      <form name="pre-trade-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/trade-redirect.html">
         <input type="hidden" name="form-name" value="pre-trade-lead" />
-        <p hidden>
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
         <h2>Value My Trade</h2>
         <p>Tell us who you are, then get your trade-in value.</p>
         <input type="text" name="name" placeholder="Your Full Name" required />
@@ -154,9 +184,7 @@
     <div class="contact-box">
       <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-        </p>
+        <p hidden><label>Don’t fill this out if you're human: <input name="bot-field" /></label></p>
         <h2>Quick Contact</h2>
         <div class="contact-info">
           <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
@@ -169,6 +197,7 @@
         <button type="submit" class="button">Send to Kevin</button>
       </form>
     </div>
+
   </div>
 
   <footer>
