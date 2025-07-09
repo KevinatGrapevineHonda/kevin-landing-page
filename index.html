@@ -36,6 +36,7 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       text-shadow: 0 2px 4px rgba(0,0,0,0.35);
+      user-select: none;
     }
     header p.slogan {
       font-style: italic;
@@ -44,6 +45,7 @@
       font-size: 1.5rem;
       color: #f1c40f; /* Honda gold */
       text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      user-select: none;
     }
     header img.dealership-photo {
       max-width: 92%;
@@ -53,6 +55,7 @@
       margin: 0 auto;
       display: block;
       transition: transform 0.3s ease;
+      user-select: none;
     }
     header img.dealership-photo:hover {
       transform: scale(1.02);
@@ -77,12 +80,9 @@
       flex-direction: column;
       justify-content: flex-start;
       min-height: 380px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
       opacity: 0;           /* For fade-in */
       transform: translateY(30px); /* For fade-in */
-      transition-property: opacity, transform, box-shadow;
-      transition-duration: 0.8s;
-      transition-timing-function: ease-out;
     }
     .contact-box.visible {
       opacity: 1;
@@ -269,7 +269,7 @@
       <h2>Quick Contact</h2>
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
-        <a href="tel:12125420771">📞 (212) 542-0771</a>
+        <a href="tel:12125420771">📞 Call or Text Me: (212) 542-0771</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener noreferrer">
           📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
         </a>
