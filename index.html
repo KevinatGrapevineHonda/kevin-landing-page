@@ -3,343 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <title>Kevin - New & Pre-Owned Honda Sales | Grapevine Honda</title>
-  <meta name="description" content="Kevin at Grapevine Honda helping you find your perfect new or pre-owned Honda vehicle. Expert sales advice, financing, trade-in options, and specials." />
-  
+  <title>Kevin | Grapevine Honda</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Kevin",
-    "jobTitle": "Honda Sales Professional",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Grapevine Honda",
-      "url": "https://www.grapevinehonda.com"
-    },
-    "email": "mailto:kevinhoward@lithia.com",
-    "telephone": "(212) 542-0771"
-  }
-  </script>
-  
   <style>
-    /* Reset and base */
-    * {
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f8f9fa;
-      margin: 0; padding: 0;
-      color: #2c3e50;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
-    /* Header */
     header {
       background-color: #003366;
       color: white;
       text-align: center;
-      padding: 3rem 1rem 3.5rem;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.18);
-      position: relative;
+      padding: 2rem 1rem;
     }
-    header h1 {
-      margin: 0 0 0.3rem;
-      font-size: 2.8rem;
-      font-weight: 900;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.35);
-      user-select: none;
+    h1 {
+      margin: 0.5rem 0 0;
+      font-size: 2rem;
     }
     header p.slogan {
+      color: gold;
       font-style: italic;
       font-weight: 700;
-      margin: 0 0 1.8rem;
-      font-size: 1.5rem;
-      color: #f1c40f; /* Honda gold */
-      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      user-select: none;
+      margin-top: 0.4rem;
+      font-size: 1.1rem;
     }
-    header img.dealership-photo {
-      max-width: 92%;
-      height: auto;
-      border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
-      margin: 0 auto;
-      display: block;
-      transition: transform 0.3s ease;
-      user-select: none;
-    }
-    header img.dealership-photo:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-    }
-    /* Container grid */
     .container {
-      max-width: 920px;
-      margin: 3.5rem auto 4rem;
-      padding: 0 1.25rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.8rem;
-      grid-template-areas: 
-        "about journey"
-        "contact contact";
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    /* Boxes */
     .contact-box {
       background: white;
-      border-radius: 16px;
-      padding: 3rem 2.4rem;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      min-height: 360px; /* Uniform height for all boxes */
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      min-height: 380px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
-      opacity: 0;           
-      transform: translateY(30px); 
+      justify-content: center;
     }
-    .contact-box.visible {
-      opacity: 1;
-      transform: translateY(0);
-      box-shadow: 0 15px 38px rgba(0,0,0,0.17);
-    }
-    .contact-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 38px rgba(0,0,0,0.17);
-    }
-    /* Assign grid areas */
-    .contact-box.about {
-      grid-area: about;
-    }
-    .contact-box.journey {
-      grid-area: journey;
-    }
-    .contact-box.contact {
-      grid-area: contact;
-      min-height: auto;
-      padding-bottom: 2.5rem;
-    }
-    /* Headings */
-    .contact-box h2 {
-      margin-bottom: 1.4rem;
-      color: #003366;
-      font-weight: 900;
-      font-size: 2rem;
-      border-bottom: 4px solid #007bff;
-      padding-bottom: 0.35rem;
-      letter-spacing: 0.06em;
-      user-select: none;
-    }
-    /* Buttons */
     .button {
       display: inline-block;
-      margin: 0.6rem 0.5rem 0 0;
-      padding: 1rem 2.2rem;
+      margin: 0.5rem 0.25rem;
+      padding: 0.75rem 1.5rem;
       background-color: #007bff;
       color: white;
       text-decoration: none;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 1.15rem;
-      transition: background-color 0.35s ease, box-shadow 0.35s ease;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
       cursor: pointer;
-      border: none;
       text-align: center;
-      box-shadow: 0 4px 14px rgba(0,123,255,0.75);
-      user-select: none;
     }
-    .button:hover, .button:focus {
+    .button:hover {
       background-color: #0056b3;
-      box-shadow: 0 7px 20px rgba(0,86,179,0.9);
-      outline: none;
     }
-    /* Contact info links */
     .contact-info a {
       display: block;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.5rem;
       color: #007bff;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-      user-select: text;
     }
     .contact-info a:hover {
-      color: #0056b3;
       text-decoration: underline;
     }
-    /* Inputs and textarea */
-    input, textarea {
+    input, select, textarea {
       width: 100%;
-      padding: 14px 18px;
-      margin: 12px 0 22px;
-      border: 2px solid #ccc;
-      border-radius: 16px;
-      font-size: 1.1rem;
-      font-family: 'Roboto', sans-serif;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: text;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
     }
-    input:focus, textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: #007bff;
       outline: none;
-      box-shadow: 0 0 8px rgba(0,123,255,0.6);
     }
-    textarea {
-      resize: vertical;
-      min-height: 120px;
+    form h2 {
+      margin-bottom: 1rem;
     }
-    /* Submit button in form */
-    form button.button {
-      margin-top: 14px;
-      width: 100%;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-    /* Lists */
-    ul.bullets {
-      list-style: disc inside;
-      padding-left: 0;
-      margin-top: 0.6rem;
-      color: #2c3e50;
-      font-size: 1.05rem;
-    }
-    ul.bullets li {
-      margin-bottom: 0.7rem;
-    }
-    /* Paragraph styling */
-    .contact-box p {
-      font-size: 1.1rem;
-      margin-top: 0;
-      line-height: 1.5;
-      color: #34495e;
-      user-select: text;
-    }
-    /* Footer */
     footer {
       text-align: center;
-      margin: 4.5rem auto 2.5rem;
-      padding: 1rem 1rem 2rem;
-      font-size: 1rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 0.9rem;
       color: #666;
-      max-width: 920px;
-      border-top: 1px solid #ddd;
-      user-select: none;
     }
     .footer-link {
-      display: inline-block;
+      display: block;
       margin-top: 1rem;
       color: #007bff;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-      user-select: text;
+      font-weight: bold;
     }
     .footer-link:hover {
-      color: #0056b3;
       text-decoration: underline;
     }
-
-    /* Responsive tweaks */
-    @media (max-width: 720px) {
-      .container {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "about"
-          "journey"
-          "contact";
-      }
+    ul.bullet-points {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #003366;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .finance-calculator label {
+      display: block;
+      font-weight: 700;
+      margin: 1rem 0 0.4rem;
+    }
+    .finance-calculator button {
+      width: 100%;
+      margin-top: 0;
+    }
+    .finance-calculator p.disclaimer {
+      font-style: italic;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Kevin | Grapevine Honda</h1>
     <p class="slogan">The Power of Dreams</p>
-    <img
-      src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225"
-      alt="Grapevine Honda dealership storefront"
-      class="dealership-photo"
-    />
   </header>
 
   <div class="container">
 
-    <div class="contact-box about">
+    <div class="contact-box">
       <h2>About Me</h2>
-      <p>I sell new Honda or pre-owned vehicles with dedication and integrity, committed to helping you find the perfect fit.</p>
-      <h2 style="margin-top: 2.4rem;">Why Buy From Me?</h2>
-      <ul class="bullets">
+      <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth and enjoyable.</p>
+
+      <h2>Why Buy From Me</h2>
+      <ul class="bullet-points">
         <li>Honest and transparent communication</li>
-        <li>Extensive knowledge of new and pre-owned Honda vehicles</li>
-        <li>Personalized attention to your needs</li>
-        <li>Committed to building long-lasting customer relationships</li>
-        <li><strong>When you buy from me, you’re investing in exceptional service, not just a vehicle.</strong></li>
+        <li>Personalized service tailored to your needs</li>
+        <li>Extensive knowledge of Honda vehicles</li>
+        <li>Committed to building long-term relationships</li>
+        <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
       </ul>
     </div>
 
-    <div class="contact-box journey">
+    <div class="contact-box">
       <h2>Start Your Journey</h2>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener noreferrer">New Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener noreferrer">Used Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank" rel="noopener noreferrer">Apply for Financing</a>
-      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue" target="_blank" rel="noopener noreferrer">Value My Trade</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener noreferrer">New Vehicle Specials</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener noreferrer">Pre-Owned Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue" target="_blank" rel="noopener">Value My Trade</a>
+      <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank" rel="noopener">Apply for Financing</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
     </div>
 
-    <div class="contact-box contact">
-      <h2>Quick Contact</h2>
+    <div class="contact-box finance-calculator">
+      <h2>Finance Calculator</h2>
+      <form id="financeCalcForm" onsubmit="return false;">
+        <label for="price">Vehicle Price ($):</label>
+        <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
+
+        <label for="downPayment">Down Payment ($):</label>
+        <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
+
+        <label for="loanTerm">Loan Term (months):</label>
+        <select id="loanTerm" name="loanTerm" required>
+          <option value="36">36</option>
+          <option value="48">48</option>
+          <option value="60" selected>60</option>
+          <option value="72">72</option>
+        </select>
+
+        <label for="interestRate">Interest Rate (% APR):</label>
+        <input type="number" id="interestRate" name="interestRate" min="0" max="30" step="0.01" value="5.5" required />
+
+        <button class="button" type="button" onclick="calculatePayment()">Calculate</button>
+      </form>
+
+      <div id="calcResult" style="margin-top: 1.5rem; font-weight: 700; color: #003366;"></div>
+
+      <p class="disclaimer">
+        *This estimate is for informational purposes only and is not a guarantee of financing. Actual payments may vary based on credit approval, creditworthiness, and final dealer fees.
+      </p>
+    </div>
+
+    <div class="contact-box">
+      <h2>Let's Connect</h2>
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
-        <a href="tel:12125420771">📞 Call or Text Me: (212) 542-0771</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener noreferrer">
+        <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
           📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
         </a>
       </div>
-      <form method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field" action="/">
-        <input type="hidden" name="form-name" value="contact" />
-        <p hidden><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
-        <button type="submit" class="button">Send to Kevin</button>
-      </form>
     </div>
 
   </div>
 
   <footer>
     <p>All customer interactions are tracked through eLeads. Be sure to mention Kevin as your salesperson to ensure VIP treatment.</p>
-    <a href="https://www.grapevinehonda.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Visit Grapevine Honda Website</a>
+    <a href="https://www.grapevinehonda.com/" class="footer-link" target="_blank" rel="noopener">Visit Grapevine Honda Website</a>
   </footer>
 
-  <script>
-    // Fade-in on scroll for contact boxes
-    document.addEventListener('DOMContentLoaded', () => {
-      const boxes = document.querySelectorAll('.contact-box');
-      const options = { threshold: 0.1 };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-      boxes.forEach(box => observer.observe(box));
+<script>
+  function calculatePayment() {
+    const price = parseFloat(document.getElementById('price').value);
+    const downPayment = parseFloat(document.getElementById('downPayment').value);
+    const loanTerm = parseInt(document.getElementById('loanTerm').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+
+    const taxRate = 0.0625; // 6.25%
+    const titleAndLicenseFees = 150; // typical Texas fee
+    const docFee = 225; // documentation fee
+
+    if (downPayment >= price) {
+      document.getElementById('calcResult').innerText = "Down payment must be less than vehicle price.";
+      return;
+    }
+
+    const taxAmount = price * taxRate;
+    const totalFees = taxAmount + titleAndLicenseFees + docFee;
+
+    const loanAmount = price + totalFees - downPayment;
+
+    const r = interestRate;
+    const n = loanTerm;
+    let monthlyPayment = 0;
+
+    if (r === 0) {
+      monthlyPayment = loanAmount / n;
+    } else {
+      monthlyPayment = loanAmount * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    }
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
     });
-  </script>
+
+    document.getElementById('calcResult').innerHTML = `
+      Estimated Monthly Payment: <strong>${formatter.format(monthlyPayment)}</strong><br/>
+      Total Loan Amount (including taxes & fees): <strong>${formatter.format(loanAmount)}</strong><br/>
+      (Includes ${formatter.format(taxAmount)} taxes, $${titleAndLicenseFees} title & license, $${docFee} documentation fees)
+    `;
+  }
+</script>
+
 </body>
 </html>
