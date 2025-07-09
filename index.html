@@ -15,108 +15,117 @@
       background-color: #f8f9fa;
       margin: 0; padding: 0;
       color: #2c3e50;
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
     }
     /* Header */
     header {
       background-color: #003366;
       color: white;
       text-align: center;
-      padding: 2.5rem 1rem 3rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      padding: 3rem 1rem 3.5rem;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.18);
       position: relative;
     }
     header h1 {
-      margin: 0 0 0.25rem;
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      margin: 0 0 0.3rem;
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.35);
     }
     header p.slogan {
       font-style: italic;
       font-weight: 700;
-      margin: 0 0 1.5rem;
-      font-size: 1.3rem;
+      margin: 0 0 1.8rem;
+      font-size: 1.5rem;
       color: #f1c40f; /* Honda gold */
-      text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     header img.dealership-photo {
-      max-width: 90%;
+      max-width: 92%;
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
       margin: 0 auto;
       display: block;
+      transition: transform 0.3s ease;
+    }
+    header img.dealership-photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
     }
     /* Container grid */
     .container {
-      max-width: 880px;
-      margin: 3rem auto;
+      max-width: 920px;
+      margin: 3.5rem auto 4rem;
       padding: 0 1.25rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.8rem;
     }
     /* Boxes */
     .contact-box {
       background: white;
-      border-radius: 14px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      padding: 3rem 2.4rem;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      min-height: 340px;
-      transition: transform 0.25s ease;
+      min-height: 380px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .contact-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 38px rgba(0,0,0,0.17);
     }
     .contact-box h2 {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
       color: #003366;
-      font-weight: 700;
-      font-size: 1.8rem;
-      border-bottom: 3px solid #007bff;
-      padding-bottom: 0.25rem;
-      letter-spacing: 0.05em;
+      font-weight: 900;
+      font-size: 2rem;
+      border-bottom: 4px solid #007bff;
+      padding-bottom: 0.35rem;
+      letter-spacing: 0.06em;
+      user-select: none;
     }
     /* Buttons */
     .button {
       display: inline-block;
-      margin: 0.5rem 0.4rem 0 0;
-      padding: 0.85rem 1.8rem;
+      margin: 0.6rem 0.5rem 0 0;
+      padding: 1rem 2.2rem;
       background-color: #007bff;
       color: white;
       text-decoration: none;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      transition: background-color 0.35s ease, box-shadow 0.35s ease;
       cursor: pointer;
       border: none;
       text-align: center;
-      box-shadow: 0 3px 8px rgba(0,123,255,0.6);
+      box-shadow: 0 4px 14px rgba(0,123,255,0.75);
+      user-select: none;
     }
     .button:hover, .button:focus {
       background-color: #0056b3;
-      box-shadow: 0 5px 12px rgba(0,86,179,0.8);
+      box-shadow: 0 7px 20px rgba(0,86,179,0.9);
       outline: none;
     }
     /* Contact info links */
     .contact-info a {
       display: block;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.85rem;
       color: #007bff;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
-      transition: color 0.25s ease;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      user-select: text;
     }
     .contact-info a:hover {
       color: #0056b3;
@@ -125,48 +134,70 @@
     /* Inputs and textarea */
     input, textarea {
       width: 100%;
-      padding: 12px 14px;
-      margin: 10px 0 18px;
-      border: 1.8px solid #ccc;
-      border-radius: 12px;
-      font-size: 1rem;
+      padding: 14px 18px;
+      margin: 12px 0 22px;
+      border: 2px solid #ccc;
+      border-radius: 16px;
+      font-size: 1.1rem;
       font-family: 'Roboto', sans-serif;
-      transition: border-color 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: text;
     }
     input:focus, textarea:focus {
       border-color: #007bff;
       outline: none;
-      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+      box-shadow: 0 0 8px rgba(0,123,255,0.6);
     }
     textarea {
       resize: vertical;
-      min-height: 100px;
+      min-height: 120px;
     }
     /* Submit button in form */
     form button.button {
-      margin-top: 10px;
+      margin-top: 14px;
       width: 100%;
+      font-size: 1.2rem;
+      user-select: none;
+    }
+    /* Lists */
+    ul.bullets {
+      list-style: disc inside;
+      padding-left: 0;
+      margin-top: 0.6rem;
+      color: #2c3e50;
+      font-size: 1.05rem;
+    }
+    ul.bullets li {
+      margin-bottom: 0.7rem;
+    }
+    /* Paragraph styling */
+    .contact-box p {
       font-size: 1.1rem;
+      margin-top: 0;
+      line-height: 1.5;
+      color: #34495e;
+      user-select: text;
     }
     /* Footer */
     footer {
       text-align: center;
-      margin: 4rem auto 2rem;
+      margin: 4.5rem auto 2.5rem;
       padding: 1rem 1rem 2rem;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #666;
-      max-width: 880px;
+      max-width: 920px;
       border-top: 1px solid #ddd;
       user-select: none;
     }
     .footer-link {
       display: inline-block;
-      margin-top: 0.8rem;
+      margin-top: 1rem;
       color: #007bff;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
+      font-weight: 800;
+      font-size: 1.1rem;
       transition: color 0.3s ease;
+      user-select: text;
     }
     .footer-link:hover {
       color: #0056b3;
@@ -174,15 +205,20 @@
     }
 
     /* Responsive tweaks */
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       header h1 {
-        font-size: 1.7rem;
+        font-size: 2.1rem;
       }
       header p.slogan {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
       }
       .contact-box {
         min-height: auto;
+        padding: 2rem 1.6rem;
+      }
+      .button {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
       }
     }
   </style>
@@ -195,6 +231,19 @@
   </header>
 
   <div class="container">
+
+    <div class="contact-box">
+      <h2>About Me</h2>
+      <p>I sell new Honda or pre-owned vehicles with dedication and integrity, committed to helping you find the perfect fit.</p>
+      <h2 style="margin-top: 2.4rem;">Why Buy From Me?</h2>
+      <ul class="bullets">
+        <li>Honest and transparent communication</li>
+        <li>Extensive knowledge of new and pre-owned Honda vehicles</li>
+        <li>Personalized attention to your needs</li>
+        <li>Committed to building long-lasting customer relationships</li>
+        <li><strong>When you buy from me, you’re investing in exceptional service, not just a vehicle.</strong></li>
+      </ul>
+    </div>
 
     <div class="contact-box">
       <h2>Start Your Journey</h2>
