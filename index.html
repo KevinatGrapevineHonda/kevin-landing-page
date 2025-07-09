@@ -43,7 +43,7 @@
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Honda_slogan_power_of_dreams.svg/1200px-Honda_slogan_power_of_dreams.svg.png');
     }
     header {
-      background-color: #003366;
+      background-color: #007bff; /* Changed to button blue */
       color: white;
       text-align: center;
       padding: 2rem 1rem;
@@ -62,7 +62,7 @@
       position: relative;
       z-index: 1;
     }
-    .about-me {
+    .about-me, .contact-box {
       background-color: white;
       border-radius: 10px;
       padding: 2rem 1.5rem;
@@ -72,6 +72,14 @@
       max-width: 800px;
       position: relative;
       z-index: 1;
+
+      width: 100%;
+      min-height: 320px;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .about-me h2 {
       margin-top: 0;
@@ -85,14 +93,13 @@
       line-height: 1.5;
       margin-bottom: 1.5rem;
     }
-    .contact-box {
-      background: white;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
+    .about-me ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+      margin-top: 0;
     }
     .button {
       display: inline-block;
@@ -105,6 +112,7 @@
       font-weight: 700;
       transition: background-color 0.3s;
       cursor: pointer;
+      text-align: center;
     }
     .button:hover {
       background-color: #0056b3;
@@ -127,6 +135,7 @@
       border-radius: 8px;
       font-size: 1rem;
       font-family: 'Roboto', sans-serif;
+      flex-shrink: 0;
     }
     form h2 {
       margin-bottom: 1rem;
@@ -177,9 +186,13 @@
     </p>
 
     <h2>Why Buy From Me</h2>
-    <p>
-      I’m committed to providing personalized service, honest advice, and a hassle-free buying experience. I’ll work hard to get you the best deal possible and guide you every step of the way. When you buy from me, you are buying a service and not just a product.
-    </p>
+    <ul>
+      <li>Personalized service tailored to your needs</li>
+      <li>Honest and transparent</li>
+      <li>Hassle-free buying experience</li>
+      <li>Committed to getting you the best deal possible</li>
+      <li>When you buy from me, you are buying a service and not just a product</li>
+    </ul>
   </section>
 
   <div class="container">
