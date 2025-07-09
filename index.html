@@ -64,27 +64,39 @@
       display: block;
     }
 
+    /* Grid container for 2x2 layout */
     .container {
-      max-width: 850px;
+      max-width: 960px;
       margin: -3rem auto 3rem;
       padding: 0 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem 2rem;
       position: relative;
       z-index: 1;
     }
+    
     .contact-box {
       background: white;
       border-radius: 16px;
       padding: 2.5rem 3rem;
       box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      margin-bottom: 2.5rem;
       min-height: 380px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .contact-box.visible {
+      opacity: 1;
+      transform: none;
+      transition: box-shadow 0.3s ease, transform 0.6s ease, opacity 0.6s ease;
     }
     .contact-box:hover {
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
     }
     .contact-box h2 {
       font-weight: 700;
@@ -123,7 +135,7 @@
       text-align: center;
       font-size: 1.1rem;
       user-select: none;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
       border: none;
       text-decoration: none;
     }
@@ -131,11 +143,15 @@
       background-color: #0056b3;
       box-shadow: 0 6px 18px rgba(0,86,179,0.7);
       outline: none;
+      transform: scale(1.05);
     }
 
-    .contact-info a {
+    .contact-info {
+      margin-bottom: 1.5rem;
       font-weight: 700;
       font-size: 1.1rem;
+    }
+    .contact-info a {
       margin-bottom: 0.6rem;
       color: #007bff;
       display: block;
@@ -193,6 +209,7 @@
       color: #003366;
       font-size: 1.15rem;
       line-height: 1.4;
+      min-height: 3rem;
     }
     .finance-calculator p.disclaimer {
       font-style: italic;
@@ -227,8 +244,8 @@
     /* Responsive */
     @media (max-width: 600px) {
       .contact-box {
-        padding: 2rem 1.5rem;
         min-height: auto;
+        padding: 2rem 1.5rem;
       }
       header h1 {
         font-size: 2rem;
@@ -251,8 +268,7 @@
   </header>
 
   <div class="container">
-
-    <div class="contact-box">
+    <div class="contact-box fade-in-section">
       <h2>About Me</h2>
       <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth and enjoyable.</p>
 
@@ -266,7 +282,7 @@
       </ul>
     </div>
 
-    <div class="contact-box">
+    <div class="contact-box fade-in-section">
       <h2>Start Your Journey</h2>
       <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
       <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
@@ -276,25 +292,25 @@
       <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
     </div>
 
-    <div class="contact-box">
+    <div class="contact-box fade-in-section">
       <h2>Quick Contact</h2>
-      <form action="mailto:kevinhoward@lithia.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
-        <button type="submit" class="button">Send to Kevin</button>
-      </form>
-      <div class="contact-info" style="margin-top: 1rem;">
+      <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
         <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
           📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
         </a>
       </div>
+      <form action="mailto:kevinhoward@lithia.com" method="POST" enctype="text/plain" novalidate>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" required />
+        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
+        <button type="submit" class="button">Send to Kevin</button>
+      </form>
     </div>
 
-    <div class="contact-box finance-calculator">
+    <div class="contact-box finance-calculator fade-in-section">
       <h2>Finance Calculator</h2>
       <form id="financeCalcForm" onsubmit="return false;">
         <label for="price">Vehicle Price ($):</label>
@@ -323,7 +339,6 @@
         This estimate is for informational purposes only and is not a guarantee of financing. Actual payments may vary based on credit approval, creditworthiness, and final dealer fees.
       </p>
     </div>
-
   </div>
 
   <footer>
@@ -332,6 +347,23 @@
   </footer>
 
 <script>
+  // Fade-in on scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.fade-in-section');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  });
+
+  // Finance calculator
   function calculatePayment() {
     const price = parseFloat(document.getElementById('price').value);
     const downPayment = parseFloat(document.getElementById('downPayment').value);
