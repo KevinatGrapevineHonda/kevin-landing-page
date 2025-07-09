@@ -12,21 +12,43 @@
       margin: 0;
       padding: 0;
       color: #333;
-
-      background-image: 
-        url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg'),
-        url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Honda_slogan_power_of_dreams.svg/1200px-Honda_slogan_power_of_dreams.svg.png');
-      background-repeat: no-repeat, no-repeat;
-      background-position: center 25%, center 75%;
-      background-size: 150px auto, 300px auto;
-      background-attachment: fixed;
-      background-blend-mode: lighten;
+      position: relative;
+      z-index: 1;
+    }
+    /* Watermark styles */
+    .watermark-logo,
+    .watermark-slogan {
+      position: fixed;
+      pointer-events: none; /* so clicks go through */
+      opacity: 0.07;
+      z-index: 0; /* behind everything */
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    .watermark-logo {
+      top: 15%;
+      left: 50%;
+      width: 150px;
+      height: 150px;
+      transform: translateX(-50%);
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg');
+    }
+    .watermark-slogan {
+      bottom: 15%;
+      left: 50%;
+      width: 300px;
+      height: 100px;
+      transform: translateX(-50%);
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Honda_slogan_power_of_dreams.svg/1200px-Honda_slogan_power_of_dreams.svg.png');
     }
     header {
       background-color: #003366;
       color: white;
       text-align: center;
       padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
     }
     header img.logo {
       width: 60px;
@@ -40,6 +62,8 @@
       max-width: 800px;
       margin: 2rem auto;
       padding: 0 1rem;
+      position: relative;
+      z-index: 1;
     }
     .contact-box {
       background: white;
@@ -47,6 +71,8 @@
       padding: 2rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
     }
     .button {
       display: inline-block;
@@ -87,6 +113,8 @@
       padding: 1rem;
       font-size: 0.9rem;
       color: #666;
+      position: relative;
+      z-index: 1;
     }
     .footer-link {
       display: block;
@@ -101,6 +129,10 @@
   </style>
 </head>
 <body>
+  <!-- Watermark overlays -->
+  <div class="watermark-logo"></div>
+  <div class="watermark-slogan"></div>
+
   <header>
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg" alt="Honda Logo" class="logo" />
     <h1>Kevin Howard | Grapevine Honda</h1>
@@ -109,14 +141,6 @@
   </header>
 
   <div class="container">
-    <div class="contact-box">
-      <h2>Let's Connect</h2>
-      <div class="contact-info">
-        <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
-        <a href="tel:12125420771">📞 (212) 542-0771</a>
-      </div>
-    </div>
-
     <div class="contact-box">
       <h2>Start Your Journey</h2>
       <a class="button" href="https://www.grapevinehonda.com/getfinancing" target="_blank">Apply for Financing</a>
@@ -129,6 +153,10 @@
     <div class="contact-box">
       <form action="mailto:kevinhoward@lithia.com" method="POST" enctype="text/plain">
         <h2>Quick Contact</h2>
+        <div class="contact-info">
+          <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
+          <a href="tel:12125420771">📞 (212) 542-0771</a>
+        </div>
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <input type="tel" name="phone" placeholder="Your Phone Number" required />
