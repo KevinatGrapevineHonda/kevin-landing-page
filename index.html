@@ -12,16 +12,12 @@
   <link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href=download.png>
+  <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg">
   <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg">
   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg">
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset and base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f1f5f9;
@@ -29,33 +25,16 @@
       padding: 0;
       color: #222;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-    a {
-      color: #007bff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover, a:focus {
-      color: #0056b3;
-      text-decoration: underline;
-    }
-
     header {
       background: linear-gradient(135deg, #003366 0%, #004080 100%);
       color: white;
       text-align: center;
       padding: 3rem 1rem 4rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      position: relative;
     }
     header h1 {
       font-size: 2.5rem;
       margin: 0;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
     }
     header p.slogan {
       color: gold;
@@ -63,7 +42,6 @@
       font-weight: 700;
       font-size: 1.2rem;
       margin-top: 0.5rem;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
     }
     header img.dealership-photo {
       max-width: 100%;
@@ -75,225 +53,51 @@
       object-fit: cover;
       display: block;
     }
-
-    /* Slideshow Styles */
-    .slideshow-container {
-      max-width: 960px;
-      margin: 2rem auto 1.5rem;
-      position: relative;
-      border-radius: 14px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .slide {
-      display: none;
-      position: relative;
-      animation: fade 1s ease-in-out;
-    }
-
-    @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px 14px 0 0;
-      object-fit: cover;
-      max-height: 350px;
-    }
-
-    .caption {
-      padding: 0.8rem 1rem;
-      text-align: center;
-      font-weight: 700;
-      color: #003366;
-      background-color: #f1f5f9;
-      border-radius: 0 0 14px 14px;
-      font-size: 1.15rem;
-    }
-
-    .dot-container {
-      text-align: center; 
-      margin: 0.5rem 0 1rem;
-    }
-
-    .dot {
-      height: 14px;
-      width: 14px;
-      margin: 0 6px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .dot.active, .dot:hover {
-      background-color: #007bff;
-    }
-
-    /* Grid container for 2x2 layout */
     .container {
       max-width: 960px;
-      margin: 1rem auto 3rem;
+      margin: -3rem auto 3rem;
       padding: 0 1.5rem 3rem;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem 2rem;
-      position: relative;
-      z-index: 1;
     }
-    
     .contact-box {
       background: white;
       border-radius: 16px;
       padding: 2.5rem 3rem;
       box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      transition: box-shadow 0.3s ease, transform 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .contact-box.visible {
-      opacity: 1;
-      transform: none;
-      transition: box-shadow 0.3s ease, transform 0.6s ease, opacity 0.6s ease;
-    }
-    .contact-box:hover {
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      transform: translateY(-4px);
     }
     .contact-box h2 {
-      font-weight: 700;
       font-size: 1.8rem;
       color: #003366;
       margin-bottom: 1.4rem;
       border-bottom: 3px solid #007bff;
       padding-bottom: 0.5rem;
-      letter-spacing: 0.03em;
     }
-    p, ul {
-      font-size: 1.1rem;
-      color: #444;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-    }
-   ul.bullet-points {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 0 0 1.5rem;
-  color: #003366;
-  font-weight: 500;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-
     .button {
       display: inline-block;
-      margin: 0 0.4rem 0.9rem 0;
+      margin: 0.4rem 0.5rem 0.9rem 0;
       padding: 0.85rem 1.8rem;
       background-color: #007bff;
       color: white;
       font-weight: 700;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,123,255,0.4);
-      cursor: pointer;
       text-align: center;
-      font-size: 1.1rem;
-      user-select: none;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      border: none;
       text-decoration: none;
-    }
-    .button:hover, .button:focus {
-      background-color: #0056b3;
-      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
-      outline: none;
-      transform: scale(1.05);
-    }
-
-    .contact-info {
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
     }
     .contact-info a {
       margin-bottom: 0.6rem;
       color: #007bff;
       display: block;
     }
-
-    input, select, textarea {
+    input, textarea {
       width: 100%;
       padding: 12px 15px;
       margin: 8px 0 20px;
       border: 2px solid #ccc;
       border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 400;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
     }
-    input:focus, select:focus, textarea:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0,123,255,0.6);
-      outline: none;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-      font-size: 1.05rem;
-    }
-
-    form button.button {
-      margin-top: 0;
-      padding: 1rem 2rem;
-      font-size: 1.15rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, #007bff, #0056b3);
-      box-shadow: 0 6px 15px rgba(0,86,179,0.7);
-      border: none;
-      cursor: pointer;
-      border-radius: 14px;
-      transition: all 0.3s ease;
-    }
-    form button.button:hover {
-      background: linear-gradient(45deg, #0056b3, #003366);
-      box-shadow: 0 8px 22px rgba(0,54,102,0.9);
-    }
-
-    .finance-calculator label {
-      display: block;
-      font-weight: 700;
-      margin: 1rem 0 0.5rem;
-      color: #003366;
-      font-size: 1.1rem;
-    }
-    #calcResult {
-      margin-top: 1.8rem;
-      font-weight: 700;
-      color: #003366;
-      font-size: 1.15rem;
-      line-height: 1.4;
-      min-height: 3rem;
-    }
-    .finance-calculator p.disclaimer {
-      font-style: italic;
-      color: #555;
-      font-size: 0.95rem;
-      margin-top: 1.2rem;
-      max-width: 700px;
-    }
-
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
@@ -301,7 +105,6 @@
       color: #555;
       border-top: 1px solid #ddd;
       background-color: #f9fafb;
-      user-select: none;
     }
     .footer-link {
       margin-top: 0.6rem;
@@ -309,28 +112,6 @@
       font-weight: 700;
       font-size: 1.05rem;
       display: inline-block;
-      transition: color 0.3s ease;
-    }
-    .footer-link:hover {
-      color: #0056b3;
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .contact-box {
-        min-height: auto;
-        padding: 2rem 1.5rem;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
-      header p.slogan {
-        font-size: 1rem;
-      }
-      form button.button {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -342,138 +123,61 @@
     <img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo" />
   </header>
 
-  <!-- Slideshow Section -->
-  <section class="slideshow-container">
-    <div class="slide fade">
-      <img src="https://cdn.motor1.com/images/mgl/0AN2R/s1/2024-honda-accord-sport.jpg" alt="2024 Honda Accord" />
-      <div class="caption">2024 Honda Accord - Sleek & Powerful</div>
-    </div>
-    <div class="slide fade">
-      <img src="https://cdn.motor1.com/images/mgl/kjX2l/s1/2023-honda-cr-v-ex.jpg" alt="2023 Honda CR-V" />
-      <div class="caption">2023 Honda CR-V - Comfortable & Spacious</div>
-    </div>
-    <div class="slide fade">
-      <img src="https://cdn.motor1.com/images/mgl/b08vO/s1/2023-honda-civic-sport.jpg" alt="2023 Honda Civic" />
-      <div class="caption">2023 Honda Civic - Sporty & Efficient</div>
-    </div>
-    <div class="dot-container">
-      <span class="dot" onclick="currentSlide(1)"></span> 
-      <span class="dot" onclick="currentSlide(2)"></span> 
-      <span class="dot" onclick="currentSlide(3)"></span> 
-    </div>
-  </section>
-
-  <!-- Headline Section -->
-  <section class="headline-section" style="max-width:960px; margin: 0 auto 2rem; padding: 0 1.5rem;">
-    <h2 style="color:#003366; font-weight:700; font-size:2rem; margin-bottom:0.5rem;">
-      Your Next Honda Is Waiting — Get Personalized Service & Fast Financing Today!
-    </h2>
-    <p style="font-size:1.2rem; color:#007bff; font-weight:600; margin-top:0;">
-      Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!
-    </p>
-  </section>
-
   <div class="container">
-    <div class="contact-box fade-in-section">
+    <div class="contact-box">
       <h2>About Me</h2>
       <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth and enjoyable.</p>
-
-      <h2>Why Buy From Me</h2>
-      <ul class="bullet-points">
-        <li>Honest and transparent communication</li>
-        <li>Personalized service tailored to your needs</li>
-        <li>Extensive knowledge of Honda vehicles</li>
-        <li>Committed to building long-term relationships</li>
-        <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
-      </ul>
     </div>
 
-    <div class="contact-box fade-in-section">
+    <div class="contact-box">
       <h2>Start Your Journey</h2>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/getfinancing?ref=kevinhoward" target="_blank" rel="noopener">Apply for Financing</a>
-      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue?ref=kevinhoward" target="_blank" rel="noopener">Value My Trade</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank">New Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank">Used Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/getfinancing?ref=kevinhoward" target="_blank">Apply for Financing</a>
+      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue?ref=kevinhoward" target="_blank">Value My Trade</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank">New Vehicle Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank">Pre-Owned Specials</a>
     </div>
 
-    <div class="contact-box fade-in-section">
+    <div class="contact-box">
       <h2>Quick Contact</h2>
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
         <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank">
           📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
         </a>
       </div>
-      <!-- Updated secure Netlify form -->
-      <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field" id="contactForm" onsubmit="handleSubmit(event)">
+      <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="quick-contact" />
         <p style="display:none;">
           <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
         </p>
-
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <input type="tel" name="phone" placeholder="Your Phone Number" required />
         <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
         <button type="submit" class="button">Send to Kevin</button>
-
-        <p id="formMessage" style="margin-top:1rem; font-weight:700; color:#007bff;"></p>
       </form>
     </div>
   </div>
 
   <footer>
     <p>© 2025 Kevin at Grapevine Honda | All rights reserved</p>
-    <a class="footer-link" href="https://www.grapevinehonda.com" target="_blank" rel="noopener">Visit Grapevine Honda Official Site</a>
+    <a class="footer-link" href="https://www.grapevinehonda.com" target="_blank">Visit Grapevine Honda Official Site</a>
   </footer>
 
-  <script>
-    // Slideshow
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-
-    function showSlides() {
-      slides.forEach((slide, i) => {
-        slide.style.display = 'none';
-        dots[i].classList.remove('active');
-      });
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1; }
-      slides[slideIndex - 1].style.display = 'block';
-      dots[slideIndex - 1].classList.add('active');
-      setTimeout(showSlides, 5000); // Change slide every 5 seconds
-    }
-
-    function currentSlide(n) {
-      slideIndex = n - 1;
-      showSlides();
-    }
-
-    document.addEventListener('DOMContentLoaded', showSlides);
-
-    // Form submission handler with simple message
-    function handleSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formMessage = document.getElementById('formMessage');
-
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      })
-      .then(() => {
-        formMessage.textContent = 'Thanks for reaching out! I will get back to you soon.';
-        form.reset();
-      })
-      .catch(() => {
-        formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
-      });
-    }
+  <!-- Tawk.to Script -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/686eef490ae360191763de7b/1ivolddes';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
   </script>
 
 </body>
