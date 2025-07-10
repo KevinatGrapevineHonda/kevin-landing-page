@@ -157,7 +157,7 @@
       line-height: 1.6;
     }
 
-    /* Added profile photo style */
+    /* Profile photo styling so it doesn't break layout */
     .profile-photo {
       float: right;
       max-width: 140px;
@@ -311,7 +311,6 @@
     }
   </style>
 </head>
-  
 <body>
 
   <header>
@@ -328,7 +327,6 @@
   <div class="container">
     <div class="contact-box fade-in-section">
       <h2>About Me</h2>
-      <!-- Added profile photo here -->
       <img src="https://i.imgur.com/OAxgbLW.jpeg" alt="Kevin at Grapevine Honda" class="profile-photo" />
       <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth and enjoyable.</p>
 
@@ -361,7 +359,7 @@
           📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
         </a>
       </div>
-      <!-- Updated secure Netlify form -->
+      <!-- Netlify form -->
       <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field" id="contactForm" onsubmit="handleSubmit(event)">
         <input type="hidden" name="form-name" value="quick-contact" />
         <p style="display:none;">
@@ -417,4 +415,6 @@
 <script>
   // Fade-in on scroll
   document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.fade-in-section
+    const sections = document.querySelectorAll('.fade-in-section');
+
+    const observer = new
