@@ -455,31 +455,36 @@
     });
   }
 
-  // Finance calculator function
+  // Enhanced Finance Calculator
   function calculatePayment() {
-    try {
-      const price = parseFloat(document.getElementById('price').value);
-      const downPayment = parseFloat(document.getElementById('downPayment').value);
-      const loanTerm = parseInt(document.getElementById('loanTerm').value);
-      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+    const price = parseFloat(document.getElementById('price').value);
+    const downPayment = parseFloat(document.getElementById('downPayment').value);
+    const loanTerm = parseInt(document.getElementById('loanTerm').value);
+    const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
 
-      if (isNaN(price) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
-        document.getElementById('calcResult').textContent = 'Please fill in all fields correctly.';
-        return;
-      }
+    const resultEl = document.getElementById('calcResult');
 
-      const loanAmount = price - downPayment;
-      const monthlyInterest = interestRate / 12;
-      const monthlyPayment = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -loanTerm));
+    if (isNaN(price) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
+      resultEl.textContent = 'Please fill in all fields correctly.';
+      return;
+    }
 
-      if (monthlyPayment && monthlyPayment > 0) {
-        document.getElementById('calcResult').textContent = `Estimated monthly payment: $${monthlyPayment.toFixed(2)} for ${loanTerm} months.`;
-      } else {
-        document.getElementById('calcResult').textContent = 'Calculation error. Please check your inputs.';
-      }
-    } catch (error) {
-      document.getElementById('calcResult').textContent = 'An unexpected error occurred.';
-      console.error('Finance calculator error:', error);
+    const loanAmount = price - downPayment;
+    const monthlyInterest = interestRate / 12;
+
+    const monthlyPayment = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -loanTerm));
+
+    if (monthlyPayment && monthlyPayment > 0) {
+      const totalPaid = monthlyPayment * loanTerm;
+      const totalInterest = totalPaid - loanAmount;
+
+      resultEl.innerHTML = `
+        <strong>Estimated monthly payment:</strong> $${monthlyPayment.toFixed(2)} for ${loanTerm} months.<br>
+        <strong>Total paid over term:</strong> $${totalPaid.toFixed(2)}<br>
+        <strong>Total interest paid:</strong> $${totalInterest.toFixed(2)}
+      `;
+    } else {
+      resultEl.textContent = 'Calculation error. Please check your inputs.';
     }
   }
 </script>
