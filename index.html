@@ -457,25 +457,29 @@
 
   // Finance calculator function
   function calculatePayment() {
-    const price = parseFloat(document.getElementById('price').value);
-    const downPayment = parseFloat(document.getElementById('downPayment').value);
-    const loanTerm = parseInt(document.getElementById('loanTerm').value);
-    const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+    try {
+      const price = parseFloat(document.getElementById('price').value);
+      const downPayment = parseFloat(document.getElementById('downPayment').value);
+      const loanTerm = parseInt(document.getElementById('loanTerm').value);
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
 
-    if (isNaN(price) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
-      document.getElementById('calcResult').textContent = 'Please fill in all fields correctly.';
-      return;
-    }
+      if (isNaN(price) || isNaN(downPayment) || isNaN(loanTerm) || isNaN(interestRate)) {
+        document.getElementById('calcResult').textContent = 'Please fill in all fields correctly.';
+        return;
+      }
 
-    const loanAmount = price - downPayment;
-    const monthlyInterest = interestRate / 12;
-    // Monthly payment formula for amortizing loan
-    const monthlyPayment = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -loanTerm));
+      const loanAmount = price - downPayment;
+      const monthlyInterest = interestRate / 12;
+      const monthlyPayment = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -loanTerm));
 
-    if (monthlyPayment && monthlyPayment > 0) {
-      document.getElementById('calcResult').textContent = Estimated monthly payment: $${monthlyPayment.toFixed(2)} for ${loanTerm} months.;
-    } else {
-      document.getElementById('calcResult').textContent = 'Calculation error. Please check your inputs.';
+      if (monthlyPayment && monthlyPayment > 0) {
+        document.getElementById('calcResult').textContent = `Estimated monthly payment: $${monthlyPayment.toFixed(2)} for ${loanTerm} months.`;
+      } else {
+        document.getElementById('calcResult').textContent = 'Calculation error. Please check your inputs.';
+      }
+    } catch (error) {
+      document.getElementById('calcResult').textContent = 'An unexpected error occurred.';
+      console.error('Finance calculator error:', error);
     }
   }
 </script>
