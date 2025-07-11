@@ -157,45 +157,16 @@
       line-height: 1.6;
     }
 
-  /* Your profile photo in About Me - centered */
-  .profile-photo {
-    display: block;
-    margin: 0 auto 15px auto;
-    max-width: 140px;
-    border-radius: 10px;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-    object-fit: cover;
-    float: none;
-  }
-
-  /* Input wrapper and prefix/suffix signs for finance calculator */
-  .input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .input-wrapper input[type="number"] {
-    padding-left: 24px; /* for $ sign on left */
-    padding-right: 24px; /* for % sign on right, adjusted per use */
-  }
-  .prefix-sign {
-    position: absolute;
-    left: 10px;
-    font-weight: 700;
-    color: #444;
-    font-size: 1.1rem;
-    user-select: none;
-    pointer-events: none;
-  }
-  .suffix-sign {
-    position: absolute;
-    right: 10px;
-    font-weight: 700;
-    color: #444;
-    font-size: 1.1rem;
-    user-select: none;
-    pointer-events: none;
-  }
+    /* Your profile photo in About Me - centered */
+    .profile-photo {
+      display: block;
+      margin: 0 auto 15px auto;
+      max-width: 140px;
+      border-radius: 10px;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+      object-fit: cover;
+      float: none;
+    }
 
     .button {
       display: inline-block;
@@ -284,7 +255,7 @@
       color: #003366;
       font-size: 1.15rem;
       line-height: 1.4;
-      min-height: 3rem;
+      min-height: 5rem;
     }
     .finance-calculator p.disclaimer {
       font-style: italic;
@@ -314,6 +285,35 @@
     .footer-link:hover {
       color: #0056b3;
       text-decoration: underline;
+    }
+
+    /* Input wrapper for prefix/suffix signs */
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrapper input[type="number"] {
+      padding-left: 24px; /* for $ sign */
+      padding-right: 24px; /* for % sign */
+    }
+    .prefix-sign {
+      position: absolute;
+      left: 10px;
+      font-weight: 700;
+      color: #444;
+      font-size: 1.1rem;
+      user-select: none;
+      pointer-events: none;
+    }
+    .suffix-sign {
+      position: absolute;
+      right: 10px;
+      font-weight: 700;
+      color: #444;
+      font-size: 1.1rem;
+      user-select: none;
+      pointer-events: none;
     }
 
     /* Responsive */
@@ -450,27 +450,36 @@
   </div>
 
   <footer>
-    <div>
-      <span>Kevin at Grapevine Honda — &copy; 2025 All Rights Reserved.</span>
-    </div>
-    <div>
-      <a href="https://kevinatgrapevinehonda.netlify.app" class="footer-link" target="_blank" rel="noopener">Personal Landing Page</a>
-    </div>
+    &copy; 2025 Kevin | Grapevine Honda. All rights reserved.<br />
+    <a href="https://www.grapevinehonda.com" target="_blank" rel="noopener" class="footer-link">Visit Grapevine Honda Website</a>
   </footer>
 
   <script>
-    // Form submission for contact form with simple success message
+    // Smooth fade-in animation for .fade-in-section on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const fadeElements = document.querySelectorAll('.fade-in-section');
+      fadeElements.forEach(el => el.classList.add('visible'));
+    });
+
+    // Contact form submit handler using Netlify
     function handleSubmit(event) {
       event.preventDefault();
       const form = event.target;
       const formMessage = document.getElementById('formMessage');
-      // simulate form submission here, or Netlify will handle it
-      formMessage.style.display = 'block';
-      form.reset();
-      setTimeout(() => formMessage.style.display = 'none', 7000);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(() => {
+        formMessage.style.display = 'block';
+        form.reset();
+      }).catch(() => {
+        alert('Oops! Something went wrong. Please try again later.');
+      });
     }
 
-    // Finance calculator logic
+    // Finance calculator
     function calculatePayment() {
       const price = parseFloat(document.getElementById('price').value);
       const downPayment = parseFloat(document.getElementById('downPayment').value);
@@ -484,7 +493,7 @@
 
       const docFee = 225;
       const salesTaxRate = 0.0625; // Texas sales tax 6.25%
-      const licenseTitleFee = 350; // Approximate TX title & license fee
+      const licenseTitleFee = 180; // Approximate TX title & license fee
 
       // Taxable amount is price - down payment + docFee + license/title fee
       const taxableAmount = price - downPayment + docFee + licenseTitleFee;
@@ -504,28 +513,27 @@
         monthlyPayment = loanAmount * monthlyInterestRate / (1 - Math.pow(1 + monthlyInterestRate, -loanTerm));
       }
 
-      monthlyPayment = monthlyPayment.toFixed(2);
-      const formattedLoanAmount = loanAmount.toLocaleString('en-US', {style:'currency', currency:'USD'});
+      monthlyPayment = parseFloat(monthlyPayment.toFixed(2));
+
+      // Total paid over loan term
+      const totalPaid = monthlyPayment * loanTerm;
+
+      // Total interest paid = total paid - principal loan amount
+      const totalInterestPaid = totalPaid - loanAmount;
+
+      // Format currency strings
+      function formatCurrency(num) {
+        return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      }
 
       const resultDiv = document.getElementById('calcResult');
       resultDiv.innerHTML = `
-        Estimated Loan Amount: <strong>${formattedLoanAmount}</strong><br/>
-        Estimated Monthly Payment for ${loanTerm} months: <strong>$${monthlyPayment}</strong>
+        Estimated Loan Amount: <strong>${formatCurrency(loanAmount)}</strong><br/>
+        Estimated Monthly Payment for ${loanTerm} months: <strong>${formatCurrency(monthlyPayment)}</strong><br/>
+        Total Paid Over Loan Term: <strong>${formatCurrency(totalPaid)}</strong><br/>
+        Total Interest Paid: <strong>${formatCurrency(totalInterestPaid)}</strong>
       `;
     }
-
-    // Fade-in animation for boxes
-    document.addEventListener('DOMContentLoaded', () => {
-      const fadeElements = document.querySelectorAll('.fade-in-section');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {threshold: 0.1});
-      fadeElements.forEach(el => observer.observe(el));
-    });
   </script>
 
 </body>
