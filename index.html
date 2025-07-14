@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin at Grapevine Honda</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet"/>
   <style>
@@ -32,11 +32,17 @@
       margin-right: auto;
     }
     main {
-      padding: 20px;
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
     }
     .section, .contact-box {
       background: white;
-      margin-bottom: 20px;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -51,6 +57,7 @@
       text-decoration: none;
       font-weight: 500;
       cursor: pointer;
+      border: none;
     }
     .button:hover {
       background-color: #0055aa;
@@ -61,16 +68,20 @@
       width: 100%;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 1rem;
     }
     label {
       font-weight: 500;
       margin-top: 10px;
       display: block;
+      font-size: 1rem;
     }
     .result {
       margin-top: 10px;
       font-weight: bold;
       line-height: 1.6;
+      font-size: 1.1rem;
+      color: #003366;
     }
   </style>
 </head>
@@ -84,57 +95,59 @@
 
 <main>
 
-  <!-- Contact Buttons -->
-  <div class="contact-box fade-in-section">
-    <h2>Start Your Journey</h2>
-    <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">📅 Schedule Appointment</a>
-    <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
-    <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
-    <a class="button" href="https://www.grapevinehonda.com/getfinancing?ref=kevinhoward" target="_blank" rel="noopener">Apply for Financing</a>
-    <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue?ref=kevinhoward" target="_blank" rel="noopener">Value My Trade</a>
-    <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
-    <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
-    <a class="button" href="https://www.grapevinehonda.com/scheduleservice" target="_blank" rel="noopener">Schedule Service</a>
-    <a class="button" href="https://www.grapevinehonda.com/honda-ev-education" target="_blank" rel="noopener">Honda EV Education</a>
-  </div>
+  <div class="container">
 
-  <!-- Financial Calculator -->
-  <div class="section">
-    <h2>Estimate Your Monthly Payment</h2>
+    <!-- Contact Buttons -->
+    <div class="contact-box fade-in-section">
+      <h2>Start Your Journey</h2>
+      <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">📅 Schedule Appointment</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
+      <a class="button" href="https://www.grapevinehonda.com/getfinancing?ref=kevinhoward" target="_blank" rel="noopener">Apply for Financing</a>
+      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue?ref=kevinhoward" target="_blank" rel="noopener">Value My Trade</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
+      <a class="button" href="https://www.grapevinehonda.com/scheduleservice" target="_blank" rel="noopener">Schedule Service</a>
+      <a class="button" href="https://www.grapevinehonda.com/honda-ev-education" target="_blank" rel="noopener">Honda EV Education</a>
+    </div>
 
-    <label for="price">Vehicle Price ($):</label>
-    <input type="number" id="price" placeholder="Example: 30000" value="30000">
+    <!-- Financial Calculator -->
+    <div class="section">
+      <h2>Estimate Your Monthly Payment</h2>
 
-    <label for="down">Down Payment ($):</label>
-    <input type="number" id="down" placeholder="Example: 3000" value="3000">
+      <label for="price">Vehicle Price ($):</label>
+      <input type="number" id="price" placeholder="Example: 30000" value="30000" min="1000" step="100">
 
-    <label for="term">Loan Term (months):</label>
-    <select id="term">
-      <option value="36">36 months</option>
-      <option value="48">48 months</option>
-      <option value="60" selected>60 months</option>
-      <option value="72">72 months</option>
-    </select>
+      <label for="down">Down Payment ($):</label>
+      <input type="number" id="down" placeholder="Example: 3000" value="3000" min="0" step="100">
 
-    <p><strong>APR:</strong> 7.5% (Based on national average)</p>
-    <p><strong>Doc Fee:</strong> $225 | <strong>Tax Rate:</strong> 6.25% | <strong>Title & License:</strong> $180</p>
+      <label for="term">Loan Term (months):</label>
+      <select id="term">
+        <option value="36">36 months</option>
+        <option value="48">48 months</option>
+        <option value="60" selected>60 months</option>
+        <option value="72">72 months</option>
+      </select>
 
-    <button class="button" onclick="calculate()">Calculate Payment</button>
-    <button class="button" onclick="resetCalculator()">Reset</button>
-    <div class="result" id="result"></div>
-  </div>
+      <p><strong>APR:</strong> 7.5% (Based on national average)</p>
 
-  <!-- Dealership Info -->
-  <div class="section">
-    <h2>Visit Grapevine Honda</h2>
-    <p><a href="https://maps.google.com/?q=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank">📍 2301 William D Tate Ave, Grapevine, TX 76051</a></p>
-    <p><a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a></p>
-    <p><a href="tel:+12125420771">📞 (212) 542-0771</a></p>
+      <button class="button" onclick="calculate()">Calculate Payment</button>
+      <button class="button" onclick="resetCalculator()">Reset</button>
+      <div class="result" id="result"></div>
+    </div>
+
+    <!-- Dealership Info -->
+    <div class="section">
+      <h2>Visit Grapevine Honda</h2>
+      <p><a href="https://maps.google.com/?q=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank">📍 2301 William D Tate Ave, Grapevine, TX 76051</a></p>
+      <p><a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a></p>
+      <p><a href="tel:+12125420771">📞 (212) 542-0771</a></p>
+    </div>
+
   </div>
 
 </main>
 
-<!-- Payment Calculation Script -->
 <script>
 function calculate() {
   const price = parseFloat(document.getElementById('price').value);
@@ -151,6 +164,7 @@ function calculate() {
     return;
   }
 
+  // Calculate financed amount including tax, doc fee, title/license
   const financedAmount = (price - down) * (1 + taxRate) + docFee + titleLicense;
   const monthlyRate = apr / 12;
   const monthlyPayment = (financedAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
@@ -173,4 +187,5 @@ function resetCalculator() {
 
 </body>
 </html>
+
 
