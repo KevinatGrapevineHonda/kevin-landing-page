@@ -345,76 +345,119 @@
     </form>
   </div>
 
-  <div class="contact-box finance-calculator fade-in-section">
-    <h2>Finance & Lease Calculator</h2>
-    
-    <div class="calc-toggle">
-      <button type="button" id="financeTab" class="active" onclick="showCalc('finance')">Finance</button>
-      <button type="button" id="leaseTab" onclick="showCalc('lease')">Lease</button>
-    </div>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grapevine Honda Finance & Lease Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+  }
+  input[type=number], select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  #calcTabs button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+  #calcTabs button.active {
+    background-color: #004aad;
+    color: white;
+    font-weight: bold;
+    border-color: #004aad;
+  }
+  #calcResult {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+</style>
+</head>
+<body>
 
-    <!-- Finance Calculator -->
-    <form id="financeCalcForm" onsubmit="return false;">
-      <div id="financeSection">
-        <label for="price">Vehicle MSRP ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
-        </div>
+<h2>Grapevine Honda Calculator</h2>
 
-        <label for="downPayment">Down Payment ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
-        </div>
-
-        <label for="loanTerm">Loan Term (Months):</label>
-        <select id="loanTerm" name="loanTerm" required>
-          <option value="36">36</option>
-          <option value="48">48</option>
-          <option value="60" selected>60</option>
-          <option value="72">72</option>
-        </select>
-      </div>
-
-      <!-- Lease Calculator -->
-      <div id="leaseSection" style="display:none;">
-        <label for="leaseTerm">Lease Term (Months):</label>
-        <select id="leaseTerm">
-          <option value="36" selected>36</option>
-          <option value="39">39</option>
-          <option value="42">42</option>
-        </select>
-
-        <label for="leaseMiles">Annual Mileage:</label>
-        <select id="leaseMiles">
-          <option value="10000">10,000</option>
-          <option value="12000" selected>12,000</option>
-          <option value="15000">15,000</option>
-        </select>
-      </div>
-
-      <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
-      <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
-
-      <div id="calcResult"></div>
-      <p class="disclaimer">*These calculations are estimates and do not represent a final offer or guarantee of terms. Payment includes estimated tax, title, license, and doc fees.</p>
-    </form>
-  </div>
+<div id="calcTabs" style="margin-bottom: 15px;">
+  <button id="financeTab" class="active" onclick="showCalc('finance')">Finance</button>
+  <button id="leaseTab" onclick="showCalc('lease')">Lease</button>
 </div>
 
-<script>
-  // Smooth fade in effect
-  document.addEventListener("DOMContentLoaded", () => {
-    const boxes = document.querySelectorAll('.fade-in-section');
-    boxes.forEach(box => {
-      setTimeout(() => {
-        box.classList.add('visible');
-      }, 150);
-    });
-  });
+<form onsubmit="event.preventDefault(); calculatePayment();">
+  <!-- Finance Section -->
+  <div id="financeSection">
+    <label for="price">Vehicle Price (MSRP):</label>
+    <input type="number" id="price" value="30000" min="1000" step="100" />
 
-  // Toggle between finance and lease calculator
+    <label for="downPayment">Down Payment:</label>
+    <input type="number" id="downPayment" value="3000" min="0" step="100" />
+
+    <label for="loanTerm">Loan Term (Months):</label>
+    <select id="loanTerm">
+      <option value="36">36</option>
+      <option value="48" selected>48</option>
+      <option value="60">60</option>
+      <option value="72">72</option>
+    </select>
+  </div>
+
+  <!-- Lease Section -->
+  <div id="leaseSection" style="display:none;">
+    <label for="leaseModel">Select Honda Model:</label>
+    <select id="leaseModel">
+      <option value="24000">Civic LX - $24,000</option>
+      <option value="30000" selected>Accord Sport - $30,000</option>
+      <option value="33000">CR-V EX - $33,000</option>
+      <option value="45000">Pilot EX-L - $45,000</option>
+      <option value="42000">Odyssey EX - $42,000</option>
+    </select>
+
+    <label for="leaseTerm">Lease Term (Months):</label>
+    <select id="leaseTerm">
+      <option value="24">24</option>
+      <option value="27">27</option>
+      <option value="33">33</option>
+      <option value="36" selected>36</option>
+      <option value="39">39</option>
+      <option value="42">42</option>
+      <option value="48">48</option>
+    </select>
+
+    <label for="leaseMiles">Annual Mileage:</label>
+    <select id="leaseMiles">
+      <option value="10000">10,000 miles</option>
+      <option value="12000" selected>12,000 miles</option>
+      <option value="15000">15,000 miles</option>
+    </select>
+
+    <label for="downPaymentLease">Down Payment:</label>
+    <input type="number" id="downPaymentLease" value="3000" min="0" step="100" />
+  </div>
+
+  <button type="submit">Calculate Payment</button>
+  <button type="button" onclick="resetCalculator()">Reset Calculator</button>
+</form>
+
+<div id="calcResult"></div>
+
+<script>
   function showCalc(mode) {
     const financeTab = document.getElementById('financeTab');
     const leaseTab = document.getElementById('leaseTab');
@@ -437,19 +480,19 @@
   }
 
   function calculatePayment() {
-    const price = parseFloat(document.getElementById('price').value) || 0;
-    const down = parseFloat(document.getElementById('downPayment').value) || 0;
     const resultDiv = document.getElementById('calcResult');
+    const taxRate = 0.0625;  // Texas tax
+    const docFee = 225;      // Texas doc fee
+    const titleLicense = 180;// Texas title & license
 
     const isFinance = document.getElementById('financeSection').style.display !== 'none';
 
-    const taxRate = 0.0625;
-    const docFee = 225;
-    const titleLicense = 180;
-
     if (isFinance) {
+      const price = parseFloat(document.getElementById('price').value) || 0;
+      const down = parseFloat(document.getElementById('downPayment').value) || 0;
       const term = parseInt(document.getElementById('loanTerm').value, 10);
       const APR = 0.075;
+
       const taxableAmount = price - down;
       const taxedAmount = taxableAmount * (1 + taxRate);
       const totalFinanced = taxedAmount + docFee + titleLicense;
@@ -465,10 +508,12 @@
         Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
       `;
     } else {
+      const price = parseFloat(document.getElementById('leaseModel').value) || 0;
       const leaseTerm = parseInt(document.getElementById('leaseTerm').value, 10);
       const mileage = parseInt(document.getElementById('leaseMiles').value, 10);
+      const down = parseFloat(document.getElementById('downPaymentLease').value) || 0;
 
-      // Sample residuals and money factors (you can later update these with exact Honda values)
+      // Residual values based on mileage
       const residualMap = {
         10000: 0.64,
         12000: 0.61,
@@ -476,14 +521,18 @@
       };
 
       const moneyFactor = 0.00175; // Approx 4.2% APR
-      const residualValue = price * (residualMap[mileage] || 0.61);
+      const residualPercent = residualMap[mileage] || 0.61;
+      const residualValue = price * residualPercent;
+
       const depreciation = (price - residualValue) / leaseTerm;
       const rentCharge = (price + residualValue) * moneyFactor;
       const baseMonthly = depreciation + rentCharge;
 
       // Add tax and fees
       const monthlyWithTax = baseMonthly * (1 + taxRate);
-      const totalMonthly = monthlyWithTax;
+
+      // Subtract down payment spread across lease term
+      const totalMonthly = monthlyWithTax - (down / leaseTerm);
 
       resultDiv.innerHTML = `
         Estimated Lease Payment: <strong>$${totalMonthly.toFixed(2)}</strong> / month<br />
@@ -495,35 +544,24 @@
   }
 
   function resetCalculator() {
+    // Finance reset
     document.getElementById('price').value = '30000';
     document.getElementById('downPayment').value = '3000';
-    document.getElementById('loanTerm').value = '60';
+    document.getElementById('loanTerm').value = '48';
+
+    // Lease reset
+    document.getElementById('leaseModel').value = '30000';
     document.getElementById('leaseTerm').value = '36';
     document.getElementById('leaseMiles').value = '12000';
+    document.getElementById('downPaymentLease').value = '3000';
+
     document.getElementById('calcResult').innerHTML = '';
   }
 
-  // Contact form handling
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formMessage = document.getElementById('formMessage');
-    const data = new FormData(form);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data).toString()
-    })
-    .then(() => {
-      formMessage.style.display = 'block';
-      form.reset();
-    })
-    .catch(() => {
-      alert('Sorry, there was a problem sending your message. Please try again.');
-    });
-  }
-</script>
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    showCalc('finance');
+  });
 
 <!-- Tawk.to Live Chat -->
 <script type="text/javascript">
