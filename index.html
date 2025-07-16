@@ -386,49 +386,41 @@
       </form>
     </div>
 
-    <div class="contact-box finance-calculator fade-in-section">
-      <h2>Finance Calculator</h2>
-      <form id="financeCalcForm" onsubmit="return false;">
-        <label for="price">Vehicle Price ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
-        </div>
-
-        <label for="downPayment">Down Payment ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
-        </div>
-
-        <label for="loanTerm">Loan Term (Months):</label>
-        <select id="loanTerm" name="loanTerm" required>
-          <option value="36">36</option>
-          <option value="48">48</option>
-          <option value="60" selected>60</option>
-          <option value="72">72</option>
-        </select>
-
-        <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
-        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
-
-        <div id="calcResult"></div>
-        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees.</p>
-      </form>
+   <div class="contact-box finance-calculator fade-in-section">
+  <h2>Finance Calculator</h2>
+  <form id="financeCalcForm" onsubmit="return false;">
+    <label for="price">Vehicle Price ($):</label>
+    <div class="input-wrapper">
+      <span class="prefix-sign">$</span>
+      <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
     </div>
-  </div>
 
+    <label for="downPayment">Down Payment ($):</label>
+    <div class="input-wrapper">
+      <span class="prefix-sign">$</span>
+      <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
+    </div>
+
+    <label for="loanTerm">Loan Term (Months):</label>
+    <select id="loanTerm" name="loanTerm" required>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="60" selected>60</option>
+      <option value="72">72</option>
+    </select>
+
+    <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
+    <button type="button" class="button reset" onclick="resetCalculator()">Reset Calculator</button>
+
+    <div id="calcResult"></div>
+    <p class="disclaimer">
+      *These calculations are estimates only and do not represent a final offer or guarantee of terms. Actual payments may vary based on credit approval, lender terms, taxes, fees, and other factors. Please contact Kevin at Grapevine Honda for a personalized quote.
+    </p>
+  </form>
+</div>
+
+<!-- scripts -->
 <script>
-  // Smooth fade in effect for contact boxes
-  document.addEventListener("DOMContentLoaded", () => {
-    const boxes = document.querySelectorAll('.fade-in-section');
-    boxes.forEach(box => {
-      setTimeout(() => {
-        box.classList.add('visible');
-      }, 150);
-    });
-  });
-
   function calculatePayment() {
     const priceInput = document.getElementById('price');
     const downInput = document.getElementById('downPayment');
@@ -444,20 +436,16 @@
       return;
     }
 
-    const APR = 0.075;  // 7.5% APR annual
-    const taxRate = 0.0625;  // 6.25% tax
+    const APR = 0.075;
+    const taxRate = 0.0625;
     const docFee = 225;
     const titleLicense = 180;
 
-    // Calculate the amount financed including tax, title, license, and doc fees
     let taxableAmount = price - down;
     let taxedAmount = taxableAmount * (1 + taxRate);
     let totalFinanced = taxedAmount + docFee + titleLicense;
 
-    // Monthly interest rate
     let monthlyRate = APR / 12;
-
-    // Calculate monthly payment using loan formula
     let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
     let totalPaid = monthlyPayment * term;
     let interestPaid = totalPaid - totalFinanced;
@@ -474,27 +462,6 @@
     document.getElementById('downPayment').value = '3000';
     document.getElementById('loanTerm').value = '60';
     document.getElementById('calcResult').innerHTML = '';
-  }
-
-  // Quick contact form submission handler
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formMessage = document.getElementById('formMessage');
-    const data = new FormData(form);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data).toString()
-    })
-    .then(() => {
-      formMessage.style.display = 'block';
-      form.reset();
-    })
-    .catch(() => {
-      alert('Sorry, there was a problem sending your message. Please try again.');
-    });
   }
 </script>
 <!--Start of Tawk.to Script-->
