@@ -256,7 +256,7 @@
       color: #003366;
       font-size: 1.15rem;
       line-height: 1.4;
-      min-height: 5rem;
+      min-height: 6rem;
     }
     .finance-calculator p.disclaimer {
       font-style: italic;
@@ -295,6 +295,37 @@
       pointer-events: none;
     }
 
+    /* Toggle Switch styles */
+    .toggle-container {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #003366;
+      user-select: none;
+    }
+    .toggle-container input[type="radio"] {
+      display: none;
+    }
+    .toggle-container label {
+      cursor: pointer;
+      padding: 10px 24px;
+      border-radius: 24px;
+      background: #007bff;
+      color: white;
+      margin: 0 8px;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-container input[type="radio"]:checked + label {
+      background-color: #0056b3;
+      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
+    }
+    .toggle-container label:hover {
+      background-color: #0056b3;
+      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
+    }
+
     /* Responsive */
     @media (max-width: 600px) {
       .contact-box {
@@ -315,6 +346,11 @@
         display: block;
         margin: 0 auto 15px auto;
         max-width: 120px;
+      }
+      .toggle-container label {
+        padding: 10px 16px;
+        margin: 0 4px;
+        font-size: 1rem;
       }
     }
   </style>
@@ -385,37 +421,96 @@
         <p id="formMessage" style="margin-top:1rem; font-weight:700; color:green; display:none;">Thanks for reaching out! I’ll get back to you soon.</p>
       </form>
     </div>
- <div class="contact-box finance-calculator fade-in-section">
-      <h2>Finance Calculator</h2>
-      <form id="financeCalcForm" onsubmit="return false;">
-        <label for="price">Vehicle Price ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
+
+    <div class="contact-box finance-calculator fade-in-section">
+      <h2>Finance & Lease Calculator</h2>
+      <div class="toggle-container" aria-label="Select calculator type">
+        <input type="radio" id="calcFinance" name="calcType" value="finance" checked>
+        <label for="calcFinance">Finance</label>
+        <input type="radio" id="calcLease" name="calcType" value="lease">
+        <label for="calcLease">Lease</label>
+      </div>
+
+      <form id="combinedCalcForm" onsubmit="return false;">
+        <div id="financeFields">
+          <label for="price">Vehicle Price (MSRP $):</label>
+          <div class="input-wrapper">
+            <span class="prefix-sign">$</span>
+            <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
+          </div>
+
+          <label for="downPayment">Down Payment ($):</label>
+          <div class="input-wrapper">
+            <span class="prefix-sign">$</span>
+            <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
+          </div>
+
+          <label for="loanTerm">Loan Term (Months):</label>
+          <select id="loanTerm" name="loanTerm" required>
+            <option value="36">36</option>
+            <option value="48">48</option>
+            <option value="60" selected>60</option>
+            <option value="72">72</option>
+          </select>
+
+          <label for="apr">APR (%):</label>
+          <div class="input-wrapper">
+            <input type="number" id="apr" name="apr" min="0" max="30" step="0.01" value="7.5" required />
+            <span class="suffix-sign">%</span>
+          </div>
         </div>
 
-        <label for="downPayment">Down Payment ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
+        <div id="leaseFields" style="display:none;">
+          <label for="model">Honda Model:</label>
+          <select id="model" name="model" required>
+            <option value="" disabled selected>Select a model</option>
+            <option value="Civic Sedan" data-msrp="23000">Civic Sedan - $23,000</option>
+            <option value="Accord Sedan" data-msrp="28000">Accord Sedan - $28,000</option>
+            <option value="CR-V" data-msrp="32000">CR-V - $32,000</option>
+            <option value="Pilot" data-msrp="44000">Pilot - $44,000</option>
+            <option value="HR-V" data-msrp="23000">HR-V - $23,000</option>
+            <option value="Odyssey" data-msrp="38000">Odyssey - $38,000</option>
+            <option value="Insight" data-msrp="27000">Insight - $27,000</option>
+            <option value="Ridgeline" data-msrp="40000">Ridgeline - $40,000</option>
+          </select>
+
+          <label for="leaseTerm">Lease Term (Months):</label>
+          <select id="leaseTerm" name="leaseTerm" required>
+            <option value="24">24</option>
+            <option value="27">27</option>
+            <option value="33">33</option>
+            <option value="36" selected>36</option>
+            <option value="39">39</option>
+            <option value="42">42</option>
+            <option value="48">48</option>
+          </select>
+
+          <label for="mileage">Mileage (Miles per year):</label>
+          <select id="mileage" name="mileage" required>
+            <option value="10000">10,000</option>
+            <option value="12000" selected>12,000</option>
+            <option value="15000">15,000</option>
+          </select>
+
+          <label for="leaseDownPayment">Down Payment ($):</label>
+          <div class="input-wrapper">
+            <span class="prefix-sign">$</span>
+            <input type="number" id="leaseDownPayment" name="leaseDownPayment" min="0" step="100" value="3000" required />
+          </div>
         </div>
 
-        <label for="loanTerm">Loan Term (Months):</label>
-        <select id="loanTerm" name="loanTerm" required>
-          <option value="36">36</option>
-          <option value="48">48</option>
-          <option value="60" selected>60</option>
-          <option value="72">72</option>
-        </select>
-
-        <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
-        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
+        <button type="submit" class="button" onclick="calculateCombinedPayment()">Calculate Payment</button>
+        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCombinedCalculator()">Reset</button>
 
         <div id="calcResult"></div>
-        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees.</p>
+        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees. Lease estimates include residual values and money factors based on typical Grapevine Honda terms and mileage.</p>
       </form>
     </div>
   </div>
+
+  <footer style="text-align:center; padding:1rem 0; font-size:0.95rem; color:#666;">
+    <a href="https://g.co/kgs/1XPhfgi" target="_blank" rel="noopener" style="color:#007bff;">Check out my reviews on Google</a>
+  </footer>
 
 <script>
   // Smooth fade in effect for contact boxes
@@ -426,52 +521,162 @@
         box.classList.add('visible');
       }, 150);
     });
+
+    // Toggle calculator type
+    const financeRadio = document.getElementById('calcFinance');
+    const leaseRadio = document.getElementById('calcLease');
+    const financeFields = document.getElementById('financeFields');
+    const leaseFields = document.getElementById('leaseFields');
+    financeRadio.addEventListener('change', toggleCalc);
+    leaseRadio.addEventListener('change', toggleCalc);
+
+    function toggleCalc() {
+      if (financeRadio.checked) {
+        financeFields.style.display = 'block';
+        leaseFields.style.display = 'none';
+        resetCombinedCalculator();
+      } else {
+        financeFields.style.display = 'none';
+        leaseFields.style.display = 'block';
+        resetCombinedCalculator();
+      }
+    }
   });
 
-  function calculatePayment() {
-    const priceInput = document.getElementById('price');
-    const downInput = document.getElementById('downPayment');
-    const termSelect = document.getElementById('loanTerm');
+  function calculateCombinedPayment() {
     const resultDiv = document.getElementById('calcResult');
+    const calcType = document.querySelector('input[name="calcType"]:checked').value;
 
-    let price = parseFloat(priceInput.value);
-    let down = parseFloat(downInput.value);
-    const term = parseInt(termSelect.value, 10);
-
-    if (isNaN(price) || isNaN(down) || price <= 0 || down < 0 || down > price) {
-      resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid vehicle price and down payment.</span>';
-      return;
-    }
-
-    const APR = 0.075;  // 7.5% APR annual
-    const taxRate = 0.0625;  // 6.25% tax
+    const taxRate = 0.0625;  // 6.25%
     const docFee = 225;
     const titleLicense = 180;
 
-    // Calculate the amount financed including tax, title, license, and doc fees
-    let taxableAmount = price - down;
-    let taxedAmount = taxableAmount * (1 + taxRate);
-    let totalFinanced = taxedAmount + docFee + titleLicense;
+    if (calcType === 'finance') {
+      // Finance calculation
+      const price = parseFloat(document.getElementById('price').value);
+      const down = parseFloat(document.getElementById('downPayment').value);
+      const term = parseInt(document.getElementById('loanTerm').value, 10);
+      let apr = parseFloat(document.getElementById('apr').value);
 
-    // Monthly interest rate
-    let monthlyRate = APR / 12;
+      if (isNaN(price) || isNaN(down) || isNaN(term) || isNaN(apr) || price <= 0 || down < 0 || down > price) {
+        resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid finance inputs.</span>';
+        return;
+      }
 
-    // Calculate monthly payment using loan formula
-    let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
-    let totalPaid = monthlyPayment * term;
-    let interestPaid = totalPaid - totalFinanced;
+      apr = apr / 100; // Convert % to decimal
+      const monthlyRate = apr / 12;
 
-    resultDiv.innerHTML = `
-      Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
-      Total Paid Over ${term} Months: <strong>$${totalPaid.toFixed(2)}</strong><br />
-      Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
-    `;
+      // Amount financed = (price - down) + tax + doc + title/license
+      let taxableAmount = price - down;
+      let taxedAmount = taxableAmount * (1 + taxRate);
+      let totalFinanced = taxedAmount + docFee + titleLicense;
+
+      let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+      let totalPaid = monthlyPayment * term;
+      let interestPaid = totalPaid - totalFinanced;
+
+      resultDiv.innerHTML = `
+        Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+        Total Paid Over ${term} Months: <strong>$${totalPaid.toFixed(2)}</strong><br />
+        Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
+      `;
+    } else {
+      // Lease calculation
+      const modelSelect = document.getElementById('model');
+      const leaseTerm = parseInt(document.getElementById('leaseTerm').value, 10);
+      const mileage = parseInt(document.getElementById('mileage').value, 10);
+      const leaseDown = parseFloat(document.getElementById('leaseDownPayment').value);
+
+      if (!modelSelect.value || isNaN(leaseTerm) || isNaN(mileage) || isNaN(leaseDown) || leaseDown < 0) {
+        resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid lease inputs.</span>';
+        return;
+      }
+
+      const msrp = parseFloat(modelSelect.selectedOptions[0].dataset.msrp);
+
+      /*
+        For the lease calculation:
+        We'll use typical residual value and money factor approximations based on Grapevine Honda.
+
+        Residuals (%) by term and mileage:
+        Mileage: 10k, 12k, 15k (reduce residual by 1% per 3000 miles over 10k)
+        Terms: 24,27,33,36,39,42,48 (typical residual drop with longer term)
+        
+        Money factor ~0.00125 (7.5% APR roughly, typical lease MF can vary)
+      */
+
+      // Residual base percentages for 12k miles:
+      const residualTable = {
+        24: 0.75,
+        27: 0.73,
+        33: 0.69,
+        36: 0.66,
+        39: 0.64,
+        42: 0.62,
+        48: 0.58
+      };
+      const baseResidual = residualTable[leaseTerm] || 0.66;
+
+      // Adjust residual for mileage difference from 12k
+      const mileageAdjustment = (mileage - 12000) / 3000 * 0.01; // 1% per 3k miles difference
+      const adjustedResidual = baseResidual - mileageAdjustment;
+
+      // Money factor (MF)
+      const moneyFactor = 0.00125; // typical value, can adjust as needed
+
+      // Calculate residual value in dollars
+      const residualValue = msrp * adjustedResidual;
+
+      // Depreciation fee = (MSRP - residual + doc+title/license) / term
+      const depreciationFee = (msrp - residualValue + docFee + titleLicense) / leaseTerm;
+
+      // Finance fee = (MSRP + residual) * money factor
+      const financeFee = (msrp + residualValue) * moneyFactor;
+
+      // Total monthly payment before tax
+      let monthlyPreTax = depreciationFee + financeFee;
+
+      // Add tax to monthly payment
+      let monthlyPayment = monthlyPreTax * (1 + taxRate);
+
+      // Adjust payment for down payment applied upfront
+      // Typically down payment reduces cap cost, so subtract it before tax and fees
+      // For simplicity, we subtract down payment from capitalized cost and recalc monthly payment
+
+      // Capitalized cost after down payment
+      const capCost = msrp - leaseDown;
+      const adjustedDepFee = (capCost - residualValue + docFee + titleLicense) / leaseTerm;
+      const adjustedFinFee = (capCost + residualValue) * moneyFactor;
+      const adjustedMonthlyPreTax = adjustedDepFee + adjustedFinFee;
+      const adjustedMonthlyPayment = adjustedMonthlyPreTax * (1 + taxRate);
+
+      // Final monthly payment can't be negative
+      const finalMonthlyPayment = Math.max(adjustedMonthlyPayment, 0);
+
+      // Total lease cost estimate
+      const totalLeaseCost = (finalMonthlyPayment * leaseTerm) + leaseDown;
+
+      resultDiv.innerHTML = `
+        Estimated Monthly Lease Payment: <strong>$${finalMonthlyPayment.toFixed(2)}</strong><br />
+        Total Lease Cost (Payments + Down): <strong>$${totalLeaseCost.toFixed(2)}</strong><br />
+        Residual Value at Lease End: <strong>$${residualValue.toFixed(2)}</strong>
+      `;
+    }
   }
 
-  function resetCalculator() {
+  function resetCombinedCalculator() {
+    // Reset finance fields
     document.getElementById('price').value = '30000';
     document.getElementById('downPayment').value = '3000';
     document.getElementById('loanTerm').value = '60';
+    document.getElementById('apr').value = '7.5';
+
+    // Reset lease fields
+    document.getElementById('model').value = '';
+    document.getElementById('leaseTerm').value = '36';
+    document.getElementById('mileage').value = '12000';
+    document.getElementById('leaseDownPayment').value = '3000';
+
     document.getElementById('calcResult').innerHTML = '';
   }
 
@@ -496,6 +701,7 @@
     });
   }
 </script>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -512,4 +718,3 @@ s0.parentNode.insertBefore(s1,s0);
 
 </body>
 </html>
-
