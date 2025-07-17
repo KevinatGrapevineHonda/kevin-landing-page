@@ -385,109 +385,117 @@
         <p id="formMessage" style="margin-top:1rem; font-weight:700; color:green; display:none;">Thanks for reaching out! I’ll get back to you soon.</p>
       </form>
     </div>
-  <div class="contact-box fade-in-section" id="calculator-contact-box">
-    <h2>Finance & Lease Calculator</h2>
-    <div style="text-align: center; margin-bottom: 1.5rem;">
-      <button id="financeBtn" class="button">Finance</button>
-      <button id="leaseBtn" class="button" style="background: #ccc; color: #333;">Lease</button>
-    </div>
+ <div class="contact-box finance-calculator fade-in-section">
+      <h2>Finance Calculator</h2>
+      <form id="financeCalcForm" onsubmit="return false;">
+        <label for="price">Vehicle Price ($):</label>
+        <div class="input-wrapper">
+          <span class="prefix-sign">$</span>
+          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
+        </div>
 
-    <!-- Finance Form -->
-    <div id="financeCalculator">
-      <label>Honda Model & Trim</label>
-      <select id="leaseModel" style="margin-bottom:1rem;">
-        <!-- Sedan & Hybrid -->
-        <option value="24250">Civic Sedan LX – $24,250</option>
-        <option value="27450">Civic Sedan EX – $27,450</option>
-        <option value="32950">Civic Sedan Hybrid – $32,950</option>
-        <option value="27550">Civic Hatchback Sport – $27,550</option>
+        <label for="downPayment">Down Payment ($):</label>
+        <div class="input-wrapper">
+          <span class="prefix-sign">$</span>
+          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
+        </div>
 
-        <option value="28295">Accord LX – $28,295</option>
-        <option value="33655">Accord Hybrid – $33,655</option>
-
-        <!-- SUVs -->
-        <option value="30100">CR-V LX – $30,100</option>
-        <option value="34650">CR-V Hybrid Touring – $34,650</option>
-        <option value="30000">HR-V LX – $30,000</option>
-        <option value="40200">Pilot LX – $40,200</option>
-        <option value="42220">Odyssey EX – $42,220</option>
-        <option value="40400">Passport EX-L – $40,400</option>
-
-        <!-- Touring / Higher trims -->
-        <option value="40150">Ridgeline Black Edition – $40,150</option>
-        <option value="47400">Prologue Touring (EV) – $47,400</option>
-      </select>
-
-      <label>Down Payment ($)</label>
-      <input type="number" id="downPayment" placeholder="e.g. 3000">
-
-      <div id="financeInputs">
-        <label>Loan Term (months)</label>
-        <select id="loanTerm">
-          <option value="36">36</option><option value="48">48</option><option value="60">60</option><option value="72">72</option>
+        <label for="loanTerm">Loan Term (Months):</label>
+        <select id="loanTerm" name="loanTerm" required>
+          <option value="36">36</option>
+          <option value="48">48</option>
+          <option value="60" selected>60</option>
+          <option value="72">72</option>
         </select>
 
-        <label>APR (%)</label>
-        <input type="number" id="apr" step="0.01" value="7.5">
-      </div>
+        <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
+        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
 
-      <div style="margin-top:1rem;">
-        <button onclick="calculate()" class="button">Calculate Payment</button>
-        <button onclick="resetForm()" class="button" style="background: #ccc; color: #333;">Reset Calculator</button>
-      </div>
-
-      <div id="result" style="margin-top:1rem;font-weight:700;color:#003366;"></div>
-      <p style="font-size:0.85rem;color:#555;margin-top:0.5rem;">
-        * Estimates include TX tax (6.25%), $225 doc fee, and $180 title/license. Lotus funds calculated based on industry-standard money factor.
-      </p>
+        <div id="calcResult"></div>
+        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees.</p>
+      </form>
     </div>
   </div>
-  <!-- End replacement -->
 
-  <!--   ... rest of your contact boxes ... -->
+<script>
+  // Smooth fade in effect for contact boxes
+  document.addEventListener("DOMContentLoaded", () => {
+    const boxes = document.querySelectorAll('.fade-in-section');
+    boxes.forEach(box => {
+      setTimeout(() => {
+        box.classList.add('visible');
+      }, 150);
+    });
+  });
 
-  <!-- Footer -->
-  <footer style="text-align:center; padding:1rem 0; font-size:0.95rem; color:#555;">
-    ⭐️ <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color:#007bff;">Check out my reviews on Google</a> ⭐️
-  </footer>
+  function calculatePayment() {
+    const priceInput = document.getElementById('price');
+    const downInput = document.getElementById('downPayment');
+    const termSelect = document.getElementById('loanTerm');
+    const resultDiv = document.getElementById('calcResult');
 
-  <!-- Scripts for Toggle & Calculator -->
-  <script>
-    const financeBtn = document.getElementById('financeBtn');
-    const leaseBtn = document.getElementById('leaseBtn');
-    const financeCalculator = document.getElementById('financeCalculator');
+    let price = parseFloat(priceInput.value);
+    let down = parseFloat(downInput.value);
+    const term = parseInt(termSelect.value, 10);
 
-    financeBtn.onclick = () => {
-      financeBtn.style.background = '#007bff'; financeBtn.style.color = '#fff';
-      leaseBtn.style.background = '#ccc'; leaseBtn.style.color = '#333';
-      financeCalculator.style.display = 'block';
-    };
-    leaseBtn.onclick = () => {
-      leaseBtn.style.background = '#007bff'; leaseBtn.style.color = '#fff';
-      financeBtn.style.background = '#ccc'; financeBtn.style.color = '#333';
-      financeCalculator.style.display = 'block';
-    };
-
-    const residualRates = {10000:0.64,12000:0.61,15000:0.59};
-    const moneyFactor = 0.00175;
-
-    function calculate() {
-      const msrp = parseFloat(document.getElementById('leaseModel').value);
-      const down = parseFloat(document.getElementById('downPayment').value)||0;
-      const apr = parseFloat(document.getElementById('apr').value)||7.5;
-      const term = parseInt(document.getElementById('loanTerm').value);
-      const taxRate = 0.0625, doc=225, ttl=180;
-
-      const loanAmt = msrp - down + doc + ttl;
-      const monthlyFinance = (loanAmt * (apr/100)/12) / (1 - Math.pow(1+(apr/100)/12, -term)) * (1+taxRate);
-      document.getElementById('result').innerText = `Finance: $${monthlyFinance.toFixed(2)}/mo`;
+    if (isNaN(price) || isNaN(down) || price <= 0 || down < 0 || down > price) {
+      resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid vehicle price and down payment.</span>';
+      return;
     }
 
-    function resetForm() {
-      document.getElementById('downPayment').value = '';
-      document.getElementById('result').innerText = '';
-    }
-  </script>
+    const APR = 0.075;  // 7.5% APR annual
+    const taxRate = 0.0625;  // 6.25% tax
+    const docFee = 225;
+    const titleLicense = 180;
+
+    // Calculate the amount financed including tax, title, license, and doc fees
+    let taxableAmount = price - down;
+    let taxedAmount = taxableAmount * (1 + taxRate);
+    let totalFinanced = taxedAmount + docFee + titleLicense;
+
+    // Monthly interest rate
+    let monthlyRate = APR / 12;
+
+    // Calculate monthly payment using loan formula
+    let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+    let totalPaid = monthlyPayment * term;
+    let interestPaid = totalPaid - totalFinanced;
+
+    resultDiv.innerHTML = `
+      Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+      Total Paid Over ${term} Months: <strong>$${totalPaid.toFixed(2)}</strong><br />
+      Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
+    `;
+  }
+
+  function resetCalculator() {
+    document.getElementById('price').value = '30000';
+    document.getElementById('downPayment').value = '3000';
+    document.getElementById('loanTerm').value = '60';
+    document.getElementById('calcResult').innerHTML = '';
+  }
+
+  // Quick contact form submission handler
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formMessage = document.getElementById('formMessage');
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
+      formMessage.style.display = 'block';
+      form.reset();
+    })
+    .catch(() => {
+      alert('Sorry, there was a problem sending your message. Please try again.');
+    });
+  }
+</script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
