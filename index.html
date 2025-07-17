@@ -11,22 +11,20 @@
   <meta name="author" content="Kevin at Grapevine Honda">
   <link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/">
 
-  <!-- Favicon -->
+  <!-- Favicon and Fonts -->
   <link rel="icon" type="image/svg+xml" href="download.png" />
   <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg" />
   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg" />
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <style>
-    /* Reset and base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    /* Basic Reset & Typography */
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f1f5f9;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       color: #222;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -76,7 +74,6 @@
       display: block;
     }
 
-    /* Headline Section */
     .headline-section {
       max-width: 960px;
       margin: 1.5rem auto 3rem;
@@ -109,406 +106,198 @@
       position: relative;
       z-index: 1;
     }
-    
-    .contact-box {
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem 3rem;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      transition: box-shadow 0.3s ease, transform 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .contact-box.visible {
-      opacity: 1;
-      transform: none;
-      transition: box-shadow 0.3s ease, transform 0.6s ease, opacity 0.6s ease;
-    }
-    .contact-box:hover {
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      transform: translateY(-4px);
-    }
-    .contact-box h2 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #003366;
-      margin-bottom: 1.4rem;
-      border-bottom: 3px solid #007bff;
-      padding-bottom: 0.5rem;
-      letter-spacing: 0.03em;
-    }
-    p, ul {
-      font-size: 1.1rem;
-      color: #444;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-    }
-    ul.bullet-points {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin: 0 0 1.5rem;
-      color: #003366;
-      font-weight: 500;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
 
-    /* Your profile photo in About Me - centered */
-    .profile-photo {
-      display: block;
-      margin: 0 auto 15px auto;
-      max-width: 140px;
-      border-radius: 10px;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-      object-fit: cover;
-      float: none;
-    }
+    /* Other styles (contact-box, form, buttons, responsive, etc.) will follow in Part 2 */
 
-    .button {
-      display: inline-block;
-      margin: 0 0.4rem 0.9rem 0;
-      padding: 0.85rem 1.8rem;
-      background-color: #007bff;
-      color: white;
-      font-weight: 700;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,123,255,0.4);
-      cursor: pointer;
-      text-align: center;
-      font-size: 1.1rem;
-      user-select: none;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-      border: none;
-      text-decoration: none;
-    }
-    .button:hover, .button:focus {
-      background-color: #0056b3;
-      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
-      outline: none;
-      transform: scale(1.05);
-    }
-
-    .contact-info {
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    .contact-info a {
-      margin-bottom: 0.6rem;
-      color: #007bff;
-      display: block;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 8px 0 20px;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 400;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      font-family: 'Roboto', sans-serif;
-    }
-    input:focus, select:focus, textarea:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 8px rgba(0,123,255,0.6);
-      outline: none;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-      font-size: 1.05rem;
-    }
-
-    form button.button {
-      margin-top: 0;
-      padding: 1rem 2rem;
-      font-size: 1.15rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, #007bff, #0056b3);
-      box-shadow: 0 6px 15px rgba(0,86,179,0.7);
-      border: none;
-      cursor: pointer;
-      border-radius: 14px;
-      transition: all 0.3s ease;
-    }
-    form button.button:hover {
-      background: linear-gradient(45deg, #0056b3, #003366);
-      box-shadow: 0 8px 22px rgba(0,54,102,0.9);
-    }
-
-    /* Finance calculator labels and results */
-    .finance-calculator label {
-      display: block;
-      font-weight: 700;
-      margin: 1rem 0 0.5rem;
-      color: #003366;
-      font-size: 1.1rem;
-    }
-    #calcResult {
-      margin-top: 1.8rem;
-      font-weight: 700;
-      color: #003366;
-      font-size: 1.15rem;
-      line-height: 1.4;
-      min-height: 5rem;
-    }
-    .finance-calculator p.disclaimer {
-      font-style: italic;
-      color: #555;
-      font-size: 0.95rem;
-      margin-top: 1.2rem;
-      max-width: 700px;
-    }
-
-    /* Input wrapper for prefix/suffix signs */
-    .input-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .input-wrapper input[type="number"] {
-      padding-left: 24px; /* for $ sign */
-      padding-right: 24px; /* for % sign */
-    }
-    .prefix-sign {
-      position: absolute;
-      left: 10px;
-      font-weight: 700;
-      color: #444;
-      font-size: 1.1rem;
-      user-select: none;
-      pointer-events: none;
-    }
-    .suffix-sign {
-      position: absolute;
-      right: 10px;
-      font-weight: 700;
-      color: #444;
-      font-size: 1.1rem;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .contact-box {
-        min-height: auto;
-        padding: 2rem 1.5rem;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
-      p.slogan {
-        font-size: 1rem;
-      }
-      form button.button {
-        width: 100%;
-      }
-      .profile-photo {
-        float: none;
-        display: block;
-        margin: 0 auto 15px auto;
-        max-width: 120px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Kevin | Grapevine Honda</h1>
-    <p class="slogan">The Power of Dreams</p>
-    <img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo" />
-  </header>
+<header>
+  <h1>Kevin | Grapevine Honda</h1>
+  <p class="slogan">The Power of Dreams</p>
+  <img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo" />
+</header>
 
-  <section class="headline-section">
-    <h2>Your Next Honda Is Waiting — Get Personalized Service &amp; Fast Financing Today!</h2>
-    <p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
-  </section>
+<section class="headline-section">
+  <h2>Your Next Honda Is Waiting — Get Personalized Service &amp; Fast Financing Today!</h2>
+  <p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
+</section>
 
-  <div class="container">
-    <div class="contact-box fade-in-section">
-      <h2>About Me</h2>
-      <img src="https://i.imgur.com/OAxgbLW.jpeg" alt="Kevin at Grapevine Honda" class="profile-photo" />
-      <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth and enjoyable.</p>
-
-      <h2>Why Buy From Me</h2>
-      <ul class="bullet-points">
-        <li>Honest and transparent communication</li>
-        <li>Personalized service tailored to your needs</li>
-        <li>Extensive knowledge of Honda vehicles</li>
-        <li>Committed to building long-term relationships</li>
-        <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
-      </ul>
-    </div>
-
-    <div class="contact-box fade-in-section">
-      <h2>Start Your Journey</h2>
-      <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">📅 Schedule Appointment</a>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
-      <a class="button" href="https://www.grapevinehonda.com/getfinancing?ref=kevinhoward" target="_blank" rel="noopener">Apply for Financing</a>
-      <a class="button" href="https://www.grapevinehonda.com/shopperwizard/mytradevalue?ref=kevinhoward" target="_blank" rel="noopener">Value My Trade</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/vehicle-specials" target="_blank" rel="noopener">New Vehicle Specials</a>
-      <a class="button" href="https://www.grapevinehonda.com/specials/preowned-specials" target="_blank" rel="noopener">Pre-Owned Specials</a>
-      <a class="button" href="https://www.grapevinehonda.com/scheduleservice" target="_blank" rel="noopener">Schedule Service</a>
-      <a class="button" href="https://www.grapevinehonda.com/honda-ev-education" target="_blank" rel="noopener">Honda EV Education</a>
-    </div>
-
-    <div class="contact-box fade-in-section">
-      <h2>Quick Contact</h2>
-      <div class="contact-info">
-        <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
-        <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
-          📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
-        </a>
-      </div>
-      <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field" id="contactForm" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="form-name" value="quick-contact" />
-        <p style="display:none;">
-          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-        </p>
-
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
-        <button type="submit" class="button">Send to Kevin</button>
-
-        <p id="formMessage" style="margin-top:1rem; font-weight:700; color:green; display:none;">Thanks for reaching out! I’ll get back to you soon.</p>
-      </form>
-    </div>
- <div class="contact-box finance-calculator fade-in-section">
-      <h2>Finance Calculator</h2>
-      <form id="financeCalcForm" onsubmit="return false;">
-        <label for="price">Vehicle Price ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
-        </div>
-
-        <label for="downPayment">Down Payment ($):</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
-        </div>
-
-        <label for="loanTerm">Loan Term (Months):</label>
-        <select id="loanTerm" name="loanTerm" required>
-          <option value="36">36</option>
-          <option value="48">48</option>
-          <option value="60" selected>60</option>
-          <option value="72">72</option>
-        </select>
-
-        <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
-        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
-
-        <div id="calcResult"></div>
-        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees.</p>
-      </form>
-    </div>
+<div class="container">
+  <!-- Contact Buttons -->
+  <div class="contact-box">
+    <a href="tel:12125420771" class="button">📞 Call Kevin</a>
+    <a href="sms:12125420771" class="button">💬 Text Kevin</a>
+    <a href="mailto:Kevinhoward@lithia.com" class="button">✉️ Email Kevin</a>
+    <a href="https://kevinatgrapevinehonda.netlify.app" class="button">🌐 My Website</a>
   </div>
 
+  <!-- Quick Info Cards -->
+  <div class="info-card">
+    <h3>🚗 See What’s In Stock</h3>
+    <a href="https://www.grapevinehonda.com/new-vehicles/" class="button">View New Hondas</a>
+    <a href="https://www.grapevinehonda.com/used-vehicles/" class="button">Used Inventory</a>
+  </div>
+
+  <div class="info-card">
+    <h3>💲 Get Pre-Approved</h3>
+    <a href="https://www.grapevinehonda.com/finance/apply-for-financing/" class="button">Apply Now</a>
+    <a href="https://www.grapevinehonda.com/value-your-trade/" class="button">Value Your Trade</a>
+  </div>
+
+  <div class="info-card">
+    <h3>🛠️ Service Drive Offers</h3>
+    <a href="https://www.grapevinehonda.com/service/specials/" class="button">Current Specials</a>
+    <a href="https://www.grapevinehonda.com/schedule-service/" class="button">Schedule Service</a>
+  </div>
+
+  <!-- Start Journey -->
+  <div class="info-card">
+    <h3>📅 Start Your Journey</h3>
+    <a href="https://calendly.com/kevinatgrapevinehonda" class="button">Schedule Appointment</a>
+    <a href="https://www.grapevinehonda.com/honda-ev-education/" class="button">Learn About Honda EVs</a>
+  </div>
+
+  <!-- Calculator Section -->
+  <div class="info-card">
+    <h3>🧮 Payment Calculator</h3>
+    <label for="calc-toggle">Choose Calculator:</label>
+    <select id="calc-toggle">
+      <option value="finance">Finance</option>
+      <option value="lease">Lease</option>
+    </select>
+
+    <div id="finance-calculator" class="calc-box">
+      <label for="msrp">MSRP ($)</label>
+      <input type="number" id="msrp" placeholder="Enter MSRP" />
+      <label for="down-payment">Down Payment ($)</label>
+      <input type="number" id="down-payment" placeholder="Enter Down Payment" />
+      <label for="term">Loan Term (Months)</label>
+      <select id="term">
+        <option value="36">36</option>
+        <option value="48">48</option>
+        <option value="60">60</option>
+        <option value="72">72</option>
+      </select>
+      <label for="apr">APR (%)</label>
+      <input type="number" id="apr" step="0.01" value="7.5" />
+      <button onclick="calculateFinance()">Calculate Payment</button>
+      <button onclick="resetCalculator()">Reset Calculator</button>
+      <div id="finance-result" class="result-box"></div>
+    </div>
+
+    <div id="lease-calculator" class="calc-box" style="display:none;">
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="Accord|28910">Accord – $28,910</option>
+        <option value="Civic|23950">Civic – $23,950</option>
+        <option value="CR-V|30100">CR-V – $30,100</option>
+        <option value="HR-V|25550">HR-V – $25,550</option>
+        <option value="Pilot|39400">Pilot – $39,400</option>
+        <option value="Odyssey|38800">Odyssey – $38,800</option>
+        <option value="Ridgeline|39950">Ridgeline – $39,950</option>
+        <option value="Passport|41000">Passport – $41,000</option>
+      </select>
+
+      <label for="lease-term">Lease Term (Months)</label>
+      <select id="lease-term">
+        <option value="24">24</option>
+        <option value="27">27</option>
+        <option value="33">33</option>
+        <option value="36">36</option>
+        <option value="39">39</option>
+        <option value="42">42</option>
+        <option value="48">48</option>
+      </select>
+
+      <label for="miles">Miles per Year</label>
+      <select id="miles">
+        <option value="10000">10,000</option>
+        <option value="12000">12,000</option>
+        <option value="15000">15,000</option>
+      </select>
+
+      <label for="lease-down">Down Payment ($)</label>
+      <input type="number" id="lease-down" placeholder="Enter Down Payment" />
+      <button onclick="calculateLease()">Calculate Lease</button>
+      <button onclick="resetCalculator()">Reset Calculator</button>
+      <div id="lease-result" class="result-box"></div>
+    </div>
+  </div>
 <script>
-  // Smooth fade in effect for contact boxes
-  document.addEventListener("DOMContentLoaded", () => {
-    const boxes = document.querySelectorAll('.fade-in-section');
-    boxes.forEach(box => {
-      setTimeout(() => {
-        box.classList.add('visible');
-      }, 150);
-    });
+  // Toggle calculator type
+  document.getElementById("calc-toggle").addEventListener("change", function () {
+    const isFinance = this.value === "finance";
+    document.getElementById("finance-calculator").style.display = isFinance ? "block" : "none";
+    document.getElementById("lease-calculator").style.display = isFinance ? "none" : "block";
   });
 
-  function calculatePayment() {
-    const priceInput = document.getElementById('price');
-    const downInput = document.getElementById('downPayment');
-    const termSelect = document.getElementById('loanTerm');
-    const resultDiv = document.getElementById('calcResult');
+  function calculateFinance() {
+    const msrp = parseFloat(document.getElementById("msrp").value);
+    const down = parseFloat(document.getElementById("down-payment").value);
+    const term = parseInt(document.getElementById("term").value);
+    const apr = parseFloat(document.getElementById("apr").value) / 100;
+    const docFee = 225, ttl = 180, taxRate = 0.0625;
 
-    let price = parseFloat(priceInput.value);
-    let down = parseFloat(downInput.value);
-    const term = parseInt(termSelect.value, 10);
+    const loanAmount = msrp + docFee + ttl - down;
+    const taxedAmount = loanAmount * (1 + taxRate);
+    const monthlyRate = apr / 12;
+    const monthlyPayment = (taxedAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+    document.getElementById("finance-result").innerText = `Estimated Payment: $${monthlyPayment.toFixed(2)} /mo`;
+  }
 
-    if (isNaN(price) || isNaN(down) || price <= 0 || down < 0 || down > price) {
-      resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid vehicle price and down payment.</span>';
-      return;
-    }
+  function calculateLease() {
+    const [model, msrp] = document.getElementById("model").value.split("|");
+    const term = parseInt(document.getElementById("lease-term").value);
+    const miles = parseInt(document.getElementById("miles").value);
+    const down = parseFloat(document.getElementById("lease-down").value);
+    const docFee = 225, ttl = 180, taxRate = 0.0625;
 
-    const APR = 0.075;  // 7.5% APR annual
-    const taxRate = 0.0625;  // 6.25% tax
-    const docFee = 225;
-    const titleLicense = 180;
+    const residualRates = {
+      10000: 0.65, 12000: 0.61, 15000: 0.58
+    };
+    const mf = 0.00125;
+    const residual = msrp * residualRates[miles];
+    const depreciation = (msrp - residual) / term;
+    const rentCharge = ((msrp + residual) * mf) / term;
+    const basePayment = depreciation + rentCharge;
+    const totalFees = docFee + ttl;
+    const paymentWithTax = (basePayment * (1 + taxRate)).toFixed(2);
 
-    // Calculate the amount financed including tax, title, license, and doc fees
-    let taxableAmount = price - down;
-    let taxedAmount = taxableAmount * (1 + taxRate);
-    let totalFinanced = taxedAmount + docFee + titleLicense;
-
-    // Monthly interest rate
-    let monthlyRate = APR / 12;
-
-    // Calculate monthly payment using loan formula
-    let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
-    let totalPaid = monthlyPayment * term;
-    let interestPaid = totalPaid - totalFinanced;
-
-    resultDiv.innerHTML = `
-      Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
-      Total Paid Over ${term} Months: <strong>$${totalPaid.toFixed(2)}</strong><br />
-      Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
-    `;
+    document.getElementById("lease-result").innerText = `Estimated Lease: $${paymentWithTax} /mo (${term} mos)`;
   }
 
   function resetCalculator() {
-    document.getElementById('price').value = '30000';
-    document.getElementById('downPayment').value = '3000';
-    document.getElementById('loanTerm').value = '60';
-    document.getElementById('calcResult').innerHTML = '';
-  }
-
-  // Quick contact form submission handler
-  function handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formMessage = document.getElementById('formMessage');
-    const data = new FormData(form);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data).toString()
-    })
-    .then(() => {
-      formMessage.style.display = 'block';
-      form.reset();
-    })
-    .catch(() => {
-      alert('Sorry, there was a problem sending your message. Please try again.');
-    });
+    document.querySelectorAll("input").forEach(input => input.value = "");
+    document.getElementById("finance-result").innerText = "";
+    document.getElementById("lease-result").innerText = "";
   }
 </script>
-<!--Start of Tawk.to Script-->
+  <div class="disclaimer" style="text-align:center; font-size: 0.85rem; margin-top: 1rem; color: #666;">
+    *All finance and lease payments are estimates and do not constitute an offer. Actual payments may vary based on credit, model availability, lender approval, and dealer fees.
+  </div>
+</div> <!-- close container -->
+
+<!-- Footer -->
+<footer style="text-align: center; padding: 2rem 1rem; background-color: #e2e8f0; font-size: 0.95rem;">
+  <p>Kevin at Grapevine Honda – Serving Dallas-Fort Worth with exceptional Honda deals.</p>
+  <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color: #007bff; font-weight: 600;">Check out my reviews on Google</a>
+</footer>
+
+<!-- Tawk.to Live Chat -->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/686eef490ae360191763de7b/1ivolddes';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/65f0aa5b8d261e1b5f685ea0/1hpl7l44i';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
 </script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>
+
