@@ -450,82 +450,249 @@
         <label for="toggleLease" tabindex="0">Lease</label>
       </div>
 
-      <!-- Finance Calculator Form -->
-      <form id="financeForm" aria-label="Finance Calculator Form" onsubmit="return false;">
-        <label for="financeMsrp">MSRP ($)</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="financeMsrp" min="5000" step="100" value="35000" required aria-required="true" />
-        </div>
+     <!-- Begin Finance + Lease Calculator -->
+<style>
+  .calc-container {
+    max-width: 800px;
+    margin: auto;
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
 
-        <label for="financeDown">Down Payment ($)</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="financeDown" min="0" step="100" value="1000" required aria-required="true" />
-        </div>
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
 
-        <label for="financeTerm">Term (months)</label>
-        <select id="financeTerm" required aria-required="true">
-          <option value="36">36</option>
-          <option value="48" selected>48</option>
-          <option value="60">60</option>
-          <option value="72">72</option>
-        </select>
+  .toggle-buttons button {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #ccc;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    transition: background 0.3s;
+  }
 
-        <label for="financeAPR">APR (%)</label>
-        <div class="input-wrapper">
-          <input type="number" id="financeAPR" min="0" max="30" step="0.01" value="7.5" required aria-required="true" />
-          <span class="suffix-sign">%</span>
-        </div>
+  .toggle-buttons .active {
+    background-color: #005eff;
+  }
 
-        <button type="button" id="financeCalculateBtn" class="button">Calculate Payment</button>
-        <button type="button" id="financeResetBtn" class="button" style="background-color:#6c757d; margin-left: 10px;">Reset Calculator</button>
-      </form>
+  .calc-form {
+    display: none;
+  }
 
-      <!-- Lease Calculator Form -->
-      <form id="leaseForm" aria-label="Lease Calculator Form" style="display:none;" onsubmit="return false;">
-        <label for="leaseModel">Honda Model</label>
-        <select id="leaseModel" required aria-required="true">
-          <option value="" disabled selected>Select a model</option>
-          <option value="24470" data-residual="0.63" data-mf="0.00120">Civic Sedan LX - $24,470</option>
-          <option value="29100" data-residual="0.62" data-mf="0.00115">Accord Sedan EX - $29,100</option>
-          <option value="23160" data-residual="0.65" data-mf="0.00125">HR-V LX - $23,160</option>
-          <option value="27140" data-residual="0.61" data-mf="0.00120">CR-V EX - $27,140</option>
-          <option value="32850" data-residual="0.59" data-mf="0.00118">Pilot EX-L - $32,850</option>
-          <option value="38490" data-residual="0.57" data-mf="0.00116">Ridgeline RTL-E - $38,490</option>
-          <option value="23680" data-residual="0.64" data-mf="0.00122">Insight EX - $23,680</option>
-        </select>
+  .calc-form.active {
+    display: block;
+  }
 
-        <label for="leaseTerm">Lease Term (months)</label>
-        <select id="leaseTerm" required aria-required="true">
-          <option value="24">24</option>
-          <option value="27">27</option>
-          <option value="33">33</option>
-          <option value="36" selected>36</option>
-          <option value="39">39</option>
-          <option value="42">42</option>
-          <option value="48">48</option>
-        </select>
+  .calc-form input,
+  .calc-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
 
-        <label for="leaseMileage">Annual Mileage</label>
-        <select id="leaseMileage" required aria-required="true">
-          <option value="10000">10,000 miles/year</option>
-          <option value="12000" selected>12,000 miles/year</option>
-          <option value="15000">15,000 miles/year</option>
-        </select>
+  .calc-form label {
+    font-weight: bold;
+  }
 
-        <label for="leaseDown">Down Payment ($)</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="leaseDown" min="0" step="100" value="1000" required aria-required="true" />
-        </div>
+  .calc-result {
+    margin-top: 18px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
 
-        <button type="button" id="leaseCalculateBtn" class="button">Calculate Payment</button>
-        <button type="button" id="leaseResetBtn" class="button" style="background-color:#6c757d; margin-left: 10px;">Reset Calculator</button>
-      </form>
+  .calc-form button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
 
-      <div id="calcResult" role="region" aria-live="polite" aria-atomic="true" style="margin-top: 1.5rem;"></div>
+  .calc-form .calculate-btn {
+    background-color: #005eff;
+    color: white;
+  }
 
+  .calc-form .reset-btn {
+    background-color: #e60000;
+    color: white;
+  }
+</style>
+
+<div class="calc-container">
+  <div class="toggle-buttons">
+    <button id="financeBtn" class="active" onclick="toggleCalc('finance')">Finance</button>
+    <button id="leaseBtn" onclick="toggleCalc('lease')">Lease</button>
+  </div>
+
+  <!-- Finance Calculator -->
+  <form id="financeCalc" class="calc-form active" onsubmit="calculateFinance(); return false;">
+    <label>Vehicle Price (MSRP)</label>
+    <input type="number" id="finPrice" placeholder="e.g. 32995" required>
+
+    <label>Down Payment</label>
+    <input type="number" id="finDown" value="5000" required>
+
+    <label>APR %</label>
+    <input type="number" id="finAPR" step="0.01" value="9.99" required>
+
+    <label>Term (Months)</label>
+    <select id="finTerm">
+      <option value="24">24</option>
+      <option value="36">36</option>
+      <option value="48">48</option>
+      <option value="60">60</option>
+      <option value="72">72</option>
+      <option value="84">84</option>
+    </select>
+
+    <button type="submit" class="calculate-btn">Calculate Payment</button>
+    <button type="button" onclick="resetCalc()" class="reset-btn">Reset Calculator</button>
+
+    <div class="calc-result" id="finResult"></div>
+  </form>
+
+  <!-- Lease Calculator -->
+  <form id="leaseCalc" class="calc-form" onsubmit="calculateLease(); return false;">
+    <label>Select Honda Model & Trim</label>
+    <select id="leaseModel" onchange="updateMSRP()">
+      <option value="" disabled selected>Select a model</option>
+      <option value="32995">Accord EX – $32,995</option>
+      <option value="28995">Civic Sport – $28,995</option>
+      <option value="35995">CR-V Sport – $35,995</option>
+      <option value="42995">Pilot EX-L – $42,995</option>
+      <option value="41995">Passport EX-L – $41,995</option>
+      <option value="44995">Ridgeline Sport – $44,995</option>
+      <option value="39995">Odyssey EX-L – $39,995</option>
+    </select>
+
+    <label>MSRP</label>
+    <input type="number" id="leaseMSRP" required>
+
+    <label>Lease Term</label>
+    <select id="leaseTerm">
+      <option value="24">24 Months</option>
+      <option value="36">36 Months</option>
+      <option value="39">39 Months</option>
+      <option value="42">42 Months</option>
+      <option value="48">48 Months</option>
+    </select>
+
+    <label>Miles Per Year</label>
+    <select id="leaseMiles">
+      <option value="10000">10,000</option>
+      <option value="12000">12,000</option>
+      <option value="15000">15,000</option>
+    </select>
+
+    <label>Down Payment</label>
+    <input type="number" id="leaseDown" value="5000" required>
+
+    <button type="submit" class="calculate-btn">Calculate Lease</button>
+    <button type="button" onclick="resetCalc()" class="reset-btn">Reset Calculator</button>
+
+    <div class="calc-result" id="leaseResult"></div>
+  </form>
+</div>
+
+<script>
+  function toggleCalc(type) {
+    document.getElementById('financeCalc').classList.remove('active');
+    document.getElementById('leaseCalc').classList.remove('active');
+    document.getElementById('financeBtn').classList.remove('active');
+    document.getElementById('leaseBtn').classList.remove('active');
+
+    if (type === 'finance') {
+      document.getElementById('financeCalc').classList.add('active');
+      document.getElementById('financeBtn').classList.add('active');
+    } else {
+      document.getElementById('leaseCalc').classList.add('active');
+      document.getElementById('leaseBtn').classList.add('active');
+    }
+  }
+
+  function resetCalc() {
+    location.reload();
+  }
+
+  function calculateFinance() {
+    const price = parseFloat(document.getElementById('finPrice').value);
+    const down = parseFloat(document.getElementById('finDown').value);
+    const apr = parseFloat(document.getElementById('finAPR').value) / 100 / 12;
+    const term = parseInt(document.getElementById('finTerm').value);
+    const loanAmount = price - down + 225 + 180 + (price * 0.0625);
+    const monthly = (loanAmount * apr) / (1 - Math.pow(1 + apr, -term));
+
+    document.getElementById('finResult').innerHTML = `
+      <strong>Estimated Monthly Payment:</strong><br>
+      $${monthly.toFixed(2)} for ${term} months
+    `;
+  }
+
+  function calculateLease() {
+    const msrp = parseFloat(document.getElementById('leaseMSRP').value);
+    const down = parseFloat(document.getElementById('leaseDown').value);
+    const term = parseInt(document.getElementById('leaseTerm').value);
+    const miles = parseInt(document.getElementById('leaseMiles').value);
+
+    let residualPerc = 0.60;
+    let mf = 0.002;
+
+    if (miles === 10000) {
+      if (term === 24) residualPerc = 0.69;
+      else if (term === 36) residualPerc = 0.67;
+      else if (term === 39) residualPerc = 0.66;
+      else if (term === 42) residualPerc = 0.65;
+      else if (term === 48) residualPerc = 0.64;
+    } else if (miles === 12000) {
+      if (term === 24) residualPerc = 0.67;
+      else if (term === 36) residualPerc = 0.65;
+      else if (term === 39) residualPerc = 0.64;
+      else if (term === 42) residualPerc = 0.63;
+      else if (term === 48) residualPerc = 0.62;
+    } else if (miles === 15000) {
+      if (term === 24) residualPerc = 0.65;
+      else if (term === 36) residualPerc = 0.63;
+      else if (term === 39) residualPerc = 0.62;
+      else if (term === 42) residualPerc = 0.61;
+      else if (term === 48) residualPerc = 0.60;
+    }
+
+    const residual = msrp * residualPerc;
+    const depreciation = msrp - residual;
+    const rentCharge = (msrp + residual) * mf;
+    const monthlyBase = (depreciation / term) + rentCharge;
+    const tax = monthlyBase * 0.0625;
+    const totalMonthly = monthlyBase + tax;
+    const driveOff = down + 595 + 225 + 180;
+
+    document.getElementById('leaseResult').innerHTML = `
+      <strong>Estimated Lease Payment:</strong><br>
+      $${totalMonthly.toFixed(2)}/mo for ${term} months<br>
+      Due at signing: $${driveOff.toFixed(2)}
+    `;
+  }
+
+  function updateMSRP() {
+    const msrp = document.getElementById("leaseModel").value;
+    document.getElementById("leaseMSRP").value = msrp;
+  }
+</script>
+<!-- End Calculator -->
       <p class="disclaimer">* Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.</p>
     </div>
   </div>
