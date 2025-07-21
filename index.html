@@ -441,41 +441,144 @@
       </form>
     </div>
 
- <!-- START: Finance & Lease Calculator -->
-<div class="calculator-container" style="max-width: 600px; margin: 2rem auto; background: #f8f8f8; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: 'Roboto', sans-serif; color: #003366;">
-  <h2 style="text-align:center; margin-bottom: 1.5rem;">Finance & Lease Calculator</h2>
+<!-- Finance & Lease Calculator -->
+<style>
+  /* Scoped styles for the calculator */
+  .calculator-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #f8f8f8;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: #003366;
+    font-family: 'Roboto', sans-serif;
+  }
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+  .tab-buttons button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 6px 18px rgba(0,86,179,0.7);
+  }
+  .tab-buttons button.active {
+    background: #007bff;
+    color: white;
+  }
+  .tab-buttons button.inactive {
+    background: #e1e9f8;
+    color: #007bff;
+    box-shadow: none;
+  }
+  form label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  form input[type=number], form select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+  }
+  .input-wrapper {
+    position: relative;
+  }
+  .currency-prefix {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: #444;
+    pointer-events: none;
+  }
+  .percent-suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: #444;
+    pointer-events: none;
+  }
+  form input.percent-input {
+    padding-right: 28px;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .button-group button {
+    flex: 1;
+    padding: 0.85rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,86,179,0.7);
+    transition: background-color 0.3s;
+    color: white;
+  }
+  .button-group button.reset-btn {
+    background: #dc3545;
+    box-shadow: 0 6px 18px rgba(220,53,69,0.7);
+    margin-left: 1rem;
+  }
+  .button-group button.calculate-btn {
+    background: #007bff;
+  }
+  #calcResult {
+    font-weight: 700;
+    font-size: 1.15rem;
+    min-height: 7rem;
+    color: #003366;
+    margin-top: 2rem;
+  }
+  p.disclaimer {
+    font-style: italic;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+</style>
 
-  <!-- Tabs -->
-  <div style="display: flex; justify-content: center; margin-bottom: 2rem; gap: 1rem;">
-    <button id="tabFinance" aria-selected="true" role="tab" tabindex="0"
-      style="flex:1; padding: 1rem; border:none; border-radius: 30px; background: #007bff; color: white; font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
-      Finance
-    </button>
-    <button id="tabLease" aria-selected="false" role="tab" tabindex="-1"
-      style="flex:1; padding: 1rem; border:none; border-radius: 30px; background: #e1e9f8; color: #007bff; font-weight: 700; cursor: pointer; transition: background-color 0.3s;">
-      Lease
-    </button>
+<div class="calculator-container" role="region" aria-label="Finance and Lease Payment Calculator">
+  <div class="tab-buttons" role="tablist" aria-label="Calculator tabs">
+    <button id="tabFinance" role="tab" aria-selected="true" tabindex="0" class="active">Finance</button>
+    <button id="tabLease" role="tab" aria-selected="false" tabindex="-1" class="inactive">Lease</button>
   </div>
 
   <!-- Finance Form -->
   <form id="financeForm" role="tabpanel" aria-labelledby="tabFinance" style="display: block;">
-    <label for="financeMsrp" style="font-weight: 700;">MSRP ($)</label>
-    <div style="position: relative; margin-bottom: 1rem;">
-      <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
-      <input type="number" id="financeMsrp" min="5000" step="100" value="35000" required
-        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="financeMsrp">MSRP ($)</label>
+    <div class="input-wrapper" style="margin-bottom: 1rem;">
+      <span class="currency-prefix">$</span>
+      <input type="number" id="financeMsrp" min="5000" step="100" value="35000" required aria-required="true" />
     </div>
 
-    <label for="financeDown" style="font-weight: 700;">Down Payment ($)</label>
-    <div style="position: relative; margin-bottom: 1rem;">
-      <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
-      <input type="number" id="financeDown" min="0" step="100" value="1000" required
-        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="financeDown">Down Payment ($)</label>
+    <div class="input-wrapper" style="margin-bottom: 1rem;">
+      <span class="currency-prefix">$</span>
+      <input type="number" id="financeDown" min="0" step="100" value="1000" required aria-required="true" />
     </div>
 
-    <label for="financeTerm" style="font-weight: 700;">Term (months)</label>
-    <select id="financeTerm" required
-      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="financeTerm">Term (months)</label>
+    <select id="financeTerm" required aria-required="true">
       <option value="24">24</option>
       <option value="36" selected>36</option>
       <option value="48">48</option>
@@ -484,47 +587,72 @@
       <option value="84">84</option>
     </select>
 
-    <label for="financeAPR" style="font-weight: 700;">APR (%)</label>
-    <div style="position: relative; margin-bottom: 1.5rem;">
-      <input type="number" id="financeAPR" min="0" max="30" step="0.01" value="9.99" required
-        style="width: 100%; padding-right: 28px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
-      <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">%</span>
+    <label for="financeAPR">APR (%)</label>
+    <div class="input-wrapper" style="margin-bottom: 1.5rem; position: relative;">
+      <input type="number" id="financeAPR" min="0" max="30" step="0.01" value="9.99" required aria-required="true" class="percent-input" />
+      <span class="percent-suffix">%</span>
     </div>
 
-    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-      <button type="button" id="financeCalculateBtn"
-        style="flex: 1; margin-right: 8px; background: #007bff; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
-        Calculate Payment
-      </button>
-      <button type="button" id="financeResetBtn"
-        style="flex: 1; margin-left: 8px; background: #dc3545; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
-        Reset Calculator
-      </button>
+    <div class="button-group">
+      <button type="button" id="financeCalculateBtn" class="calculate-btn">Calculate Payment</button>
+      <button type="button" id="financeResetBtn" class="reset-btn">Reset Calculator</button>
     </div>
   </form>
 
   <!-- Lease Form -->
   <form id="leaseForm" role="tabpanel" aria-labelledby="tabLease" style="display: none;">
-    <label for="leaseModel" style="font-weight: 700;">Honda Model</label>
-    <select id="leaseModel" required
-      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
-      <option value="" disabled selected>Select a model</option>
+    <label for="leaseModel">Honda Model & Trim</label>
+    <select id="leaseModel" required aria-required="true">
+      <option value="" disabled selected>Select a model and trim</option>
+
+      <!-- Civic -->
       <option value="24470" data-residual="0.63" data-mf="0.00120">Civic Sedan LX - $24,470</option>
+      <option value="25470" data-residual="0.62" data-mf="0.00120">Civic Sedan Sport - $25,470</option>
+      <option value="27970" data-residual="0.62" data-mf="0.00120">Civic Sedan EX - $27,970</option>
+      <option value="28850" data-residual="0.62" data-mf="0.00120">Civic Sedan EX-L - $28,850</option>
+      <option value="29450" data-residual="0.62" data-mf="0.00120">Civic Sedan Touring - $29,450</option>
       <option value="28450" data-residual="0.63" data-mf="0.00120">Civic Hybrid EX - $28,450</option>
-      <option value="29100" data-residual="0.62" data-mf="0.00115">Accord Sedan EX - $29,100</option>
+
+      <!-- Accord -->
+      <option value="27400" data-residual="0.62" data-mf="0.00115">Accord LX - $27,400</option>
+      <option value="29100" data-residual="0.62" data-mf="0.00115">Accord EX - $29,100</option>
+      <option value="31500" data-residual="0.61" data-mf="0.00115">Accord EX-L - $31,500</option>
       <option value="33500" data-residual="0.61" data-mf="0.00115">Accord Hybrid EX-L - $33,500</option>
+      <option value="35500" data-residual="0.61" data-mf="0.00115">Accord Touring - $35,500</option>
+
+      <!-- HR-V -->
       <option value="23160" data-residual="0.65" data-mf="0.00125">HR-V LX - $23,160</option>
-      <option value="27140" data-residual="0.61" data-mf="0.00120">CR-V EX - $27,140</option>
+      <option value="24660" data-residual="0.65" data-mf="0.00125">HR-V Sport - $24,660</option>
+      <option value="26460" data-residual="0.65" data-mf="0.00125">HR-V EX - $26,460</option>
+      <option value="27560" data-residual="0.64" data-mf="0.00125">HR-V EX-L - $27,560</option>
+
+      <!-- CR-V -->
+      <option value="27140" data-residual="0.61" data-mf="0.00120">CR-V LX - $27,140</option>
+      <option value="28700" data-residual="0.60" data-mf="0.00120">CR-V EX - $28,700</option>
       <option value="30500" data-residual="0.60" data-mf="0.00120">CR-V Hybrid EX - $30,500</option>
-      <option value="32850" data-residual="0.59" data-mf="0.00118">Pilot EX-L - $32,850</option>
+      <option value="32250" data-residual="0.59" data-mf="0.00118">CR-V Touring - $32,250</option>
+
+      <!-- Pilot -->
+      <option value="32850" data-residual="0.59" data-mf="0.00118">Pilot LX - $32,850</option>
+      <option value="35400" data-residual="0.58" data-mf="0.00117">Pilot EX - $35,400</option>
+      <option value="38450" data-residual="0.57" data-mf="0.00116">Pilot EX-L - $38,450</option>
+      <option value="41000" data-residual="0.56" data-mf="0.00116">Pilot Touring - $41,000</option>
+
+      <!-- Ridgeline -->
       <option value="38490" data-residual="0.57" data-mf="0.00116">Ridgeline RTL-E - $38,490</option>
+      <option value="39500" data-residual="0.56" data-mf="0.00116">Ridgeline Black Edition - $39,500</option>
+
+      <!-- Passport -->
       <option value="35460" data-residual="0.60" data-mf="0.00114">Passport EX-L - $35,460</option>
+      <option value="37700" data-residual="0.59" data-mf="0.00114">Passport Touring - $37,700</option>
+
+      <!-- Odyssey -->
       <option value="32890" data-residual="0.58" data-mf="0.00117">Odyssey EX-L - $32,890</option>
+      <option value="35000" data-residual="0.57" data-mf="0.00117">Odyssey Touring - $35,000</option>
     </select>
 
-    <label for="leaseTerm" style="font-weight: 700;">Lease Term (months)</label>
-    <select id="leaseTerm" required
-      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="leaseTerm">Lease Term (months)</label>
+    <select id="leaseTerm" required aria-required="true">
       <option value="24">24</option>
       <option value="27">27</option>
       <option value="33">33</option>
@@ -534,64 +662,51 @@
       <option value="48">48</option>
     </select>
 
-    <label for="leaseMileage" style="font-weight: 700;">Annual Mileage</label>
-    <select id="leaseMileage" required
-      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="leaseMileage">Annual Mileage</label>
+    <select id="leaseMileage" required aria-required="true">
       <option value="10000">10,000 miles/year</option>
       <option value="12000" selected>12,000 miles/year</option>
       <option value="15000">15,000 miles/year</option>
     </select>
 
-    <label for="leaseDown" style="font-weight: 700;">Down Payment ($)</label>
-    <div style="position: relative; margin-bottom: 1.5rem;">
-      <span
-        style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
-      <input type="number" id="leaseDown" min="0" step="100" value="1000" required
-        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
+    <label for="leaseDown">Down Payment ($)</label>
+    <div class="input-wrapper" style="margin-bottom: 1.5rem;">
+      <span class="currency-prefix">$</span>
+      <input type="number" id="leaseDown" min="0" step="100" value="1000" required aria-required="true" />
     </div>
 
-    <div style="display: flex; justify-content: space-between;">
-      <button type="button" id="leaseCalculateBtn"
-        style="flex: 1; margin-right: 8px; background: #007bff; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
-        Calculate Payment
-      </button>
-      <button type="button" id="leaseResetBtn"
-        style="flex: 1; margin-left: 8px; background: #dc3545; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
-        Reset Calculator
-      </button>
+    <div class="button-group">
+      <button type="button" id="leaseCalculateBtn" class="calculate-btn">Calculate Payment</button>
+      <button type="button" id="leaseResetBtn" class="reset-btn">Reset Calculator</button>
     </div>
   </form>
 
-  <!-- Results -->
-  <div id="calcResult" role="region" aria-live="polite" aria-atomic="true"
-    style="margin-top: 2rem; font-weight: 700; font-size: 1.15rem; min-height: 7rem; color: #003366;">
-  </div>
+  <div id="calcResult" role="region" aria-live="polite" aria-atomic="true" aria-label="Calculation results"></div>
 
-  <p style="font-style: italic; color: #555; font-size: 0.9rem; margin-top: 1rem; text-align:center;">
-    * Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based
-    on credit, dealer fees, and promotions.
+  <p class="disclaimer">
+    * Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.
   </p>
 </div>
 
 <script>
+  // Wait for DOM ready
   document.addEventListener('DOMContentLoaded', () => {
-    // Elements
+    // Tabs
     const tabFinance = document.getElementById('tabFinance');
     const tabLease = document.getElementById('tabLease');
     const financeForm = document.getElementById('financeForm');
     const leaseForm = document.getElementById('leaseForm');
     const calcResult = document.getElementById('calcResult');
 
-    // Activate tab function
     function activateTab(tab) {
       if (tab === 'finance') {
-        tabFinance.style.backgroundColor = '#007bff';
-        tabFinance.style.color = 'white';
+        tabFinance.classList.add('active');
+        tabFinance.classList.remove('inactive');
         tabFinance.setAttribute('aria-selected', 'true');
         tabFinance.tabIndex = 0;
 
-        tabLease.style.backgroundColor = '#e1e9f8';
-        tabLease.style.color = '#007bff';
+        tabLease.classList.remove('active');
+        tabLease.classList.add('inactive');
         tabLease.setAttribute('aria-selected', 'false');
         tabLease.tabIndex = -1;
 
@@ -599,13 +714,13 @@
         leaseForm.style.display = 'none';
         calcResult.textContent = '';
       } else {
-        tabLease.style.backgroundColor = '#007bff';
-        tabLease.style.color = 'white';
+        tabLease.classList.add('active');
+        tabLease.classList.remove('inactive');
         tabLease.setAttribute('aria-selected', 'true');
         tabLease.tabIndex = 0;
 
-        tabFinance.style.backgroundColor = '#e1e9f8';
-        tabFinance.style.color = '#007bff';
+        tabFinance.classList.remove('active');
+        tabFinance.classList.add('inactive');
         tabFinance.setAttribute('aria-selected', 'false');
         tabFinance.tabIndex = -1;
 
@@ -666,7 +781,7 @@
       const modelSelect = document.getElementById('leaseModel');
       const selectedOption = modelSelect.options[modelSelect.selectedIndex];
       if (!selectedOption.value) {
-        calcResult.textContent = 'Please select a Honda model.';
+        calcResult.textContent = 'Please select a Honda model and trim.';
         return;
       }
 
@@ -768,7 +883,6 @@
     activateTab('finance');
   });
 </script>
-<!-- END: Finance & Lease Calculator -->
     
       <p class="disclaimer">* Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.</p>
     </div>
