@@ -441,43 +441,41 @@
       </form>
     </div>
 
-  <!-- Finance & Lease Calculator -->
-<div class="calculator-container" role="region" aria-label="Finance and Lease Calculator" style="max-width: 600px; background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
-
-  <h2>Finance & Lease Calculator</h2>
+ <!-- START: Finance & Lease Calculator -->
+<div class="calculator-container" style="max-width: 900px; margin: 2rem auto; background: #f8f8f8; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-family: 'Roboto', sans-serif; color: #003366;">
+  <h2 style="text-align:center; margin-bottom: 1.5rem;">Finance & Lease Calculator</h2>
 
   <!-- Tabs -->
-  <div class="tabs" role="tablist" style="display: flex; justify-content: center; margin-bottom: 1.5rem; gap: 1rem;">
+  <div style="display: flex; justify-content: center; margin-bottom: 2rem; gap: 1rem;">
     <button id="tabFinance" aria-selected="true" role="tab" tabindex="0"
-      style="flex:1; padding:0.75rem 1rem; border:none; border-radius:30px; font-weight:700; cursor:pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); background:#007bff; color:white; transition: background-color 0.3s;">
+      style="flex:1; padding: 1rem; border:none; border-radius: 30px; background: #007bff; color: white; font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
       Finance
     </button>
     <button id="tabLease" aria-selected="false" role="tab" tabindex="-1"
-      style="flex:1; padding:0.75rem 1rem; border:none; border-radius:30px; font-weight:700; cursor:pointer; background:#e1e9f8; color:#007bff; transition: background-color 0.3s;">
+      style="flex:1; padding: 1rem; border:none; border-radius: 30px; background: #e1e9f8; color: #007bff; font-weight: 700; cursor: pointer; transition: background-color 0.3s;">
       Lease
     </button>
   </div>
 
   <!-- Finance Form -->
-  <form id="financeForm" role="tabpanel" aria-labelledby="tabFinance" style="display: flex; flex-direction: column; gap: 1rem;">
-
-    <label for="financeMsrp" style="font-weight:700;">MSRP ($)</label>
-    <div style="position: relative;">
-      <span style="position:absolute; left:12px; top:50%; transform: translateY(-50%); font-weight:700; color:#444; pointer-events:none; user-select:none; font-size:1.1rem;">$</span>
+  <form id="financeForm" role="tabpanel" aria-labelledby="tabFinance" style="display: block;">
+    <label for="financeMsrp" style="font-weight: 700;">MSRP ($)</label>
+    <div style="position: relative; margin-bottom: 1rem;">
+      <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
       <input type="number" id="financeMsrp" min="5000" step="100" value="35000" required
-        style="width: 100%; padding: 12px 12px 12px 28px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;" />
+        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
     </div>
 
-    <label for="financeDown" style="font-weight:700;">Down Payment ($)</label>
-    <div style="position: relative;">
-      <span style="position:absolute; left:12px; top:50%; transform: translateY(-50%); font-weight:700; color:#444; pointer-events:none; user-select:none; font-size:1.1rem;">$</span>
+    <label for="financeDown" style="font-weight: 700;">Down Payment ($)</label>
+    <div style="position: relative; margin-bottom: 1rem;">
+      <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
       <input type="number" id="financeDown" min="0" step="100" value="1000" required
-        style="width: 100%; padding: 12px 12px 12px 28px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;" />
+        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
     </div>
 
-    <label for="financeTerm" style="font-weight:700;">Term (months)</label>
+    <label for="financeTerm" style="font-weight: 700;">Term (months)</label>
     <select id="financeTerm" required
-      style="width: 100%; padding: 12px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;">
+      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
       <option value="24">24</option>
       <option value="36" selected>36</option>
       <option value="48">48</option>
@@ -486,47 +484,47 @@
       <option value="84">84</option>
     </select>
 
-    <label for="financeAPR" style="font-weight:700;">APR (%)</label>
-    <div style="position: relative;">
+    <label for="financeAPR" style="font-weight: 700;">APR (%)</label>
+    <div style="position: relative; margin-bottom: 1.5rem;">
       <input type="number" id="financeAPR" min="0" max="30" step="0.01" value="9.99" required
-        style="width: 100%; padding: 12px 28px 12px 12px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;" />
-      <span style="position:absolute; right:12px; top:50%; transform: translateY(-50%); font-weight:700; color:#444; pointer-events:none; user-select:none; font-size:1.1rem;">%</span>
+        style="width: 100%; padding-right: 28px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
+      <span style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">%</span>
     </div>
 
-    <div style="display:flex; gap:1rem; margin-top:1rem;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
       <button type="button" id="financeCalculateBtn"
-        style="flex:1; padding:0.85rem; border-radius:14px; font-weight:700; border:none; cursor:pointer; background:#007bff; color:white; font-size:1rem; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
+        style="flex: 1; margin-right: 8px; background: #007bff; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
         Calculate Payment
       </button>
       <button type="button" id="financeResetBtn"
-        style="flex:1; padding:0.85rem; border-radius:14px; font-weight:700; border:none; cursor:pointer; background:#dc3545; color:white; font-size:1rem; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
+        style="flex: 1; margin-left: 8px; background: #dc3545; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
         Reset Calculator
       </button>
     </div>
-
   </form>
 
   <!-- Lease Form -->
-  <form id="leaseForm" role="tabpanel" aria-labelledby="tabLease" style="display: none; flex-direction: column; gap: 1rem;">
-
-    <label for="leaseModel" style="font-weight:700;">Honda Model</label>
+  <form id="leaseForm" role="tabpanel" aria-labelledby="tabLease" style="display: none;">
+    <label for="leaseModel" style="font-weight: 700;">Honda Model</label>
     <select id="leaseModel" required
-      style="width: 100%; padding: 12px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;">
+      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
       <option value="" disabled selected>Select a model</option>
       <option value="24470" data-residual="0.63" data-mf="0.00120">Civic Sedan LX - $24,470</option>
+      <option value="28450" data-residual="0.63" data-mf="0.00120">Civic Hybrid EX - $28,450</option>
       <option value="29100" data-residual="0.62" data-mf="0.00115">Accord Sedan EX - $29,100</option>
+      <option value="33500" data-residual="0.61" data-mf="0.00115">Accord Hybrid EX-L - $33,500</option>
       <option value="23160" data-residual="0.65" data-mf="0.00125">HR-V LX - $23,160</option>
       <option value="27140" data-residual="0.61" data-mf="0.00120">CR-V EX - $27,140</option>
+      <option value="30500" data-residual="0.60" data-mf="0.00120">CR-V Hybrid EX - $30,500</option>
       <option value="32850" data-residual="0.59" data-mf="0.00118">Pilot EX-L - $32,850</option>
       <option value="38490" data-residual="0.57" data-mf="0.00116">Ridgeline RTL-E - $38,490</option>
-      <option value="23680" data-residual="0.64" data-mf="0.00122">Insight EX - $23,680</option>
       <option value="35460" data-residual="0.60" data-mf="0.00114">Passport EX-L - $35,460</option>
       <option value="32890" data-residual="0.58" data-mf="0.00117">Odyssey EX-L - $32,890</option>
     </select>
 
-    <label for="leaseTerm" style="font-weight:700;">Lease Term (months)</label>
+    <label for="leaseTerm" style="font-weight: 700;">Lease Term (months)</label>
     <select id="leaseTerm" required
-      style="width: 100%; padding: 12px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;">
+      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
       <option value="24">24</option>
       <option value="27">27</option>
       <option value="33">33</option>
@@ -536,40 +534,43 @@
       <option value="48">48</option>
     </select>
 
-    <label for="leaseMileage" style="font-weight:700;">Annual Mileage</label>
+    <label for="leaseMileage" style="font-weight: 700;">Annual Mileage</label>
     <select id="leaseMileage" required
-      style="width: 100%; padding: 12px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;">
+      style="width: 100%; padding: 12px; font-size: 1.1rem; margin-bottom: 1rem; border-radius: 12px; border: 2px solid #ccc;">
       <option value="10000">10,000 miles/year</option>
       <option value="12000" selected>12,000 miles/year</option>
       <option value="15000">15,000 miles/year</option>
     </select>
 
-    <label for="leaseDown" style="font-weight:700;">Down Payment ($)</label>
-    <div style="position: relative;">
-      <span style="position:absolute; left:12px; top:50%; transform: translateY(-50%); font-weight:700; color:#444; pointer-events:none; user-select:none; font-size:1.1rem;">$</span>
+    <label for="leaseDown" style="font-weight: 700;">Down Payment ($)</label>
+    <div style="position: relative; margin-bottom: 1.5rem;">
+      <span
+        style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 700; color: #444;">$</span>
       <input type="number" id="leaseDown" min="0" step="100" value="1000" required
-        style="width: 100%; padding: 12px 12px 12px 28px; font-size:1.1rem; border-radius:12px; border:2px solid #ccc;" />
+        style="width: 100%; padding-left: 28px; padding-right: 12px; font-size: 1.1rem; border-radius: 12px; border: 2px solid #ccc;">
     </div>
 
-    <div style="display:flex; gap:1rem; margin-top:1rem;">
+    <div style="display: flex; justify-content: space-between;">
       <button type="button" id="leaseCalculateBtn"
-        style="flex:1; padding:0.85rem; border-radius:14px; font-weight:700; border:none; cursor:pointer; background:#007bff; color:white; font-size:1rem; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
+        style="flex: 1; margin-right: 8px; background: #007bff; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,86,179,0.7); transition: background-color 0.3s;">
         Calculate Payment
       </button>
       <button type="button" id="leaseResetBtn"
-        style="flex:1; padding:0.85rem; border-radius:14px; font-weight:700; border:none; cursor:pointer; background:#dc3545; color:white; font-size:1rem; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
+        style="flex: 1; margin-left: 8px; background: #dc3545; color: white; font-weight: 700; border: none; padding: 0.85rem; border-radius: 14px; cursor: pointer; box-shadow: 0 6px 18px rgba(220,53,69,0.7); transition: background-color 0.3s;">
         Reset Calculator
       </button>
     </div>
-
   </form>
 
-  <div id="calcResult" role="region" aria-live="polite" aria-atomic="true" style="margin-top: 2rem; font-weight: 700; font-size: 1.15rem; color: #003366; min-height: 7rem; text-align: center;"></div>
+  <!-- Results -->
+  <div id="calcResult" role="region" aria-live="polite" aria-atomic="true"
+    style="margin-top: 2rem; font-weight: 700; font-size: 1.15rem; min-height: 7rem; color: #003366;">
+  </div>
 
-  <p style="font-style: italic; color: #555; font-size: 0.9rem; margin-top: 1rem; text-align: center;">
-    * Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.
+  <p style="font-style: italic; color: #555; font-size: 0.9rem; margin-top: 1rem; text-align:center;">
+    * Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based
+    on credit, dealer fees, and promotions.
   </p>
-
 </div>
 
 <script>
@@ -581,35 +582,35 @@
     const leaseForm = document.getElementById('leaseForm');
     const calcResult = document.getElementById('calcResult');
 
-    // Activate tab
+    // Activate tab function
     function activateTab(tab) {
       if (tab === 'finance') {
-        tabFinance.setAttribute('aria-selected', 'true');
-        tabFinance.tabIndex = 0;
         tabFinance.style.backgroundColor = '#007bff';
         tabFinance.style.color = 'white';
+        tabFinance.setAttribute('aria-selected', 'true');
+        tabFinance.tabIndex = 0;
 
-        tabLease.setAttribute('aria-selected', 'false');
-        tabLease.tabIndex = -1;
         tabLease.style.backgroundColor = '#e1e9f8';
         tabLease.style.color = '#007bff';
+        tabLease.setAttribute('aria-selected', 'false');
+        tabLease.tabIndex = -1;
 
-        financeForm.style.display = 'flex';
+        financeForm.style.display = 'block';
         leaseForm.style.display = 'none';
         calcResult.textContent = '';
       } else {
-        tabLease.setAttribute('aria-selected', 'true');
-        tabLease.tabIndex = 0;
         tabLease.style.backgroundColor = '#007bff';
         tabLease.style.color = 'white';
+        tabLease.setAttribute('aria-selected', 'true');
+        tabLease.tabIndex = 0;
 
-        tabFinance.setAttribute('aria-selected', 'false');
-        tabFinance.tabIndex = -1;
         tabFinance.style.backgroundColor = '#e1e9f8';
         tabFinance.style.color = '#007bff';
+        tabFinance.setAttribute('aria-selected', 'false');
+        tabFinance.tabIndex = -1;
 
         financeForm.style.display = 'none';
-        leaseForm.style.display = 'flex';
+        leaseForm.style.display = 'block';
         calcResult.textContent = '';
       }
     }
@@ -651,10 +652,13 @@
         return;
       }
 
+      const totalInterestPaid = monthlyPayment * term - amountFinanced;
+
       calcResult.innerHTML = `<strong>Estimated Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}<br/>
         Term: ${term} months<br/>
         Amount Financed (incl. tax & fees): $${amountFinanced.toFixed(2)}<br/>
-        APR: ${apr.toFixed(2)}%`;
+        APR: ${apr.toFixed(2)}%<br/>
+        <strong>Total Interest Paid:</strong> $${totalInterestPaid.toFixed(2)}`;
     }
 
     // Lease Calculator
@@ -682,52 +686,59 @@
         return;
       }
 
-      // Fees and tax
-      const taxRate = 0.0625; // 6.25%
+      // Fees and tax constants
+      const taxRate = 0.0625;
       const docFee = 225;
       const ttlFee = 180;
       const acqFee = 595;
 
-      // Adjust residual for mileage - rough estimate
-      let adjResidual = residualPercent;
-      if (mileage > 12000) {
-        adjResidual -= 0.001 * (mileage - 12000) / 1000;
-      } else if (mileage < 12000) {
-        adjResidual += 0.001 * (12000 - mileage) / 1000;
+      // Mileage adjustment (~2% residual loss per 3k miles over 12k)
+      const mileageBase = 12000;
+      const mileageDiff = mileage - mileageBase;
+      const residualAdjustmentPer3k = 0.02;
+      let adjustedResidual = residualPercent;
+      if (mileageDiff > 0) {
+        adjustedResidual -= residualAdjustmentPer3k * (mileageDiff / 3000);
+        if (adjustedResidual < 0.5) adjustedResidual = 0.5; // minimum residual 50%
       }
-      adjResidual = Math.max(0, adjResidual);
 
-      const residualValue = msrp * adjResidual;
+      // Residual value
+      const residualValue = msrp * adjustedResidual;
 
-      // Monthly depreciation
-      const depreciation = (msrp - residualValue) / term;
+      // Capitalized cost = MSRP + fees + acquisition fee - down
+      const capCost = msrp + docFee + ttlFee + acqFee - down;
 
-      // Monthly finance charge
-      const monthlyFinanceCharge = (msrp + residualValue) * moneyFactor;
+      // Depreciation fee
+      const depreciationFee = (capCost - residualValue) / term;
+
+      // Finance fee
+      const financeFee = (capCost + residualValue) * moneyFactor;
 
       // Base monthly payment before tax
-      const baseMonthlyPayment = depreciation + monthlyFinanceCharge;
+      const baseMonthly = depreciationFee + financeFee;
 
-      // Monthly tax on payment
-      const monthlyTax = baseMonthlyPayment * taxRate;
+      // Tax on monthly payment
+      const taxAmount = baseMonthly * taxRate;
 
-      // Total monthly payment
-      const monthlyPayment = baseMonthlyPayment + monthlyTax;
+      const totalMonthly = baseMonthly + taxAmount;
 
-      // Due at signing
-      const dueAtSigning = down + docFee + ttlFee + acqFee;
-
-      if (monthlyPayment < 0 || isNaN(monthlyPayment)) {
+      if (totalMonthly < 0 || isNaN(totalMonthly)) {
         calcResult.textContent = 'Unable to calculate lease payment. Please check your inputs.';
         return;
       }
 
-      calcResult.innerHTML = `<strong>Estimated Monthly Lease Payment:</strong> $${monthlyPayment.toFixed(2)}<br/>
-        Due at Signing: $${dueAtSigning.toFixed(2)}<br/>
+      // Total due at signing = down payment + first month payment + doc fee + title/license
+      const dueAtSigning = down + totalMonthly + docFee + ttlFee;
+
+      calcResult.innerHTML = `<strong>Estimated Monthly Lease Payment:</strong> $${totalMonthly.toFixed(2)}<br/>
         Term: ${term} months<br/>
-        Residual Value: $${residualValue.toFixed(2)}<br/>
-        MSRP: $${msrp.toFixed(2)}<br/>
-        Mileage Allowance: ${mileage.toLocaleString()} miles/year`;
+        Mileage: ${mileage.toLocaleString()} miles/year<br/>
+        MSRP: $${msrp.toLocaleString()}<br/>
+        Residual Value: $${residualValue.toFixed(2)} (${(adjustedResidual * 100).toFixed(2)}%)<br/>
+        Money Factor: ${moneyFactor.toFixed(5)}<br/>
+        Acquisition Fee: $${acqFee}<br/>
+        <strong>Total Due at Signing:</strong> $${dueAtSigning.toFixed(2)}<br/>
+        (Includes down payment, first month payment, doc fee, and title/license fees)`;
     }
 
     // Reset functions
@@ -738,6 +749,7 @@
       document.getElementById('financeAPR').value = 9.99;
       calcResult.textContent = '';
     }
+
     function resetLease() {
       document.getElementById('leaseModel').selectedIndex = 0;
       document.getElementById('leaseTerm').value = 36;
@@ -746,16 +758,17 @@
       calcResult.textContent = '';
     }
 
-    // Event listeners
+    // Event Listeners
     document.getElementById('financeCalculateBtn').addEventListener('click', calculateFinance);
     document.getElementById('financeResetBtn').addEventListener('click', resetFinance);
     document.getElementById('leaseCalculateBtn').addEventListener('click', calculateLease);
     document.getElementById('leaseResetBtn').addEventListener('click', resetLease);
 
-    // Initialize finance tab active
+    // Default tab
     activateTab('finance');
   });
 </script>
+<!-- END: Finance & Lease Calculator -->
     
       <p class="disclaimer">* Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.</p>
     </div>
