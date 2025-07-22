@@ -366,365 +366,373 @@
       <div class="contact-info">
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
         <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
-          📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
-        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=2301+S+Grapevine+Crossing+Parkway,+Grapevine,+TX+76051" target="_blank" rel="noopener">📍 2301 S Grapevine Crossing Parkway, Grapevine, TX 76051</a>
       </div>
-      <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field" id="contactForm" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="form-name" value="quick-contact" />
-        <p style="display:none;">
-          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-        </p>
 
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
-        <button type="submit" class="button">Send to Kevin</button>
+      <form id="contactForm" onsubmit="return false;">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" required placeholder="Your full name" />
 
-        <p id="formMessage" style="margin-top:1rem; font-weight:700; color:green; display:none;">Thanks for reaching out! I’ll get back to you soon.</p>
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com" />
+
+        <label for="phone">Phone:</label>
+        <input id="phone" name="phone" type="tel" placeholder="(optional)" />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
+
+        <button type="submit" class="button">Send Message</button>
       </form>
     </div>
-<div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
 
-  <h2 style="text-align:center;color:#0074D9;margin-bottom:24px;">Finance & Lease Calculator</h2>
+    <div class="contact-box fade-in-section">
+      <h2>Finance &amp; Lease Calculator</h2>
 
-  <!-- Toggle buttons -->
-  <div style="text-align:center;margin-bottom:20px;">
-    <button id="toggle-fin" aria-pressed="true" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;background:#0074D9;color:#fff;cursor:pointer;">Finance</button>
-    <button id="toggle-lease" aria-pressed="false" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;color:#333;background:#e2e6ea;cursor:pointer;">Lease</button>
+      <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
+        <h2 style="text-align:center;color:#0074D9;margin-bottom:24px;">Finance & Lease Calculator</h2>
+
+        <!-- Toggle buttons -->
+        <div style="text-align:center;margin-bottom:20px;">
+          <button id="toggle-fin" aria-pressed="true" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;background:#0074D9;color:#fff;cursor:pointer;">Finance</button>
+          <button id="toggle-lease" aria-pressed="false" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;color:#333;background:#e2e6ea;cursor:pointer;">Lease</button>
+        </div>
+
+        <!-- Finance Form -->
+        <form id="finance-form" style="display:block;">
+          <label for="fin-msrp" style="display:block;margin-top:15px;font-weight:700;color:#222;">MSRP ($):</label>
+          <input id="fin-msrp" type="number" min="0" value="32000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+
+          <label for="fin-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
+          <input id="fin-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+
+          <label for="fin-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Term (months):</label>
+          <select id="fin-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="24">24</option>
+            <option value="36">36</option>
+            <option value="48">48</option>
+            <option value="60" selected>60</option>
+            <option value="72">72</option>
+            <option value="84">84</option>
+          </select>
+
+          <label for="fin-apr" style="display:block;margin-top:15px;font-weight:700;color:#222;">APR (%):</label>
+          <input id="fin-apr" type="number" min="0" step="0.01" value="9.99" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+
+          <div style="display:flex;justify-content:space-between;margin-top:30px;">
+            <button type="button" id="fin-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
+            <button type="button" id="fin-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
+          </div>
+
+          <div id="fin-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
+
+          <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
+            Estimated finance payments are approximate. Actual rates, terms, and payments may vary based on credit approval and dealer fees.
+          </p>
+        </form>
+
+        <!-- Lease Form -->
+        <form id="lease-form" style="display:none;">
+          <label for="lease-model" style="display:block;margin-top:15px;font-weight:700;color:#222;">Honda Model & Trim:</label>
+          <select id="lease-model" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <!-- 2026 MSRPs from Honda.com including destination -->
+            <!-- Civic Sedan -->
+            <option value="24595">Civic Sedan LX - $24,595</option>
+            <option value="26095">Civic Sedan Sport - $26,095</option>
+            <option value="28295">Civic Sedan EX-L - $28,295</option>
+            <option value="32295">Civic Sedan Sport Touring - $32,295</option>
+            <option value="29295">Civic Sedan Hybrid - $29,295</option>
+            <option value="32295">Civic Sedan Sport Touring Hybrid - $32,295</option>
+
+            <!-- Civic Hatchback -->
+            <option value="27795">Civic Hatchback Sport - $27,795</option>
+            <option value="30495">Civic Hatchback Sport Touring - $30,495</option>
+            <option value="33495">Civic Hatchback Sport Touring Hybrid - $33,495</option>
+
+            <!-- Accord Sedan -->
+            <option value="28295">Accord LX - $28,295</option>
+            <option value="30560">Accord Sport - $30,560</option>
+            <option value="33060">Accord EX-L - $33,060</option>
+            <option value="34060">Accord Sport Special Edition - $34,060</option>
+            <option value="36560">Accord Touring - $36,560</option>
+            <option value="33655">Accord Hybrid - $33,655</option>
+            <option value="34655">Accord Sport Special Edition Hybrid - $34,655</option>
+            <option value="36655">Accord Touring Hybrid - $36,655</option>
+
+            <!-- CR-V -->
+            <option value="30920">CR-V LX - $30,920</option>
+            <option value="33150">CR-V EX - $33,150</option>
+            <option value="35150">CR-V EX-L - $35,150</option>
+            <option value="35150">CR-V Sport - $35,150</option>
+            <option value="37150">CR-V Sport Touring - $37,150</option>
+            <option value="35630">CR-V Hybrid - $35,630</option>
+            <option value="37630">CR-V Sport Hybrid - $37,630</option>
+            <option value="39630">CR-V Sport Touring Hybrid - $39,630</option>
+
+            <!-- Pilot -->
+            <option value="40200">Pilot Sport - $40,200</option>
+            <option value="42200">Pilot EX-L - $42,200</option>
+            <option value="45200">Pilot Touring - $45,200</option>
+            <option value="49200">Pilot Elite - $49,200</option>
+            <option value="47200">Pilot TrailSport - $47,200</option>
+            <option value="49200">Pilot TrailSport Hybrid - $49,200</option>
+            <option value="53200">Pilot Elite Hybrid - $53,200</option>
+
+            <!-- Passport -->
+            <option value="44750">Passport Sport - $44,750</option>
+            <option value="47250">Passport EX-L - $47,250</option>
+            <option value="49250">Passport TrailSport - $49,250</option>
+            <option value="52450">Passport TrailSport Elite - $52,450</option>
+
+            <!-- Ridgeline -->
+            <option value="40150">Ridgeline Sport - $40,150</option>
+            <option value="43150">Ridgeline RTL - $43,150</option>
+            <option value="46150">Ridgeline RTL-E - $46,150</option>
+            <option value="49150">Ridgeline Black Edition - $49,150</option>
+
+            <!-- Odyssey -->
+            <option value="42220">Odyssey EX - $42,220</option>
+            <option value="45220">Odyssey EX-L - $45,220</option>
+            <option value="48220">Odyssey Touring - $48,220</option>
+            <option value="51220">Odyssey Elite - $51,220</option>
+          </select>
+
+          <label for="lease-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Lease Term (months):</label>
+          <select id="lease-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="24">24</option>
+            <option value="27">27</option>
+            <option value="33">33</option>
+            <option value="36" selected>36</option>
+            <option value="39">39</option>
+            <option value="42">42</option>
+            <option value="48">48</option>
+          </select>
+
+          <label for="lease-mileage" style="display:block;margin-top:15px;font-weight:700;color:#222;">Annual Mileage:</label>
+          <select id="lease-mileage" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="10000">10,000 miles/year</option>
+            <option value="12000" selected>12,000 miles/year</option>
+            <option value="15000">15,000 miles/year</option>
+          </select>
+
+          <label for="lease-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
+          <input id="lease-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+
+          <div style="display:flex;justify-content:space-between;margin-top:30px;">
+            <button type="button" id="lease-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
+            <button type="button" id="lease-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
+          </div>
+
+          <div id="lease-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
+
+          <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
+            Estimated lease payments are for informational purposes only. Final terms, residuals, and money factors are subject to credit approval and dealer discretion.
+          </p>
+        </form>
+      </div>
+
+    </div>
   </div>
 
-  <!-- Finance Form -->
-  <form id="finance-form" style="display:block;">
-    <label for="fin-msrp" style="display:block;margin-top:15px;font-weight:700;color:#222;">MSRP ($):</label>
-    <input id="fin-msrp" type="number" min="0" value="32000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+  <footer style="background:#003366;color:#f8f9fa;text-align:center;padding:1rem 1rem;font-size:0.95rem;user-select:none;">
+    <p>© 2025 Kevin at Grapevine Honda. All rights reserved.</p>
+    <p><a href="https://g.co/kgs/1XPhfgi" target="_blank" rel="noopener" style="color:#aad4ff;">Check out my reviews on Google</a></p>
+  </footer>
 
-    <label for="fin-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
-    <input id="fin-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+  <script>
+    (function() {
+      // Toggle forms and button styles
+      const toggleFin = document.getElementById('toggle-fin');
+      const toggleLease = document.getElementById('toggle-lease');
+      const finForm = document.getElementById('finance-form');
+      const leaseForm = document.getElementById('lease-form');
 
-    <label for="fin-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Term (months):</label>
-    <select id="fin-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-      <option value="24">24</option>
-      <option value="36">36</option>
-      <option value="48">48</option>
-      <option value="60" selected>60</option>
-      <option value="72">72</option>
-      <option value="84">84</option>
-    </select>
+      toggleFin.addEventListener('click', () => {
+        finForm.style.display = 'block';
+        leaseForm.style.display = 'none';
+        toggleFin.style.backgroundColor = '#0074D9';
+        toggleFin.style.color = '#fff';
+        toggleFin.setAttribute('aria-pressed', 'true');
+        toggleLease.style.backgroundColor = '#e2e6ea';
+        toggleLease.style.color = '#333';
+        toggleLease.setAttribute('aria-pressed', 'false');
+      });
 
-    <label for="fin-apr" style="display:block;margin-top:15px;font-weight:700;color:#222;">APR (%):</label>
-    <input id="fin-apr" type="number" min="0" step="0.01" value="9.99" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+      toggleLease.addEventListener('click', () => {
+        finForm.style.display = 'none';
+        leaseForm.style.display = 'block';
+        toggleLease.style.backgroundColor = '#0074D9';
+        toggleLease.style.color = '#fff';
+        toggleLease.setAttribute('aria-pressed', 'true');
+        toggleFin.style.backgroundColor = '#e2e6ea';
+        toggleFin.style.color = '#333';
+        toggleFin.setAttribute('aria-pressed', 'false');
+      });
 
-    <div style="display:flex;justify-content:space-between;margin-top:30px;">
-      <button type="button" id="fin-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
-      <button type="button" id="fin-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
-    </div>
+      // Finance calculation
+      document.getElementById('fin-calc').addEventListener('click', () => {
+        const msrp = parseFloat(document.getElementById('fin-msrp').value);
+        const down = parseFloat(document.getElementById('fin-down').value);
+        const term = parseInt(document.getElementById('fin-term').value);
+        const apr = parseFloat(document.getElementById('fin-apr').value);
 
-    <div id="fin-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
+        if (isNaN(msrp) || msrp <= 0) {
+          alert('Please enter a valid MSRP.');
+          return;
+        }
+        if (isNaN(down) || down < 0) {
+          alert('Please enter a valid down payment.');
+          return;
+        }
+        if (isNaN(term) || term <= 0) {
+          alert('Please select a valid term.');
+          return;
+        }
+        if (isNaN(apr) || apr < 0) {
+          alert('Please enter a valid APR.');
+          return;
+        }
 
-    <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
-      Estimated finance payments are approximate. Actual rates, terms, and payments may vary based on credit approval and dealer fees.
-    </p>
-  </form>
+        const principal = msrp - down;
+        const monthlyRate = apr / 100 / 12;
+        const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
+        const denominator = Math.pow(1 + monthlyRate, term) - 1;
+        const monthlyPayment = principal * (numerator / denominator);
+        const totalInterest = monthlyPayment * term - principal;
 
-  <!-- Lease Form -->
-  <form id="lease-form" style="display:none;">
-    <label for="lease-model" style="display:block;margin-top:15px;font-weight:700;color:#222;">Honda Model & Trim:</label>
-    <select id="lease-model" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-      <!-- 2026 MSRPs from Honda.com including destination -->
-      <!-- Civic Sedan -->
-      <option value="24595">Civic Sedan LX - $24,595</option>
-      <option value="26095">Civic Sedan Sport - $26,095</option>
-      <option value="28295">Civic Sedan EX-L - $28,295</option>
-      <option value="32295">Civic Sedan Sport Touring - $32,295</option>
-      <option value="29295">Civic Sedan Hybrid - $29,295</option>
-      <option value="32295">Civic Sedan Sport Touring Hybrid - $32,295</option>
+        const output = `
+          Estimated monthly payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+          Total interest paid over ${term} months: <strong>$${totalInterest.toFixed(2)}</strong><br />
+          Total cost (principal + interest): <strong>$${(principal + totalInterest).toFixed(2)}</strong>
+        `;
 
-      <!-- Civic Hatchback -->
-      <option value="27795">Civic Hatchback Sport - $27,795</option>
-      <option value="30495">Civic Hatchback Sport Touring - $30,495</option>
-      <option value="33495">Civic Hatchback Sport Touring Hybrid - $33,495</option>
+        document.getElementById('fin-output').innerHTML = output;
+      });
 
-      <!-- Accord Sedan -->
-      <option value="28295">Accord LX - $28,295</option>
-      <option value="30560">Accord Sport - $30,560</option>
-      <option value="33060">Accord EX-L - $33,060</option>
-      <option value="34060">Accord Sport Special Edition - $34,060</option>
-      <option value="36560">Accord Touring - $36,560</option>
-      <option value="33655">Accord Hybrid - $33,655</option>
-      <option value="34655">Accord Sport Special Edition Hybrid - $34,655</option>
-      <option value="36655">Accord Touring Hybrid - $36,655</option>
+      document.getElementById('fin-reset').addEventListener('click', () => {
+        document.getElementById('fin-msrp').value = '';
+        document.getElementById('fin-down').value = '';
+        document.getElementById('fin-term').value = '60';
+        document.getElementById('fin-apr').value = '9.99';
+        document.getElementById('fin-output').innerHTML = '';
+      });
 
-      <!-- CR-V -->
-      <option value="30920">CR-V LX - $30,920</option>
-      <option value="33150">CR-V EX - $33,150</option>
-      <option value="35150">CR-V EX-L - $35,150</option>
-      <option value="35150">CR-V Sport - $35,150</option>
-      <option value="37150">CR-V Sport Touring - $37,150</option>
-      <option value="35630">CR-V Hybrid - $35,630</option>
-      <option value="37630">CR-V Sport Hybrid - $37,630</option>
-      <option value="39630">CR-V Sport Touring Hybrid - $39,630</option>
+      // Lease calculation
+      document.getElementById('lease-calc').addEventListener('click', () => {
+        // Constants
+        const acquisitionFee = 595;
+        const docFee = 225;
+        const licenseFee = 180;
+        const taxRate = 0.0625; // 6.25%
+        const moneyFactor = 0.00125;
 
-      <!-- Pilot -->
-      <option value="40200">Pilot Sport - $40,200</option>
-      <option value="42200">Pilot EX-L - $42,200</option>
-      <option value="45200">Pilot Touring - $45,200</option>
-      <option value="49200">Pilot Elite - $49,200</option>
-      <option value="47200">Pilot TrailSport - $47,200</option>
-      <option value="49200">Pilot TrailSport Hybrid - $49,200</option>
-      <option value="53200">Pilot Elite Hybrid - $53,200</option>
+        // Inputs
+        const msrp = parseFloat(document.getElementById('lease-model').value);
+        const term = parseInt(document.getElementById('lease-term').value);
+        const mileage = parseInt(document.getElementById('lease-mileage').value);
+        const down = parseFloat(document.getElementById('lease-down').value);
 
-      <!-- Passport -->
-      <option value="44750">Passport Sport - $44,750</option>
-      <option value="47250">Passport EX-L - $47,250</option>
-      <option value="49250">Passport TrailSport - $49,250</option>
-      <option value="52450">Passport TrailSport Elite - $52,450</option>
+        if (isNaN(msrp) || msrp <= 0) {
+          alert('Please select a valid Honda model.');
+          return;
+        }
+        if (isNaN(term) || term <= 0) {
+          alert('Please select a valid lease term.');
+          return;
+        }
+        if (![10000,12000,15000].includes(mileage)) {
+          alert('Please select a valid mileage option.');
+          return;
+        }
+        if (isNaN(down) || down < 0) {
+          alert('Please enter a valid down payment.');
+          return;
+        }
 
-      <!-- Ridgeline -->
-      <option value="40150">Ridgeline Sport - $40,150</option>
-      <option value="43150">Ridgeline RTL - $43,150</option>
-      <option value="46150">Ridgeline RTL-E - $46,150</option>
-      <option value="49150">Ridgeline Black Edition - $49,150</option>
+        // Residual base values per term - 36 months base, others scaled approx
+        const baseResidual36 = 0.56; // example base for 36 months
+        const baseResiduals = {
+          24: 0.64,
+          27: 0.61,
+          33: 0.58,
+          36: 0.56,
+          39: 0.54,
+          42: 0.52,
+          48: 0.49,
+        };
 
-      <!-- Odyssey -->
-      <option value="42220">Odyssey EX - $42,220</option>
-      <option value="45220">Odyssey EX-L - $45,220</option>
-      <option value="48220">Odyssey Touring - $48,220</option>
-      <option value="51220">Odyssey Elite - $51,220</option>
-    </select>
+        // Mileage adjustment factors (approximate decreases in residual)
+        // Common Honda lease mileage adjustment per year over 12k: roughly -0.002 per 1k miles
+        const mileageAdjPer1000 = 0.002;
 
-    <label for="lease-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Lease Term (months):</label>
-    <select id="lease-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-      <option value="24">24</option>
-      <option value="27">27</option>
-      <option value="33">33</option>
-      <option value="36" selected>36</option>
-      <option value="39">39</option>
-      <option value="42">42</option>
-      <option value="48">48</option>
-    </select>
+        // Calculate residual value
+        let residualPercent = baseResiduals[term] || 0.56;
 
-    <label for="lease-mileage" style="display:block;margin-top:15px;font-weight:700;color:#222;">Annual Mileage:</label>
-    <select id="lease-mileage" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-      <option value="10000">10,000 miles/year</option>
-      <option value="12000" selected>12,000 miles/year</option>
-      <option value="15000">15,000 miles/year</option>
-    </select>
+        // Adjust residual for mileage
+        if (mileage === 10000) residualPercent += mileageAdjPer1000 * 2; // 2k miles less than 12k
+        else if (mileage === 15000) residualPercent -= mileageAdjPer1000 * 3; // 3k miles more than 12k
 
-    <label for="lease-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
-    <input id="lease-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+        if (residualPercent > 0.8) residualPercent = 0.8;
+        if (residualPercent < 0.35) residualPercent = 0.35;
 
-    <div style="display:flex;justify-content:space-between;margin-top:30px;">
-      <button type="button" id="lease-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
-      <button type="button" id="lease-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
-    </div>
+        const residualValue = msrp * residualPercent;
 
-    <div id="lease-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
+        // Calculate depreciation fee
+        const depreciation = msrp - residualValue;
 
-    <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
-      Estimated lease payments are for informational purposes only. Final terms, residuals, and money factors are subject to credit approval and dealer discretion.
-    </p>
-  </form>
-</div>
+        // Monthly depreciation + finance fees
+        const monthlyDepreciation = depreciation / term;
+        const monthlyFinance = (msrp + residualValue) * moneyFactor;
 
-<script>
-  (function() {
-    // Toggle forms
-    const toggleFin = document.getElementById('toggle-fin');
-    const toggleLease = document.getElementById('toggle-lease');
-    const finForm = document.getElementById('finance-form');
-    const leaseForm = document.getElementById('lease-form');
+        // Base monthly payment before tax
+        const baseMonthly = monthlyDepreciation + monthlyFinance;
 
-    toggleFin.addEventListener('click', () => {
-      finForm.style.display = 'block';
-      leaseForm.style.display = 'none';
-      toggleFin.style.backgroundColor = '#0074D9';
-      toggleFin.style.color = '#fff';
-      toggleFin.setAttribute('aria-pressed', 'true');
-      toggleLease.style.backgroundColor = '#e2e6ea';
-      toggleLease.style.color = '#333';
-      toggleLease.setAttribute('aria-pressed', 'false');
-    });
+        // Monthly tax applied to payment
+        const monthlyTax = baseMonthly * taxRate;
 
-    toggleLease.addEventListener('click', () => {
-      finForm.style.display = 'none';
-      leaseForm.style.display = 'block';
-      toggleLease.style.backgroundColor = '#0074D9';
-      toggleLease.style.color = '#fff';
-      toggleLease.setAttribute('aria-pressed', 'true');
-      toggleFin.style.backgroundColor = '#e2e6ea';
-      toggleFin.style.color = '#333';
-      toggleFin.setAttribute('aria-pressed', 'false');
-    });
+        // Total monthly payment including tax
+        const monthlyPayment = baseMonthly + monthlyTax;
 
-    // Finance calculation
-    document.getElementById('fin-calc').addEventListener('click', () => {
-      const msrp = parseFloat(document.getElementById('fin-msrp').value);
-      const down = parseFloat(document.getElementById('fin-down').value);
-      const term = parseInt(document.getElementById('fin-term').value);
-      const apr = parseFloat(document.getElementById('fin-apr').value) / 100 / 12;
+        // Total due at signing (drive off)
+        const totalDriveOff = down + acquisitionFee + docFee + licenseFee;
 
-      if (isNaN(msrp) || msrp <= 0) {
-        alert('Please enter a valid MSRP.');
-        return;
-      }
-      if (isNaN(down) || down < 0) {
-        alert('Please enter a valid down payment.');
-        return;
-      }
-      if (down > msrp) {
-        alert('Down payment cannot exceed MSRP.');
-        return;
-      }
-      if (isNaN(term) || term <= 0) {
-        alert('Please select a valid term.');
-        return;
-      }
-      if (isNaN(apr) || apr < 0) {
-        alert('Please enter a valid APR.');
-        return;
+        // Display
+        const output = `
+          Estimated monthly lease payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+          Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent*100).toFixed(1)}%)<br />
+          Estimated drive-off amount (due at signing): <strong>$${totalDriveOff.toFixed(2)}</strong> (includes down payment, acquisition, doc, license fees)
+        `;
+
+        document.getElementById('lease-output').innerHTML = output;
+      });
+
+      document.getElementById('lease-reset').addEventListener('click', () => {
+        document.getElementById('lease-model').selectedIndex = 0;
+        document.getElementById('lease-term').value = '36';
+        document.getElementById('lease-mileage').value = '12000';
+        document.getElementById('lease-down').value = '';
+        document.getElementById('lease-output').innerHTML = '';
+      });
+
+      // Fade in animation for contact boxes
+      function onEntry(entry) {
+        entry.forEach(change => {
+          if (change.isIntersecting) {
+            change.target.classList.add('visible');
+          }
+        });
       }
 
-      const principal = msrp - down;
-      let monthlyPayment;
-      if (apr === 0) {
-        monthlyPayment = principal / term;
-      } else {
-        monthlyPayment = (principal * apr) / (1 - Math.pow(1 + apr, -term));
+      let options = {threshold: [0.2]};
+      let observer = new IntersectionObserver(onEntry, options);
+      let elements = document.querySelectorAll('.fade-in-section');
+
+      for (let elm of elements) {
+        observer.observe(elm);
       }
-
-      const taxRate = 0.0625;
-      const docFee = 225;
-      const licenseFee = 180;
-
-      const taxOnPayment = monthlyPayment * taxRate;
-      const totalMonthly = monthlyPayment + taxOnPayment;
-      const totalInterest = (monthlyPayment * term) - principal;
-
-      const driveOff = down + docFee + licenseFee;
-
-      document.getElementById('fin-output').innerHTML =
-        `<strong>Estimated Monthly Payment:</strong> $${totalMonthly.toFixed(2)}<br>` +
-        `<strong>Drive-Off Amount:</strong> $${driveOff.toFixed(2)}<br>` +
-        `<strong>Total Interest Paid:</strong> $${totalInterest.toFixed(2)}`;
-    });
-
-    // Finance reset
-    document.getElementById('fin-reset').addEventListener('click', () => {
-      document.getElementById('fin-msrp').value = 32000;
-      document.getElementById('fin-down').value = 2000;
-      document.getElementById('fin-term').value = 60;
-      document.getElementById('fin-apr').value = 9.99;
-      document.getElementById('fin-output').innerHTML = '';
-    });
-
-    // Lease calculation
-    document.getElementById('lease-calc').addEventListener('click', () => {
-      const msrp = parseFloat(document.getElementById('lease-model').value);
-      const term = parseInt(document.getElementById('lease-term').value);
-      const mileage = parseInt(document.getElementById('lease-mileage').value);
-      const down = parseFloat(document.getElementById('lease-down').value);
-
-      if (isNaN(msrp) || msrp <= 0) {
-        alert('Please select a valid model.');
-        return;
-      }
-      if (isNaN(term) || term <= 0) {
-        alert('Please select a valid lease term.');
-        return;
-      }
-      if (isNaN(mileage) || mileage <= 0) {
-        alert('Please select valid mileage.');
-        return;
-      }
-      if (isNaN(down) || down < 0) {
-        alert('Please enter a valid down payment.');
-        return;
-      }
-      if (down > msrp) {
-        alert('Down payment cannot exceed MSRP.');
-        return;
-      }
-
-      // Residual values based on term and mileage for Honda typical (approximate)
-      // These values are rough estimates based on typical Honda residuals from 2023-2026.
-      // Residual percent decreases as mileage increases.
-
-      // Base residual percentages by term (months) for 12k miles/year
-      const baseResiduals = {
-        24: 0.75,
-        27: 0.72,
-        33: 0.68,
-        36: 0.65,
-        39: 0.63,
-        42: 0.60,
-        48: 0.55
-      };
-
-      // Mileage adjustment (reduce residual by 1.5% per 3k miles above 10k)
-      // 10k miles: no adjustment, 12k miles: -1%, 15k miles: -2.5%
-      let mileageAdjustment = 0;
-      if (mileage === 10000) mileageAdjustment = 0;
-      else if (mileage === 12000) mileageAdjustment = 0.01;
-      else if (mileage === 15000) mileageAdjustment = 0.025;
-
-      let residualPct = baseResiduals[term] - mileageAdjustment;
-      if (residualPct < 0) residualPct = 0;
-
-      const residualValue = msrp * residualPct;
-
-      // Money factor typical for Honda leases (approximate)
-      // 0.00125 corresponds roughly to 3% APR
-      const moneyFactor = 0.00125;
-
-      // Fees & Tax
-      const acquisitionFee = 595;
-      const docFee = 225;
-      const licenseFee = 180;
-      const taxRate = 0.0625;
-
-      // Cap cost is MSRP minus down payment
-      const capCost = msrp - down;
-
-      // Depreciation fee
-      const depreciation = (capCost - residualValue) / term;
-
-      // Finance fee
-      const financeFee = (capCost + residualValue) * moneyFactor;
-
-      // Monthly payment before tax
-      const monthlyPaymentPreTax = depreciation + financeFee;
-
-      // Monthly tax on payment
-      const taxMonthly = monthlyPaymentPreTax * taxRate;
-
-      // Total monthly payment
-      const monthlyPayment = monthlyPaymentPreTax + taxMonthly;
-
-      // Drive-off amount: down + acquisition + doc + license
-      const driveOff = down + acquisitionFee + docFee + licenseFee;
-
-      document.getElementById('lease-output').innerHTML =
-        `<strong>Estimated Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}<br>` +
-        `<strong>Drive-Off Amount:</strong> $${driveOff.toFixed(2)}<br>` +
-        `<strong>Residual Value:</strong> $${residualValue.toFixed(2)}<br>` +
-        `<strong>Money Factor:</strong> ${moneyFactor.toFixed(5)}`;
-    });
-
-    // Lease reset
-    document.getElementById('lease-reset').addEventListener('click', () => {
-      document.getElementById('lease-model').selectedIndex = 0;
-      document.getElementById('lease-term').value = 36;
-      document.getElementById('lease-mileage').value = 12000;
-      document.getElementById('lease-down').value = 2000;
-      document.getElementById('lease-output').innerHTML = '';
-    });
-
-  })();
-</script>
-
-<!--Start of Tawk.to Script-->
+    })();
+  </script>
+  <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -737,6 +745,5 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-
 </body>
 </html>
