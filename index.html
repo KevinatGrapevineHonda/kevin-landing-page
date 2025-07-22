@@ -6,23 +6,10 @@
   <title>Kevin | Grapevine Honda</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Kevin at Grapevine Honda – Your trusted source for new and used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX." />
-  <meta name="keywords" content="Grapevine Honda, Honda Sales, Honda Deals, Car Financing Texas, Honda Specials, Value My Trade, Apply for Financing" />
-  <meta name="author" content="Kevin at Grapevine Honda" />
-  <link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Kevin | Grapevine Honda" />
-  <meta property="og:description" content="Kevin at Grapevine Honda – Your trusted source for new and used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX." />
-  <meta property="og:url" content="https://kevinatgrapevinehonda.netlify.app/" />
-  <meta property="og:image" content="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kevin | Grapevine Honda" />
-  <meta name="twitter:description" content="Kevin at Grapevine Honda – Your trusted source for new and used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX." />
-  <meta name="twitter:image" content="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" />
+  <meta name="description" content="Kevin at Grapevine Honda – Your trusted source for new and used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX.">
+  <meta name="keywords" content="Grapevine Honda, Honda Sales, Honda Deals, Car Financing Texas, Honda Specials, Value My Trade, Apply for Financing">
+  <meta name="author" content="Kevin at Grapevine Honda">
+  <link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="download.png" />
@@ -269,7 +256,7 @@
       color: #003366;
       font-size: 1.15rem;
       line-height: 1.4;
-      min-height: 6rem;
+      min-height: 5rem;
     }
     .finance-calculator p.disclaimer {
       font-style: italic;
@@ -308,37 +295,6 @@
       pointer-events: none;
     }
 
-    /* Toggle Switch styles */
-    .toggle-container {
-      margin-bottom: 1rem;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #003366;
-      user-select: none;
-    }
-    .toggle-container input[type="radio"] {
-      display: none;
-    }
-    .toggle-container label {
-      cursor: pointer;
-      padding: 10px 24px;
-      border-radius: 24px;
-      background: #007bff;
-      color: white;
-      margin: 0 8px;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .toggle-container input[type="radio"]:checked + label {
-      background-color: #0056b3;
-      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
-    }
-    .toggle-container label:hover {
-      background-color: #0056b3;
-      box-shadow: 0 6px 18px rgba(0,86,179,0.7);
-    }
-
     /* Responsive */
     @media (max-width: 600px) {
       .contact-box {
@@ -359,11 +315,6 @@
         display: block;
         margin: 0 auto 15px auto;
         max-width: 120px;
-      }
-      .toggle-container label {
-        padding: 10px 16px;
-        margin: 0 4px;
-        font-size: 1rem;
       }
     }
   </style>
@@ -416,621 +367,136 @@
         <a href="mailto:kevinhoward@lithia.com">📧 kevinhoward@lithia.com</a>
         <a href="tel:12125420771">📞 Call or Text: (212) 542-0771</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">
-          📍
-2301 William D Tate Ave, Grapevine, TX 76051</a>
+          📍 2301 William D Tate Ave, Grapevine, TX 76051 (Get Directions)
+        </a>
       </div>
+      <form name="quick-contact" method="POST" netlify netlify-honeypot="bot-field" id="contactForm" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="quick-contact" />
+        <p style="display:none;">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
 
-      <h2>Send Me a Message</h2>
-      <form id="contactForm" action="https://formsubmit.co/kevinhoward@lithia.com" method="POST" target="_blank">
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://kevinatgrapevinehonda.netlify.app/thankyou.html" />
-        
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" placeholder="Full Name" required />
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" required />
+        <textarea name="message" placeholder="How can I help you today?" rows="4"></textarea>
+        <button type="submit" class="button">Send to Kevin</button>
 
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-        <label for="phone">Phone Number *</label>
-        <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required />
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="How can I help you today?"></textarea>
-
-        <button type="submit" class="button">Send Message</button>
+        <p id="formMessage" style="margin-top:1rem; font-weight:700; color:green; display:none;">Thanks for reaching out! I’ll get back to you soon.</p>
       </form>
     </div>
-<style>
-  /* Scoped styles for the calculator container */
-  .calculator-container {
-    max-width: 520px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-  }
-  .calculator-container h2 {
-    text-align: center;
-  }
-  .calculator-container .toggle {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .calculator-container .toggle button {
-    padding: 10px 25px;
-    margin: 0 5px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background-color: #eee;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  .calculator-container .toggle button.active {
-    background-color: #0074D9;
-    color: white;
-  }
-  .calculator-container .calculator {
-    display: none;
-  }
-  .calculator-container .calculator.active {
-    display: block;
-  }
-  .calculator-container label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-  }
-  .calculator-container input,
-  .calculator-container select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    font-size: 1em;
-  }
-  .calculator-container .btns {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  .calculator-container .btns button {
-    width: 48%;
-    padding: 12px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .calculator-container #fin-calc,
-  .calculator-container #lease-calc {
-    background-color: #0074D9;
-    color: white;
-  }
-  .calculator-container #fin-reset,
-  .calculator-container #lease-reset {
-    background-color: #d9534f;
-    color: white;
-  }
-  .calculator-container .output {
-    margin-top: 20px;
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 1.1em;
-  }
-  .calculator-container .disclaimer {
-    margin-top: 12px;
-    font-size: 0.85em;
-    color: #555;
-  }
-  @media (max-width: 480px) {
-    .calculator-container .btns {
-      flex-direction: column;
-    }
-    .calculator-container .btns button {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-</style>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kevin | Grapevine Honda - Finance & Lease Calculator</title>
-  <meta name="description" content="Calculate your Honda finance and lease payments with accurate 2026 MSRP, Texas tax and fees. Kevin at Grapevine Honda is here to help you get the best deal." />
-  <style>
-    /* Reset some base styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f8f9fa;
-      color: #222;
-      line-height: 1.5;
-    }
-    header, footer {
-      background-color: #0074D9;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    main {
-      max-width: 960px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    /* Scoped calculator styles */
-    #kevin-calc-wrapper {
-      max-width: 520px;
-      margin: 0 auto 60px auto;
-      background: white;
-      padding: 25px 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    #kevin-calc-wrapper h2 {
-      text-align: center;
-      margin-bottom: 24px;
-      font-size: 1.9rem;
-      color: #004a99;
-    }
-    #kevin-calc-wrapper .toggle {
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    #kevin-calc-wrapper .toggle button {
-      padding: 10px 36px;
-      margin: 0 10px;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      background-color: #e2e6ea;
-      color: #333;
-      font-size: 1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    #kevin-calc-wrapper .toggle button.active {
-      background-color: #0074D9;
-      color: white;
-    }
-    #kevin-calc-wrapper .calculator {
-      display: none;
-    }
-    #kevin-calc-wrapper .calculator.active {
-      display: block;
-    }
-    #kevin-calc-wrapper label {
-      display: block;
-      margin-top: 18px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #222;
-    }
-    #kevin-calc-wrapper input,
-    #kevin-calc-wrapper select {
-      width: 100%;
-      padding: 9px 12px;
-      margin-top: 6px;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #bbb;
-      box-sizing: border-box;
-      transition: border-color 0.25s ease;
-    }
-    #kevin-calc-wrapper input:focus,
-    #kevin-calc-wrapper select:focus {
-      border-color: #0074D9;
-      outline: none;
-    }
-    #kevin-calc-wrapper .btns {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 32px;
-    }
-    #kevin-calc-wrapper .btns button {
-      width: 48%;
-      padding: 14px 0;
-      font-size: 1.15rem;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    #kevin-calc-wrapper #fin-calc,
-    #kevin-calc-wrapper #lease-calc {
-      background-color: #0074D9;
-      color: white;
-    }
-    #kevin-calc-wrapper #fin-calc:hover,
-    #kevin-calc-wrapper #lease-calc:hover {
-      background-color: #005bb5;
-    }
-    #kevin-calc-wrapper #fin-reset,
-    #kevin-calc-wrapper #lease-reset {
-      background-color: #d9534f;
-      color: white;
-    }
-    #kevin-calc-wrapper #fin-reset:hover,
-    #kevin-calc-wrapper #lease-reset:hover {
-      background-color: #b52b27;
-    }
-    #kevin-calc-wrapper .output {
-      margin-top: 28px;
-      background: #f1f3f5;
-      padding: 18px 22px;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      color: #1a1a1a;
-      line-height: 1.4;
-      min-height: 88px;
-    }
-    #kevin-calc-wrapper .disclaimer {
-      margin-top: 14px;
-      font-size: 0.88rem;
-      color: #555;
-      font-style: italic;
-      text-align: center;
-      user-select: none;
-    }
-    @media (max-width: 600px) {
-      #kevin-calc-wrapper .btns {
-        flex-direction: column;
-      }
-      #kevin-calc-wrapper .btns button {
-        width: 100%;
-        margin-bottom: 12px;
-      }
-      #kevin-calc-wrapper .btns button:last-child {
-        margin-bottom: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Kevin at Grapevine Honda</h1>
-  </header>
-  <main>
-    <section id="kevin-calc-wrapper" role="main" aria-label="Finance and Lease Calculator">
-      <h2>Finance & Lease Calculator</h2>
-
-      <div class="toggle" role="tablist" aria-label="Select Calculator Type">
-        <button id="btn-fin" class="active" aria-pressed="true" role="tab" aria-controls="finance-form">Finance</button>
-        <button id="btn-lease" aria-pressed="false" role="tab" aria-controls="lease-form">Lease</button>
-      </div>
-
-      <!-- Finance Calculator -->
-      <section id="finance-form" class="calculator active" aria-label="Finance Calculator" role="tabpanel" tabindex="0">
-        <label for="fin-msrp">MSRP ($):</label>
-        <input type="number" id="fin-msrp" min="0" value="32000" aria-describedby="fin-msrp-desc" />
-        <small id="fin-msrp-desc">Enter MSRP price (base vehicle price)</small>
-
-        <label for="fin-down">Down Payment ($):</label>
-        <input type="number" id="fin-down" min="0" value="2000" />
-
-        <label for="fin-term">Term (months):</label>
-        <select id="fin-term" aria-label="Finance term in months">
-          <option value="24">24</option><option value="36">36</option><option value="48">48</option>
-          <option value="60" selected>60</option><option value="72">72</option><option value="84">84</option>
-        </select>
-
-        <label for="fin-apr">APR (%):</label>
-        <input type="number" id="fin-apr" min="0" step="0.01" value="9.99" />
-
-        <div class="btns">
-          <button id="fin-calc" aria-label="Calculate finance payment">Calculate Payment</button>
-          <button id="fin-reset" aria-label="Reset finance calculator">Reset Calculator</button>
+ <div class="contact-box finance-calculator fade-in-section">
+      <h2>Finance Calculator</h2>
+      <form id="financeCalcForm" onsubmit="return false;">
+        <label for="price">Vehicle Price ($):</label>
+        <div class="input-wrapper">
+          <span class="prefix-sign">$</span>
+          <input type="number" id="price" name="price" min="1000" step="100" value="30000" required />
         </div>
 
-        <div id="fin-output" class="output" aria-live="polite"></div>
-        <div class="disclaimer">
-          Estimated finance payments are approximate. Actual rates, terms, and payments may vary based on credit approval and dealer fees.
-        </div>
-      </section>
-
-      <!-- Lease Calculator -->
-      <section id="lease-form" class="calculator" aria-label="Lease Calculator" role="tabpanel" tabindex="0">
-        <label for="lease-model">Honda Model & Trim:</label>
-        <select id="lease-model" aria-describedby="lease-model-desc" aria-label="Select Honda Model and Trim for lease">
-          <!-- Civic trims ($1170 dest) -->
-          <option value="26040">Civic LX - $26,040</option>
-          <option value="28020">Civic Sport - $28,020</option>
-          <option value="30200">Civic EX - $30,200</option>
-          <option value="34060">Civic Touring - $34,060</option>
-          <option value="32990">Civic Si - $32,990</option>
-          <option value="44340">Civic Type R - $44,340</option>
-
-          <!-- Accord trims ($1170 dest) -->
-          <option value="29340">Accord LX - $29,340</option>
-          <option value="32060">Accord Sport - $32,060</option>
-          <option value="34960">Accord EX-L - $34,960</option>
-          <option value="39460">Accord Touring - $39,460</option>
-          <option value="35560">Accord Hybrid EX-L - $35,560</option>
-          <option value="39810">Accord Hybrid Touring - $39,810</option>
-
-          <!-- CR-V trims ($1275 dest) -->
-          <option value="30030">CR-V LX - $30,030</option>
-          <option value="31800">CR-V EX - $31,800</option>
-          <option value="34880">CR-V EX-L - $34,880</option>
-          <option value="37705">CR-V Touring - $37,705</option>
-          <option value="37200">CR-V Hybrid EX - $37,200</option>
-          <option value="39980">CR-V Hybrid EX-L - $39,980</option>
-          <option value="42850">CR-V Hybrid Touring - $42,850</option>
-
-          <!-- Pilot trims ($1275 dest) -->
-          <option value="43070">Pilot LX - $43,070</option>
-          <option value="46220">Pilot EX - $46,220</option>
-          <option value="48310">Pilot EX-L - $48,310</option>
-          <option value="51720">Pilot Touring - $51,720</option>
-          <option value="55650">Pilot Elite - $55,650</option>
-
-          <!-- Passport trims ($1275 dest) -->
-          <option value="44750">Passport Sport - $44,750</option>
-          <option value="47250">Passport EX-L - $47,250</option>
-          <option value="48450">Passport TrailSport - $48,450</option>
-          <option value="49450">Passport TrailSport Blackout - $49,450</option>
-          <option value="52450">Passport TrailSport Elite - $52,450</option>
-          <option value="53650">Passport TrailSport Elite Blackout - $53,650</option>
-          <option value="50250">Passport Touring - $50,250</option>
-
-          <!-- Ridgeline trims ($1275 dest) -->
-          <option value="43900">Ridgeline RTL - $43,900</option>
-          <option value="47400">Ridgeline RTL-E - $47,400</option>
-          <option value="49950">Ridgeline Black Edition - $49,950</option>
-
-          <!-- Odyssey trims ($1275 dest) -->
-          <option value="37700">Odyssey LX - $37,700</option>
-          <option value="40250">Odyssey EX - $40,250</option>
-          <option value="42450">Odyssey EX-L - $42,450</option>
-          <option value="47000">Odyssey Touring - $47,000</option>
-        </select>
-        <small id="lease-model-desc">MSRP used for lease calculation (includes destination fees).</small>
-
-        <label for="lease-term">Lease Term (months):</label>
-        <select id="lease-term" aria-label="Lease term in months">
-          <option value="24">24</option><option value="27">27</option><option value="33">33</option>
-          <option value="36" selected>36</option><option value="39">39</option><option value="42">42</option><option value="48">48</option>
-        </select>
-
-        <label for="lease-mileage">Annual Mileage:</label>
-        <select id="lease-mileage" aria-label="Annual mileage for lease">
-          <option value="10000">10,000 miles/year</option>
-          <option value="12000" selected>12,000 miles/year</option>
-          <option value="15000">15,000 miles/year</option>
-        </select>
-
-        <label for="lease-down">Down Payment ($):</label>
-        <input type="number" id="lease-down" min="0" value="2000" />
-
-        <div class="btns">
-          <button id="lease-calc" aria-label="Calculate lease payment">Calculate Payment</button>
-          <button id="lease-reset" aria-label="Reset lease calculator">Reset Calculator</button>
+        <label for="downPayment">Down Payment ($):</label>
+        <div class="input-wrapper">
+          <span class="prefix-sign">$</span>
+          <input type="number" id="downPayment" name="downPayment" min="0" step="100" value="3000" required />
         </div>
 
-        <div id="lease-output" class="output" aria-live="polite"></div>
-        <div class="disclaimer">
-          Estimated lease payments are for informational purposes only. Final terms, residuals, and money factors are subject to credit approval and dealer discretion.
-        </div>
-      </section>
-    </section>
-  </main>
-  <footer>
-    <p>Kevin at Grapevine Honda &bull; Your trusted Honda dealer in Texas</p>
-  </footer>
+        <label for="loanTerm">Loan Term (Months):</label>
+        <select id="loanTerm" name="loanTerm" required>
+          <option value="36">36</option>
+          <option value="48">48</option>
+          <option value="60" selected>60</option>
+          <option value="72">72</option>
+        </select>
 
-  <script>
-    (function() {
-      // Toggle buttons
-      const btnFin = document.getElementById('btn-fin');
-      const btnLease = document.getElementById('btn-lease');
-      const financeForm = document.getElementById('finance-form');
-      const leaseForm = document.getElementById('lease-form');
+        <button type="submit" class="button" onclick="calculatePayment()">Calculate Payment</button>
+        <button type="button" class="button" style="background:#cc0000; margin-left:10px;" onclick="resetCalculator()">Reset</button>
 
-      btnFin.addEventListener('click', () => {
-        financeForm.classList.add('active');
-        leaseForm.classList.remove('active');
-        btnFin.classList.add('active');
-        btnFin.setAttribute('aria-pressed', 'true');
-        btnLease.classList.remove('active');
-        btnLease.setAttribute('aria-pressed', 'false');
-      });
+        <div id="calcResult"></div>
+        <p class="disclaimer">*Estimated payment includes tax, title, license, and documentation fees.</p>
+      </form>
+    </div>
+  </div>
 
-      btnLease.addEventListener('click', () => {
-        leaseForm.classList.add('active');
-        financeForm.classList.remove('active');
-        btnLease.classList.add('active');
-        btnLease.setAttribute('aria-pressed', 'true');
-        btnFin.classList.remove('active');
-        btnFin.setAttribute('aria-pressed', 'false');
-      });
+<script>
+  // Smooth fade in effect for contact boxes
+  document.addEventListener("DOMContentLoaded", () => {
+    const boxes = document.querySelectorAll('.fade-in-section');
+    boxes.forEach(box => {
+      setTimeout(() => {
+        box.classList.add('visible');
+      }, 150);
+    });
+  });
 
-      // Finance calculator logic
-      document.getElementById('fin-calc').addEventListener('click', () => {
-        const msrp = parseFloat(document.getElementById('fin-msrp').value);
-        const down = parseFloat(document.getElementById('fin-down').value);
-        const term = parseInt(document.getElementById('fin-term').value);
-        const apr = parseFloat(document.getElementById('fin-apr').value) / 100 / 12; // monthly rate
+  function calculatePayment() {
+    const priceInput = document.getElementById('price');
+    const downInput = document.getElementById('downPayment');
+    const termSelect = document.getElementById('loanTerm');
+    const resultDiv = document.getElementById('calcResult');
 
-        if (isNaN(msrp) || msrp <= 0) {
-          alert('Please enter a valid MSRP.');
-          return;
-        }
-        if (isNaN(down) || down < 0) {
-          alert('Please enter a valid down payment.');
-          return;
-        }
-        if (down > msrp) {
-          alert('Down payment cannot exceed MSRP.');
-          return;
-        }
-        if (isNaN(term) || term <= 0) {
-          alert('Please select a valid term.');
-          return;
-        }
-        if (isNaN(apr) || apr < 0) {
-          alert('Please enter a valid APR.');
-          return;
-        }
+    let price = parseFloat(priceInput.value);
+    let down = parseFloat(downInput.value);
+    const term = parseInt(termSelect.value, 10);
 
-        const principal = msrp - down;
+    if (isNaN(price) || isNaN(down) || price <= 0 || down < 0 || down > price) {
+      resultDiv.innerHTML = '<span style="color:#cc0000;">Please enter valid vehicle price and down payment.</span>';
+      return;
+    }
 
-        let monthlyPayment;
-        if (apr === 0) {
-          monthlyPayment = principal / term;
-        } else {
-          monthlyPayment = (principal * apr) / (1 - Math.pow(1 + apr, -term));
-        }
+    const APR = 0.075;  // 7.5% APR annual
+    const taxRate = 0.0625;  // 6.25% tax
+    const docFee = 225;
+    const titleLicense = 180;
 
-        // Add fees and tax (Texas)
-        const taxRate = 0.0625;
-        const docFee = 225;
-        const titleFee = 180;
+    // Calculate the amount financed including tax, title, license, and doc fees
+    let taxableAmount = price - down;
+    let taxedAmount = taxableAmount * (1 + taxRate);
+    let totalFinanced = taxedAmount + docFee + titleLicense;
 
-        // Monthly tax is on monthly payment + doc and title prorated monthly
-        const monthlyFees = (docFee + titleFee) / term;
-        const monthlyTax = (monthlyPayment + monthlyFees) * taxRate;
+    // Monthly interest rate
+    let monthlyRate = APR / 12;
 
-        const totalMonthly = monthlyPayment + monthlyFees + monthlyTax;
-        const totalInterest = (totalMonthly * term) - principal;
+    // Calculate monthly payment using loan formula
+    let monthlyPayment = (totalFinanced * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+    let totalPaid = monthlyPayment * term;
+    let interestPaid = totalPaid - totalFinanced;
 
-        const output = `
-          <p><strong>Estimated Monthly Payment:</strong> $${totalMonthly.toFixed(2)}</p>
-          <p><strong>Total Interest Paid:</strong> $${totalInterest.toFixed(2)}</p>
-        `;
-        document.getElementById('fin-output').innerHTML = output;
-      });
+    resultDiv.innerHTML = `
+      Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+      Total Paid Over ${term} Months: <strong>$${totalPaid.toFixed(2)}</strong><br />
+      Estimated Interest Paid: <strong>$${interestPaid.toFixed(2)}</strong>
+    `;
+  }
 
-      document.getElementById('fin-reset').addEventListener('click', () => {
-        document.getElementById('fin-msrp').value = 32000;
-        document.getElementById('fin-down').value = 2000;
-        document.getElementById('fin-term').value = 60;
-        document.getElementById('fin-apr').value = 9.99;
-        document.getElementById('fin-output').innerHTML = '';
-      });
+  function resetCalculator() {
+    document.getElementById('price').value = '30000';
+    document.getElementById('downPayment').value = '3000';
+    document.getElementById('loanTerm').value = '60';
+    document.getElementById('calcResult').innerHTML = '';
+  }
 
-      // Lease residuals and money factors based on term and mileage
-      const leaseData = {
-        default: {
-          "24": {
-            "10000": { residual: 0.75, mf: 0.00130 },
-            "12000": { residual: 0.73, mf: 0.00135 },
-            "15000": { residual: 0.70, mf: 0.00145 }
-          },
-          "27": {
-            "10000": { residual: 0.73, mf: 0.00125 },
-            "12000": { residual: 0.71, mf: 0.00130 },
-            "15000": { residual: 0.68, mf: 0.00140 }
-          },
-          "33": {
-            "10000": { residual: 0.70, mf: 0.00120 },
-            "12000": { residual: 0.68, mf: 0.00125 },
-            "15000": { residual: 0.65, mf: 0.00135 }
-          },
-          "36": {
-            "10000": { residual: 0.68, mf: 0.00115 },
-            "12000": { residual: 0.66, mf: 0.00120 },
-            "15000": { residual: 0.63, mf: 0.00130 }
-          },
-          "39": {
-            "10000": { residual: 0.65, mf: 0.00110 },
-            "12000": { residual: 0.63, mf: 0.00115 },
-            "15000": { residual: 0.60, mf: 0.00125 }
-          },
-          "42": {
-            "10000": { residual: 0.63, mf: 0.00110 },
-            "12000": { residual: 0.61, mf: 0.00115 },
-            "15000": { residual: 0.58, mf: 0.00125 }
-          },
-          "48": {
-            "10000": { residual: 0.60, mf: 0.00105 },
-            "12000": { residual: 0.58, mf: 0.00110 },
-            "15000": { residual: 0.55, mf: 0.00120 }
-          }
-        }
-      };
+  // Quick contact form submission handler
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formMessage = document.getElementById('formMessage');
+    const data = new FormData(form);
 
-      function getLeaseResidual(term, mileage) {
-        if (leaseData.default[term] && leaseData.default[term][mileage]) {
-          return leaseData.default[term][mileage].residual;
-        }
-        return 0.60; // fallback default residual
-      }
-
-      function getLeaseMoneyFactor(term, mileage) {
-        if (leaseData.default[term] && leaseData.default[term][mileage]) {
-          return leaseData.default[term][mileage].mf;
-        }
-        return 0.0015; // fallback default money factor
-      }
-
-      document.getElementById('lease-calc').addEventListener('click', () => {
-        const msrp = parseFloat(document.getElementById('lease-model').value);
-        const term = document.getElementById('lease-term').value;
-        const mileage = document.getElementById('lease-mileage').value;
-        const down = parseFloat(document.getElementById('lease-down').value);
-
-        if (!msrp || !term || !mileage || isNaN(down) || down < 0) {
-          alert('Please complete all lease fields with valid values.');
-          return;
-        }
-
-        const residualRate = getLeaseResidual(term, mileage);
-        const moneyFactor = getLeaseMoneyFactor(term, mileage);
-
-        const residualValue = msrp * residualRate;
-
-        // Lease calculations:
-        // Depreciation Fee = (MSRP - Residual) / term
-        const depreciationFee = (msrp - residualValue) / term;
-        // Finance Fee = (MSRP + Residual) * money factor
-        const financeFee = (msrp + residualValue) * moneyFactor;
-        // Base monthly payment before tax and fees
-        const baseMonthlyPayment = depreciationFee + financeFee;
-
-        // Fees and Taxes:
-        const docFee = 225;
-        const titleFee = 180;
-        const acqFee = 595;
-        const taxRate = 0.0625; // Texas
-
-        // Tax is charged on monthly payment + fees prorated monthly
-        const monthlyFees = (docFee + titleFee + acqFee) / term;
-        const monthlyTax = (baseMonthlyPayment + monthlyFees) * taxRate;
-
-        // Total monthly lease payment
-        const monthlyPayment = baseMonthlyPayment + monthlyFees + monthlyTax;
-
-        // Drive-off amount
-        const driveOff = down + docFee + titleFee + acqFee + monthlyPayment;
-
-        const output = `
-          <p><strong>Estimated Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}</p>
-          <p><strong>Estimated Drive-Off Amount:</strong> $${driveOff.toFixed(2)}</p>
-          <p><strong>Residual Value at Lease End:</strong> $${residualValue.toFixed(2)}</p>
-          <p><strong>Money Factor:</strong> ${moneyFactor.toFixed(5)}</p>
-        `;
-        document.getElementById('lease-output').innerHTML = output;
-      });
-
-      document.getElementById('lease-reset').addEventListener('click', () => {
-        document.getElementById('lease-model').selectedIndex = 0;
-        document.getElementById('lease-term').value = 36;
-        document.getElementById('lease-mileage').value = 12000;
-        document.getElementById('lease-down').value = 2000;
-        document.getElementById('lease-output').innerHTML = '';
-      });
-    })();
-  </script>
-<!-- Start of Tawk.to Script -->
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
+      formMessage.style.display = 'block';
+      form.reset();
+    })
+    .catch(() => {
+      alert('Sorry, there was a problem sending your message. Please try again.');
+    });
+  }
+</script>
+<!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -1042,7 +508,7 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!-- End of Tawk.to Script -->
+<!--End of Tawk.to Script-->
 
 </body>
 </html>
