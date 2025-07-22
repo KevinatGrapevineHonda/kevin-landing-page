@@ -557,335 +557,251 @@
   }
 </style>
 
-<div class="calculator-container" role="region" aria-label="Finance and Lease Payment Calculator">
-  <div class="tab-buttons" role="tablist" aria-label="Calculator tabs">
-    <button id="tabFinance" role="tab" aria-selected="true" tabindex="0" class="active">Finance</button>
-    <button id="tabLease" role="tab" aria-selected="false" tabindex="-1" class="inactive">Lease</button>
+<div class="container">
+  <div class="contact-box">
+    <h2>Finance / Lease Calculator</h2>
+    <form id="calculatorForm" class="finance-calculator" onsubmit="return false;">
+      <div class="toggle-container">
+        <input type="radio" id="financeToggle" name="calcType" value="finance" checked />
+        <label for="financeToggle">Finance</label>
+        <input type="radio" id="leaseToggle" name="calcType" value="lease" />
+        <label for="leaseToggle">Lease</label>
+      </div>
+
+      <!-- Common inputs -->
+      <label for="downPayment">Down Payment</label>
+      <div class="input-wrapper">
+        <span class="prefix-sign">$</span>
+        <input type="number" id="downPayment" name="downPayment" min="0" value="0" />
+      </div>
+
+      <!-- Finance inputs -->
+      <div id="financeFields">
+        <label for="financePrice">Vehicle Price (MSRP)</label>
+        <div class="input-wrapper">
+          <span class="prefix-sign">$</span>
+          <input type="number" id="financePrice" name="financePrice" min="0" value="30000" />
+        </div>
+
+        <label for="financeTerm">Loan Term (months)</label>
+        <select id="financeTerm" name="financeTerm">
+          <option value="24">24</option>
+          <option value="36" selected>36</option>
+          <option value="48">48</option>
+          <option value="60">60</option>
+          <option value="72">72</option>
+          <option value="84">84</option>
+        </select>
+
+        <label for="financeAPR">APR (%)</label>
+        <div class="input-wrapper">
+          <input type="number" id="financeAPR" name="financeAPR" min="0" step="0.01" value="9.99" />
+          <span class="suffix-sign">%</span>
+        </div>
+      </div>
+
+      <!-- Lease inputs -->
+      <div id="leaseFields" style="display:none;">
+        <label for="leaseModel">Select Model & Trim</label>
+        <select id="leaseModel" name="leaseModel" required>
+          <option value="" disabled selected>Select a model</option>
+          <option value="24450" data-residual="0.63" data-mf="0.00120">Civic Sedan LX – $24,450</option>
+          <option value="31450" data-residual="0.60" data-mf="0.00118">CR‑V LX – $31,450</option>
+          <option value="33700" data-residual="0.61" data-mf="0.00120">CR‑V EX – $33,700</option>
+          <option value="35700" data-residual="0.61" data-mf="0.00120">CR‑V Sport Hybrid – $35,700</option>
+          <option value="36350" data-residual="0.62" data-mf="0.00115">CR‑V EX‑L Hybrid – $36,350</option>
+          <option value="38700" data-residual="0.59" data-mf="0.00118">CR‑V Sport‑L Hybrid – $38,700</option>
+          <option value="42150" data-residual="0.58" data-mf="0.00117">CR‑V Touring Hybrid – $42,150</option>
+          <option value="26750" data-residual="0.65" data-mf="0.00125">HR‑V LX – $26,750</option>
+          <option value="28850" data-residual="0.64" data-mf="0.00122">HR‑V Sport – $28,850</option>
+          <option value="30850" data-residual="0.63" data-mf="0.00120">HR‑V EX‑L – $30,850</option>
+          <option value="29390" data-residual="0.62" data-mf="0.00118">Accord LX – $29,390</option>
+          <option value="31655" data-residual="0.61" data-mf="0.00115">Accord SE – $31,655</option>
+          <option value="34750" data-residual="0.60" data-mf="0.00114">Accord Hybrid Sport – $34,750</option>
+          <option value="36035" data-residual="0.59" data-mf="0.00116">Accord Hybrid EX‑L – $36,035</option>
+          <option value="40985" data-residual="0.57" data-mf="0.00116">Accord Hybrid Touring – $40,985</option>
+          <option value="41295" data-residual="0.60" data-mf="0.00118">Pilot Sport – $41,295</option>
+          <option value="44595" data-residual="0.59" data-mf="0.00116">Pilot EX‑L – $44,595</option>
+          <option value="48595" data-residual="0.57" data-mf="0.00115">Pilot Touring – $48,595</option>
+          <option value="50495" data-residual="0.56" data-mf="0.00114">Pilot TrailSport – $50,495</option>
+          <option value="54475" data-residual="0.55" data-mf="0.00113">Pilot Elite – $54,475</option>
+          <option value="55975" data-residual="0.55" data-mf="0.00113">Pilot Elite Black Edition – $55,975</option>
+          <option value="41545" data-residual="0.60" data-mf="0.00118">Ridgeline Sport – $41,545</option>
+          <option value="44375" data-residual="0.59" data-mf="0.00116">Ridgeline RTL – $44,375</option>
+          <option value="46775" data-residual="0.58" data-mf="0.00115">Ridgeline TrailSport – $46,775</option>
+          <option value="48145" data-residual="0.57" data-mf="0.00114">Ridgeline Black Edition – $48,145</option>
+          <option value="47400" data-residual="0.48" data-mf="0.00125">Prologue EX (EV) – $47,400</option>
+          <option value="51700" data-residual="0.46" data-mf="0.00122">Prologue Touring (EV) – $51,700</option>
+          <option value="57900" data-residual="0.44" data-mf="0.00120">Prologue Elite (EV) – $57,900</option>
+          <option value="41600" data-residual="0.57" data-mf="0.00118">Passport LX – $41,600</option>
+          <option value="44100" data-residual="0.56" data-mf="0.00117">Passport EX-L – $44,100</option>
+          <option value="46200" data-residual="0.55" data-mf="0.00115">Passport TrailSport – $46,200</option>
+          <option value="48900" data-residual="0.54" data-mf="0.00114">Passport TrailSport Elite – $48,900</option>
+          <option value="35260" data-residual="0.62" data-mf="0.00118">Odyssey LX – $35,260</option>
+          <option value="37990" data-residual="0.61" data-mf="0.00115">Odyssey EX – $37,990</option>
+          <option value="41990" data-residual="0.60" data-mf="0.00114">Odyssey EX-L – $41,990</option>
+          <option value="46140" data-residual="0.59" data-mf="0.00113">Odyssey Touring – $46,140</option>
+        </select>
+
+        <label for="leaseTerm">Lease Term (months)</label>
+        <select id="leaseTerm" name="leaseTerm">
+          <option value="24">24</option>
+          <option value="27">27</option>
+          <option value="33">33</option>
+          <option value="36" selected>36</option>
+          <option value="39">39</option>
+          <option value="42">42</option>
+          <option value="48">48</option>
+        </select>
+
+        <label for="leaseMileage">Annual Mileage</label>
+        <select id="leaseMileage" name="leaseMileage">
+          <option value="10000">10,000 miles</option>
+          <option value="12000" selected>12,000 miles</option>
+          <option value="15000">15,000 miles</option>
+        </select>
+      </div>
+
+      <button type="button" id="calculateBtn" class="button">Calculate Payment</button>
+      <button type="button" id="resetBtn" class="button" style="background-color:#dc3545;">Reset Calculator</button>
+
+      <div id="calcResult"></div>
+      <p class="disclaimer">*This calculator provides estimates only and does not guarantee financing or leasing terms. Contact Grapevine Honda for exact details.</p>
+    </form>
   </div>
-
-  <!-- Finance Form -->
-  <form id="financeForm" role="tabpanel" aria-labelledby="tabFinance" style="display: block;">
-    <label for="financeMsrp">MSRP ($)</label>
-    <div class="input-wrapper" style="margin-bottom: 1rem;">
-      <span class="currency-prefix">$</span>
-      <input type="number" id="financeMsrp" min="5000" step="100" value="35000" required aria-required="true" />
-    </div>
-
-    <label for="financeDown">Down Payment ($)</label>
-    <div class="input-wrapper" style="margin-bottom: 1rem;">
-      <span class="currency-prefix">$</span>
-      <input type="number" id="financeDown" min="0" step="100" value="1000" required aria-required="true" />
-    </div>
-
-    <label for="financeTerm">Term (months)</label>
-    <select id="financeTerm" required aria-required="true">
-      <option value="24">24</option>
-      <option value="36" selected>36</option>
-      <option value="48">48</option>
-      <option value="60">60</option>
-      <option value="72">72</option>
-      <option value="84">84</option>
-    </select>
-
-    <label for="financeAPR">APR (%)</label>
-    <div class="input-wrapper" style="margin-bottom: 1.5rem; position: relative;">
-      <input type="number" id="financeAPR" min="0" max="30" step="0.01" value="9.99" required aria-required="true" class="percent-input" />
-      <span class="percent-suffix">%</span>
-    </div>
-
-    <div class="button-group">
-      <button type="button" id="financeCalculateBtn" class="calculate-btn">Calculate Payment</button>
-      <button type="button" id="financeResetBtn" class="reset-btn">Reset Calculator</button>
-    </div>
-  </form>
-
-  <!-- Lease Form -->
-  <form id="leaseForm" role="tabpanel" aria-labelledby="tabLease" style="display: none;">
-    <label for="leaseModel">Honda Model & Trim</label>
-     <select id="leaseModel" required>
-  <option value="" disabled selected>Select a model</option>
-  <!-- Civic -->
-  <option value="24450" data-residual="0.63" data-mf="0.00120">Civic Sedan LX – $24,250</option>
-  <option value="29550" data-residual="0.63" data-mf="0.00120">Civic Hybrid EX – $29,550</option>
-
-  <!-- CR-V -->
-  <option value="31450" data-residual="0.60" data-mf="0.00118">CR‑V LX – $31,450</option>
-  <option value="33700" data-residual="0.61" data-mf="0.00120">CR‑V EX – $33,700</option>
-  <option value="35700" data-residual="0.61" data-mf="0.00120">CR‑V Sport Hybrid – $35,700</option>
-  <option value="36350" data-residual="0.62" data-mf="0.00115">CR‑V EX‑L Hybrid – $36,350</option>
-  <option value="38700" data-residual="0.59" data-mf="0.00118">CR‑V Sport‑L Hybrid – $38,700</option>
-  <option value="42150" data-residual="0.58" data-mf="0.00117">CR‑V Touring Hybrid – $42,150</option>
-
-  <!-- HR-V -->
-  <option value="26750" data-residual="0.65" data-mf="0.00125">HR‑V LX – $26,750</option>
-  <option value="28850" data-residual="0.64" data-mf="0.00122">HR‑V Sport – $28,850</option>
-  <option value="30850" data-residual="0.63" data-mf="0.00120">HR‑V EX‑L – $30,850</option>
-
-  <!-- Accord -->
-  <option value="29390" data-residual="0.62" data-mf="0.00118">Accord LX – $29,390</option>
-  <option value="31655" data-residual="0.61" data-mf="0.00115">Accord SE – $31,655</option>
-  <option value="34750" data-residual="0.60" data-mf="0.00114">Accord Hybrid Sport – $34,750</option>
-  <option value="36035" data-residual="0.59" data-mf="0.00116">Accord Hybrid EX‑L – $36,035</option>
-  <option value="40985" data-residual="0.57" data-mf="0.00116">Accord Hybrid Touring – $40,985</option>
-
-  <!-- Pilot -->
-  <option value="41295" data-residual="0.60" data-mf="0.00118">Pilot Sport – $41,295</option>
-  <option value="44595" data-residual="0.59" data-mf="0.00116">Pilot EX‑L – $44,595</option>
-  <option value="48595" data-residual="0.57" data-mf="0.00115">Pilot Touring – $48,595</option>
-  <option value="50495" data-residual="0.56" data-mf="0.00114">Pilot TrailSport – $50,495</option>
-  <option value="54475" data-residual="0.55" data-mf="0.00113">Pilot Elite – $54,475</option>
-  <option value="55975" data-residual="0.55" data-mf="0.00113">Pilot Elite Black Edition – $55,975</option>
-
-  <!-- Ridgeline -->
-  <option value="41545" data-residual="0.60" data-mf="0.00118">Ridgeline Sport – $41,545</option>
-  <option value="44375" data-residual="0.59" data-mf="0.00116">Ridgeline RTL – $44,375</option>
-  <option value="46775" data-residual="0.58" data-mf="0.00115">Ridgeline TrailSport – $46,775</option>
-  <option value="48145" data-residual="0.57" data-mf="0.00114">Ridgeline Black Edition – $48,145</option>
-
-  <!-- Prologue (EV) -->
-  <option value="47400" data-residual="0.48" data-mf="0.00125">Prologue EX (EV) – $47,400</option>
-  <option value="51700" data-residual="0.46" data-mf="0.00122">Prologue Touring (EV) – $51,700</option>
-  <option value="57900" data-residual="0.44" data-mf="0.00120">Prologue Elite (EV) – $57,900</option>
-
-  <!-- Passport 2026 -->
-  <option value="44750" data-residual="0.60" data-mf="0.00118">Passport RTL – $44,750</option>
-  <option value="48450" data-residual="0.60" data-mf="0.00118">Passport TrailSport – $48,450</option>
-  <option value="52450" data-residual="0.60" data-mf="0.00118">Passport TrailSport Elite – $52,450</option>
-</select>
-
-    <label for="leaseTerm">Lease Term (months)</label>
-    <select id="leaseTerm" required aria-required="true">
-      <option value="24">24</option>
-      <option value="27">27</option>
-      <option value="33">33</option>
-      <option value="36" selected>36</option>
-      <option value="39">39</option>
-      <option value="42">42</option>
-      <option value="48">48</option>
-    </select>
-
-    <label for="leaseMileage">Annual Mileage</label>
-    <select id="leaseMileage" required aria-required="true">
-      <option value="10000">10,000 miles/year</option>
-      <option value="12000" selected>12,000 miles/year</option>
-      <option value="15000">15,000 miles/year</option>
-    </select>
-
-    <label for="leaseDown">Down Payment ($)</label>
-    <div class="input-wrapper" style="margin-bottom: 1.5rem;">
-      <span class="currency-prefix">$</span>
-      <input type="number" id="leaseDown" min="0" step="100" value="3000" required aria-required="true" />
-    </div>
-
-    <div class="button-group">
-      <button type="button" id="leaseCalculateBtn" class="calculate-btn">Calculate Payment</button>
-      <button type="button" id="leaseResetBtn" class="reset-btn">Reset Calculator</button>
-    </div>
-  </form>
-
-  <div id="calcResult" role="region" aria-live="polite" aria-atomic="true" aria-label="Calculation results"></div>
-
-  <p class="disclaimer">
-    * Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.
-  </p>
 </div>
 
 <script>
-  // Wait for DOM ready
-  document.addEventListener('DOMContentLoaded', () => {
-    // Tabs
-    const tabFinance = document.getElementById('tabFinance');
-    const tabLease = document.getElementById('tabLease');
-    const financeForm = document.getElementById('financeForm');
-    const leaseForm = document.getElementById('leaseForm');
-    const calcResult = document.getElementById('calcResult');
+  // Toggle between finance and lease fields
+  document.getElementById('financeToggle').addEventListener('change', () => {
+    document.getElementById('financeFields').style.display = 'block';
+    document.getElementById('leaseFields').style.display = 'none';
+    document.getElementById('calcResult').innerHTML = '';
+  });
+  document.getElementById('leaseToggle').addEventListener('change', () => {
+    document.getElementById('financeFields').style.display = 'none';
+    document.getElementById('leaseFields').style.display = 'block';
+    document.getElementById('calcResult').innerHTML = '';
+  });
 
-    function activateTab(tab) {
-      if (tab === 'finance') {
-        tabFinance.classList.add('active');
-        tabFinance.classList.remove('inactive');
-        tabFinance.setAttribute('aria-selected', 'true');
-        tabFinance.tabIndex = 0;
+  function formatCurrency(num) {
+    return '$' + num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
 
-        tabLease.classList.remove('active');
-        tabLease.classList.add('inactive');
-        tabLease.setAttribute('aria-selected', 'false');
-        tabLease.tabIndex = -1;
+  function calculateFinance() {
+    const price = parseFloat(document.getElementById('financePrice').value) || 0;
+    const down = parseFloat(document.getElementById('downPayment').value) || 0;
+    const term = parseInt(document.getElementById('financeTerm').value);
+    const apr = parseFloat(document.getElementById('financeAPR').value) / 100;
+    if(price <= 0 || term <= 0) return null;
 
-        financeForm.style.display = 'block';
-        leaseForm.style.display = 'none';
-        calcResult.textContent = '';
+    const principal = price - down;
+    const monthlyRate = apr / 12;
+    const payment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+    const totalInterest = payment * term - principal;
+
+    return {
+      monthlyPayment: payment,
+      totalInterest: totalInterest,
+      principal: principal,
+      term: term
+    };
+  }
+
+  function calculateLease() {
+    const selectedOption = document.getElementById('leaseModel').selectedOptions[0];
+    if (!selectedOption) return null;
+    const msrp = parseFloat(selectedOption.value);
+    const residualPercent = parseFloat(selectedOption.getAttribute('data-residual'));
+    const moneyFactor = parseFloat(selectedOption.getAttribute('data-mf'));
+    const term = parseInt(document.getElementById('leaseTerm').value);
+    const mileage = parseInt(document.getElementById('leaseMileage').value);
+    const down = parseFloat(document.getElementById('downPayment').value) || 0;
+
+    if(msrp <= 0 || term <= 0) return null;
+
+    // Grapevine Honda fees
+    const docFee = 225;
+    const licenseTitle = 180;
+    const acqFee = 595;
+    const taxRate = 0.0625; // Texas tax
+
+    // Adjust residual based on term (approximation)
+    // Usually residual varies by term, but here we use the given percentage as-is.
+
+    const residualValue = msrp * residualPercent;
+
+    // Depreciation fee = (MSRP - Residual) / Term
+    const depreciation = (msrp - residualValue) / term;
+
+    // Finance fee = (MSRP + Residual) * Money Factor
+    const financeFee = (msrp + residualValue) * moneyFactor;
+
+    // Monthly base payment before tax
+    const baseMonthly = depreciation + financeFee;
+
+    // Monthly tax (on payment)
+    const monthlyTax = baseMonthly * taxRate;
+
+    // Total monthly payment
+    const monthlyPayment = baseMonthly + monthlyTax;
+
+    // Drive-off fees (down payment + doc + license/title + acquisition)
+    const driveOff = down + docFee + licenseTitle + acqFee;
+
+    return {
+      monthlyPayment: monthlyPayment,
+      driveOff: driveOff,
+      docFee: docFee,
+      licenseTitle: licenseTitle,
+      acqFee: acqFee,
+      downPayment: down,
+      msrp: msrp,
+      term: term,
+      residualValue: residualValue.toFixed(2)
+    };
+  }
+
+  document.getElementById('calculateBtn').addEventListener('click', () => {
+    let resultText = '';
+    if(document.getElementById('financeToggle').checked) {
+      const res = calculateFinance();
+      if(res) {
+        resultText = `
+          Estimated monthly payment: <strong>${formatCurrency(res.monthlyPayment)}</strong><br />
+          Total interest paid: <strong>${formatCurrency(res.totalInterest)}</strong><br />
+          Loan term: <strong>${res.term} months</strong><br />
+          Amount financed: <strong>${formatCurrency(res.principal)}</strong>
+        `;
       } else {
-        tabLease.classList.add('active');
-        tabLease.classList.remove('inactive');
-        tabLease.setAttribute('aria-selected', 'true');
-        tabLease.tabIndex = 0;
-
-        tabFinance.classList.remove('active');
-        tabFinance.classList.add('inactive');
-        tabFinance.setAttribute('aria-selected', 'false');
-        tabFinance.tabIndex = -1;
-
-        financeForm.style.display = 'none';
-        leaseForm.style.display = 'block';
-        calcResult.textContent = '';
+        resultText = 'Please enter valid finance inputs.';
+      }
+    } else {
+      const res = calculateLease();
+      if(res) {
+        resultText = `
+          Estimated monthly lease payment: <strong>${formatCurrency(res.monthlyPayment)}</strong><br />
+          Drive-off due at signing: <strong>${formatCurrency(res.driveOff)}</strong> (includes down payment and fees)<br />
+          Lease term: <strong>${res.term} months</strong><br />
+          MSRP: <strong>${formatCurrency(res.msrp)}</strong><br />
+          Residual value: <strong>$${res.residualValue}</strong>
+        `;
+      } else {
+        resultText = 'Please select a lease model and enter valid inputs.';
       }
     }
+    document.getElementById('calcResult').innerHTML = resultText;
+  });
 
-    tabFinance.addEventListener('click', () => activateTab('finance'));
-    tabLease.addEventListener('click', () => activateTab('lease'));
-
-    // Finance Calculator
-    function calculateFinance() {
-      const msrp = parseFloat(document.getElementById('financeMsrp').value);
-      const down = parseFloat(document.getElementById('financeDown').value);
-      const term = parseInt(document.getElementById('financeTerm').value);
-      const apr = parseFloat(document.getElementById('financeAPR').value);
-
-      if (isNaN(msrp) || isNaN(down) || isNaN(term) || isNaN(apr)) {
-        calcResult.textContent = 'Please fill out all finance fields correctly.';
-        return;
-      }
-      if (down > msrp) {
-        calcResult.textContent = 'Down payment cannot exceed MSRP.';
-        return;
-      }
-
-      // Texas fees and tax
-      const taxRate = 0.0625; // 6.25%
-      const docFee = 225;
-      const ttlFee = 180;
-
-      const taxableAmount = msrp;
-      const taxAmount = taxableAmount * taxRate;
-      const amountFinanced = msrp + taxAmount + docFee + ttlFee - down;
-
-      const monthlyRate = apr / 12 / 100;
-      const denominator = 1 - Math.pow(1 + monthlyRate, -term);
-      const monthlyPayment = monthlyRate === 0 ? amountFinanced / term : (amountFinanced * monthlyRate) / denominator;
-
-      if (monthlyPayment < 0 || isNaN(monthlyPayment)) {
-        calcResult.textContent = 'Unable to calculate payment. Please check your inputs.';
-        return;
-      }
-
-      const totalInterestPaid = monthlyPayment * term - amountFinanced;
-
-      calcResult.innerHTML = `<strong>Estimated Monthly Payment:</strong> $${monthlyPayment.toFixed(2)}<br/>
-        Term: ${term} months<br/>
-        Amount Financed (incl. tax & fees): $${amountFinanced.toFixed(2)}<br/>
-        APR: ${apr.toFixed(2)}%<br/>
-        <strong>Total Interest Paid:</strong> $${totalInterestPaid.toFixed(2)}`;
-    }
-
-    // Lease Calculator
-    function calculateLease() {
-      const modelSelect = document.getElementById('leaseModel');
-      const selectedOption = modelSelect.options[modelSelect.selectedIndex];
-      if (!selectedOption.value) {
-        calcResult.textContent = 'Please select a Honda model and trim.';
-        return;
-      }
-
-      const msrp = parseFloat(selectedOption.value);
-      let residualPercent = parseFloat(selectedOption.getAttribute('data-residual'));
-      const moneyFactor = parseFloat(selectedOption.getAttribute('data-mf'));
-      const term = parseInt(document.getElementById('leaseTerm').value);
-      const mileage = parseInt(document.getElementById('leaseMileage').value);
-      const down = parseFloat(document.getElementById('leaseDown').value);
-
-      if (isNaN(msrp) || isNaN(residualPercent) || isNaN(moneyFactor) || isNaN(term) || isNaN(mileage) || isNaN(down)) {
-        calcResult.textContent = 'Please fill out all lease fields correctly.';
-        return;
-      }
-      if (down > msrp) {
-        calcResult.textContent = 'Down payment cannot exceed MSRP.';
-        return;
-      }
-
-      // Fees and tax constants
-      const taxRate = 0.0625;
-      const docFee = 225;
-      const ttlFee = 180;
-      const acqFee = 595;
-
-      // Mileage adjustment (~2% residual loss per 3k miles over 12k)
-      const mileageBase = 12000;
-      const mileageDiff = mileage - mileageBase;
-      const residualAdjustmentPer3k = 0.02;
-      let adjustedResidual = residualPercent;
-      if (mileageDiff > 0) {
-        adjustedResidual -= residualAdjustmentPer3k * (mileageDiff / 3000);
-        if (adjustedResidual < 0.5) adjustedResidual = 0.5; // minimum residual 50%
-      }
-
-      // Residual value
-      const residualValue = msrp * adjustedResidual;
-
-      // Capitalized cost = MSRP + fees + acquisition fee - down
-      const capCost = msrp + docFee + ttlFee + acqFee - down;
-
-      // Depreciation fee
-      const depreciationFee = (capCost - residualValue) / term;
-
-      // Finance fee
-      const financeFee = (capCost + residualValue) * moneyFactor;
-
-      // Base monthly payment before tax
-      const baseMonthly = depreciationFee + financeFee;
-
-      // Tax on monthly payment
-      const taxAmount = baseMonthly * taxRate;
-
-      const totalMonthly = baseMonthly + taxAmount;
-
-      if (totalMonthly < 0 || isNaN(totalMonthly)) {
-        calcResult.textContent = 'Unable to calculate lease payment. Please check your inputs.';
-        return;
-      }
-
-      // Total due at signing = down payment + first month payment + doc fee + title/license
-      const dueAtSigning = down + totalMonthly + docFee + ttlFee;
-
-      calcResult.innerHTML = `<strong>Estimated Monthly Lease Payment:</strong> $${totalMonthly.toFixed(2)}<br/>
-        Term: ${term} months<br/>
-        Mileage: ${mileage.toLocaleString()} miles/year<br/>
-        MSRP: $${msrp.toLocaleString()}<br/>
-        Residual Value: $${residualValue.toFixed(2)} (${(adjustedResidual * 100).toFixed(2)}%)<br/>
-        Money Factor: ${moneyFactor.toFixed(5)}<br/>
-        Acquisition Fee: $${acqFee}<br/>
-        <strong>Total Due at Signing:</strong> $${dueAtSigning.toFixed(2)}<br/>
-        (Includes down payment, first month payment, doc fee, and title/license fees)`;
-    }
-
-    // Reset functions
-    function resetFinance() {
-      document.getElementById('financeMsrp').value = 35000;
-      document.getElementById('financeDown').value = 1000;
-      document.getElementById('financeTerm').value = 36;
-      document.getElementById('financeAPR').value = 9.99;
-      calcResult.textContent = '';
-    }
-
-    function resetLease() {
-      document.getElementById('leaseModel').selectedIndex = 0;
-      document.getElementById('leaseTerm').value = 36;
-      document.getElementById('leaseMileage').value = 12000;
-      document.getElementById('leaseDown').value = 1000;
-      calcResult.textContent = '';
-    }
-
-    // Event Listeners
-    document.getElementById('financeCalculateBtn').addEventListener('click', calculateFinance);
-    document.getElementById('financeResetBtn').addEventListener('click', resetFinance);
-    document.getElementById('leaseCalculateBtn').addEventListener('click', calculateLease);
-    document.getElementById('leaseResetBtn').addEventListener('click', resetLease);
-
-    // Default tab
-    activateTab('finance');
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    document.getElementById('calculatorForm').reset();
+    document.getElementById('calcResult').innerHTML = '';
+    // Show finance fields by default
+    document.getElementById('financeFields').style.display = 'block';
+    document.getElementById('leaseFields').style.display = 'none';
+    document.getElementById('financeToggle').checked = true;
   });
 </script>
-    
       <p class="disclaimer">* Calculations are estimates only and do not guarantee financing or leasing terms. Actual terms may vary based on credit, dealer fees, and promotions.</p>
     </div>
   </div>
