@@ -677,22 +677,18 @@
         // Calculate depreciation fee
         const depreciation = msrp - residualValue;
 
-       // Add tax to cap cost (Texas taxes full MSRP upfront)
-const salesTax = msrp * taxRate;
-
-// Adjusted cap cost includes fees and tax, minus down
-const capCost = msrp + acquisitionFee + docFee + licenseFee + salesTax - down;
-
-// Depreciation is cap cost minus residual
-const depreciation = capCost - residualValue;
+      // Monthly depreciation + finance fees
 const monthlyDepreciation = depreciation / term;
+const monthlyFinance = (msrp + residualValue) * moneyFactor;
 
-// Finance fee based on average of cap cost and residual
-const monthlyFinance = (capCost + residualValue) * moneyFactor;
+// Base monthly payment before tax
+const baseMonthly = monthlyDepreciation + monthlyFinance;
 
-// Final monthly payment
-const monthlyPayment = monthlyDepreciation + monthlyFinance;
+// Monthly tax applied to payment
+const monthlyTax = baseMonthly * taxRate;
 
+// Total monthly payment including tax
+const monthlyPayment = baseMonthly + monthlyTax;
         // Display
         const output = `
           Estimated monthly lease payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
