@@ -677,21 +677,21 @@
         // Calculate depreciation fee
         const depreciation = msrp - residualValue;
 
-        // Monthly depreciation + finance fees
-        const monthlyDepreciation = depreciation / term;
-        const monthlyFinance = (msrp + residualValue) * moneyFactor;
+       // Add tax to cap cost (Texas taxes full MSRP upfront)
+const salesTax = msrp * taxRate;
 
-        // Base monthly payment before tax
-        const baseMonthly = monthlyDepreciation + monthlyFinance;
+// Adjusted cap cost includes fees and tax, minus down
+const capCost = msrp + acquisitionFee + docFee + licenseFee + salesTax - down;
 
-        // Monthly tax applied to payment
-        const monthlyTax = baseMonthly * taxRate;
+// Depreciation is cap cost minus residual
+const depreciation = capCost - residualValue;
+const monthlyDepreciation = depreciation / term;
 
-        // Total monthly payment including tax
-        const monthlyPayment = baseMonthly + monthlyTax;
+// Finance fee based on average of cap cost and residual
+const monthlyFinance = (capCost + residualValue) * moneyFactor;
 
-        // Total due at signing (drive off)
-        const totalDriveOff = down + acquisitionFee + docFee + licenseFee + monthlyPayment;
+// Final monthly payment
+const monthlyPayment = monthlyDepreciation + monthlyFinance;
 
         // Display
         const output = `
