@@ -677,7 +677,7 @@
         // Calculate depreciation fee
         const depreciation = msrp - residualValue;
 
-      // Monthly depreciation + finance fees
+     // Monthly depreciation + finance fees
 const monthlyDepreciation = depreciation / term;
 const monthlyFinance = (msrp + residualValue) * moneyFactor;
 
@@ -691,14 +691,19 @@ const monthlyTax = baseMonthly * taxRate;
 const monthlyPayment = baseMonthly + monthlyTax;
 
 // Total drive-off (due at signing)
-const totalDriveOff = down + acquisitionFee + docFee + licenseFee;
+const totalDriveOff = down + acquisitionFee + docFee + licenseFee + monthlyPayment;
 
-// Display
+// Display with breakdown
 const output = `
-  Estimated monthly lease payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
-  Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent*100).toFixed(1)}%)<br />
-  Estimated drive-off amount (due at signing): <strong>$${totalDriveOff.toFixed(2)}</strong> 
-  (includes down payment, acquisition, doc, license fees)
+  <strong>Estimated Monthly Lease Payment:</strong> $${monthlyPayment.toFixed(2)}<br />
+  Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent * 100).toFixed(1)}%)<br /><br />
+  <strong>Drive-Off Breakdown:</strong><br />
+  • Down Payment: $${down.toFixed(2)}<br />
+  • First Monthly Payment: $${monthlyPayment.toFixed(2)}<br />
+  • Acquisition Fee: $${acquisitionFee.toFixed(2)}<br />
+  • Doc Fee: $${docFee.toFixed(2)}<br />
+  • License/Title Fee: $${licenseFee.toFixed(2)}<br />
+  <strong>Total Due at Signing: $${totalDriveOff.toFixed(2)}</strong>
 `;
 
 document.getElementById('lease-output').innerHTML = output;
