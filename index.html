@@ -537,7 +537,7 @@
   </footer>
 
   <script>
-    (function() {
+(function() {
   // Toggle forms and button styles
   const toggleFin = document.getElementById('toggle-fin');
   const toggleLease = document.getElementById('toggle-lease');
@@ -567,85 +567,88 @@
   });
 
   // Finance calculation
- document.getElementById('fin-reset').addEventListener('click', () => {
-  document.getElementById('fin-msrp').value = '';
-  document.getElementById('fin-down').value = '';
-  document.getElementById('fin-term').value = '60';
-  document.getElementById('fin-apr').value = '9.99';
-  document.getElementById('fin-output').innerHTML = '';
+  document.getElementById('fin-calc').addEventListener('click', () => {
+    const msrp = parseFloat(document.getElementById('fin-msrp').value);
+    const down = parseFloat(document.getElementById('fin-down').value);
+    const term = parseInt(document.getElementById('fin-term').value);
+    const apr = parseFloat(document.getElementById('fin-apr').value);
 
-  if (isNaN(msrp) || msrp <= 0) {
-    alert('Please enter a valid MSRP.');
-    return;
-  }
-  if (isNaN(down) || down < 0) {
-    alert('Please enter a valid down payment.');
-    return;
-  }
-  if (isNaN(term) || term <= 0) {
-    alert('Please select a valid term.');
-    return;
-  }
-  if (isNaN(apr) || apr < 0) {
-    alert('Please enter a valid APR.');
-    return;
-  }
+    if (isNaN(msrp) || msrp <= 0) {
+      alert('Please enter a valid MSRP.');
+      return;
+    }
+    if (isNaN(down) || down < 0) {
+      alert('Please enter a valid down payment.');
+      return;
+    }
+    if (isNaN(term) || term <= 0) {
+      alert('Please select a valid term.');
+      return;
+    }
+    if (isNaN(apr) || apr < 0) {
+      alert('Please enter a valid APR.');
+      return;
+    }
 
-  // Fixed fees for Texas
-  const docFee = 225;
-  const licenseFee = 180;
-  const taxRate = 0.0625; // 6.25%
-
-  // Amount financed is MSRP minus down payment plus fees
-  // Tax applies to (MSRP - Down Payment + docFee + licenseFee)
-  const taxableAmount = (msrp - down) + docFee + licenseFee;
-  const taxAmount = taxableAmount * taxRate;
-
-  // Total amount financed includes fees + tax
-  const totalFinanced = (msrp - down) + docFee + licenseFee + taxAmount;
-
-  // Monthly interest rate
-  const monthlyRate = apr / 100 / 12;
-  const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
-  const denominator = Math.pow(1 + monthlyRate, term) - 1;
-  const monthlyPayment = totalFinanced * (numerator / denominator);
-
-  const totalInterest = monthlyPayment * term - totalFinanced;
-
-  // Output with line items and dollar signs
-  const output = `
-    <h3>Finance Payment Breakdown</h3>
-    <ul style="list-style:none;padding-left:0;">
-      <li>Price (MSRP): <strong>$${msrp.toFixed(2)}</strong></li>
-      <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
-      <li>Documentation Fee: <strong>$${docFee.toFixed(2)}</strong></li>
-      <li>Title/License Fee: <strong>$${licenseFee.toFixed(2)}</strong></li>
-      <li>Tax (6.25%): <strong>$${taxAmount.toFixed(2)}</strong></li>
-      <li><strong>Total Amount Financed:</strong> $${totalFinanced.toFixed(2)}</li>
-      <li>Term: <strong>${term} months</strong></li>
-      <li>APR: <strong>${apr.toFixed(2)}%</strong></li>
-      <li>Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></li>
-      <li>Total Interest Paid: <strong>$${totalInterest.toFixed(2)}</strong></li>
-      <li><strong>Total Cost (Amount Financed + Interest): $${(totalFinanced + totalInterest).toFixed(2)}</strong></li>
-    </ul>
-    <small style="font-style:italic;color:#555;">
-      *Payments are estimates and may vary based on credit and final terms.
-    </small>
-  `;
-
-  document.getElementById('fin-output').innerHTML = output;
-});
-
-  // Lease calculation
-  document.getElementById('lease-calc').addEventListener('click', () => {
-    // Constants
-    const acquisitionFee = 595;
+    // Texas fees
     const docFee = 225;
     const licenseFee = 180;
     const taxRate = 0.0625; // 6.25%
+
+    // Taxable amount (after down payment, plus fees)
+    const taxableAmount = (msrp - down) + docFee + licenseFee;
+    const taxAmount = taxableAmount * taxRate;
+
+    // Total amount financed
+    const totalFinanced = (msrp - down) + docFee + licenseFee + taxAmount;
+
+    // Monthly payment calculation
+    const monthlyRate = apr / 100 / 12;
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
+    const denominator = Math.pow(1 + monthlyRate, term) - 1;
+    const monthlyPayment = totalFinanced * (numerator / denominator);
+    const totalInterest = (monthlyPayment * term) - totalFinanced;
+
+    // Output
+    const output = `
+      <h3>Finance Payment Breakdown</h3>
+      <ul style="list-style:none;padding-left:0;">
+        <li>Price (MSRP): <strong>$${msrp.toFixed(2)}</strong></li>
+        <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
+        <li>Documentation Fee: <strong>$${docFee.toFixed(2)}</strong></li>
+        <li>Title/License Fee: <strong>$${licenseFee.toFixed(2)}</strong></li>
+        <li>Tax (6.25%): <strong>$${taxAmount.toFixed(2)}</strong></li>
+        <li><strong>Total Amount Financed: $${totalFinanced.toFixed(2)}</strong></li>
+        <li>Term: <strong>${term} months</strong></li>
+        <li>APR: <strong>${apr.toFixed(2)}%</strong></li>
+        <li>Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></li>
+        <li>Total Interest Paid: <strong>$${totalInterest.toFixed(2)}</strong></li>
+        <li><strong>Total Cost (Amount Financed + Interest): $${(totalFinanced + totalInterest).toFixed(2)}</strong></li>
+      </ul>
+      <small style="font-style:italic;color:#555;">
+        *Payments are estimates and may vary based on credit and final terms.
+      </small>
+    `;
+    document.getElementById('fin-output').innerHTML = output;
+  });
+
+  // Finance reset (fixed)
+  document.getElementById('fin-reset').addEventListener('click', () => {
+    document.getElementById('fin-msrp').value = '';
+    document.getElementById('fin-down').value = '';
+    document.getElementById('fin-term').value = '60';
+    document.getElementById('fin-apr').value = '9.99';
+    document.getElementById('fin-output').innerHTML = '';
+  });
+
+  // Lease calculation
+  document.getElementById('lease-calc').addEventListener('click', () => {
+    const acquisitionFee = 595;
+    const docFee = 225;
+    const licenseFee = 180;
+    const taxRate = 0.0625;
     const moneyFactor = 0.00125;
 
-    // Inputs
     const msrp = parseFloat(document.getElementById('lease-model').value);
     const term = parseInt(document.getElementById('lease-term').value);
     const mileage = parseInt(document.getElementById('lease-mileage').value);
@@ -680,10 +683,8 @@
 
     const mileageAdjPer1000 = 0.002;
     let residualPercent = baseResiduals[term] || 0.56;
-
     if (mileage === 10000) residualPercent += mileageAdjPer1000 * 2;
     else if (mileage === 15000) residualPercent -= mileageAdjPer1000 * 3;
-
     if (residualPercent > 0.8) residualPercent = 0.8;
     if (residualPercent < 0.35) residualPercent = 0.35;
 
@@ -714,10 +715,10 @@
         *Lease payments are estimates and subject to credit approval.
       </small>
     `;
-
     document.getElementById('lease-output').innerHTML = output;
   });
 
+  // Lease reset
   document.getElementById('lease-reset').addEventListener('click', () => {
     document.getElementById('lease-model').selectedIndex = 0;
     document.getElementById('lease-term').value = '36';
@@ -726,7 +727,7 @@
     document.getElementById('lease-output').innerHTML = '';
   });
 
-  // Fade in animation for contact boxes
+  // Fade-in animation
   function onEntry(entry) {
     entry.forEach(change => {
       if (change.isIntersecting) {
@@ -735,7 +736,7 @@
     });
   }
 
-  let options = {threshold: [0.2]};
+  let options = { threshold: [0.2] };
   let observer = new IntersectionObserver(onEntry, options);
   let elements = document.querySelectorAll('.fade-in-section');
 
@@ -743,7 +744,7 @@
     observer.observe(elm);
   }
 })();
-  </script>
+</script>
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
