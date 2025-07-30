@@ -538,202 +538,200 @@
 
   <script>
     (function() {
-      // Toggle forms and button styles
-      const toggleFin = document.getElementById('toggle-fin');
-      const toggleLease = document.getElementById('toggle-lease');
-      const finForm = document.getElementById('finance-form');
-      const leaseForm = document.getElementById('lease-form');
+  // Toggle forms and button styles
+  const toggleFin = document.getElementById('toggle-fin');
+  const toggleLease = document.getElementById('toggle-lease');
+  const finForm = document.getElementById('finance-form');
+  const leaseForm = document.getElementById('lease-form');
 
-      toggleFin.addEventListener('click', () => {
-        finForm.style.display = 'block';
-        leaseForm.style.display = 'none';
-        toggleFin.style.backgroundColor = '#0074D9';
-        toggleFin.style.color = '#fff';
-        toggleFin.setAttribute('aria-pressed', 'true');
-        toggleLease.style.backgroundColor = '#e2e6ea';
-        toggleLease.style.color = '#333';
-        toggleLease.setAttribute('aria-pressed', 'false');
-      });
+  toggleFin.addEventListener('click', () => {
+    finForm.style.display = 'block';
+    leaseForm.style.display = 'none';
+    toggleFin.style.backgroundColor = '#0074D9';
+    toggleFin.style.color = '#fff';
+    toggleFin.setAttribute('aria-pressed', 'true');
+    toggleLease.style.backgroundColor = '#e2e6ea';
+    toggleLease.style.color = '#333';
+    toggleLease.setAttribute('aria-pressed', 'false');
+  });
 
-      toggleLease.addEventListener('click', () => {
-        finForm.style.display = 'none';
-        leaseForm.style.display = 'block';
-        toggleLease.style.backgroundColor = '#0074D9';
-        toggleLease.style.color = '#fff';
-        toggleLease.setAttribute('aria-pressed', 'true');
-        toggleFin.style.backgroundColor = '#e2e6ea';
-        toggleFin.style.color = '#333';
-        toggleFin.setAttribute('aria-pressed', 'false');
-      });
+  toggleLease.addEventListener('click', () => {
+    finForm.style.display = 'none';
+    leaseForm.style.display = 'block';
+    toggleLease.style.backgroundColor = '#0074D9';
+    toggleLease.style.color = '#fff';
+    toggleLease.setAttribute('aria-pressed', 'true');
+    toggleFin.style.backgroundColor = '#e2e6ea';
+    toggleFin.style.color = '#333';
+    toggleFin.setAttribute('aria-pressed', 'false');
+  });
 
-      // Finance calculation
-      document.getElementById('fin-calc').addEventListener('click', () => {
-        const msrp = parseFloat(document.getElementById('fin-msrp').value);
-        const down = parseFloat(document.getElementById('fin-down').value);
-        const term = parseInt(document.getElementById('fin-term').value);
-        const apr = parseFloat(document.getElementById('fin-apr').value);
+  // Finance calculation
+  document.getElementById('fin-calc').addEventListener('click', () => {
+    const msrp = parseFloat(document.getElementById('fin-msrp').value);
+    const down = parseFloat(document.getElementById('fin-down').value);
+    const term = parseInt(document.getElementById('fin-term').value);
+    const apr = parseFloat(document.getElementById('fin-apr').value);
 
-        if (isNaN(msrp) || msrp <= 0) {
-          alert('Please enter a valid MSRP.');
-          return;
-        }
-        if (isNaN(down) || down < 0) {
-          alert('Please enter a valid down payment.');
-          return;
-        }
-        if (isNaN(term) || term <= 0) {
-          alert('Please select a valid term.');
-          return;
-        }
-        if (isNaN(apr) || apr < 0) {
-          alert('Please enter a valid APR.');
-          return;
-        }
+    if (isNaN(msrp) || msrp <= 0) {
+      alert('Please enter a valid MSRP.');
+      return;
+    }
+    if (isNaN(down) || down < 0) {
+      alert('Please enter a valid down payment.');
+      return;
+    }
+    if (isNaN(term) || term <= 0) {
+      alert('Please select a valid term.');
+      return;
+    }
+    if (isNaN(apr) || apr < 0) {
+      alert('Please enter a valid APR.');
+      return;
+    }
 
-        const principal = msrp - down;
-        const monthlyRate = apr / 100 / 12;
-        const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
-        const denominator = Math.pow(1 + monthlyRate, term) - 1;
-        const monthlyPayment = principal * (numerator / denominator);
-        const totalInterest = monthlyPayment * term - principal;
+    const principal = msrp - down;
+    const monthlyRate = apr / 100 / 12;
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
+    const denominator = Math.pow(1 + monthlyRate, term) - 1;
+    const monthlyPayment = principal * (numerator / denominator);
+    const totalInterest = monthlyPayment * term - principal;
 
-        const output = `
-          Estimated monthly payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
-          Total interest paid over ${term} months: <strong>$${totalInterest.toFixed(2)}</strong><br />
-          Total cost (principal + interest): <strong>$${(principal + totalInterest).toFixed(2)}</strong>
-        `;
+    const output = `
+      <h3>Finance Payment Breakdown</h3>
+      <ul style="list-style:none;padding-left:0;">
+        <li>Price (MSRP): <strong>$${msrp.toFixed(2)}</strong></li>
+        <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
+        <li>Amount Financed: <strong>$${principal.toFixed(2)}</strong></li>
+        <li>Term: <strong>${term} months</strong></li>
+        <li>APR: <strong>${apr.toFixed(2)}%</strong></li>
+        <li>Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></li>
+        <li>Total Interest Paid: <strong>$${totalInterest.toFixed(2)}</strong></li>
+        <li><strong>Total Cost (Principal + Interest): $${(principal + totalInterest).toFixed(2)}</strong></li>
+      </ul>
+      <small style="font-style:italic;color:#555;">
+        *Payments are estimates and may vary based on credit and final terms.
+      </small>
+    `;
 
-        document.getElementById('fin-output').innerHTML = output;
-      });
+    document.getElementById('fin-output').innerHTML = output;
+  });
 
-      document.getElementById('fin-reset').addEventListener('click', () => {
-        document.getElementById('fin-msrp').value = '';
-        document.getElementById('fin-down').value = '';
-        document.getElementById('fin-term').value = '60';
-        document.getElementById('fin-apr').value = '9.99';
-        document.getElementById('fin-output').innerHTML = '';
-      });
+  document.getElementById('fin-reset').addEventListener('click', () => {
+    document.getElementById('fin-msrp').value = '';
+    document.getElementById('fin-down').value = '';
+    document.getElementById('fin-term').value = '60';
+    document.getElementById('fin-apr').value = '9.99';
+    document.getElementById('fin-output').innerHTML = '';
+  });
 
-      // Lease calculation
-      document.getElementById('lease-calc').addEventListener('click', () => {
-        // Constants
-        const acquisitionFee = 595;
-        const docFee = 225;
-        const licenseFee = 180;
-        const taxRate = 0.0625; // 6.25%
-        const moneyFactor = 0.00125;
+  // Lease calculation
+  document.getElementById('lease-calc').addEventListener('click', () => {
+    // Constants
+    const acquisitionFee = 595;
+    const docFee = 225;
+    const licenseFee = 180;
+    const taxRate = 0.0625; // 6.25%
+    const moneyFactor = 0.00125;
 
-        // Inputs
-        const msrp = parseFloat(document.getElementById('lease-model').value);
-        const term = parseInt(document.getElementById('lease-term').value);
-        const mileage = parseInt(document.getElementById('lease-mileage').value);
-        const down = parseFloat(document.getElementById('lease-down').value);
+    // Inputs
+    const msrp = parseFloat(document.getElementById('lease-model').value);
+    const term = parseInt(document.getElementById('lease-term').value);
+    const mileage = parseInt(document.getElementById('lease-mileage').value);
+    const down = parseFloat(document.getElementById('lease-down').value);
 
-        if (isNaN(msrp) || msrp <= 0) {
-          alert('Please select a valid Honda model.');
-          return;
-        }
-        if (isNaN(term) || term <= 0) {
-          alert('Please select a valid lease term.');
-          return;
-        }
-        if (![10000,12000,15000].includes(mileage)) {
-          alert('Please select a valid mileage option.');
-          return;
-        }
-        if (isNaN(down) || down < 0) {
-          alert('Please enter a valid down payment.');
-          return;
-        }
+    if (isNaN(msrp) || msrp <= 0) {
+      alert('Please select a valid Honda model.');
+      return;
+    }
+    if (isNaN(term) || term <= 0) {
+      alert('Please select a valid lease term.');
+      return;
+    }
+    if (![10000,12000,15000].includes(mileage)) {
+      alert('Please select a valid mileage option.');
+      return;
+    }
+    if (isNaN(down) || down < 0) {
+      alert('Please enter a valid down payment.');
+      return;
+    }
 
-        // Residual base values per term - 36 months base, others scaled approx
-        const baseResidual36 = 0.56; // example base for 36 months
-        const baseResiduals = {
-          24: 0.64,
-          27: 0.61,
-          33: 0.58,
-          36: 0.56,
-          39: 0.54,
-          42: 0.52,
-          48: 0.49,
-        };
+    const baseResiduals = {
+      24: 0.64,
+      27: 0.61,
+      33: 0.58,
+      36: 0.56,
+      39: 0.54,
+      42: 0.52,
+      48: 0.49,
+    };
 
-        // Mileage adjustment factors (approximate decreases in residual)
-        // Common Honda lease mileage adjustment per year over 12k: roughly -0.002 per 1k miles
-        const mileageAdjPer1000 = 0.002;
+    const mileageAdjPer1000 = 0.002;
+    let residualPercent = baseResiduals[term] || 0.56;
 
-        // Calculate residual value
-        let residualPercent = baseResiduals[term] || 0.56;
+    if (mileage === 10000) residualPercent += mileageAdjPer1000 * 2;
+    else if (mileage === 15000) residualPercent -= mileageAdjPer1000 * 3;
 
-        // Adjust residual for mileage
-        if (mileage === 10000) residualPercent += mileageAdjPer1000 * 2; // 2k miles less than 12k
-        else if (mileage === 15000) residualPercent -= mileageAdjPer1000 * 3; // 3k miles more than 12k
+    if (residualPercent > 0.8) residualPercent = 0.8;
+    if (residualPercent < 0.35) residualPercent = 0.35;
 
-        if (residualPercent > 0.8) residualPercent = 0.8;
-        if (residualPercent < 0.35) residualPercent = 0.35;
+    const residualValue = msrp * residualPercent;
+    const depreciation = msrp - residualValue;
+    const monthlyDepreciation = depreciation / term;
+    const monthlyFinance = (msrp + residualValue) * moneyFactor;
+    const baseMonthly = monthlyDepreciation + monthlyFinance;
+    const monthlyTax = baseMonthly * taxRate;
+    const monthlyPayment = baseMonthly + monthlyTax;
+    const totalDriveOff = down + acquisitionFee + docFee + licenseFee + monthlyPayment;
 
-        const residualValue = msrp * residualPercent;
+    const output = `
+      <h3>Lease Payment Breakdown</h3>
+      <ul style="list-style:none;padding-left:0;">
+        <li>MSRP: <strong>$${msrp.toFixed(2)}</strong></li>
+        <li>Lease Term: <strong>${term} months</strong></li>
+        <li>Mileage Allowance: <strong>${mileage.toLocaleString()} miles/year</strong></li>
+        <li>Residual Value at Lease End: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent * 100).toFixed(1)}%)</li>
+        <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
+        <li>Acquisition Fee: <strong>$${acquisitionFee.toFixed(2)}</strong></li>
+        <li>Documentation Fee: <strong>$${docFee.toFixed(2)}</strong></li>
+        <li>License/Title Fee: <strong>$${licenseFee.toFixed(2)}</strong></li>
+        <li>Estimated Monthly Payment (incl. tax): <strong>$${monthlyPayment.toFixed(2)}</strong></li>
+        <li><strong>Total Due at Signing: $${totalDriveOff.toFixed(2)}</strong></li>
+      </ul>
+      <small style="font-style:italic;color:#555;">
+        *Lease payments are estimates and subject to credit approval.
+      </small>
+    `;
 
-        // Calculate depreciation fee
-        const depreciation = msrp - residualValue;
+    document.getElementById('lease-output').innerHTML = output;
+  });
 
-     // Monthly depreciation + finance fees
-const monthlyDepreciation = depreciation / term;
-const monthlyFinance = (msrp + residualValue) * moneyFactor;
+  document.getElementById('lease-reset').addEventListener('click', () => {
+    document.getElementById('lease-model').selectedIndex = 0;
+    document.getElementById('lease-term').value = '36';
+    document.getElementById('lease-mileage').value = '12000';
+    document.getElementById('lease-down').value = '';
+    document.getElementById('lease-output').innerHTML = '';
+  });
 
-// Base monthly payment before tax
-const baseMonthly = monthlyDepreciation + monthlyFinance;
-
-// Monthly tax applied to payment
-const monthlyTax = baseMonthly * taxRate;
-
-// Total monthly payment including tax
-const monthlyPayment = baseMonthly + monthlyTax;
-
-// Total drive-off (due at signing)
-const totalDriveOff = down + acquisitionFee + docFee + licenseFee + monthlyPayment;
-
-// Display with breakdown
-const output = `
-  <strong>Estimated Monthly Lease Payment:</strong> $${monthlyPayment.toFixed(2)}<br />
-  Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent * 100).toFixed(1)}%)<br /><br />
-  <strong>Drive-Off Breakdown:</strong><br />
-  • Down Payment: $${down.toFixed(2)}<br />
-  • First Monthly Payment: $${monthlyPayment.toFixed(2)}<br />
-  • Acquisition Fee: $${acquisitionFee.toFixed(2)}<br />
-  • Doc Fee: $${docFee.toFixed(2)}<br />
-  • License/Title Fee: $${licenseFee.toFixed(2)}<br />
-  <strong>Total Due at Signing: $${totalDriveOff.toFixed(2)}</strong>
-`;
-
-document.getElementById('lease-output').innerHTML = output;
-      });
-
-      document.getElementById('lease-reset').addEventListener('click', () => {
-        document.getElementById('lease-model').selectedIndex = 0;
-        document.getElementById('lease-term').value = '36';
-        document.getElementById('lease-mileage').value = '12000';
-        document.getElementById('lease-down').value = '';
-        document.getElementById('lease-output').innerHTML = '';
-      });
-
-      // Fade in animation for contact boxes
-      function onEntry(entry) {
-        entry.forEach(change => {
-          if (change.isIntersecting) {
-            change.target.classList.add('visible');
-          }
-        });
+  // Fade in animation for contact boxes
+  function onEntry(entry) {
+    entry.forEach(change => {
+      if (change.isIntersecting) {
+        change.target.classList.add('visible');
       }
+    });
+  }
 
-      let options = {threshold: [0.2]};
-      let observer = new IntersectionObserver(onEntry, options);
-      let elements = document.querySelectorAll('.fade-in-section');
+  let options = {threshold: [0.2]};
+  let observer = new IntersectionObserver(onEntry, options);
+  let elements = document.querySelectorAll('.fade-in-section');
 
-      for (let elm of elements) {
-        observer.observe(elm);
-      }
-    })();
+  for (let elm of elements) {
+    observer.observe(elm);
+  }
+})();
   </script>
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
