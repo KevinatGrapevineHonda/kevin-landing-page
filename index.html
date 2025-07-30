@@ -689,14 +689,19 @@ const monthlyTax = baseMonthly * taxRate;
 
 // Total monthly payment including tax
 const monthlyPayment = baseMonthly + monthlyTax;
-        // Display
-        const output = `
-          Estimated monthly lease payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
-          Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent*100).toFixed(1)}%)<br />
-          Estimated drive-off amount (due at signing): <strong>$${totalDriveOff.toFixed(2)}</strong> (includes down payment, acquisition, doc, license fees)
-        `;
 
-        document.getElementById('lease-output').innerHTML = output;
+// Total drive-off (due at signing)
+const totalDriveOff = down + acquisitionFee + docFee + licenseFee;
+
+// Display
+const output = `
+  Estimated monthly lease payment: <strong>$${monthlyPayment.toFixed(2)}</strong><br />
+  Residual value at lease end: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent*100).toFixed(1)}%)<br />
+  Estimated drive-off amount (due at signing): <strong>$${totalDriveOff.toFixed(2)}</strong> 
+  (includes down payment, acquisition, doc, license fees)
+`;
+
+document.getElementById('lease-output').innerHTML = output;
       });
 
       document.getElementById('lease-reset').addEventListener('click', () => {
