@@ -378,21 +378,24 @@
         <a href="https://www.google.com/maps/dir/?api=1&destination=2301+William+D+Tate+Ave,+Grapevine,+TX+76051" target="_blank" rel="noopener">📍 2301 William D Tate Ave, Grapevine, TX 76051</a>
       </div>
 
-      <form id="contactForm" onsubmit="return false;">
-        <label for="name">Name:</label>
-        <input id="name" name="name" type="text" required placeholder="Your full name" />
+     <form id="contactForm" name="contact" method="POST" data-netlify="true">
+  <!-- Hidden field required for Netlify form name -->
+  <input type="hidden" name="form-name" value="contact">
 
-        <label for="email">Email:</label>
-        <input id="email" name="email" type="email" required placeholder="you@example.com" />
+  <label for="name">Name:</label>
+  <input id="name" name="name" type="text" required placeholder="Your full name" />
 
-        <label for="phone">Phone:</label>
-        <input id="phone" name="phone" type="tel" placeholder="(optional)" />
+  <label for="email">Email:</label>
+  <input id="email" name="email" type="email" required placeholder="you@example.com" />
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
+  <label for="phone">Phone:</label>
+  <input id="phone" name="phone" type="tel" placeholder="(optional)" />
 
-        <button type="submit" class="button">Send Message</button>
-      </form>
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="3" placeholder="How can I help?"></textarea>
+
+  <button type="submit" class="button">Send Message</button>
+</form>
     </div>
 
       <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
