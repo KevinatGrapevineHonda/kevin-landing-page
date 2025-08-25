@@ -396,144 +396,144 @@
 
   <button type="submit" class="button">Send Message</button>
 </form>
-     <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
-    <h2 style="text-align:center;color:#0074D9;margin-bottom:24px;">Finance &amp; Lease Calculator</h2>
+    <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
+        <h2 style="text-align:center;color:#0074D9;margin-bottom:24px;">Finance & Lease Calculator</h2>
 
-    <!-- Toggle buttons -->
-    <div style="text-align:center;margin-bottom:20px;">
-      <button id="toggle-fin" aria-pressed="true" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;background:#0074D9;color:#fff;cursor:pointer;">Finance</button>
-      <button id="toggle-lease" aria-pressed="false" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;color:#333;background:#e2e6ea;cursor:pointer;">Lease</button>
-    </div>
+        <!-- Toggle buttons -->
+        <div style="text-align:center;margin-bottom:20px;">
+          <button id="toggle-fin" aria-pressed="true" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;background:#0074D9;color:#fff;cursor:pointer;">Finance</button>
+          <button id="toggle-lease" aria-pressed="false" style="padding:10px 35px;margin:0 10px;font-weight:bold;border:none;border-radius:5px;color:#333;background:#e2e6ea;cursor:pointer;">Lease</button>
+        </div>
 
-    <!-- Finance Form -->
-    <form id="finance-form" style="display:block;" novalidate>
-      <label for="fin-msrp" style="display:block;margin-top:15px;font-weight:700;color:#222;">MSRP ($):</label>
-      <input id="fin-msrp" type="number" min="0" value="32000" inputmode="decimal" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+        <!-- Finance Form -->
+        <form id="finance-form" style="display:block;">
+          <label for="fin-msrp" style="display:block;margin-top:15px;font-weight:700;color:#222;">MSRP ($):</label>
+          <input id="fin-msrp" type="number" min="0" value="32000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
 
-      <label for="fin-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
-      <input id="fin-down" type="number" min="0" value="2000" inputmode="decimal" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+          <label for="fin-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
+          <input id="fin-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
 
-      <label for="fin-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Term (months):</label>
-      <select id="fin-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-        <option value="24">24</option>
-        <option value="36">36</option>
-        <option value="48">48</option>
-        <option value="60" selected>60</option>
-        <option value="72">72</option>
-        <option value="84">84</option>
-      </select>
+          <label for="fin-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Term (months):</label>
+          <select id="fin-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="24">24</option>
+            <option value="36">36</option>
+            <option value="48">48</option>
+            <option value="60" selected>60</option>
+            <option value="72">72</option>
+            <option value="84">84</option>
+          </select>
 
-      <label for="fin-apr" style="display:block;margin-top:15px;font-weight:700;color:#222;">APR (%):</label>
-      <input id="fin-apr" type="number" min="0" step="0.01" value="9.99" inputmode="decimal" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+          <label for="fin-apr" style="display:block;margin-top:15px;font-weight:700;color:#222;">APR (%):</label>
+          <input id="fin-apr" type="number" min="0" step="0.01" value="9.99" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
 
-      <div class="hint">TX rules: tax on MSRP + doc fee; title/license not taxed. Down payment lowers financed amount but does not lower taxable amount.</div>
+          <div style="display:flex;justify-content:space-between;margin-top:30px;">
+            <button type="button" id="fin-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
+            <button type="button" id="fin-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
+          </div>
 
-      <div style="display:flex;justify-content:space-between;margin-top:20px;">
-        <button type="button" id="fin-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.05rem;">Calculate Payment</button>
-        <button type="button" id="fin-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.05rem;">Reset Calculator</button>
-      </div>
+          <div id="fin-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
 
-      <div id="fin-output" style="margin-top:18px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.03rem;color:#1a1a1a;line-height:1.45;min-height:88px;"></div>
-
-      <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
+          <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
         <em>Disclaimer:</em> All finance payments are estimates only and subject to credit approval, lender programs, applicable taxes, title, license, documentation fees, and dealer-installed options. Interest rates may vary based on creditworthiness and market conditions. This calculator is for informational purposes only and does not constitute an offer to finance. Please contact Grapevine Honda for an exact quote. Dealer is not responsible for typographical or system errors.
-      </p>
-    </form>
+          </p>
+        </form>
 
-    <!-- Lease Form -->
-    <form id="lease-form" style="display:none;" novalidate>
-      <label for="lease-model" style="display:block;margin-top:15px;font-weight:700;color:#222;">Honda Model &amp; Trim:</label>
-      <select id="lease-model" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-        <!-- 2026 MSRPs (including destination) — add data-year="2025" on any line that reuses a 2025 MSRP -->
-        <!-- Civic Sedan -->
-        <option value="24595">Civic Sedan LX - $24,595</option>
-        <option value="26095">Civic Sedan Sport - $26,095</option>
-        <option value="29295">Civic Sedan Sport Hybrid - $29,295</option>
-        <option value="32295">Civic Sedan Sport Touring Hybrid - $32,295</option>
+        <!-- Lease Form -->
+        <form id="lease-form" style="display:none;">
+          <label for="lease-model" style="display:block;margin-top:15px;font-weight:700;color:#222;">Honda Model & Trim:</label>
+          <select id="lease-model" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <!-- 2026 MSRPs from Honda.com including destination -->
+            <!-- Civic Sedan -->
+            <option value="24595">Civic Sedan LX - $24,595</option>
+            <option value="26095">Civic Sedan Sport - $26,095</option>
+            <option value="29295">Civic Sedan Sport Hybrid - $29,295</option>
+            <option value="32295">Civic Sedan Sport Touring Hybrid - $32,295</option>
 
-        <!-- Civic Hatchback -->
-        <option value="27795">Civic Hatchback Sport - $27,795</option>
-        <option value="30495">Civic Hatchback Sport Hybrid - $30,495</option>
-        <option value="33495">Civic Hatchback Sport Touring Hybrid - $33,495</option>
+            <!-- Civic Hatchback -->
+            <option value="27795">Civic Hatchback Sport - $27,795</option>
+            <option value="30495">Civic Hatchback Sport Hybrid - $30,495</option>
+            <option value="33495">Civic Hatchback Sport Touring Hybrid - $33,495</option>
 
-        <!-- Accord Sedan -->
-        <option value="28295">Accord LX - $28,295</option>
-        <option value="30560">Accord SE - $30,560</option>
-        <option value="33655">Accord Sport Hybrid - $33,655</option>
-        <option value="34940">Accord EX-L - $34,940</option>
-        <option value="35375">Accord Sport-L Hybrid - $35,370</option>
-        <option value="39300">Accord Touring Hybrid - $39,300</option>
+            <!-- Accord Sedan -->
+            <option value="28295">Accord LX - $28,295</option>
+            <option value="30560">Accord SE - $30,560</option>
+            <option value="33655">Accord Sport Hybrid - $33,655</option>
+            <option value="34940">Accord EX-L - $34,940</option>
+            <option value="35375">Accord Sport-L Hybrid - $35,370</option>
+            <option value="39300">Accord Touring Hybrid - $39,300</option>
 
-        <!-- CR-V -->
-        <option value="30920">CR-V LX - $30,920</option>
-        <option value="33150">CR-V EX - $33,150</option>
-        <option value="35400">CR-V EX-L - $35,400</option>
-        <option value="35630">CR-V Sport Hybrid - $35,630</option>
-        <option value="38725">CR-V Sport-L Hybrid - $38,725</option>
-        <option value="38800">CR-V TrailSport Hybrid - $38,800</option>
-        <option value="42250">CR-V Sport Touring Hybrid - $42,250</option>
+            <!-- CR-V -->
+            <option value="30920">CR-V LX - $30,920</option>
+            <option value="33150">CR-V EX - $33,150</option>
+            <option value="35400">CR-V EX-L - $35,400</option>
+            <option value="35630">CR-V Sport Hybrid - $35,630</option>
+            <option value="38725">CR-V Sport-L Hybrid - $38,725</option>
+            <option value="38800">CR-V TrailSport Hybrid- $38,800</option>
+            <option value="42250">CR-V Sport Touring Hybrid - $42,250</option>
 
-        <!-- Pilot -->
-        <option value="40200">Pilot Sport - $40,200</option>
-        <option value="43500">Pilot EX-L - $43,500</option>
-        <option value="47500">Pilot Touring - $47,500</option>
-        <option value="49400">Pilot TrailSport - $49,400</option>
-        <option value="53080">Pilot Elite - $53,080</option>
-        <option value="54580">Pilot Black Edition - $54,580</option>
+            <!-- Pilot -->
+            <option value="40200">Pilot Sport - $40,200</option>
+            <option value="43500">Pilot EX-L - $43,500</option>
+            <option value="45200">Pilot Touring - $47,500</option>
+            <option value="49400">Pilot TrailSport - $49,400</option>
+            <option value="53080">Pilot Elite - $53,080</option>
+            <option value="54580">Pilot Black Edition - $54,580</option>
 
-        <!-- Passport -->
-        <option value="44750">Passport RTL - $44,750</option>
-        <option value="45950">Passport RTL Blackout - $45,950</option>
-        <option value="48450">Passport TrailSport - $48,450</option>
-        <option value="52450">Passport TrailSport Elite - $52,450</option>
 
-        <!-- Ridgeline -->
-        <option value="40150">Ridgeline Sport - $40,150</option>
-        <option value="42980">Ridgeline RTL - $42,980</option>
-        <option value="45380">Ridgeline TrailSport - $45,380</option>
-        <option value="46750">Ridgeline Black Edition - $46,750</option>
+            <!-- Passport -->
+            <option value="44750">Passport RTL - $44,750</option>
+            <option value="45950">Passport RTL Blackout - $45,950</option>
+            <option value="48450">Passport TrailSport - $48,450</option>
+            <option value="52450">Passport TrailSport Elite - $52,450</option>
 
-        <!-- Odyssey -->
-        <option value="42220">Odyssey EX-L - $42,220</option>
-        <option value="43370">Odyssey Sport-L - $43,370</option>
-        <option value="46910">Odyssey Touring - $46,910</option>
-        <option value="51220">Odyssey Elite - $51,220</option>
-      </select>
+            <!-- Ridgeline -->
+            <option value="40150">Ridgeline Sport - $40,150</option>
+            <option value="42980">Ridgeline RTL - $42,980</option>
+            <option value="45380">Ridgeline TrailSport - $45,380</option>
+            <option value="46750">Ridgeline Black Edition - $46,750</option>
 
-      <label for="lease-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Lease Term (months):</label>
-      <select id="lease-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-        <option value="24">24</option>
-        <option value="27">27</option>
-        <option value="33">33</option>
-        <option value="36" selected>36</option>
-        <option value="39">39</option>
-        <option value="42">42</option>
-        <option value="48">48</option>
-      </select>
+            <!-- Odyssey -->
+            <option value="42220">Odyssey EX-L - $42,220</option>
+            <option value="43370">Odyssey Sport-L - $43,370</option>
+            <option value="46910">Odyssey Touring - $46,910</option>
+            <option value="51220">Odyssey Elite - $51,220</option>
+          </select>
 
-      <label for="lease-mileage" style="display:block;margin-top:15px;font-weight:700;color:#222;">Annual Mileage:</label>
-      <select id="lease-mileage" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
-        <option value="10000">10,000 miles/year</option>
-        <option value="12000" selected>12,000 miles/year</option>
-        <option value="15000">15,000 miles/year</option>
-      </select>
+          <label for="lease-term" style="display:block;margin-top:15px;font-weight:700;color:#222;">Lease Term (months):</label>
+          <select id="lease-term" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="24">24</option>
+            <option value="27">27</option>
+            <option value="33">33</option>
+            <option value="36" selected>36</option>
+            <option value="39">39</option>
+            <option value="42">42</option>
+            <option value="48">48</option>
+          </select>
 
-      <label for="lease-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
-      <input id="lease-down" type="number" min="0" value="2000" inputmode="decimal" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+          <label for="lease-mileage" style="display:block;margin-top:15px;font-weight:700;color:#222;">Annual Mileage:</label>
+          <select id="lease-mileage" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
+            <option value="10000">10,000 miles/year</option>
+            <option value="12000" selected>12,000 miles/year</option>
+            <option value="15000">15,000 miles/year</option>
+          </select>
 
-      <div class="hint">TX rules: lease tax is up-front on MSRP + doc. Down payment reduces cap cost and lowers monthly. Title/license &amp; acq fee not taxed.</div>
+          <label for="lease-down" style="display:block;margin-top:15px;font-weight:700;color:#222;">Down Payment ($):</label>
+          <input id="lease-down" type="number" min="0" value="2000" style="width:100%;padding:9px 12px;margin-top:6px;border-radius:5px;border:1px solid #bbb;">
 
-      <div style="display:flex;justify-content:space-between;margin-top:20px;">
-        <button type="button" id="lease-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.05rem;">Calculate Payment</button>
-        <button type="button" id="lease-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.05rem;">Reset Calculator</button>
+          <div style="display:flex;justify-content:space-between;margin-top:30px;">
+            <button type="button" id="lease-calc" style="width:48%;padding:14px 0;background:#0074D9;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Calculate Payment</button>
+            <button type="button" id="lease-reset" style="width:48%;padding:14px 0;background:#d9534f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:1.1rem;">Reset Calculator</button>
+          </div>
+
+          <div id="lease-output" style="margin-top:28px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.15rem;color:#1a1a1a;line-height:1.4;min-height:88px;"></div>
+
+          <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
+        <em>Disclaimer:</em> All lease payments are estimates only and do not constitute an offer to lease. Actual payments may vary based on approved credit, lender programs, residual values, money factors, applicable incentives, taxes, title, license, acquisition fees, dealer-installed options, and documentation fees. Estimates are for illustration purposes only and may change without notice. Please contact Grapevine Honda for an exact quote. Dealer is not responsible for typographical or system errors.
+          </p>
+        </form>
       </div>
 
-      <div id="lease-output" style="margin-top:18px;background:#f1f3f5;padding:18px 22px;border-radius:8px;font-size:1.03rem;color:#1a1a1a;line-height:1.45;min-height:88px;"></div>
-
-      <p style="font-size:0.88rem;color:#555;font-style:italic;text-align:center;margin-top:12px;user-select:none;">
-        <em>Disclaimer:</em> All lease payments are estimates only and do not constitute an offer to lease. Actual payments may vary based on approved credit, lender programs, residual values, money factors, applicable incentives, taxes, title, license, acquisition fees, dealer-installed options, and documentation fees. Estimates are for illustration purposes only and may change without notice. Please contact Grapevine Honda for an exact quote. Dealer is not responsible for typographical or system errors.
-      </p>
-    </form>
+    </div>
   </div>
 
   <footer style="background:#003366;color:#f8f9fa;text-align:center;padding:1rem 1rem;font-size:0.95rem;user-select:none;">
@@ -541,186 +541,214 @@
   </footer>
 
   <script>
-  (function () {
-    // Toggle
-    const toggleFin   = document.getElementById('toggle-fin');
-    const toggleLease = document.getElementById('toggle-lease');
-    const finForm     = document.getElementById('finance-form');
-    const leaseForm   = document.getElementById('lease-form');
+(function() {
+  // Toggle forms and button styles
+  const toggleFin = document.getElementById('toggle-fin');
+  const toggleLease = document.getElementById('toggle-lease');
+  const finForm = document.getElementById('finance-form');
+  const leaseForm = document.getElementById('lease-form');
 
-    function setActive(btnActive, btnInactive, formActive, formInactive) {
-      formActive.style.display = 'block';
-      formInactive.style.display = 'none';
-      btnActive.style.backgroundColor = '#0074D9';
-      btnActive.style.color = '#fff';
-      btnActive.setAttribute('aria-pressed', 'true');
-      btnInactive.style.backgroundColor = '#e2e6ea';
-      btnInactive.style.color = '#333';
-      btnInactive.setAttribute('aria-pressed', 'false');
+  toggleFin.addEventListener('click', () => {
+    finForm.style.display = 'block';
+    leaseForm.style.display = 'none';
+    toggleFin.style.backgroundColor = '#0074D9';
+    toggleFin.style.color = '#fff';
+    toggleFin.setAttribute('aria-pressed', 'true');
+    toggleLease.style.backgroundColor = '#e2e6ea';
+    toggleLease.style.color = '#333';
+    toggleLease.setAttribute('aria-pressed', 'false');
+  });
+
+  toggleLease.addEventListener('click', () => {
+    finForm.style.display = 'none';
+    leaseForm.style.display = 'block';
+    toggleLease.style.backgroundColor = '#0074D9';
+    toggleLease.style.color = '#fff';
+    toggleLease.setAttribute('aria-pressed', 'true');
+    toggleFin.style.backgroundColor = '#e2e6ea';
+    toggleFin.style.color = '#333';
+    toggleFin.setAttribute('aria-pressed', 'false');
+  });
+
+  // Finance calculation
+  document.getElementById('fin-calc').addEventListener('click', () => {
+    const msrp = parseFloat(document.getElementById('fin-msrp').value);
+    const down = parseFloat(document.getElementById('fin-down').value);
+    const term = parseInt(document.getElementById('fin-term').value);
+    const apr = parseFloat(document.getElementById('fin-apr').value);
+
+    if (isNaN(msrp) || msrp <= 0) {
+      alert('Please enter a valid MSRP.');
+      return;
+    }
+    if (isNaN(down) || down < 0) {
+      alert('Please enter a valid down payment.');
+      return;
+    }
+    if (isNaN(term) || term <= 0) {
+      alert('Please select a valid term.');
+      return;
+    }
+    if (isNaN(apr) || apr < 0) {
+      alert('Please enter a valid APR.');
+      return;
     }
 
-    toggleFin.addEventListener('click', () => {
-      setActive(toggleFin, toggleLease, finForm, leaseForm);
-      computeFinance();
-    });
-    toggleLease.addEventListener('click', () => {
-      setActive(toggleLease, toggleFin, leaseForm, finForm);
-      computeLease();
-    });
+    // Texas fees
+    const docFee = 225;
+    const licenseFee = 180;
+    const taxRate = 0.0625; // 6.25%
 
-    // Texas constants
-    const TX_TAX_RATE       = 0.0625;  // 6.25%
-    const DOC_FEE           = 225;     // taxable in TX
-    const TITLE_LICENSE_FEE = 180;     // non-taxable
-    const LEASE_ACQ_FEE     = 595;     // non-taxable in TX
+    // Taxable amount (after down payment, plus fees)
+    const taxableAmount = (msrp - down) + docFee + licenseFee;
+    const taxAmount = taxableAmount * taxRate;
 
-    // Utils
-    function currency(n) { return '$' + (isFinite(n) ? n.toFixed(2) : '0.00'); }
-    function toNum(v) { const n = parseFloat(v); return isFinite(n) ? n : 0; }
+    // Total amount financed
+    const totalFinanced = (msrp - down) + docFee + licenseFee + taxAmount;
 
-    // FINANCE
-    function computeFinance() {
-      const msrp = toNum(document.getElementById('fin-msrp').value);
-      const down = Math.max(0, toNum(document.getElementById('fin-down').value));
-      const term = Math.max(0, parseInt(document.getElementById('fin-term').value, 10));
-      const apr  = Math.max(0, toNum(document.getElementById('fin-apr').value));
+    // Monthly payment calculation
+    const monthlyRate = apr / 100 / 12;
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, term);
+    const denominator = Math.pow(1 + monthlyRate, term) - 1;
+    const monthlyPayment = totalFinanced * (numerator / denominator);
+    const totalInterest = (monthlyPayment * term) - totalFinanced;
 
-      if (msrp <= 0 || term <= 0) {
-        document.getElementById('fin-output').innerHTML = '';
-        return;
-      }
+    // Output
+    const output = `
+      <h3>Finance Payment Breakdown</h3>
+      <ul style="list-style:none;padding-left:0;">
+        <li>Price (MSRP): <strong>$${msrp.toFixed(2)}</strong></li>
+        <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
+        <li>Documentation Fee: <strong>$${docFee.toFixed(2)}</strong></li>
+        <li>Title/License Fee: <strong>$${licenseFee.toFixed(2)}</strong></li>
+        <li>Tax (6.25%): <strong>$${taxAmount.toFixed(2)}</strong></li>
+        <li><strong>Total Amount Financed: $${totalFinanced.toFixed(2)}</strong></li>
+        <li>Term: <strong>${term} months</strong></li>
+        <li>APR: <strong>${apr.toFixed(2)}%</strong></li>
+        <li>Estimated Monthly Payment: <strong>$${monthlyPayment.toFixed(2)}</strong></li>
+        <li>Total Interest Paid: <strong>$${totalInterest.toFixed(2)}</strong></li>
+        <li><strong>Total Cost (Amount Financed + Interest): $${(totalFinanced + totalInterest).toFixed(2)}</strong></li>
+      </ul>
+      <small style="font-style:italic;color:#555;">
+        *Payments are estimates and may vary based on credit and final terms.
+      </small>
+    `;
+    document.getElementById('fin-output').innerHTML = output;
+  });
 
-      // TX: Taxable = MSRP + doc fee (down payment does NOT reduce taxable)
-      const taxableAmount = msrp + DOC_FEE;
-      const taxAmount = taxableAmount * TX_TAX_RATE;
+  // Finance reset (fixed)
+  document.getElementById('fin-reset').addEventListener('click', () => {
+    document.getElementById('fin-msrp').value = '';
+    document.getElementById('fin-down').value = '';
+    document.getElementById('fin-term').value = '60';
+    document.getElementById('fin-apr').value = '9.99';
+    document.getElementById('fin-output').innerHTML = '';
+  });
 
-      // Amount financed: (MSRP - down) + doc + title/license + tax
-      // Clamp negative financed principal to zero if down > MSRP
-      const principalPortion = Math.max(0, msrp - down);
-      const totalFinanced = principalPortion + DOC_FEE + TITLE_LICENSE_FEE + taxAmount;
+  // Lease calculation
+  document.getElementById('lease-calc').addEventListener('click', () => {
+    const acquisitionFee = 595;
+    const docFee = 225;
+    const licenseFee = 180;
+    const taxRate = 0.0625;
+    const moneyFactor = 0.00125;
 
-      // Payment
-      const r = apr / 100 / 12;
-      const n = term;
-      let monthlyPayment = 0;
-      if (r === 0) {
-        monthlyPayment = totalFinanced / n;
-      } else {
-        const factor = Math.pow(1 + r, n);
-        monthlyPayment = totalFinanced * (r * factor) / (factor - 1);
-      }
-      const totalInterest = (monthlyPayment * n) - totalFinanced;
+    const msrp = parseFloat(document.getElementById('lease-model').value);
+    const term = parseInt(document.getElementById('lease-term').value);
+    const mileage = parseInt(document.getElementById('lease-mileage').value);
+    const down = parseFloat(document.getElementById('lease-down').value);
 
-      document.getElementById('fin-output').innerHTML = `
-        <h3>Finance Payment Breakdown</h3>
-        <ul style="list-style:none;padding-left:0;">
-          <li>Price (MSRP): <strong>${currency(msrp)}</strong></li>
-          <li>Down Payment: <strong>${currency(down)}</strong></li>
-          <li>Documentation Fee (taxable): <strong>${currency(DOC_FEE)}</strong></li>
-          <li>Title/License (non-taxable): <strong>${currency(TITLE_LICENSE_FEE)}</strong></li>
-          <li>Sales Tax @ 6.25%: <strong>${currency(taxAmount)}</strong></li>
-          <li><strong>Total Amount Financed: ${currency(totalFinanced)}</strong></li>
-          <li>Term: <strong>${n} months</strong></li>
-          <li>APR: <strong>${apr.toFixed(2)}%</strong></li>
-          <li>Estimated Monthly Payment: <strong>${currency(monthlyPayment)}</strong></li>
-          <li>Total Interest Paid: <strong>${currency(totalInterest)}</strong></li>
-          <li><strong>Total Cost (Financed + Interest): ${currency(totalFinanced + totalInterest)}</strong></li>
-        </ul>
-        <small style="font-style:italic;color:#555;">*TX: Down payment does not reduce taxable amount; doc fee taxed; title/license not taxed.</small>
-      `;
+    if (isNaN(msrp) || msrp <= 0) {
+      alert('Please select a valid Honda model.');
+      return;
+    }
+    if (isNaN(term) || term <= 0) {
+      alert('Please select a valid lease term.');
+      return;
+    }
+    if (![10000,12000,15000].includes(mileage)) {
+      alert('Please select a valid mileage option.');
+      return;
+    }
+    if (isNaN(down) || down < 0) {
+      alert('Please enter a valid down payment.');
+      return;
     }
 
-    document.getElementById('fin-calc').addEventListener('click', computeFinance);
-    document.getElementById('fin-reset').addEventListener('click', () => {
-      document.getElementById('fin-msrp').value = '';
-      document.getElementById('fin-down').value = '';
-      document.getElementById('fin-term').value = '60';
-      document.getElementById('fin-apr').value  = '9.99';
-      document.getElementById('fin-output').innerHTML = '';
-    });
-    ['fin-msrp','fin-down','fin-term','fin-apr'].forEach(id => {
-      const el = document.getElementById(id);
-      el.addEventListener('input', computeFinance);
-      el.addEventListener('change', computeFinance);
-    });
+    const baseResiduals = {
+      24: 0.64,
+      27: 0.61,
+      33: 0.58,
+      36: 0.56,
+      39: 0.54,
+      42: 0.52,
+      48: 0.49,
+    };
 
-    // LEASE
-    function computeLease() {
-      const msrp  = toNum(document.getElementById('lease-model').value);
-      const term  = Math.max(0, parseInt(document.getElementById('lease-term').value, 10));
-      const miles = Math.max(0, parseInt(document.getElementById('lease-mileage').value, 10));
-      const down  = Math.max(0, toNum(document.getElementById('lease-down').value));
+    const mileageAdjPer1000 = 0.002;
+    let residualPercent = baseResiduals[term] || 0.56;
+    if (mileage === 10000) residualPercent += mileageAdjPer1000 * 2;
+    else if (mileage === 15000) residualPercent -= mileageAdjPer1000 * 3;
+    if (residualPercent > 0.8) residualPercent = 0.8;
+    if (residualPercent < 0.35) residualPercent = 0.35;
 
-      if (msrp <= 0 || term <= 0 || ![10000,12000,15000].includes(miles)) {
-        document.getElementById('lease-output').innerHTML = '';
-        return;
+    const residualValue = msrp * residualPercent;
+    const depreciation = msrp - residualValue;
+    const monthlyDepreciation = depreciation / term;
+    const monthlyFinance = (msrp + residualValue) * moneyFactor;
+    const baseMonthly = monthlyDepreciation + monthlyFinance;
+    const monthlyTax = baseMonthly * taxRate;
+    const monthlyPayment = baseMonthly + monthlyTax;
+    const totalDriveOff = down + acquisitionFee + docFee + licenseFee + monthlyPayment;
+
+    const output = `
+      <h3>Lease Payment Breakdown</h3>
+      <ul style="list-style:none;padding-left:0;">
+        <li>MSRP: <strong>$${msrp.toFixed(2)}</strong></li>
+        <li>Lease Term: <strong>${term} months</strong></li>
+        <li>Mileage Allowance: <strong>${mileage.toLocaleString()} miles/year</strong></li>
+        <li>Residual Value at Lease End: <strong>$${residualValue.toFixed(2)}</strong> (${(residualPercent * 100).toFixed(1)}%)</li>
+        <li>Down Payment: <strong>$${down.toFixed(2)}</strong></li>
+        <li>Acquisition Fee: <strong>$${acquisitionFee.toFixed(2)}</strong></li>
+        <li>Documentation Fee: <strong>$${docFee.toFixed(2)}</strong></li>
+        <li>License/Title Fee: <strong>$${licenseFee.toFixed(2)}</strong></li>
+        <li>Estimated Monthly Payment (incl. tax): <strong>$${monthlyPayment.toFixed(2)}</strong></li>
+        <li><strong>Total Due at Signing: $${totalDriveOff.toFixed(2)}</strong></li>
+      </ul>
+      <small style="font-style:italic;color:#555;">
+        *Lease payments are estimates and subject to credit approval.
+      </small>
+    `;
+    document.getElementById('lease-output').innerHTML = output;
+  });
+
+  // Lease reset
+  document.getElementById('lease-reset').addEventListener('click', () => {
+    document.getElementById('lease-model').selectedIndex = 0;
+    document.getElementById('lease-term').value = '36';
+    document.getElementById('lease-mileage').value = '12000';
+    document.getElementById('lease-down').value = '';
+    document.getElementById('lease-output').innerHTML = '';
+  });
+
+  // Fade-in animation
+  function onEntry(entry) {
+    entry.forEach(change => {
+      if (change.isIntersecting) {
+        change.target.classList.add('visible');
       }
-
-      // Residuals (rule-of-thumb base + mileage adjustment)
-      const baseResiduals = { 24:0.64, 27:0.61, 33:0.58, 36:0.56, 39:0.54, 42:0.52, 48:0.49 };
-      let residualPct = baseResiduals[term] || 0.56;
-      const mileageAdj = { 10000: +0.004, 12000: 0, 15000: -0.006 }; // ~0.2%/1k miles rule
-      residualPct += (mileageAdj[miles] || 0);
-      residualPct = Math.max(0.35, Math.min(0.80, residualPct));
-      const residualValue = msrp * residualPct;
-
-      // Money factor (placeholder—update to program value if you have it)
-      const moneyFactor = 0.00125;
-
-      // Cap cost
-      const grossCapCost = msrp + DOC_FEE + LEASE_ACQ_FEE; // acq/doc typically capitalized
-      const capReduction = Math.min(down, grossCapCost);
-      const adjCapCost   = grossCapCost - capReduction;
-
-      // Texas up-front tax on MSRP + doc
-      const upfrontTax = (msrp + DOC_FEE) * TX_TAX_RATE;
-
-      // Monthly base (no monthly tax by default in TX)
-      const monthlyDep     = (adjCapCost - residualValue) / term;
-      const monthlyFinance = (adjCapCost + residualValue) * moneyFactor;
-      const monthlyPayment = monthlyDep + monthlyFinance;
-
-      // Due at signing approximation = down + first payment + non-taxable fees + doc + up-front tax
-      const totalDueAtSigning = down + monthlyPayment + TITLE_LICENSE_FEE + LEASE_ACQ_FEE + DOC_FEE + upfrontTax;
-
-      document.getElementById('lease-output').innerHTML = `
-        <h3>Lease Payment Breakdown</h3>
-        <ul style="list-style:none;padding-left:0;">
-          <li>MSRP: <strong>${currency(msrp)}</strong></li>
-          <li>Lease Term: <strong>${term} months</strong></li>
-          <li>Mileage Allowance: <strong>${miles.toLocaleString()} miles/year</strong></li>
-          <li>Residual Value: <strong>${currency(residualValue)}</strong> (${(residualPct*100).toFixed(1)}%)</li>
-          <li>Adjusted Cap Cost: <strong>${currency(adjCapCost)}</strong></li>
-          <li>Down Payment (cap reduction): <strong>${currency(down)}</strong></li>
-          <li>Acquisition Fee (non-taxable): <strong>${currency(LEASE_ACQ_FEE)}</strong></li>
-          <li>Documentation Fee (taxable): <strong>${currency(DOC_FEE)}</strong></li>
-          <li>Title/License (non-taxable): <strong>${currency(TITLE_LICENSE_FEE)}</strong></li>
-          <li>Texas Up-Front Tax @ 6.25%: <strong>${currency(upfrontTax)}</strong></li>
-          <li>Estimated Monthly Payment: <strong>${currency(monthlyPayment)}</strong></li>
-          <li><strong>Total Due at Signing (approx.): ${currency(totalDueAtSigning)}</strong></li>
-        </ul>
-        <small style="font-style:italic;color:#555;">*TX lease tax generally collected up front on MSRP + doc. Programs with tax credits may tax monthly instead.</small>
-      `;
-    }
-
-    document.getElementById('lease-calc').addEventListener('click', computeLease);
-    document.getElementById('lease-reset').addEventListener('click', () => {
-      document.getElementById('lease-model').selectedIndex = 0;
-      document.getElementById('lease-term').value    = '36';
-      document.getElementById('lease-mileage').value = '12000';
-      document.getElementById('lease-down').value    = '';
-      document.getElementById('lease-output').innerHTML = '';
     });
-    ['lease-model','lease-term','lease-mileage','lease-down'].forEach(id => {
-      const el = document.getElementById(id);
-      el.addEventListener('input', computeLease);
-      el.addEventListener('change', computeLease);
-    });
+  }
 
-    // Initial compute so panels aren’t blank
-    computeFinance();
-  })();
-  </script>
+  let options = { threshold: [0.2] };
+  let observer = new IntersectionObserver(onEntry, options);
+  let elements = document.querySelectorAll('.fade-in-section');
+
+  for (let elm of elements) {
+    observer.observe(elm);
+  }
+})();
+</script>
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
