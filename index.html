@@ -305,8 +305,11 @@
     const residual = msrp * residualValues[term];
     const moneyFactor = moneyFactors[term];
 
-    const monthlyDep = (msrp - residual) / term;
-    const monthlyFin = (msrp + residual) * moneyFactor;
+    // Adjusted capitalized cost = MSRP - down payment
+    const capCost = msrp - down;
+
+    const monthlyDep = (capCost - residual) / term;
+    const monthlyFin = (capCost + residual) * moneyFactor;
     const baseMonthly = monthlyDep + monthlyFin;
     const taxMonthly = baseMonthly * (1 + taxRate);
 
@@ -318,7 +321,7 @@
       <p>Base Payment: $${baseMonthly.toFixed(2)}</p>
       <p>Residual Value: $${residual.toFixed(2)}</p>
     `;
-  });
+});
 
   document.getElementById('resetLease').addEventListener('click', () => {
     document.getElementById('leaseForm').reset();
