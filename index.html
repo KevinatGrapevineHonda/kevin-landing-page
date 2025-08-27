@@ -111,10 +111,10 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
     <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">📅 Schedule Appointment</a>
     <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
     <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
-    <a class="button" href="#vehicleCalcForm">Finance & Lease Calculator</a>
     <a class="button" href="https://www.grapevinehonda.com/specials" target="_blank" rel="noopener">View Specials</a>
-    <a class="button" href="https://www.grapevinehonda.com/service" target="_blank" rel="noopener">Schedule Service</a>
-    <a class="button" href="#evEducation" target="_blank" rel="noopener">EV Education</a>
+    <a class="button" href="https://www.grapevinehonda.com/scheduleservice" target="_blank" rel="noopener">Schedule Service</a>
+    <a class="button" href="https://www.grapevinehonda.com/honda-ev-education" target="_blank" rel="noopener">Honda EV Education</a>
+
   </div>
 
   <!-- Finance & Lease Calculator Box -->
@@ -206,98 +206,117 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
       <p class="disclaimer">*Estimated payments are based on MSRP, standard Texas tax, title ($180), license ($180), doc ($225), and standard Honda lease acquisition fees ($595). Actual payments may vary based on credit, incentives, and final dealer pricing.</p>
     </div>
   </div>
+
+  <!-- Contact Me Form -->
+  <div class="contact-box fade-in-section">
+    <h2>Contact Me</h2>
+    <p>Have questions or ready to get started? Send me a message and I’ll get back to you right away!</p>
+    <form id="contactForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+
+      <button type="submit" class="button">Send to Kevin</button>
+    </form>
+    <p id="contactStatus" style="margin-top:1rem;font-weight:600;"></p>
+  </div>
 </div>
 
-<!-- EV Education Section (Anchor target) -->
-<section id="evEducation" class="headline-section">
-  <h2>EV Education</h2>
-  <p class="subheadline">Learn about Honda’s electric and hybrid vehicles, charging options, incentives, and why going electric can be the right choice for you.</p>
-</section>
-
-<!-- Footer -->
-<footer style="background:#003366;color:white;text-align:center;padding:2rem 1rem;margin-top:2rem;">
-  <p>Kevin at Grapevine Honda | 2025 &copy; All Rights Reserved</p>
-  <p><a href="https://g.co/kgs/1XPhfgi" target="_blank" rel="noopener" style="color:#FFD700;">Check out my reviews on Google</a></p>
+<footer style="text-align:center;padding:2rem 1rem;background:#003366;color:white;font-weight:600;">
+  <p>Check out my <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color:#ffd700;">reviews on Google</a></p>
+  <p>&copy; 2025 Kevin | Grapevine Honda</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-// Fade-in effect
-document.addEventListener("DOMContentLoaded", function() {
-  const sections = document.querySelectorAll(".fade-in-section");
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("visible"); obs.unobserve(entry.target); } });
-  }, { threshold:0.1 });
-  sections.forEach(section => observer.observe(section));
+(function(){emailjs.init("YOUR_USER_ID");})();
 
-  // Calculator Logic
-  const toggleLease = document.getElementById("toggleLease");
-  const toggleFinance = document.getElementById("toggleFinance");
-  const mileage = document.getElementById("mileage");
-  const aprInput = document.getElementById("apr");
-  const calcResult = document.getElementById("calcResult");
-  let isLease = false;
+// Fade in effect
+document.addEventListener('DOMContentLoaded', function() {
+  const faders = document.querySelectorAll('.fade-in-section');
+  faders.forEach((el)=>{el.classList.add('visible');});
+});
 
-  // Default: Finance
-  toggleFinance.style.background = "#0074D9";
-  toggleLease.style.background = "#0056b3";
-  mileage.parentElement.style.display = "none";
-  aprInput.parentElement.style.display = "block";
+// Contact Form Submit
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const status = document.getElementById('contactStatus');
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const message = document.getElementById('message').value;
 
-  toggleLease.addEventListener("click", () => {
-    isLease = true;
-    toggleLease.style.background = "#0074D9";
-    toggleFinance.style.background = "#0056b3";
-    mileage.parentElement.style.display = "block";
-    aprInput.parentElement.style.display = "none";
-  });
-
-  toggleFinance.addEventListener("click", () => {
-    isLease = false;
-    toggleFinance.style.background = "#0074D9";
-    toggleLease.style.background = "#0056b3";
-    mileage.parentElement.style.display = "none";
-    aprInput.parentElement.style.display = "block";
-  });
-
-  function calculatePayment() {
-    const modelSelect = document.getElementById("vehicleModel");
-    const down = parseFloat(document.getElementById("downPayment").value) || 0;
-    const term = parseInt(document.getElementById("term").value);
-    const apr = parseFloat(aprInput.value)/100;
-    const [model, msrpStr] = modelSelect.value.split("|");
-    const msrp = parseFloat(msrpStr);
-    const txRate = 0.0625, docFee = 225, licenseFee = 180, acqFee = 595;
-    let monthly = 0, totalInterest = 0;
-
-    if(isLease){
-      const residuals = { "Accord LX":0.57,"Accord Sport":0.57,"Accord EX-L":0.57,"Accord Touring":0.57,"Civic LX":0.55,"Civic Sport":0.55,"Civic EX":0.55,"Civic Touring":0.55,"Civic Si":0.54,"Civic Type R":0.52,"CR-V LX":0.57,"CR-V EX":0.57,"CR-V EX-L":0.57,"CR-V Touring":0.57,"HR-V LX":0.58,"HR-V Sport":0.58,"HR-V EX":0.58,"HR-V Touring":0.58,"Pilot LX":0.57,"Pilot EX":0.57,"Pilot EX-L":0.57,"Pilot Touring":0.57,"Passport Sport":0.57,"Passport EX-L":0.57,"Passport Touring":0.57,"Odyssey EX":0.57,"Odyssey EX-L":0.57,"Odyssey Touring":0.57,"Ridgeline RTL":0.57,"Ridgeline RTL-E":0.57,"Ridgeline Black Edition":0.57,"Prologue Touring":0.57 };
-      const moneyFactors = { "Accord LX":0.00105,"Accord Sport":0.00105,"Accord EX-L":0.00105,"Accord Touring":0.00105,"Civic LX":0.0011,"Civic Sport":0.0011,"Civic EX":0.0011,"Civic Touring":0.0011,"Civic Si":0.00115,"Civic Type R":0.0012,"CR-V LX":0.00105,"CR-V EX":0.00105,"CR-V EX-L":0.00105,"CR-V Touring":0.00105,"HR-V LX":0.00105,"HR-V Sport":0.00105,"HR-V EX":0.00105,"HR-V Touring":0.00105,"Pilot LX":0.00105,"Pilot EX":0.00105,"Pilot EX-L":0.00105,"Pilot Touring":0.00105,"Passport Sport":0.00105,"Passport EX-L":0.00105,"Passport Touring":0.00105,"Odyssey EX":0.00105,"Odyssey EX-L":0.00105,"Odyssey Touring":0.00105,"Ridgeline RTL":0.00105,"Ridgeline RTL-E":0.00105,"Ridgeline Black Edition":0.00105,"Prologue Touring":0.00105 };
-      const res = residuals[model] || 0.57;
-      const mf = moneyFactors[model] || 0.00105;
-      const capCost = msrp - down + docFee + licenseFee + acqFee;
-      const residualValue = msrp * res;
-      monthly = (capCost - residualValue)/term + (capCost + residualValue)*mf;
-      monthly = (monthly*(1+txRate)).toFixed(2);
-      calcResult.innerHTML = `Estimated Lease Payment: <strong>$${monthly}/mo</strong>`;
-    }else{
-      const principal = msrp - down + docFee + licenseFee;
-      monthly = (principal * (apr/12)/(1 - Math.pow(1+apr/12,-term))).toFixed(2);
-      totalInterest = (monthly*term - principal).toFixed(2);
-      calcResult.innerHTML = `Estimated Finance Payment: <strong>$${monthly}/mo</strong><br>Total Interest Paid: <strong>$${totalInterest}</strong>`;
-    }
-  }
-
-  document.getElementById("calculateBtn").addEventListener("click", calculatePayment);
-  document.getElementById("resetBtn").addEventListener("click",()=>{
-    document.getElementById("calcForm").reset();
-    calcResult.innerHTML = "";
-    isLease = false;
-    mileage.parentElement.style.display = "none";
-    aprInput.parentElement.style.display = "block";
-    toggleFinance.style.background = "#0074D9";
-    toggleLease.style.background = "#0056b3";
+  emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{
+    from_name:name,
+    from_email:email,
+    phone:phone,
+    message:message
+  }).then(function(){
+    status.style.color='green';
+    status.innerText='Message sent! I will contact you shortly.';
+    document.getElementById('contactForm').reset();
+  }, function(error){
+    status.style.color='red';
+    status.innerText='Failed to send message. Please try again.';
   });
 });
+
+// Calculator Logic
+let calcMode = 'lease';
+document.getElementById('toggleLease').addEventListener('click', function(){ calcMode='lease'; updateToggleButtons(); resetCalc(); });
+document.getElementById('toggleFinance').addEventListener('click', function(){ calcMode='finance'; updateToggleButtons(); resetCalc(); });
+
+function updateToggleButtons(){
+  document.getElementById('toggleLease').style.backgroundColor = calcMode==='lease'?'#0056b3':'#0074D9';
+  document.getElementById('toggleFinance').style.backgroundColor = calcMode==='finance'?'#0056b3':'#0074D9';
+}
+
+function resetCalc(){
+  document.getElementById('calcForm').reset();
+  document.getElementById('calcResult').innerHTML='';
+}
+
+document.getElementById('resetBtn').addEventListener('click', resetCalc);
+
+document.getElementById('calculateBtn').addEventListener('click', function(){
+  const vehicle = document.getElementById('vehicleModel').value.split('|');
+  const price = parseFloat(vehicle[1]);
+  const down = parseFloat(document.getElementById('downPayment').value) || 0;
+  const term = parseInt(document.getElementById('term').value);
+  const apr = parseFloat(document.getElementById('apr').value)/100;
+  const mileage = parseInt(document.getElementById('mileage').value);
+
+  let resultHTML='';
+  if(calcMode==='finance'){
+    const taxRate = 0.0625;
+    const fees = 225 + 180; // doc + title/license
+    const loanAmt = price - down + fees;
+    const monthly = (loanAmt*(apr/12)) / (1 - Math.pow(1+apr/12,-term));
+    const totalInterest = (monthly*term) - loanAmt;
+    resultHTML = `<p><strong>Finance Payment:</strong> $${monthly.toFixed(2)}/mo for ${term} months</p>`;
+    resultHTML += `<p>Total Interest Paid: $${totalInterest.toFixed(2)}</p>`;
+    resultHTML += `<p>Drive Off: $${down + fees}</p>`;
+  } else {
+    const acq = 595;
+    const fees = 225 + 180 + acq;
+    const residual = price*0.6; // simple approx 60% residual for demo
+    const base = price - residual;
+    const monthly = ((base + fees)*(1+taxRate))/term;
+    resultHTML = `<p><strong>Lease Payment:</strong> $${monthly.toFixed(2)}/mo for ${term} months</p>`;
+    resultHTML += `<p>Drive Off: $${down + fees}</p>`;
+  }
+
+  document.getElementById('calcResult').innerHTML = resultHTML;
+});
 </script>
+
 </body>
 </html>
