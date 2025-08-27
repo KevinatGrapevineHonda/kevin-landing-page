@@ -28,56 +28,73 @@ header { background: linear-gradient(135deg,#003366 0%,#004080 100%); color:whit
 header h1 { font-size:2.5rem; margin:0; font-weight:700; letter-spacing:1.2px; text-shadow:1px 1px 4px rgba(0,0,0,0.5); }
 p.slogan { color: gold; font-style: italic; font-weight:700; font-size:1.2rem; margin-top:0.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.4); }
 header img.dealership-photo { max-width:100%; height:auto; margin:2rem auto 0; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,0.3); max-height:300px; object-fit:cover; display:block; }
+
 .headline-section { max-width:960px; margin:1.5rem auto 3rem; padding:0 1.5rem; text-align:center; color:#003366; }
 .headline-section h2 { font-size:2rem; font-weight:700; margin-bottom:0.5rem; }
 .headline-section p.subheadline { font-size:1.25rem; font-weight:600; color:#0056b3; margin-top:0; }
+
 .container { max-width:960px; margin:1rem auto 3rem; padding:0 1.5rem 3rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; }
 .contact-box { background:white; border-radius:16px; padding:2.5rem 3rem; box-shadow:0 15px 30px rgba(0,0,0,0.08); min-height:380px; display:flex; flex-direction:column; justify-content:flex-start; transition: box-shadow 0.3s ease, transform 0.4s ease; opacity:0; transform:translateY(30px); }
 .contact-box.visible { opacity:1; transform:none; transition: box-shadow 0.3s ease, transform 0.6s ease, opacity 0.6s ease; }
 .contact-box:hover { box-shadow:0 20px 40px rgba(0,0,0,0.15); transform:translateY(-4px); }
+
 .contact-box h2 { font-weight:700; font-size:1.8rem; color:#003366; margin-bottom:1.4rem; border-bottom:3px solid #007bff; padding-bottom:0.5rem; letter-spacing:0.03em; }
 p, ul { font-size:1.1rem; color:#444; margin-top:0; margin-bottom:1.5rem; }
 ul.bullet-points { list-style-type:disc; padding-left:1.5rem; margin:0 0 1.5rem; color:#003366; font-weight:500; font-size:1.1rem; line-height:1.6; }
+
 .profile-photo { display:block; margin:0 auto 15px auto; max-width:140px; border-radius:10px; box-shadow:0 5px 12px rgba(0,0,0,0.15); object-fit:cover; }
+
 .button { display:inline-block; margin:0 0.4rem 0.9rem 0; padding:0.85rem 1.8rem; background-color:#007bff; color:white; font-weight:700; border-radius:12px; box-shadow:0 4px 10px rgba(0,123,255,0.4); cursor:pointer; text-align:center; font-size:1.1rem; user-select:none; transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; border:none; text-decoration:none; }
 .button:hover, .button:focus { background-color:#0056b3; box-shadow:0 6px 18px rgba(0,86,179,0.7); outline:none; transform:scale(1.05); }
+
 .contact-info { margin-bottom:1.5rem; font-weight:700; font-size:1.1rem; }
 .contact-info a { margin-bottom:0.6rem; color:#007bff; display:block; }
+
 input, select, textarea { width:100%; padding:12px 15px; margin:8px 0 20px; border:2px solid #ccc; border-radius:12px; font-size:1.1rem; font-weight:400; transition:border-color 0.3s ease, box-shadow 0.3s ease; font-family:'Roboto',sans-serif; }
 input:focus, select:focus, textarea:focus { border-color:#007bff; box-shadow:0 0 8px rgba(0,123,255,0.6); outline:none; }
 textarea { resize:vertical; min-height:90px; font-size:1.05rem; }
+
 form button.button { margin-top:0; padding:1rem 2rem; font-size:1.15rem; font-weight:700; background:linear-gradient(45deg,#007bff,#0056b3); box-shadow:0 6px 15px rgba(0,86,179,0.7); border:none; cursor:pointer; border-radius:14px; transition:all 0.3s ease; }
 form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); box-shadow:0 8px 22px rgba(0,54,102,0.9); }
+
 .finance-calculator label { display:block; font-weight:700; margin:1rem 0 0.5rem; color:#003366; font-size:1.1rem; }
 #calcResult { margin-top:1.8rem; font-weight:700; color:#003366; font-size:1.15rem; line-height:1.4; min-height:5rem; }
 .finance-calculator p.disclaimer { font-style:italic; color:#555; font-size:0.95rem; margin-top:1.2rem; max-width:700px; }
+
 .input-wrapper { position:relative; display:flex; align-items:center; }
 .input-wrapper input[type="number"] { padding-left:24px; padding-right:24px; }
 .prefix-sign { position:absolute; left:10px; font-weight:700; color:#444; font-size:1.1rem; user-select:none; pointer-events:none; }
 .suffix-sign { position:absolute; right:10px; font-weight:700; color:#444; font-size:1.1rem; user-select:none; pointer-events:none; }
-@media (max-width:600px) { .contact-box { min-height:auto; padding:2rem 1.5rem; } header h1 { font-size:2rem; } p.slogan { font-size:1rem; } form button.button { width:100%; } .profile-photo { float:none; display:block; margin:0 auto 15px auto; max-width:120px; } }
+
+@media (max-width:600px) { 
+  .contact-box { min-height:auto; padding:2rem 1.5rem; } 
+  header h1 { font-size:2rem; } 
+  p.slogan { font-size:1rem; } 
+  form button.button { width:100%; } 
+  .profile-photo { float:none; display:block; margin:0 auto 15px auto; max-width:120px; } 
+}
 </style>
 </head>
 <body>
 
 <header>
-<h1>Kevin | Grapevine Honda</h1>
-<p class="slogan">The Power of Dreams</p>
-<img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo">
+  <h1>Kevin | Grapevine Honda</h1>
+  <p class="slogan">The Power of Dreams</p>
+  <img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo">
 </header>
 
 <section class="headline-section">
-<h2>Your Next Honda Is Waiting — Get Personalized Service &amp; Fast Financing Today!</h2>
-<p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
+  <h2>Your Next Honda Is Waiting — Get Personalized Service &amp; Fast Financing Today!</h2>
+  <p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
 </section>
 
 <div class="container">
-  <!-- About Me Box -->
+  <!-- About Me / Contact Box -->
   <div class="contact-box fade-in-section">
     <h2>About Me</h2>
     <img src="https://i.imgur.com/OAxgbLW.jpeg" alt="Kevin at Grapevine Honda" class="profile-photo">
-    <p>I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. I'm committed to making your car buying experience smooth, enjoyable, and stress-free.</p>
-
+    <p>Hi, I’m Kevin! I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. My goal is to make your car buying experience smooth, enjoyable, and stress-free.</p>
+    
     <h2>Why Buy From Me</h2>
     <ul class="bullet-points">
       <li>Honest and transparent communication</li>
@@ -96,187 +113,180 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
     <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
     <a class="button" href="#vehicleCalcForm">Finance & Lease Calculator</a>
     <a class="button" href="https://www.grapevinehonda.com/specials" target="_blank" rel="noopener">View Specials</a>
+    <a class="button" href="https://www.grapevinehonda.com/service" target="_blank" rel="noopener">Schedule Service</a>
+    <a class="button" href="#evEducation" target="_blank" rel="noopener">EV Education</a>
   </div>
-  <!-- Finance & Lease Calculator Box -->
-  <div class="contact-box fade-in-section" id="vehicleCalcForm">
-    <h2>Finance & Lease Calculator</h2>
-    <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
-      
-      <h3 style="text-align:center;color:#0074D9;margin-bottom:16px;">Select Your Vehicle & Options</h3>
-      
-      <!-- Toggle Lease / Finance -->
-      <div style="text-align:center;margin-bottom:16px;">
-        <button type="button" id="toggleLease" class="button" style="background-color:#0074D9;">Lease</button>
-        <button type="button" id="toggleFinance" class="button" style="background-color:#0056b3;">Finance</button>
-      </div>
-      
-      <form id="calcForm">
-        <label for="vehicleModel">Honda Model & Trim</label>
-        <select id="vehicleModel" required>
-          <!-- 2025-2026 Models & Trims with MSRP -->
-          <option value="Accord LX|28700">Accord LX</option>
-          <option value="Accord Sport|30200">Accord Sport</option>
-          <option value="Accord EX-L|35800">Accord EX-L</option>
-          <option value="Accord Touring|39000">Accord Touring</option>
-          <option value="Civic LX|24000">Civic LX</option>
-          <option value="Civic Sport|25500">Civic Sport</option>
-          <option value="Civic EX|27000">Civic EX</option>
-          <option value="Civic Touring|29500">Civic Touring</option>
-          <option value="Civic Si|32500">Civic Si</option>
-          <option value="Civic Type R|45500">Civic Type R</option>
-          <option value="CR-V LX|30000">CR-V LX</option>
-          <option value="CR-V EX|32000">CR-V EX</option>
-          <option value="CR-V EX-L|34500">CR-V EX-L</option>
-          <option value="CR-V Touring|37000">CR-V Touring</option>
-          <option value="HR-V LX|24000">HR-V LX</option>
-          <option value="HR-V Sport|26000">HR-V Sport</option>
-          <option value="HR-V EX|27500">HR-V EX</option>
-          <option value="HR-V Touring|29500">HR-V Touring</option>
-          <option value="Pilot LX|38000">Pilot LX</option>
-          <option value="Pilot EX|40000">Pilot EX</option>
-          <option value="Pilot EX-L|43000">Pilot EX-L</option>
-          <option value="Pilot Touring|47000">Pilot Touring</option>
-          <option value="Passport Sport|38000">Passport Sport</option>
-          <option value="Passport EX-L|41000">Passport EX-L</option>
-          <option value="Passport Touring|44000">Passport Touring</option>
-          <option value="Odyssey EX|38000">Odyssey EX</option>
-          <option value="Odyssey EX-L|41000">Odyssey EX-L</option>
-          <option value="Odyssey Touring|44000">Odyssey Touring</option>
-          <option value="Ridgeline RTL|42000">Ridgeline RTL</option>
-          <option value="Ridgeline RTL-E|45000">Ridgeline RTL-E</option>
-          <option value="Ridgeline Black Edition|47000">Ridgeline Black Edition</option>
-          <option value="Prologue Touring|57000">Prologue Touring</option>
-        </select>
-        
-        <label for="downPayment">Down Payment</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input type="number" id="downPayment" min="0" step="500" value="0">
-        </div>
-        
-        <label for="term">Term (Months)</label>
-        <select id="term">
-          <option value="24">24</option>
-          <option value="27">27</option>
-          <option value="33">33</option>
-          <option value="36" selected>36</option>
-          <option value="39">39</option>
-          <option value="42">42</option>
-          <option value="48">48</option>
-          <option value="60">60</option>
-          <option value="72">72</option>
-          <option value="84">84</option>
-        </select>
-        
-        <label for="mileage">Miles/Year (Lease Only)</label>
-        <select id="mileage">
-          <option value="10000">10,000</option>
-          <option value="12000" selected>12,000</option>
-          <option value="15000">15,000</option>
-        </select>
-        
-        <label for="apr">APR / Interest Rate (%)</label>
-        <input type="number" id="apr" step="0.01" value="9.99" min="0" max="25">
-        
-        <button type="button" id="calculateBtn" class="button">Calculate Payment</button>
-        <button type="button" id="resetBtn" class="button" style="background-color:red;">Reset Calculator</button>
-      </form>
-      
-      <div id="calcResult"></div>
-      <p class="disclaimer">*Estimated payments are based on MSRP, standard Texas tax, title, license, doc, and lease acquisition fees. Actual payments may vary based on credit, incentives, and final dealer pricing.</p>
+<!-- Finance & Lease Calculator Box -->
+<div class="contact-box fade-in-section" id="vehicleCalcForm">
+  <h2>Finance & Lease Calculator</h2>
+  <div id="calc-wrapper" style="max-width:520px;margin:auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);font-family:Arial,sans-serif;">
+
+    <h3 style="text-align:center;color:#0074D9;margin-bottom:16px;">Select Your Vehicle & Options</h3>
+
+    <!-- Toggle Lease / Finance -->
+    <div style="text-align:center;margin-bottom:16px;">
+      <button type="button" id="toggleLease" class="button" style="background-color:#0056b3;">Lease</button>
+      <button type="button" id="toggleFinance" class="button" style="background-color:#0074D9;">Finance</button>
     </div>
+
+    <form id="calcForm">
+      <label for="vehicleModel">Honda Model & Trim</label>
+      <select id="vehicleModel" required>
+        <!-- 2026 Models & Trims with MSRP -->
+        <option value="Accord LX|28700">Accord LX</option>
+        <option value="Accord Sport|30200">Accord Sport</option>
+        <option value="Accord EX-L|35800">Accord EX-L</option>
+        <option value="Accord Touring|39000">Accord Touring</option>
+        <option value="Civic LX|24000">Civic LX</option>
+        <option value="Civic Sport|25500">Civic Sport</option>
+        <option value="Civic EX|27000">Civic EX</option>
+        <option value="Civic Touring|29500">Civic Touring</option>
+        <option value="Civic Si|32500">Civic Si</option>
+        <option value="Civic Type R|60500">Civic Type R</option>
+        <option value="CR-V LX|30000">CR-V LX</option>
+        <option value="CR-V EX|32000">CR-V EX</option>
+        <option value="CR-V EX-L|34500">CR-V EX-L</option>
+        <option value="CR-V Touring|37000">CR-V Touring</option>
+        <option value="HR-V LX|24000">HR-V LX</option>
+        <option value="HR-V Sport|26000">HR-V Sport</option>
+        <option value="HR-V EX|27500">HR-V EX</option>
+        <option value="HR-V Touring|29500">HR-V Touring</option>
+        <option value="Pilot LX|38000">Pilot LX</option>
+        <option value="Pilot EX|40000">Pilot EX</option>
+        <option value="Pilot EX-L|43000">Pilot EX-L</option>
+        <option value="Pilot Touring|47000">Pilot Touring</option>
+        <option value="Passport Sport|38000">Passport Sport</option>
+        <option value="Passport EX-L|41000">Passport EX-L</option>
+        <option value="Passport Touring|44000">Passport Touring</option>
+        <option value="Odyssey EX|38000">Odyssey EX</option>
+        <option value="Odyssey EX-L|41000">Odyssey EX-L</option>
+        <option value="Odyssey Touring|44000">Odyssey Touring</option>
+        <option value="Ridgeline RTL|42000">Ridgeline RTL</option>
+        <option value="Ridgeline RTL-E|45000">Ridgeline RTL-E</option>
+        <option value="Ridgeline Black Edition|47000">Ridgeline Black Edition</option>
+        <option value="Prologue Touring|57000">Prologue Touring</option>
+      </select>
+
+      <label for="downPayment">Down Payment</label>
+      <div class="input-wrapper">
+        <span class="prefix-sign">$</span>
+        <input type="number" id="downPayment" min="0" step="500" value="0">
+      </div>
+
+      <label for="term">Term (Months)</label>
+      <select id="term">
+        <option value="24">24</option>
+        <option value="27">27</option>
+        <option value="33">33</option>
+        <option value="36" selected>36</option>
+        <option value="39">39</option>
+        <option value="42">42</option>
+        <option value="48">48</option>
+        <option value="60">60</option>
+        <option value="72">72</option>
+        <option value="84">84</option>
+      </select>
+
+      <label for="mileage">Miles/Year (Lease Only)</label>
+      <select id="mileage">
+        <option value="10000">10,000</option>
+        <option value="12000" selected>12,000</option>
+        <option value="15000">15,000</option>
+      </select>
+
+      <label for="apr">APR / Interest Rate (%)</label>
+      <input type="number" id="apr" step="0.01" value="9.99" min="0" max="25">
+
+      <button type="button" id="calculateBtn" class="button">Calculate Payment</button>
+      <button type="button" id="resetBtn" class="button" style="background-color:red;">Reset Calculator</button>
+    </form>
+
+    <div id="calcResult"></div>
+    <p class="disclaimer">*Estimated payments are based on MSRP, standard Texas tax, title ($180), license ($180), doc ($225), and standard Honda lease acquisition fees ($595). Actual payments may vary based on credit, incentives, and final dealer pricing.</p>
   </div>
+</div>
 
-  <!-- JavaScript for Calculator & Animations -->
-  <script>
-  document.addEventListener("DOMContentLoaded",function(){
-    const toggleLease=document.getElementById("toggleLease");
-    const toggleFinance=document.getElementById("toggleFinance");
-    const mileage=document.getElementById("mileage");
-    const calcResult=document.getElementById("calcResult");
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleLease = document.getElementById("toggleLease");
+  const toggleFinance = document.getElementById("toggleFinance");
+  const mileage = document.getElementById("mileage");
+  const calcResult = document.getElementById("calcResult");
 
-    // Toggle Lease/Finance
-    toggleLease.addEventListener("click",()=>{
-      toggleLease.style.background="#0074D9";
-      toggleFinance.style.background="#0056b3";
-      mileage.parentElement.style.display="block";
-    });
-    toggleFinance.addEventListener("click",()=>{
-      toggleFinance.style.background="#0074D9";
-      toggleLease.style.background="#0056b3";
-      mileage.parentElement.style.display="none";
-    });
+  // Default: Finance selected
+  toggleFinance.style.background = "#0074D9";
+  toggleLease.style.background = "#0056b3";
+  mileage.parentElement.style.display = "none";
 
-    function calculatePayment(){
-      const modelSelect=document.getElementById("vehicleModel");
-      const down=parseFloat(document.getElementById("downPayment").value)||0;
-      const term=parseInt(document.getElementById("term").value);
-      const apr=parseFloat(document.getElementById("apr").value)/100;
-      const [model,msrpStr]=modelSelect.value.split("|");
-      const msrp=parseFloat(msrpStr);
-      const txRate=0.0625, docFee=225, licenseFee=180, acqFee=595;
-      const isLease=mileage.parentElement.style.display!=="none";
-      let monthly=0,totalInterest=0;
-
-      if(isLease){
-        // Realistic residual & MF values
-        const residuals={
-          "Accord LX":0.57,"Accord Sport":0.57,"Accord EX-L":0.57,"Accord Touring":0.57,
-          "Civic LX":0.60,"Civic Sport":0.60,"Civic EX":0.60,"Civic Touring":0.60,"Civic Si":0.59,"Civic Type R":0.58,
-          "CR-V LX":0.57,"CR-V EX":0.57,"CR-V EX-L":0.57,"CR-V Touring":0.57,
-          "HR-V LX":0.60,"HR-V Sport":0.60,"HR-V EX":0.60,"HR-V Touring":0.60,
-          "Pilot LX":0.57,"Pilot EX":0.57,"Pilot EX-L":0.57,"Pilot Touring":0.57,
-          "Passport Sport":0.57,"Passport EX-L":0.57,"Passport Touring":0.57,
-          "Odyssey EX":0.57,"Odyssey EX-L":0.57,"Odyssey Touring":0.57,
-          "Ridgeline RTL":0.57,"Ridgeline RTL-E":0.57,"Ridgeline Black Edition":0.57,
-          "Prologue Touring":0.58
-        };
-        const moneyFactors={
-          "Accord LX":0.00105,"Accord Sport":0.00105,"Accord EX-L":0.00105,"Accord Touring":0.00105,
-          "Civic LX":0.00110,"Civic Sport":0.00110,"Civic EX":0.00110,"Civic Touring":0.00110,"Civic Si":0.00125,"Civic Type R":0.00130,
-          "CR-V LX":0.00105,"CR-V EX":0.00105,"CR-V EX-L":0.00105,"CR-V Touring":0.00105,
-          "HR-V LX":0.00110,"HR-V Sport":0.00110,"HR-V EX":0.00110,"HR-V Touring":0.00110,
-          "Pilot LX":0.00105,"Pilot EX":0.00105,"Pilot EX-L":0.00105,"Pilot Touring":0.00105,
-          "Passport Sport":0.00105,"Passport EX-L":0.00105,"Passport Touring":0.00105,
-          "Odyssey EX":0.00105,"Odyssey EX-L":0.00105,"Odyssey Touring":0.00105,
-          "Ridgeline RTL":0.00105,"Ridgeline RTL-E":0.00105,"Ridgeline Black Edition":0.00105,
-          "Prologue Touring":0.00125
-        };
-        const res=residuals[model]||0.57;
-        const mf=moneyFactors[model]||0.00105;
-        const capCost=msrp-down+docFee+licenseFee+acqFee;
-        const residualValue=msrp*res;
-        monthly=(capCost-residualValue)/term + (capCost+residualValue)*mf;
-        monthly=(monthly*(1+txRate)).toFixed(2);
-        calcResult.innerHTML=`Estimated Lease Payment: <strong>$${monthly}/mo</strong>`;
-      } else {
-        const principal=msrp-down+docFee+licenseFee;
-        monthly=(principal*(apr/12)/(1-Math.pow(1+apr/12,-term))).toFixed(2);
-        totalInterest=(monthly*term-principal).toFixed(2);
-        calcResult.innerHTML=`Estimated Finance Payment: <strong>$${monthly}/mo</strong><br>Total Interest Paid: <strong>$${totalInterest}</strong>`;
-      }
-    }
-
-    document.getElementById("calculateBtn").addEventListener("click",calculatePayment);
-    document.getElementById("resetBtn").addEventListener("click",()=>{
-      document.getElementById("calcForm").reset();
-      calcResult.innerHTML="";
-    });
-
-    // Fade-in animation for boxes
-    const faders=document.querySelectorAll(".fade-in-section");
-    const appearOptions={threshold:0.2,rootMargin:"0px 0px -50px 0px"};
-    const appearOnScroll=new IntersectionObserver(function(entries,appearOnScroll){
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting)return;
-        entry.target.classList.add("visible");
-        appearOnScroll.unobserve(entry.target);
-      });
-    },appearOptions);
-    faders.forEach(fader=>appearOnScroll.observe(fader));
+  // Toggle Lease / Finance
+  toggleLease.addEventListener("click", () => {
+    toggleLease.style.background = "#0074D9";
+    toggleFinance.style.background = "#0056b3";
+    mileage.parentElement.style.display = "block";
   });
-  </script>
-<!-- Part 4: Footer & Scripts -->
+  toggleFinance.addEventListener("click", () => {
+    toggleFinance.style.background = "#0074D9";
+    toggleLease.style.background = "#0056b3";
+    mileage.parentElement.style.display = "none";
+  });
+
+  function calculatePayment() {
+    const modelSelect = document.getElementById("vehicleModel");
+    const down = parseFloat(document.getElementById("downPayment").value) || 0;
+    const term = parseInt(document.getElementById("term").value);
+    const apr = parseFloat(document.getElementById("apr").value) / 100;
+    const [model, msrpStr] = modelSelect.value.split("|");
+    const msrp = parseFloat(msrpStr);
+    const txRate = 0.0625, docFee = 225, licenseFee = 180, acqFee = 595;
+    const isLease = mileage.parentElement.style.display !== "none";
+    let monthly = 0, totalInterest = 0;
+
+    if (isLease) {
+      const residuals = {
+        "Accord LX":0.57,"Accord Sport":0.57,"Accord EX-L":0.57,"Accord Touring":0.57,
+        "Civic LX":0.60,"Civic Sport":0.60,"Civic EX":0.60,"Civic Touring":0.60,"Civic Si":0.59,"Civic Type R":0.58,
+        "CR-V LX":0.57,"CR-V EX":0.57,"CR-V EX-L":0.57,"CR-V Touring":0.57,
+        "HR-V LX":0.60,"HR-V Sport":0.60,"HR-V EX":0.60,"HR-V Touring":0.60,
+        "Pilot LX":0.57,"Pilot EX":0.57,"Pilot EX-L":0.57,"Pilot Touring":0.57,
+        "Passport Sport":0.57,"Passport EX-L":0.57,"Passport Touring":0.57,
+        "Odyssey EX":0.57,"Odyssey EX-L":0.57,"Odyssey Touring":0.57,
+        "Ridgeline RTL":0.57,"Ridgeline RTL-E":0.57,"Ridgeline Black Edition":0.57,
+        "Prologue Touring":0.58
+      };
+      const moneyFactors = {
+        "Accord LX":0.00105,"Accord Sport":0.00105,"Accord EX-L":0.00105,"Accord Touring":0.00105,
+        "Civic LX":0.00110,"Civic Sport":0.00110,"Civic EX":0.00110,"Civic Touring":0.00110,"Civic Si":0.00125,"Civic Type R":0.00130,
+        "CR-V LX":0.00105,"CR-V EX":0.00105,"CR-V EX-L":0.00105,"CR-V Touring":0.00105,
+        "HR-V LX":0.00110,"HR-V Sport":0.00110,"HR-V EX":0.00110,"HR-V Touring":0.00110,
+        "Pilot LX":0.00105,"Pilot EX":0.00105,"Pilot EX-L":0.00105,"Pilot Touring":0.00105,
+        "Passport Sport":0.00105,"Passport EX-L":0.00105,"Passport Touring":0.00105,
+        "Odyssey EX":0.00105,"Odyssey EX-L":0.00105,"Odyssey Touring":0.00105,
+        "Ridgeline RTL":0.00105,"Ridgeline RTL-E":0.00105,"Ridgeline Black Edition":0.00105,
+        "Prologue Touring":0.00125
+      };
+      const res = residuals[model] || 0.57;
+      const mf = moneyFactors[model] || 0.00105;
+      const capCost = msrp - down + docFee + licenseFee + acqFee;
+      const residualValue = msrp * res;
+      monthly = (capCost - residualValue) / term + (capCost + residualValue) * mf;
+      monthly = (monthly * (1 + txRate)).toFixed(2);
+      calcResult.innerHTML = `Estimated Lease Payment: <strong>$${monthly}/mo</strong>`;
+    } else {
+      const principal = msrp - down + docFee + licenseFee;
+      monthly = (principal * (apr / 12) / (1 - Math.pow(1 + apr / 12, -term))).toFixed(2);
+      totalInterest = (monthly * term - principal).toFixed(2);
+      calcResult.innerHTML = `Estimated Finance Payment: <strong>$${monthly}/mo</strong><br>Total Interest Paid: <strong>$${totalInterest}</strong>`;
+    }
+  }
+
+  document.getElementById("calculateBtn").addEventListener("click", calculatePayment);
+  document.getElementById("resetBtn").addEventListener("click", () => {
+    document.getElementById("calcForm").reset();
+    calcResult.innerHTML = "";
+  });
+});
+</script>
+<!-- Part 4: Footer & Live Chat -->
 <footer style="background:#003366;color:white;padding:2rem 1rem;text-align:center;">
   <p style="margin:0; font-size:1rem;">
     © 2025 Kevin at Grapevine Honda | 
@@ -297,10 +307,9 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 })();
 </script>
 
-<!-- Optional: Global scripts for fade-in effects or other page-wide JS -->
+<!-- Fade-in animations for contact boxes -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Fade-in for boxes
   const faders = document.querySelectorAll(".fade-in-section");
   const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
   const appearOnScroll = new IntersectionObserver(function(entries, observer) {
