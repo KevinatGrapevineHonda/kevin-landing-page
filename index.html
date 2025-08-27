@@ -1,443 +1,414 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kevin | Grapevine Honda</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kevin | Grapevine Honda</title>
+  <meta name="description" content="Kevin at Grapevine Honda – new & used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX.">
+  <link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/">
+  <link rel="icon" type="image/svg+xml" href="download.png">
+  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<meta name="description" content="Kevin at Grapevine Honda – new & used Honda vehicles, financing, trade-ins, and personalized service in Grapevine, TX." />
-<link rel="canonical" href="https://kevinatgrapevinehonda.netlify.app/">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; margin:0; background:#f1f5f9; color:#222; line-height:1.6; }
+    a { color:#007bff; text-decoration:none; }
+    a:hover { color:#0056b3; }
+    header { background: linear-gradient(135deg,#003366,#004080); color:white; text-align:center; padding:3rem 1rem 2.5rem; box-shadow:0 5px 15px rgba(0,0,0,0.25); }
+    header h1{ margin:0; font-size:2.4rem; font-weight:700; text-shadow:1px 1px 4px rgba(0,0,0,.35); }
+    .slogan{ color:gold; margin-top:.5rem; font-weight:700; font-style:italic; }
+    header img.dealership-photo{ width:100%; max-width:1100px; margin:1.25rem auto 0; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.25); display:block; object-fit:cover; max-height:280px; }
 
-<link rel="icon" type="image/svg+xml" href="download.png">
-<link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Honda-logo.svg">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    .headline-section{ max-width:1100px; margin:1.25rem auto; padding:0 1.25rem; text-align:center; color:#003366; }
+    .container{ max-width:1100px; margin:1rem auto 2.5rem; padding:0 1.25rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.25rem; }
 
-<style>
-  *,*::before,*::after{box-sizing:border-box}
-  body{font-family:'Roboto',sans-serif;background:#f1f5f9;margin:0;color:#222;line-height:1.6}
-  a{color:#007bff;text-decoration:none}
-  a:hover{color:#0056b3}
-  header{background:linear-gradient(135deg,#003366,#004080);color:#fff;text-align:center;padding:3rem 1rem 4rem;box-shadow:0 5px 15px rgba(0,0,0,.3)}
-  header h1{font-size:2.5rem;margin:0;font-weight:700}
-  p.slogan{color:gold;font-style:italic;font-weight:700;margin-top:.5rem}
-  header img.dealership-photo{max-width:100%;height:auto;margin:2rem auto 0;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);max-height:300px;object-fit:cover;display:block}
+    .contact-box{ background:#fff; border-radius:12px; padding:1.4rem; box-shadow:0 12px 30px rgba(0,0,0,.08); transition:transform .28s,box-shadow .28s,opacity .4s; opacity:0; transform:translateY(18px); }
+    .contact-box.visible{ opacity:1; transform:none; }
+    .contact-box:hover{ transform:translateY(-6px); box-shadow:0 20px 44px rgba(0,0,0,.12); }
+    .contact-box h2{ margin:0 0 .6rem; font-size:1.25rem; color:#003366; font-weight:700; border-bottom:3px solid #007bff; padding-bottom:.45rem; }
 
-  .headline-section{max-width:960px;margin:1.5rem auto 3rem;padding:0 1.5rem;text-align:center;color:#003366}
-  .container{max-width:960px;margin:1rem auto 3rem;padding:0 1.5rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
-  .contact-box{background:#fff;border-radius:16px;padding:2.5rem 3rem;box-shadow:0 15px 30px rgba(0,0,0,.08);min-height:380px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,opacity .4s;opacity:0;transform:translateY(24px)}
-  .contact-box.visible{opacity:1;transform:none}
-  .contact-box:hover{box-shadow:0 20px 40px rgba(0,0,0,.15);transform:translateY(-4px)}
-  .contact-box h2{font-weight:700;color:#003366;margin-bottom:1rem;border-bottom:3px solid #007bff;padding-bottom:.5rem}
-  p,ul{font-size:1.05rem;color:#444}
-  .bullet-points{padding-left:1.5rem;color:#003366;font-weight:500}
-  .profile-photo{display:block;margin:0 auto 15px;max-width:140px;border-radius:10px;object-fit:cover;box-shadow:0 5px 12px rgba(0,0,0,.15)}
-  .button{display:inline-block;margin:.25rem .5rem .75rem 0;padding:.85rem 1.6rem;background:#007bff;color:#fff;border-radius:12px;font-weight:700;box-shadow:0 4px 10px rgba(0,123,255,.35);cursor:pointer;border:none;text-decoration:none}
-  .button:hover{background:#0056b3;transform:scale(1.03)}
-  input,select,textarea{width:100%;padding:12px 14px;margin:8px 0 18px;border:2px solid #ccc;border-radius:12px;font-size:1.05rem;font-family:inherit}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:#007bff;box-shadow:0 0 8px rgba(0,123,255,.2)}
-  .prefix-sign{position:absolute;left:10px;font-weight:700;color:#444;pointer-events:none}
-  .input-wrapper{position:relative;display:flex;align-items:center}
-  form button.button{padding:1rem 2rem;background:linear-gradient(45deg,#007bff,#0056b3);border-radius:14px}
-  .disclaimer{font-style:italic;color:#555;font-size:.95rem}
-  #calcResult{margin-top:1rem;font-weight:700;color:#003366;min-height:3.2rem}
-  footer{background:#003366;color:#fff;padding:2rem 1rem;text-align:center}
-  @media(max-width:600px){header h1{font-size:2rem}.contact-box{min-height:auto;padding:1.5rem}}
-</style>
+    .profile-photo{ display:block; margin:0 auto .9rem; max-width:140px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.12); object-fit:cover; }
+
+    label{ display:block; font-weight:700; margin:10px 0 6px; color:#003366; }
+    input, select, textarea{ width:100%; padding:11px 12px; margin:0 0 12px; border:2px solid #e3e7eb; border-radius:10px; font-size:1rem; }
+    input:focus,select:focus,textarea:focus{ outline:none; border-color:#007bff; box-shadow:0 6px 18px rgba(0,123,255,.08); }
+
+    .button{ display:inline-block; margin:.35rem .3rem .7rem 0; padding:.8rem 1.4rem; background:#007bff; color:white; border-radius:12px; font-weight:700; border:0; cursor:pointer; box-shadow:0 6px 18px rgba(0,123,255,.18); text-decoration:none; }
+    .button:hover{ background:#0056b3; transform:translateY(-2px); }
+
+    .input-wrapper{ position:relative; }
+    .prefix-sign{ position:absolute; left:12px; top:12px; font-weight:700; color:#444; pointer-events:none; }
+
+    #calc-wrapper{ max-width:720px; margin:0 auto; padding:14px; border-radius:10px; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06); }
+
+    #calcResult{ margin-top:12px; font-weight:700; color:#003366; min-height:60px; }
+    .disclaimer{ font-style:italic; color:#555; margin-top:10px; font-size:.95rem; }
+
+    footer{ background:#003366; color:white; padding:18px 12px; text-align:center; font-weight:700; }
+
+    /* Tiny responsiveness */
+    @media (max-width:620px){
+      header img.dealership-photo{ max-height:180px; }
+      .contact-box{ padding:1rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Kevin | Grapevine Honda</h1>
-  <p class="slogan">The Power of Dreams</p>
-  <img class="dealership-photo" src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership">
-</header>
+  <header>
+    <h1>Kevin | Grapevine Honda</h1>
+    <p class="slogan">The Power of Dreams</p>
+    <img class="dealership-photo" src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership">
+  </header>
 
-<section class="headline-section">
-  <h2>Your Next Honda Is Waiting — Get Personalized Service & Fast Financing Today!</h2>
-  <p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
-</section>
+  <section class="headline-section">
+    <h2>Your Next Honda Is Waiting — Get Personalized Service & Fast Financing Today!</h2>
+    <p style="color:#0056b3;font-weight:600;margin-top:.25rem">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
+  </section>
 
-<div class="container">
+  <main class="container">
 
-  <!-- CONTACT FIRST (user requested) -->
-  <div class="contact-box fade-in-section visible" id="contactBox">
-    <h2>Contact Me</h2>
-    <p>Questions or ready to get started? Send me a message and I'll get back to you right away.</p>
+    <!-- CONTACT (FIRST) -->
+    <div class="contact-box fade-in-section visible" id="contactBox">
+      <h2>Contact Me</h2>
+      <p style="margin:0 0 .6rem">Questions or ready to get started? Fill this out and I’ll reach out ASAP. Provide your phone if you want a text/call.</p>
 
-    <form id="contactForm">
-      <label for="name">Full Name</label>
-      <input id="name" name="name" required placeholder="Your full name">
+      <form id="contactForm">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required placeholder="Your full name">
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required placeholder="you@example.com">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com">
 
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel" required placeholder="(123) 456-7890">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" required placeholder="(123) 456-7890">
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required placeholder="Type your message here..."></textarea>
 
-      <button class="button" id="sendBtn" type="submit">Send to Kevin</button>
-    </form>
+        <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+          <button class="button" type="submit">Send to Kevin</button>
+          <div id="contactStatus" style="font-weight:700;color:green"></div>
+        </div>
 
-    <p id="contactStatus" style="margin-top:12px;font-weight:700;"></p>
-  </div>
+        <p class="disclaimer">Tip: include the model/trim you're interested in for a faster, accurate reply.</p>
+      </form>
+    </div>
 
-  <!-- CALCULATOR SECOND -->
-  <div class="contact-box fade-in-section visible" id="vehicleCalcForm">
-    <h2>Finance & Lease Calculator</h2>
+    <!-- CALCULATOR (SECOND) -->
+    <div class="contact-box fade-in-section visible" id="vehicleCalcForm">
+      <h2>Finance & Lease Calculator</h2>
+      <div id="calc-wrapper" aria-label="Calculator card">
 
-    <div id="calc-wrapper" style="max-width:560px;margin:0 auto;padding:18px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.08)">
+        <div style="text-align:center;margin-bottom:10px">
+          <button class="button" id="btnFinance" type="button">Finance</button>
+          <button class="button" id="btnLease" type="button" style="background:#e6f0ff;color:#003366">Lease</button>
+        </div>
 
-      <h3 style="text-align:center;color:#0074D9;margin-bottom:12px">Select Your Vehicle & Options</h3>
+        <form id="calcForm" onsubmit="return false;">
+          <label for="vehicleModel">Honda Model & Trim (2026 trims & MSRPs)</label>
+          <select id="vehicleModel" required>
+            <!-- (Trim list with MSRPs previously agreed) -->
+            <option value="Accord LX|28700">Accord LX — $28,700</option>
+            <option value="Accord SE|30200">Accord SE — $30,200</option>
+            <option value="Accord EX-L Hybrid|35800">Accord EX-L Hybrid — $35,800</option>
+            <option value="Accord Touring Hybrid|39000">Accord Touring Hybrid — $39,000</option>
 
-      <div style="text-align:center;margin-bottom:12px">
-        <button type="button" id="btnLease" class="button" style="background:#0056b3">Lease</button>
-        <button type="button" id="btnFinance" class="button" style="background:#0074D9">Finance</button>
+            <option value="Civic LX|24000">Civic LX — $24,000</option>
+            <option value="Civic Sport|25500">Civic Sport — $25,500</option>
+            <option value="Civic Sport Hybrid|28000">Civic Sport Hybrid — $28,000</option>
+            <option value="Civic Sport Touring Hybrid|30000">Civic Sport Touring Hybrid — $30,000</option>
+            <option value="Civic Si|32500">Civic Si — $32,500</option>
+            <option value="Civic Type R|60500">Civic Type R — $60,500</option>
+
+            <option value="CR-V LX|30920">CR-V LX — $30,920</option>
+            <option value="CR-V EX|32950">CR-V EX — $32,950</option>
+            <option value="CR-V EX-L|34500">CR-V EX-L — $34,500</option>
+            <option value="CR-V Touring|37000">CR-V Touring — $37,000</option>
+
+            <option value="HR-V LX|26200">HR-V LX — $26,200</option>
+            <option value="HR-V Sport|28500">HR-V Sport — $28,500</option>
+            <option value="HR-V EX-L|30500">HR-V EX-L — $30,500</option>
+
+            <option value="Pilot Sport|40200">Pilot Sport — $40,200</option>
+            <option value="Pilot EX-L|43200">Pilot EX-L — $43,200</option>
+            <option value="Pilot TrailSport|45400">Pilot TrailSport — $45,400</option>
+            <option value="Pilot Touring|47500">Pilot Touring — $47,500</option>
+            <option value="Pilot Elite|50900">Pilot Elite — $50,900</option>
+
+            <option value="Passport EX-L|44750">Passport EX-L — $44,750</option>
+            <option value="Passport TrailSport|46700">Passport TrailSport — $46,700</option>
+            <option value="Passport Black Edition|48700">Passport Black Edition — $48,700</option>
+
+            <option value="Odyssey EX-L|42795">Odyssey EX-L — $42,795</option>
+            <option value="Odyssey Sport-L|45500">Odyssey Sport-L — $45,500</option>
+            <option value="Odyssey Touring|47900">Odyssey Touring — $47,900</option>
+            <option value="Odyssey Elite|51200">Odyssey Elite — $51,200</option>
+
+            <option value="Ridgeline Sport|40150">Ridgeline Sport — $40,150</option>
+            <option value="Ridgeline RTL|42500">Ridgeline RTL — $42,500</option>
+            <option value="Ridgeline RTL-E|45500">Ridgeline RTL-E — $45,500</option>
+            <option value="Ridgeline Black Edition|48000">Ridgeline Black Edition — $48,000</option>
+
+            <option value="Prologue Touring|57000">Prologue Touring — $57,000</option>
+            <option value="Insight LX|25210">Insight LX — $25,210</option>
+            <option value="Clarity Hybrid|30000">Clarity Hybrid — $30,000</option>
+          </select>
+
+          <label for="downPayment">Down Payment</label>
+          <div class="input-wrapper">
+            <span class="prefix-sign">$</span>
+            <input id="downPayment" type="number" min="0" step="100" value="0">
+          </div>
+
+          <label for="term">Term (Months)</label>
+          <select id="term"></select>
+
+          <label id="mileageLabel" for="mileage" style="display:none">Miles/Year (Lease Only)</label>
+          <select id="mileage" style="display:none">
+            <option value="10000">10,000</option>
+            <option value="12000" selected>12,000</option>
+            <option value="15000">15,000</option>
+          </select>
+
+          <label id="aprLabel" for="apr">APR / Interest Rate (%)</label>
+          <input id="apr" type="number" step="0.01" value="9.99" min="0" max="25">
+
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:6px">
+            <button class="button" id="calculateBtn" type="button">Calculate Payment</button>
+            <button class="button" id="resetBtn" type="button" style="background:#e53935">Reset</button>
+          </div>
+
+          <div id="calcResult" aria-live="polite"></div>
+          <p class="disclaimer">*Estimates use MSRP and Texas tax 6.25%, doc fee $225, title/license $180, lease acquisition fee $595. Replace placeholder residuals/money-factor with official Honda numbers for exact quotes.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ABOUT ME (THIRD) -->
+    <div class="contact-box fade-in-section visible" id="aboutBox">
+      <h2>About Me</h2>
+      <img class="profile-photo" src="https://i.imgur.com/OAxgbLW.jpeg" alt="Kevin at Grapevine Honda">
+      <p>Hi — I’m Kevin at Grapevine Honda. I help customers find the right Honda and get straightforward financing or lease offers. I’ll walk you through trade-ins, incentives, and the paperwork so buying a car is smooth and honest.</p>
+      <ul style="padding-left:1rem;margin-top:.5rem;color:#003366;font-weight:600">
+        <li>Transparent pricing and clear explanations</li>
+        <li>Fast approvals & personalized payment plans</li>
+        <li>Extensive Honda product knowledge</li>
+      </ul>
+    </div>
+
+    <!-- BUTTONS / START YOUR JOURNEY (FOURTH) -->
+    <div class="contact-box fade-in-section visible" id="buttonsBox">
+      <h2>Start Your Journey</h2>
+
+      <div style="display:flex;flex-direction:column;gap:.6rem">
+        <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">📅 Schedule Appointment</a>
+        <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">🚗 New Inventory</a>
+        <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">🔎 Used Inventory</a>
+        <a class="button" href="https://www.grapevinehonda.com/specials" target="_blank" rel="noopener">💸 Specials</a>
+        <a class="button" href="https://www.grapevinehonda.com/service" target="_blank" rel="noopener">🛠️ Schedule Service</a>
+        <a class="button" href="#evEducation">🔌 EV Education</a>
       </div>
 
-      <form id="calcForm">
-        <label for="vehicleModel">Honda Model & Trim (2026 — MSRPs from Honda.com)</label>
-        <select id="vehicleModel" required>
-          <!-- ACCORD 2026 -->
-          <option value="Accord LX|28700">Accord LX — $28,700</option>
-          <option value="Accord SE|30200">Accord SE — $30,200</option>
-          <option value="Accord EX-L Hybrid|35800">Accord EX-L Hybrid — $35,800</option>
-          <option value="Accord Touring Hybrid|39000">Accord Touring Hybrid — $39,000</option>
-
-          <!-- CIVIC 2026 (sedan trims / hybrids grouped) -->
-          <option value="Civic LX|24000">Civic LX — $24,000</option>
-          <option value="Civic Sport|25500">Civic Sport — $25,500</option>
-          <option value="Civic Sport Hybrid|28000">Civic Sport Hybrid — $28,000</option>
-          <option value="Civic Sport Touring Hybrid|30000">Civic Sport Touring Hybrid — $30,000</option>
-          <option value="Civic Si|32500">Civic Si — $32,500</option>
-          <option value="Civic Type R|60500">Civic Type R — $60,500</option>
-
-          <!-- CR-V 2026 -->
-          <option value="CR-V LX|30920">CR-V LX — $30,920</option>
-          <option value="CR-V EX|32950">CR-V EX — $32,950</option>
-          <option value="CR-V EX-L|34500">CR-V EX-L — $34,500</option>
-          <option value="CR-V Touring|37000">CR-V Touring — $37,000</option>
-
-          <!-- HR-V 2026 -->
-          <option value="HR-V LX|26200">HR-V LX — $26,200</option>
-          <option value="HR-V Sport|28500">HR-V Sport — $28,500</option>
-          <option value="HR-V EX-L|30500">HR-V EX-L — $30,500</option>
-
-          <!-- PILOT 2026 -->
-          <option value="Pilot Sport|40200">Pilot Sport — $40,200</option>
-          <option value="Pilot EX-L|43200">Pilot EX-L — $43,200</option>
-          <option value="Pilot TrailSport|45400">Pilot TrailSport — $45,400</option>
-          <option value="Pilot Touring|47500">Pilot Touring — $47,500</option>
-          <option value="Pilot Elite|50900">Pilot Elite — $50,900</option>
-
-          <!-- PASSPORT 2026 -->
-          <option value="Passport EX-L|44750">Passport EX-L — $44,750</option>
-          <option value="Passport TrailSport|46700">Passport TrailSport — $46,700</option>
-          <option value="Passport Black Edition|48700">Passport Black Edition — $48,700</option>
-
-          <!-- ODYSSEY 2026 -->
-          <option value="Odyssey EX-L|42795">Odyssey EX-L — $42,795</option>
-          <option value="Odyssey Sport-L|45500">Odyssey Sport-L — $45,500</option>
-          <option value="Odyssey Touring|47900">Odyssey Touring — $47,900</option>
-          <option value="Odyssey Elite|51200">Odyssey Elite — $51,200</option>
-
-          <!-- RIDGELINE 2026 -->
-          <option value="Ridgeline Sport|40150">Ridgeline Sport — $40,150</option>
-          <option value="Ridgeline RTL|42500">Ridgeline RTL — $42,500</option>
-          <option value="Ridgeline RTL-E|45500">Ridgeline RTL-E — $45,500</option>
-          <option value="Ridgeline Black Edition|48000">Ridgeline Black Edition — $48,000</option>
-
-          <!-- PROLOGUE 2026 (EV - example trim) -->
-          <option value="Prologue Touring|57000">Prologue Touring — $57,000</option>
-
-          <!-- INSIGHT / CLARITY (if listed) -->
-          <option value="Insight LX|25210">Insight LX — $25,210</option>
-          <option value="Clarity Hybrid|30000">Clarity Hybrid — $30,000</option>
-        </select>
-
-        <label for="downPayment">Down Payment</label>
-        <div class="input-wrapper">
-          <span class="prefix-sign">$</span>
-          <input id="downPayment" type="number" min="0" step="100" value="0">
-        </div>
-
-        <label for="term">Term (Months)</label>
-        <select id="term">
-          <!-- default finance set; will be swapped automatically when toggling -->
-          <option value="24">24</option>
-          <option value="36" selected>36</option>
-          <option value="48">48</option>
-          <option value="60">60</option>
-          <option value="72">72</option>
-          <option value="84">84</option>
-        </select>
-
-        <label for="mileage" id="mileageLabel" style="display:none">Miles/Year (Lease Only)</label>
-        <select id="mileage" style="display:none">
-          <option value="10000">10,000</option>
-          <option value="12000" selected>12,000</option>
-          <option value="15000">15,000</option>
-        </select>
-
-        <label for="apr" id="aprLabel">APR / Interest Rate (%)</label>
-        <input id="apr" type="number" step="0.01" value="9.99" min="0" max="25">
-
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:6px">
-          <button type="button" id="calculateBtn" class="button">Calculate Payment</button>
-          <button type="button" id="resetBtn" class="button" style="background:#e53935">Reset</button>
-        </div>
-      </form>
-
-      <div id="calcResult" aria-live="polite"></div>
-      <p class="disclaimer">*Estimates use MSRP and standard Texas tax (6.25%), doc fee $225, title/license $180. Lease acquisition fee $595 included in lease drive-off. These are estimates — actual dealer pricing, incentives and credit ratings will change final payments.</p>
-
+      <p class="disclaimer" style="margin-top:10px">Prefer a call? Use the contact form above and request a callback.</p>
     </div>
-  </div>
 
-</div>
+  </main>
 
-<footer>
-  <p style="margin:0;color:#fff;font-weight:700">© 2025 Kevin at Grapevine Honda — <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color:#ffd700">Reviews on Google</a></p>
-</footer>
+  <!-- EV EDUCATION ANCHOR / SECTION (linked from button) -->
+  <section id="evEducation" style="max-width:1100px;margin:0 auto 2rem;padding:0 1.25rem;">
+    <div class="contact-box fade-in-section visible">
+      <h2>EV Education</h2>
+      <p><strong>Electric vehicle basics:</strong> range, charging, incentives, and what to expect from Honda’s EV lineup. If you’re curious about Prologue or hybrid options, I’ll walk you through savings, tax incentives and charging options in the Dallas/Fort Worth area.</p>
+      <p style="margin-top:.6rem">Want in-depth guides? Visit <a href="https://automobiles.honda.com/electric-vehicles" target="_blank" rel="noopener">Honda EV info</a> or ask me for local charging and incentive details — I’ll email or text you the links.</p>
+    </div>
+  </section>
 
-<!-- emailjs (contact) - replace with your IDs -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <footer>
+    <p style="margin:0">© 2025 Kevin at Grapevine Honda — <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color:#ffd700">Reviews on Google</a></p>
+  </footer>
 
-<script>
-/* ============================
-   CONFIG / Data
-   ============================ */
+  <!-- EmailJS (contact) - OPTIONAL: replace placeholders and uncomment init if using -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-/* Tax & Fees (Texas) */
-const TAX_RATE = 0.0625;
-const DOC_FEE = 225;
-const TITLE_LICENSE = 180;
-const LEASE_ACQ_FEE = 595;
+  <!-- Tawk.to live chat (replace YOUR_TAWK_ID) -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/YOUR_TAWK_ID/default'; // <-- replace YOUR_TAWK_ID with your Tawk.to ID
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
 
-/* Basic residuals & money-factors (placeholders).
-   You can replace these with exact per-trim numbers when you have them.
-*/
-const residualMap = {
-  // approximate defaults; replace when you gather Honda lease guides
-  "Accord LX":0.57,"Accord SE":0.57,"Accord EX-L Hybrid":0.57,"Accord Touring Hybrid":0.57,
-  "Civic LX":0.6,"Civic Sport":0.6,"Civic Sport Hybrid":0.6,"Civic Sport Touring Hybrid":0.6,"Civic Si":0.59,"Civic Type R":0.58,
-  "CR-V LX":0.57,"CR-V EX":0.57,"CR-V EX-L":0.57,"CR-V Touring":0.57,
-  "HR-V LX":0.58,"HR-V Sport":0.58,"HR-V EX-L":0.58,
-  "Pilot Sport":0.57,"Pilot EX-L":0.57,"Pilot TrailSport":0.57,"Pilot Touring":0.57,"Pilot Elite":0.56,
-  "Passport EX-L":0.57,"Passport TrailSport":0.57,"Passport Black Edition":0.57,
-  "Odyssey EX-L":0.57,"Odyssey Sport-L":0.57,"Odyssey Touring":0.57,"Odyssey Elite":0.56,
-  "Ridgeline Sport":0.57,"Ridgeline RTL":0.57,"Ridgeline RTL-E":0.57,"Ridgeline Black Edition":0.56,
-  "Prologue Touring":0.58,
-  "Insight LX":0.6,"Clarity Hybrid":0.58
-};
+  <script>
+    // CONFIG
+    const TAX_RATE = 0.0625;
+    const DOC_FEE = 225;
+    const TITLE_LICENSE = 180;
+    const LEASE_ACQ_FEE = 595;
+    const LEASE_TERMS = [24,36,39,42,48];
+    const FINANCE_TERMS = [24,36,48,60,72,84];
 
-const mfMap = {
-  // money factors (approx placeholders; replace with official Honda numbers)
-  "default": 0.00105,
-  "Civic Type R":0.00125,"Civic Si":0.00115,"Prologue Touring":0.00110
-};
+    // Placeholder residual & MF maps -- replace with official numbers when you have them
+    const residualMap = {
+      "Accord LX":0.57,"Accord SE":0.57,"Accord EX-L Hybrid":0.57,"Accord Touring Hybrid":0.57,
+      "Civic LX":0.6,"Civic Sport":0.6,"Civic Sport Hybrid":0.6,"Civic Sport Touring Hybrid":0.6,"Civic Si":0.59,"Civic Type R":0.58,
+      "CR-V LX":0.57,"CR-V EX":0.57,"CR-V EX-L":0.57,"CR-V Touring":0.57,
+      "HR-V LX":0.58,"HR-V Sport":0.58,"HR-V EX-L":0.58,
+      "Pilot Sport":0.57,"Pilot EX-L":0.57,"Pilot TrailSport":0.57,"Pilot Touring":0.57,"Pilot Elite":0.56,
+      "Passport EX-L":0.57,"Passport TrailSport":0.57,"Passport Black Edition":0.57,
+      "Odyssey EX-L":0.57,"Odyssey Sport-L":0.57,"Odyssey Touring":0.57,"Odyssey Elite":0.56,
+      "Ridgeline Sport":0.57,"Ridgeline RTL":0.57,"Ridgeline RTL-E":0.57,"Ridgeline Black Edition":0.56,
+      "Prologue Touring":0.58,"Insight LX":0.6,"Clarity Hybrid":0.58
+    };
+    const mfMap = { "default":0.00105, "Civic Type R":0.00125, "Civic Si":0.00115, "Prologue Touring":0.00110 };
 
-/* Lease and Finance term sets */
-const LEASE_TERMS = [24,36,39,42,48];
-const FINANCE_TERMS = [24,36,48,60,72,84];
+    // DOM
+    const btnLease = document.getElementById('btnLease');
+    const btnFinance = document.getElementById('btnFinance');
+    const mileageSelect = document.getElementById('mileage');
+    const mileageLabel = document.getElementById('mileageLabel');
+    const aprInput = document.getElementById('apr');
+    const aprLabel = document.getElementById('aprLabel');
+    const termSelect = document.getElementById('term');
+    const calcResult = document.getElementById('calcResult');
+    const calcForm = document.getElementById('calcForm');
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
 
-/* ============================
-   DOM elements
-   ============================ */
-const btnLease = document.getElementById('btnLease');
-const btnFinance = document.getElementById('btnFinance');
-const mileageSelect = document.getElementById('mileage');
-const mileageLabel = document.getElementById('mileageLabel');
-const aprInput = document.getElementById('apr');
-const aprLabel = document.getElementById('aprLabel');
-const termSelect = document.getElementById('term');
-const calcResult = document.getElementById('calcResult');
-const calcForm = document.getElementById('calcForm');
-const contactForm = document.getElementById('contactForm');
-const contactStatus = document.getElementById('contactStatus');
-let mode = 'finance'; // default
+    let mode = 'finance';
 
-/* ============================
-   Helper functions
-   ============================ */
-
-function setMode(newMode){
-  mode = newMode;
-  if(mode === 'lease'){
-    // show lease controls
-    mileageSelect.style.display = '';
-    mileageLabel.style.display = '';
-    aprInput.style.display = 'none';
-    aprLabel.style.display = 'none';
-    populateTermOptions(LEASE_TERMS);
-    btnLease.style.background = '#0056b3';
-    btnFinance.style.background = '#0074D9';
-  } else {
-    mileageSelect.style.display = 'none';
-    mileageLabel.style.display = 'none';
-    aprInput.style.display = '';
-    aprLabel.style.display = '';
-    populateTermOptions(FINANCE_TERMS);
-    btnFinance.style.background = '#0056b3';
-    btnLease.style.background = '#0074D9';
-  }
-  calcResult.innerHTML = '';
-}
-
-function populateTermOptions(list){
-  termSelect.innerHTML = '';
-  list.forEach(n=>{
-    const opt = document.createElement('option');
-    opt.value = n;
-    opt.textContent = n;
-    if(n===36) opt.selected = true;
-    termSelect.appendChild(opt);
-  });
-}
-
-function formatCurrency(n){ return n.toLocaleString('en-US',{style:'currency',currency:'USD'}); }
-
-/* ============================
-   Calculation logic
-   ============================ */
-
-function calculate(){
-  // read inputs
-  const vehicleVal = document.getElementById('vehicleModel').value;
-  const parts = vehicleVal.split('|');
-  const trim = parts[0];
-  const msrp = parseFloat(parts[1]);
-  const down = parseFloat(document.getElementById('downPayment').value) || 0;
-  const term = parseInt(document.getElementById('term').value);
-  const apr = parseFloat(aprInput.value)/100 || 0;
-  const miles = parseInt(mileageSelect.value) || 12000;
-
-  if(isNaN(msrp)){
-    calcResult.innerHTML = 'Invalid vehicle MSRP.';
-    return;
-  }
-
-  if(mode === 'finance'){
-    // Finance calculation: principal = msrp - down + fees (doc + title/license)
-    const fees = DOC_FEE + TITLE_LICENSE;
-    const principal = Math.max(0, msrp - down + fees);
-    const monthlyRate = apr/12;
-    let monthly;
-    if(monthlyRate === 0){
-      monthly = principal / term;
-    } else {
-      monthly = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
-    }
-    const totalInterest = (monthly * term) - principal;
-    const driveOff = down + DOC_FEE + TITLE_LICENSE;
-    calcResult.innerHTML = `
-      <div><strong>${trim} — Finance</strong></div>
-      <div>Monthly Payment: <strong>${formatCurrency(monthly.toFixed(2))}</strong> / mo</div>
-      <div>Total Interest: <strong>${formatCurrency(totalInterest.toFixed(2))}</strong></div>
-      <div>Estimated Drive-Off (down + fees): <strong>${formatCurrency(driveOff.toFixed(2))}</strong></div>
-      <div style="margin-top:.4rem;font-weight:600;color:#555;font-size:.95rem">Note: tax applied on sale price at signing per TX rules, this estimate uses MSRP.</div>
-    `;
-  } else {
-    // Lease calculation: standard simplified lease formula with residual% & money factor
-    // capCost = msrp - down + doc + title + acq? (we include acq in drive-off)
-    const resPct = residualMap[trim] || 0.57;
-    const residualValue = msrp * resPct;
-    const mf = mfMap[trim] || mfMap['default'];
-    const capCost = Math.max(0, msrp - down);
-    // Monthly rent charge = (capCost + residualValue) * mf
-    // Depreciation = (capCost - residualValue) / term
-    const depreciation = (capCost - residualValue) / term;
-    const rentCharge = (capCost + residualValue) * mf;
-    // Pre-tax monthly
-    const monthlyPreTax = depreciation + rentCharge;
-    // Texas tax: apply to monthly payment (common method)
-    const monthlyWithTax = monthlyPreTax * (1 + TAX_RATE);
-    const driveOff = down + DOC_FEE + TITLE_LICENSE + LEASE_ACQ_FEE;
-    calcResult.innerHTML = `
-      <div><strong>${trim} — Lease</strong></div>
-      <div>Residual (${(resPct*100).toFixed(0)}%): <strong>${formatCurrency(residualValue.toFixed(2))}</strong></div>
-      <div>Monthly Payment (est): <strong>${formatCurrency(monthlyWithTax.toFixed(2))}</strong> / mo</div>
-      <div>Estimated Drive-Off (down + fees): <strong>${formatCurrency(driveOff.toFixed(2))}</strong></div>
-      <div style="margin-top:.4rem;font-weight:600;color:#555;font-size:.95rem">Note: this uses standard lease math with placeholder residuals & money factors. Replace with official Honda numbers for exact deals.</div>
-    `;
-  }
-}
-
-/* ============================
-   Wire up UI
-   ============================ */
-
-document.addEventListener('DOMContentLoaded', function(){
-  // initial mode = finance
-  setMode('finance');
-
-  btnLease.addEventListener('click', ()=> setMode('lease'));
-  btnFinance.addEventListener('click', ()=> setMode('finance'));
-
-  document.getElementById('calculateBtn').addEventListener('click', calculate);
-
-  document.getElementById('resetBtn').addEventListener('click', function(){
-    calcForm.reset();
-    setMode('finance');
-    calcResult.innerHTML='';
-  });
-
-  // Simple fade-in for boxes
-  document.querySelectorAll('.fade-in-section').forEach(el=>{
-    el.classList.add('visible');
-  });
-
-  /* ---------- Contact form submission (EmailJS) ----------
-     You must sign up for EmailJS (https://www.emailjs.com/) and create:
-     - your SERVICE_ID
-     - your TEMPLATE_ID (with template fields: from_name, from_email, phone, message)
-     - your USER_ID (or public key)
-     Then replace placeholders below and uncomment emailjs.init call.
-  */
-  // emailjs.init('YOUR_USER_ID'); // uncomment & replace
-
-  contactForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if(!name||!email||!phone||!message){
-      contactStatus.style.color='red';
-      contactStatus.textContent='Please fill out all fields.';
-      return;
+    function populateTermOptions(list){
+      termSelect.innerHTML = '';
+      list.forEach(n => {
+        const opt = document.createElement('option');
+        opt.value = n;
+        opt.textContent = n;
+        if(n===36) opt.selected = true;
+        termSelect.appendChild(opt);
+      });
     }
 
-    contactStatus.style.color='green';
-    contactStatus.textContent='Sending message...';
+    function setMode(newMode){
+      mode = newMode;
+      if(mode === 'lease'){
+        mileageSelect.style.display = '';
+        mileageLabel.style.display = '';
+        aprInput.style.display = 'none';
+        aprLabel.style.display = 'none';
+        populateTermOptions(LEASE_TERMS);
+        btnLease.style.background = '#0056b3';
+        btnFinance.style.background = '#0074D9';
+      } else {
+        mileageSelect.style.display = 'none';
+        mileageLabel.style.display = 'none';
+        aprInput.style.display = '';
+        aprLabel.style.display = '';
+        populateTermOptions(FINANCE_TERMS);
+        btnFinance.style.background = '#0056b3';
+        btnLease.style.background = '#0074D9';
+      }
+      calcResult.innerHTML = '';
+    }
 
-    /* EXAMPLE using EmailJS (uncomment after setting your IDs)
-    emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{
-      from_name: name,
-      from_email: email,
-      phone: phone,
-      message: message
-    }).then(function(){
-      contactStatus.style.color='green';
-      contactStatus.textContent='Message sent! I will contact you shortly.';
-      contactForm.reset();
-    }, function(err){
-      contactStatus.style.color='red';
-      contactStatus.textContent='Failed to send message. Please try again.';
-      console.error(err);
+    function formatCurrency(n){
+      const num = typeof n === 'string' ? parseFloat(n) : n;
+      return num.toLocaleString('en-US',{style:'currency',currency:'USD'});
+    }
+
+    function calculate(){
+      const [trim, msrpStr] = document.getElementById('vehicleModel').value.split('|');
+      const msrp = parseFloat(msrpStr);
+      const down = parseFloat(document.getElementById('downPayment').value) || 0;
+      const term = parseInt(document.getElementById('term').value,10);
+      const apr = (parseFloat(aprInput.value) || 0) / 100;
+      const miles = parseInt(mileageSelect.value,10) || 12000;
+
+      if(isNaN(msrp) || msrp <= 0){ calcResult.innerHTML = 'Invalid vehicle selection.'; return; }
+
+      if(mode === 'finance'){
+        const fees = DOC_FEE + TITLE_LICENSE;
+        const principal = Math.max(0, msrp - down + fees);
+        const monthlyRate = apr / 12;
+        let monthly;
+        if(monthlyRate === 0) monthly = principal / term;
+        else monthly = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -term));
+        const totalInterest = (monthly * term) - principal;
+        const driveOff = down + DOC_FEE + TITLE_LICENSE;
+        calcResult.innerHTML = `
+          <div><strong>${trim} — Finance</strong></div>
+          <div>Monthly Payment: <strong>${formatCurrency(monthly.toFixed(2))}</strong> / mo</div>
+          <div>Total Interest (est): <strong>${formatCurrency(totalInterest.toFixed(2))}</strong></div>
+          <div>Estimated Drive-Off (down + doc/title): <strong>${formatCurrency(driveOff.toFixed(2))}</strong></div>
+        `;
+      } else {
+        const resPct = residualMap[trim] || 0.57;
+        const residualValue = msrp * resPct;
+        const mf = mfMap[trim] || mfMap['default'];
+        const capCost = Math.max(0, msrp - down + DOC_FEE);
+        const depreciation = (capCost - residualValue) / term;
+        const rentCharge = (capCost + residualValue) * mf;
+        const monthlyPreTax = depreciation + rentCharge;
+        const monthlyWithTax = monthlyPreTax * (1 + TAX_RATE);
+        const driveOff = down + DOC_FEE + TITLE_LICENSE + LEASE_ACQ_FEE;
+        calcResult.innerHTML = `
+          <div><strong>${trim} — Lease</strong></div>
+          <div>Residual (${Math.round(resPct*100)}%): <strong>${formatCurrency(residualValue.toFixed(2))}</strong></div>
+          <div>Monthly Payment (est): <strong>${formatCurrency(monthlyWithTax.toFixed(2))}</strong> / mo</div>
+          <div>Estimated Drive-Off (down + doc/title + acq): <strong>${formatCurrency(driveOff.toFixed(2))}</strong></div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      // default mode
+      setMode('finance');
+      // wire toggles
+      btnLease.addEventListener('click', ()=> setMode('lease'));
+      btnFinance.addEventListener('click', ()=> setMode('finance'));
+      document.getElementById('calculateBtn').addEventListener('click', calculate);
+      document.getElementById('resetBtn').addEventListener('click', function(){
+        calcForm.reset();
+        setMode('finance');
+        calcResult.innerHTML = '';
+      });
+
+      // Fade-in
+      document.querySelectorAll('.fade-in-section').forEach(el=> el.classList.add('visible'));
+
+      // Contact form: demo placeholder - replace with EmailJS or Formspree/Twilio integration
+      contactForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        contactStatus.textContent = 'Sending...';
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if(!name || !email || !phone || !message){
+          contactStatus.style.color = 'red';
+          contactStatus.textContent = 'Please fill in all fields.';
+          return;
+        }
+
+        // Example EmailJS usage (uncomment + configure if you want real email)
+        // emailjs.init('YOUR_USER_ID');
+        // emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{from_name:name, from_email:email, phone:phone, message:message})
+        //   .then(()=>{ contactStatus.style.color='green'; contactStatus.textContent='Message sent!'; contactForm.reset(); })
+        //   .catch(err=>{ contactStatus.style.color='red'; contactStatus.textContent='Send failed.'; console.error(err); });
+
+        // Placeholder (demo)
+        setTimeout(()=>{
+          contactStatus.style.color = 'green';
+          contactStatus.textContent = 'Message sent (demo). Configure EmailJS/Twilio to send for real.';
+          contactForm.reset();
+        },700);
+      });
     });
-    */
-
-    // Placeholder behavior (no external service configured)
-    setTimeout(()=>{
-      contactStatus.style.color='green';
-      contactStatus.textContent='Message sent (demo). Configure EmailJS or your backend to send for real.';
-      contactForm.reset();
-    },700);
-  });
-});
-</script>
+  </script>
 </body>
 </html>
