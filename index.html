@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Kevin | Grapevine Honda</title>
 
 <!-- SEO -->
@@ -20,49 +20,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-body { font-family:'Roboto',sans-serif; background:#f1f5f9; margin:0; padding:0; color:#222; line-height:1.6; }
-a { color:#007bff; text-decoration:none; transition: color 0.3s ease; }
-a:hover, a:focus { color:#0056b3; text-decoration:underline; }
-header { background: linear-gradient(135deg,#003366 0%,#004080 100%); color:white; text-align:center; padding:3rem 1rem 4rem; box-shadow:0 5px 15px rgba(0,0,0,0.3); position:relative; }
-header h1 { font-size:2.5rem; margin:0; font-weight:700; letter-spacing:1.2px; text-shadow:1px 1px 4px rgba(0,0,0,0.5); }
-p.slogan { color: gold; font-style: italic; font-weight:700; font-size:1.2rem; margin-top:0.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.4); }
-header img.dealership-photo { max-width:100%; height:auto; margin:2rem auto 0; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,0.3); max-height:300px; object-fit:cover; display:block; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family:'Roboto',sans-serif; background:#f1f5f9; margin:0; color:#222; line-height:1.6; }
+  a { color:#007bff; text-decoration:none; transition: color .3s ease; }
+  a:hover, a:focus { color:#0056b3; text-decoration:underline; }
+  header { background: linear-gradient(135deg,#003366 0%,#004080 100%); color:#fff; text-align:center; padding:3rem 1rem 4rem; box-shadow:0 5px 15px rgba(0,0,0,.3); }
+  header h1 { font-size:2.5rem; margin:0; font-weight:700; letter-spacing:1.2px; text-shadow:1px 1px 4px rgba(0,0,0,.5); }
+  p.slogan { color: gold; font-style: italic; font-weight:700; font-size:1.2rem; margin-top:.5rem; text-shadow:1px 1px 3px rgba(0,0,0,.4); }
+  header img.dealership-photo { max-width:100%; height:auto; margin:2rem auto 0; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.3); max-height:300px; object-fit:cover; display:block; }
 
-.headline-section { max-width:960px; margin:1.5rem auto 3rem; padding:0 1.5rem; text-align:center; color:#003366; }
-.headline-section h2 { font-size:2rem; font-weight:700; margin-bottom:0.5rem; }
-.headline-section p.subheadline { font-size:1.25rem; font-weight:600; color:#0056b3; margin-top:0; }
+  .headline-section { max-width:1100px; margin:1.5rem auto 2rem; padding:0 1.5rem; text-align:center; color:#003366; }
+  .headline-section h2 { font-size:2rem; font-weight:700; margin-bottom:.5rem; }
+  .headline-section p.subheadline { font-size:1.1rem; font-weight:600; color:#0056b3; margin-top:0; }
 
-.top-section, .bottom-section { max-width:1200px; margin:0 auto 3rem; padding:0 1rem; display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
-@media(max-width:900px){ .top-section, .bottom-section { grid-template-columns:1fr; } }
+  /* Grid: 2x2 on desktop, stacks on mobile */
+  .container { max-width:1100px; margin:0 auto 3rem; padding:0 1.5rem 3rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; }
+  @media (max-width: 900px) { .container { grid-template-columns:1fr; } }
 
-.contact-box { background:white; border-radius:16px; padding:2.5rem 3rem; box-shadow:0 15px 30px rgba(0,0,0,0.08); display:flex; flex-direction:column; justify-content:flex-start; transition: box-shadow 0.3s ease, transform 0.4s ease; }
-.contact-box:hover { box-shadow:0 20px 40px rgba(0,0,0,0.15); transform:translateY(-4px); }
+  .contact-box { background:#fff; border-radius:16px; padding:2rem; box-shadow:0 15px 30px rgba(0,0,0,.08); min-height:380px; display:flex; flex-direction:column; transition: box-shadow .3s ease, transform .4s ease; opacity:0; transform:translateY(30px); }
+  .contact-box.visible { opacity:1; transform:none; transition: box-shadow .3s ease, transform .6s ease, opacity .6s ease; }
+  .contact-box:hover { box-shadow:0 20px 40px rgba(0,0,0,.15); transform:translateY(-4px); }
 
-.contact-box h2 { font-weight:700; font-size:1.8rem; color:#003366; margin-bottom:1.4rem; border-bottom:3px solid #007bff; padding-bottom:0.5rem; letter-spacing:0.03em; }
-p, ul { font-size:1.1rem; color:#444; margin-top:0; margin-bottom:1.5rem; }
-ul.bullet-points { list-style-type:disc; padding-left:1.5rem; margin:0 0 1.5rem; color:#003366; font-weight:500; font-size:1.1rem; line-height:1.6; }
+  .contact-box h2 { font-weight:700; font-size:1.6rem; color:#003366; margin-bottom:1rem; border-bottom:3px solid #007bff; padding-bottom:.5rem; letter-spacing:.03em; }
+  p, ul { font-size:1rem; color:#444; margin-top:0; margin-bottom:1rem; }
+  ul.bullet-points { list-style-type:disc; padding-left:1.5rem; margin:0 0 1rem; color:#003366; font-weight:500; font-size:1rem; line-height:1.6; }
 
-.profile-photo { display:block; margin:0 auto 15px auto; max-width:140px; border-radius:10px; box-shadow:0 5px 12px rgba(0,0,0,0.15); object-fit:cover; }
+  .profile-photo { display:block; margin:0 auto 15px auto; max-width:140px; border-radius:10px; box-shadow:0 5px 12px rgba(0,0,0,.15); object-fit:cover; }
 
-.button { display:inline-block; margin:0 0.4rem 0.9rem 0; padding:0.85rem 1.8rem; background-color:#007bff; color:white; font-weight:700; border-radius:12px; box-shadow:0 4px 10px rgba(0,123,255,0.4); cursor:pointer; text-align:center; font-size:1.1rem; user-select:none; transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; border:none; text-decoration:none; }
-.button:hover, .button:focus { background-color:#0056b3; box-shadow:0 6px 18px rgba(0,86,179,0.7); outline:none; transform:scale(1.05); }
+  .button { display:inline-block; margin:0 .4rem .8rem 0; padding:.85rem 1.4rem; background:#007bff; color:#fff; font-weight:700; border-radius:12px; box-shadow:0 4px 10px rgba(0,123,255,.4); cursor:pointer; text-align:center; font-size:1rem; user-select:none; transition: background-color .3s ease, box-shadow .3s ease, transform .2s ease; border:none; }
+  .button:hover, .button:focus { background:#0056b3; box-shadow:0 6px 18px rgba(0,86,179,.7); outline:none; transform:scale(1.03); }
 
-input, select, textarea { width:100%; padding:12px 15px; margin:8px 0 20px; border:2px solid #ccc; border-radius:12px; font-size:1.1rem; font-weight:400; transition:border-color 0.3s ease, box-shadow 0.3s ease; font-family:'Roboto',sans-serif; }
-input:focus, select:focus, textarea:focus { border-color:#007bff; box-shadow:0 0 8px rgba(0,123,255,0.6); outline:none; }
-textarea { resize:vertical; min-height:90px; font-size:1.05rem; }
+  .contact-info { margin-bottom:1rem; font-weight:700; font-size:1rem; }
+  .contact-info a { margin-bottom:.6rem; color:#007bff; display:block; }
 
-form button.button { margin-top:0; padding:1rem 2rem; font-size:1.15rem; font-weight:700; background:linear-gradient(45deg,#007bff,#0056b3); box-shadow:0 6px 15px rgba(0,86,179,0.7); border:none; cursor:pointer; border-radius:14px; transition:all 0.3s ease; }
-form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); box-shadow:0 8px 22px rgba(0,54,102,0.9); }
+  input, select, textarea { width:100%; padding:12px 14px; margin:8px 0 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:1rem; transition:border-color .3s ease, box-shadow .3s ease; font-family:'Roboto',sans-serif; }
+  input:focus, select:focus, textarea:focus { border-color:#007bff; box-shadow:0 0 8px rgba(0,123,255,.6); outline:none; }
+  textarea { resize:vertical; min-height:90px; }
 
-#calcResult { margin-top:1.5rem; font-weight:600; color:#003366; }
+  form button.button { margin-top:0; padding:1rem 1.5rem; font-size:1.05rem; font-weight:700; background:linear-gradient(45deg,#007bff,#0056b3); box-shadow:0 6px 15px rgba(0,86,179,.7); border:none; cursor:pointer; border-radius:14px; transition:all .3s ease; }
+  form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); box-shadow:0 8px 22px rgba(0,54,102,.9); }
 
-@media (max-width:600px) { 
-  header h1 { font-size:2rem; } 
-  p.slogan { font-size:1rem; } 
-  form button.button { width:100%; } 
-  .profile-photo { max-width:120px; } 
-}
+  /* Calculator bits */
+  .toggle-row { text-align:center; margin-bottom:1rem; }
+  .toggle-row .button { min-width:120px; }
+  .muted { color:#6b7280; font-size:.95rem; }
+
+  footer { background:#003366; color:#fff; padding:2rem 1rem; text-align:center; }
+  footer a { color:#fff; text-decoration:underline; }
+
+  @media (max-width:600px) {
+    .contact-box { min-height:auto; padding:1.5rem; }
+    header h1 { font-size:2rem; }
+    p.slogan { font-size:1rem; }
+    form button.button { width:100%; }
+    .profile-photo { display:block; margin:0 auto 15px auto; max-width:120px; }
+  }
 </style>
 </head>
 <body>
@@ -74,67 +86,157 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
 </header>
 
 <section class="headline-section">
-  <h2>Your Next Honda Is Waiting — Get Personalized Service &amp; Fast Financing Today!</h2>
+  <h2>Your Next Honda Is Waiting — Get Personalized Service & Fast Financing Today!</h2>
   <p class="subheadline">Don’t wait — inventory moves quickly. Contact Kevin now for the best deals, easy trade-ins, and hassle-free approvals!</p>
 </section>
 
-<!-- Top Section: About Me + Buttons -->
-<div class="top-section">
-  <div class="contact-box">
+<div class="container">
+  <!-- About Me -->
+  <div class="contact-box fade-in-section">
     <h2>About Me</h2>
     <img src="https://i.imgur.com/OAxgbLW.jpeg" alt="Kevin at Grapevine Honda" class="profile-photo">
     <p>Hi, I’m Kevin! I specialize in helping customers find their perfect <strong>new Honda or pre-owned vehicle</strong> at Grapevine Honda. My goal is to make your car buying experience smooth, enjoyable, and stress-free.</p>
-    
     <h2>Why Buy From Me</h2>
     <ul class="bullet-points">
       <li>Honest and transparent communication</li>
       <li>Personalized service tailored to your needs</li>
       <li>Extensive knowledge of Honda vehicles</li>
-      <li>Committed to building long-term relationships</li>
-      <li>Exceptional service, not just a vehicle</li>
+      <li>Committed to long-term relationships</li>
+      <li>When you buy from me, you’re investing in exceptional service, not just a vehicle.</li>
     </ul>
   </div>
 
-  <div class="contact-box">
+  <!-- Quick Links -->
+  <div class="contact-box fade-in-section">
     <h2>Start Your Journey</h2>
-    <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank">Schedule Appointment</a>
-    <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank">New Car Inventory</a>
-    <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank">Used Car Inventory</a>
-    <a class="button" href="https://www.grapevinehonda.com/specials" target="_blank">View Specials</a>
-    <a class="button" href="https://www.grapevinehonda.com/service" target="_blank">Schedule Service</a>
-    <a class="button" href="#evEducation" target="_blank">EV Education</a>
+    <a class="button" href="https://calendly.com/kevinhoward-lithia" target="_blank" rel="noopener">Schedule Appointment</a>
+    <a class="button" href="https://www.grapevinehonda.com/inventory/new" target="_blank" rel="noopener">New Car Inventory</a>
+    <a class="button" href="https://www.grapevinehonda.com/inventory/used" target="_blank" rel="noopener">Used Car Inventory</a>
+    <a class="button" href="https://www.grapevinehonda.com/specials" target="_blank" rel="noopener">View Specials</a>
+    <a class="button" href="https://www.grapevinehonda.com/service" target="_blank" rel="noopener">Schedule Service</a>
+    <a class="button" href="https://automobiles.honda.com/electric" target="_blank" rel="noopener">EV Education</a>
   </div>
-</div>
 
-<!-- Bottom Section: Calculator + Contact Me -->
-<div class="bottom-section">
-  <!-- Calculator -->
-  <div class="contact-box" id="calc-wrapper">
+  <!-- Contact Me -->
+  <div class="contact-box fade-in-section" id="contactMe">
+    <h2>Contact Me</h2>
+    <p>Fill out the form below and I’ll get back to you quickly via email or phone.</p>
+    <form id="contactForm">
+      <label for="contactName">Full Name</label>
+      <input type="text" id="contactName" name="name" placeholder="Your full name" required>
+
+      <label for="contactEmail">Email</label>
+      <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+
+      <label for="contactPhone">Phone Number</label>
+      <input type="tel" id="contactPhone" name="phone" placeholder="(123) 456-7890" required>
+
+      <label for="contactMessage">Message</label>
+      <textarea id="contactMessage" name="message" placeholder="Type your message here..." required></textarea>
+
+      <button type="submit" class="button">Send to Kevin</button>
+    </form>
+    <p class="muted" id="formResponse"></p>
+  </div>
+
+  <!-- Finance & Lease Calculator -->
+  <div class="contact-box fade-in-section" id="calc-wrapper">
     <h2>Finance & Lease Calculator</h2>
-    
-    <div style="text-align:center; margin-bottom:1.5rem;">
-      <button id="financeToggle" class="button" style="background:#007bff;">Finance</button>
-      <button id="leaseToggle" class="button" style="background:#ccc; color:#222;">Lease</button>
+
+    <!-- Toggle -->
+    <div class="toggle-row">
+      <button id="financeToggle" class="button">Finance</button>
+      <button id="leaseToggle" class="button" style="background:#ccc;color:#222;">Lease</button>
     </div>
-    
+
+    <!-- Vehicle Select (shared for both modes) -->
     <label for="vehicleSelect">Select Vehicle</label>
     <select id="vehicleSelect">
-      <option value="accord_sedan_sport_2025">2025 Honda Accord Sedan Sport - $29,000</option>
-      <option value="accord_sedan_ex_2025">2025 Honda Accord Sedan EX - $32,000</option>
-      <option value="civic_sedan_sport_2025">2025 Honda Civic Sedan Sport - $25,500</option>
-      <option value="civic_sedan_ex_2025">2025 Honda Civic Sedan EX - $28,000</option>
-      <option value="civic_type_r_2025">2025 Honda Civic Type R - $50,000</option>
-      <option value="crv_ex_2025">2025 Honda CR-V EX - $33,000</option>
-      <option value="hrv_s_2025">2025 Honda HR-V Sport - $24,000</option>
-      <option value="pilot_ex_2025">2025 Honda Pilot EX - $42,500</option>
-      <option value="odyssey_exl_2025">2025 Honda Odyssey EX-L - $50,000</option>
-      <option value="passport_ex_2025">2025 Honda Passport EX - $45,000</option>
-      <option value="ridgeline_rtl_2025">2025 Honda Ridgeline RTL - $43,500</option>
+      <!-- 2026 Civic Sedan -->
+      <optgroup label="2026 Civic Sedan">
+        <option data-msrp="25845">Sport — $25,845</option>
+        <option data-msrp="29295">Sport Hybrid — $29,295</option>
+        <option data-msrp="31045">Sport Touring Hybrid — $31,045</option>
+      </optgroup>
+      <!-- 2026 Civic Hatchback -->
+      <optgroup label="2026 Civic Hatchback">
+        <option data-msrp="27795">Sport — $27,795</option>
+        <option data-msrp="30495">Sport Hybrid — $30,495</option>
+        <option data-msrp="32495">Sport Touring Hybrid — $32,495</option>
+      </optgroup>
+      <!-- 2025 Civic Si Sedan / Type R -->
+      <optgroup label="2025 Civic Si & Type R">
+        <option data-msrp="30995">Civic Si — $30,995</option>
+        <option data-msrp="45895">Civic Type R — $45,895</option>
+      </optgroup>
+      <!-- 2025 Accord Sedan -->
+      <optgroup label="2025 Accord Sedan">
+        <option data-msrp="28295">LX — $28,295</option>
+        <option data-msrp="30560">SE — $30,560</option>
+        <option data-msrp="33655">Sport Hybrid — $33,655</option>
+        <option data-msrp="34940">EX-L Hybrid — $34,940</option>
+        <option data-msrp="35375">Sport-L Hybrid — $35,375</option>
+        <option data-msrp="39300">Touring Hybrid — $39,300</option>
+      </optgroup>
+      <!-- 2026 HR-V -->
+      <optgroup label="2026 HR-V">
+        <option data-msrp="26200">LX — $26,200</option>
+        <option data-msrp="27700">Sport — $27,700</option>
+        <option data-msrp="29900">EX-L — $29,900</option>
+      </optgroup>
+      <!-- 2026 CR-V -->
+      <optgroup label="2026 CR-V (Gas & Hybrid)">
+        <option data-msrp="30920">LX — $30,920</option>
+        <option data-msrp="33360">EX — $33,360</option>
+        <option data-msrp="36360">EX-L — $36,360</option>
+        <option data-msrp="35630">Sport Hybrid — $35,630</option>
+        <option data-msrp="38630">Sport-L Hybrid — $38,630</option>
+        <option data-msrp="38730">TrailSport Hybrid — $38,730</option>
+        <option data-msrp="41130">Sport Touring Hybrid — $41,130</option>
+      </optgroup>
+      <!-- 2026 Passport -->
+      <optgroup label="2026 Passport">
+        <option data-msrp="41900">EX-L — $41,900</option>
+        <option data-msrp="45900">TrailSport — $45,900</option>
+        <option data-msrp="48500">Black Edition — $48,500</option>
+      </optgroup>
+      <!-- 2025 Pilot -->
+      <optgroup label="2025 Pilot">
+        <option data-msrp="38485">Sport — $38,485</option>
+        <option data-msrp="47595">Touring — $47,595</option>
+        <option data-msrp="49445">TrailSport — $49,445</option>
+        <option data-msrp="54175">Elite — $54,175</option>
+        <option data-msrp="55675">Black Edition — $55,675</option>
+        <option data-msrp="43585">EX-L (7 Passenger) — $43,585</option>
+        <option data-msrp="43950">EX-L (8 Passenger) — $43,950</option>
+      </optgroup>
+      <!-- 2026 Odyssey -->
+      <optgroup label="2026 Odyssey">
+        <option data-msrp="42795">EX-L — $42,795</option>
+        <option data-msrp="43895">Sport-L — $43,895</option>
+        <option data-msrp="47495">Touring — $47,495</option>
+        <option data-msrp="51695">Elite — $51,695</option>
+      </optgroup>
+      <!-- 2025 Ridgeline -->
+      <optgroup label="2025 Ridgeline">
+        <option data-msrp="40295">Sport — $40,295</option>
+        <option data-msrp="43300">RTL — $43,300</option>
+        <option data-msrp="47745">TrailSport — $47,745</option>
+        <option data-msrp="48695">Black Edition — $48,695</option>
+      </optgroup>
+      <!-- 2025 Prologue (EV) -->
+      <optgroup label="2025 Prologue (EV)">
+        <option data-msrp="47400">EX — $47,400</option>
+        <option data-msrp="51700">Touring — $51,700</option>
+        <option data-msrp="57900">Elite — $57,900</option>
+      </optgroup>
     </select>
 
+    <!-- Shared input -->
     <label for="downPayment">Down Payment ($)</label>
-    <input type="number" id="downPayment" placeholder="0" value="0">
+    <input type="number" id="downPayment" placeholder="0" value="0" min="0" step="100">
 
+    <!-- Finance-only -->
     <div id="financeFields">
       <label for="financeTerm">Term (months)</label>
       <select id="financeTerm">
@@ -147,9 +249,10 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
       </select>
 
       <label for="apr">APR (%)</label>
-      <input type="number" id="apr" value="9.99" step="0.01">
+      <input type="number" id="apr" value="9.99" step="0.01" min="0" max="36">
     </div>
 
+    <!-- Lease-only -->
     <div id="leaseFields" style="display:none;">
       <label for="leaseTerm">Lease Term (months)</label>
       <select id="leaseTerm">
@@ -157,7 +260,6 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
         <option value="36" selected>36</option>
         <option value="39">39</option>
         <option value="42">42</option>
-        <option value="48">48</option>
       </select>
 
       <label for="leaseMiles">Annual Mileage</label>
@@ -170,133 +272,183 @@ form button.button:hover { background:linear-gradient(45deg,#0056b3,#003366); bo
 
     <button class="button" id="calculateBtn">Calculate Payment</button>
     <button class="button" id="resetBtn" style="background:#e74c3c;">Reset Calculator</button>
-    <div id="calcResult"></div>
-    <p style="margin-top:1rem; font-size:0.9rem; color:#555;">*All calculations are estimates based on MSRP, down payment, tax, and fees. Actual monthly payments may vary based on dealer pricing, credit approval, and incentives.</p>
-  </div>
 
-  <!-- Contact Me -->
-  <div class="contact-box" id="contactMe">
-    <h2>Contact Me</h2>
-    <p>Fill out the form below and I’ll get back to you quickly via email or phone!</p>
-    <form id="contactForm">
-      <label for="contactName">Full Name</label>
-      <input type="text" id="contactName" name="name" placeholder="Your full name" required>
-      <label for="contactEmail">Email</label>
-      <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
-      <label for="contactPhone">Phone Number</label>
-      <input type="tel" id="contactPhone" name="phone" placeholder="(123) 456-7890" required>
-      <label for="contactMessage">Message</label>
-      <textarea id="contactMessage" name="message" placeholder="Type your message here..." required></textarea>
-      <button type="submit" class="button">Send to Kevin</button>
-    </form>
-    <p id="formResponse" style="margin-top:1rem; font-weight:600; color:#003366;"></p>
+    <div id="calcResult" style="margin-top:1rem;font-weight:700;color:#003366;"></div>
+
+    <!-- Professional disclosure (Option 2 style) -->
+    <p class="muted" style="margin-top:1rem;">
+      Estimates shown are for informational purposes only and are not offers for credit. Taxes and fees used here are sample values for Texas and may vary by customer and vehicle.
+      Final pricing, incentives, money factors, residuals, and terms are determined by the lender and Grapevine Honda at the time of purchase/lease. Please contact Kevin for an official quote.
+    </p>
   </div>
 </div>
 
 <!-- Footer -->
-<footer style="background:#003366;color:white;padding:2rem 1rem;text-align:center;">
-  <p style="margin:0; font-size:1rem;">
-    © 2025 Kevin at Grapevine Honda | 
-    <a href="https://g.co/kgs/1XPhfgi" target="_blank" style="color:white;text-decoration:underline;">Check out my reviews on Google</a>
+<footer>
+  <p style="margin:0;">
+    © 2025 Kevin at Grapevine Honda |
+    <a href="https://g.co/kgs/1XPhfgi" target="_blank" rel="noopener">Check out my reviews on Google</a>
   </p>
 </footer>
 
-<!-- Scripts -->
+<!-- Contact form handler (placeholder: replace with EmailJS/Twilio backend for email + SMS) -->
 <script>
-const financeToggle = document.getElementById('financeToggle');
-const leaseToggle = document.getElementById('leaseToggle');
-const financeFields = document.getElementById('financeFields');
-const leaseFields = document.getElementById('leaseFields');
-const calculateBtn = document.getElementById('calculateBtn');
-const resetBtn = document.getElementById('resetBtn');
-const vehicleSelect = document.getElementById('vehicleSelect');
-const downPayment = document.getElementById('downPayment');
-const financeTerm = document.getElementById('financeTerm');
-const apr = document.getElementById('apr');
-const leaseTerm = document.getElementById('leaseTerm');
-const leaseMiles = document.getElementById('leaseMiles');
-const calcResult = document.getElementById('calcResult');
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+    const formResponse = document.getElementById('formResponse');
 
-let currentMode = 'finance';
+    // TODO: Replace this with EmailJS/Twilio or your server endpoint to email kevinhoward@lithia.com and text your cell.
+    // Example EmailJS: emailjs.send('SERVICE_ID','TEMPLATE_ID',{name,email,phone,message});
+    formResponse.textContent = `Thanks, ${name}. Your message has been submitted. I’ll reach out ASAP.`;
+    this.reset();
+  });
+</script>
 
-financeToggle.addEventListener('click', () => {
-  currentMode = 'finance';
-  financeFields.style.display = 'block';
-  leaseFields.style.display = 'none';
-  financeToggle.style.background = '#007bff';
-  financeToggle.style.color = '#fff';
-  leaseToggle.style.background = '#ccc';
-  leaseToggle.style.color = '#222';
-});
+<!-- Calculator logic -->
+<script>
+  const financeToggle = document.getElementById('financeToggle');
+  const leaseToggle   = document.getElementById('leaseToggle');
+  const financeFields = document.getElementById('financeFields');
+  const leaseFields   = document.getElementById('leaseFields');
+  const vehicleSelect = document.getElementById('vehicleSelect');
+  const downPayment   = document.getElementById('downPayment');
+  const financeTerm   = document.getElementById('financeTerm');
+  const apr           = document.getElementById('apr');
+  const leaseTerm     = document.getElementById('leaseTerm');
+  const leaseMiles    = document.getElementById('leaseMiles');
+  const calcResult    = document.getElementById('calcResult');
+  let currentMode = 'finance';
 
-leaseToggle.addEventListener('click', () => {
-  currentMode = 'lease';
-  financeFields.style.display = 'none';
-  leaseFields.style.display = 'block';
-  leaseToggle.style.background = '#007bff';
-  leaseToggle.style.color = '#fff';
-  financeToggle.style.background = '#ccc';
-  financeToggle.style.color = '#222';
-});
-
-calculateBtn.addEventListener('click', () => {
-  let msrpText = vehicleSelect.options[vehicleSelect.selectedIndex].text;
-  let msrpMatch = msrpText.match(/\$([\d,]+)/);
-  let msrp = msrpMatch ? parseFloat(msrpMatch[1].replace(/,/g,'')) : 0;
-  let down = parseFloat(downPayment.value) || 0;
-
-  if(currentMode === 'finance'){
-    let term = parseInt(financeTerm.value);
-    let rate = parseFloat(apr.value)/100;
-    let taxRate = 0.0625;
-    let doc = 225;
-    let title = 180;
-    let total = msrp + msrp*taxRate + doc + title - down;
-    let monthly = (total*(rate/12))/(1-Math.pow(1+rate/12,-term));
-    calcResult.innerHTML = `Estimated Finance Payment: $${monthly.toFixed(2)}/mo`;
-  } else {
-    let term = parseInt(leaseTerm.value);
-    let miles = parseInt(leaseMiles.value);
-    let taxRate = 0.0625;
-    let doc = 225;
-    let title = 180;
-    let acq = 595;
-    // Simple placeholder lease calc: monthly = (MSRP - down)/term + fees
-    let monthly = ((msrp - down + acq + doc + title) / term)*(1+taxRate);
-    calcResult.innerHTML = `Estimated Lease Payment: $${monthly.toFixed(2)}/mo`;
+  function setMode(mode){
+    currentMode = mode;
+    if(mode === 'finance'){
+      financeFields.style.display = 'block';
+      leaseFields.style.display   = 'none';
+      financeToggle.style.background = '#007bff';
+      financeToggle.style.color = '#fff';
+      leaseToggle.style.background = '#ccc';
+      leaseToggle.style.color = '#222';
+    } else {
+      financeFields.style.display = 'none';
+      leaseFields.style.display   = 'block';
+      leaseToggle.style.background = '#007bff';
+      leaseToggle.style.color = '#fff';
+      financeToggle.style.background = '#ccc';
+      financeToggle.style.color = '#222';
+    }
+    calcResult.textContent = '';
   }
-});
+  financeToggle.addEventListener('click', ()=>setMode('finance'));
+  leaseToggle.addEventListener('click',   ()=>setMode('lease'));
 
-resetBtn.addEventListener('click', () => {
-  downPayment.value = 0;
-  apr.value = 9.99;
-  financeTerm.value = 72;
-  leaseTerm.value = 36;
-  leaseMiles.value = 12000;
-  vehicleSelect.selectedIndex = 0;
-  calcResult.innerHTML = '';
-});
+  function parseMSRP(){
+    const opt = vehicleSelect.options[vehicleSelect.selectedIndex];
+    const msrp = parseFloat(opt.getAttribute('data-msrp')) || 0;
+    return msrp;
+  }
 
-// Contact Form Placeholder
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  document.getElementById('formResponse').innerText = "Thank you! I’ll contact you shortly.";
-  contactForm.reset();
-});
+  function calcFinance(msrp, down, term, rate){
+    const docFee=225, licenseFee=180, taxRate=0.0625; // TX sample
+    const principal = Math.max(msrp - down, 0) + docFee + licenseFee;
+    const monthly = (rate<=0)
+      ? principal/term
+      : (principal*(rate/12)) / (1 - Math.pow(1+rate/12, -term));
+    const monthlyAfterTax = monthly*(1+taxRate);
+    const totalPaid = monthlyAfterTax*term;
+    return { monthly: monthlyAfterTax, totalPaid };
+  }
+
+  function calcLease(msrp, down, term, miles){
+    // Simple, generic estimate placeholders.
+    // Residual varies by model/term/miles; MF varies by month/credit.
+    // Use conservative defaults to avoid overpromising.
+    const docFee=225, licenseFee=180, acqFee=595, taxRate=0.0625;
+
+    // Residual factor guess by body type (very rough): sedans/hatch 58%, SUVs 57%, trucks/minivans 55%, EV 54%
+    const label = vehicleSelect.options[vehicleSelect.selectedIndex].parentElement.label.toLowerCase();
+    let residualFactor = 0.57;
+    if(label.includes('civic') || label.includes('accord')) residualFactor = 0.58;
+    if(label.includes('ridgeline') || label.includes('odyssey')) residualFactor = 0.55;
+    if(label.includes('prologue') || label.includes('ev')) residualFactor = 0.54;
+
+    // Adjust residual slightly for mileage (very rough)
+    if(miles===15000) residualFactor -= 0.02;
+    if(miles===10000) residualFactor += 0.01;
+
+    // Money factor (rough placeholder)
+    let mf = 0.0025;
+
+    const capCost = Math.max(msrp - down, 0) + docFee + licenseFee + acqFee;
+    const residual = msrp * residualFactor;
+    const base = (capCost - residual)/term + (capCost + residual)*mf;
+    const monthly = base*(1+taxRate);
+    const driveOff = down + docFee + licenseFee + acqFee;
+    return { monthly, driveOff, residualFactor, mf };
+  }
+
+  document.getElementById('calculateBtn').addEventListener('click', ()=>{
+    const msrp = parseMSRP();
+    const down = Math.max(parseFloat(downPayment.value)||0, 0);
+
+    if(currentMode==='finance'){
+      const term = parseInt(financeTerm.value, 10);
+      const rate = Math.max(parseFloat(apr.value||'0')/100, 0);
+      const { monthly, totalPaid } = calcFinance(msrp, down, term, rate);
+      calcResult.innerHTML = `Estimated Finance Payment: <strong>$${monthly.toFixed(2)}/mo</strong><br>Total of Payments (est.): <strong>$${totalPaid.toFixed(2)}</strong>`;
+    } else {
+      const term = parseInt(leaseTerm.value, 10);
+      const miles = parseInt(leaseMiles.value, 10);
+      const { monthly, driveOff } = calcLease(msrp, down, term, miles);
+      calcResult.innerHTML = `Estimated Lease Payment: <strong>$${monthly.toFixed(2)}/mo</strong><br>Estimated Drive-Off: <strong>$${driveOff.toFixed(2)}</strong>`;
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    vehicleSelect.selectedIndex = 0;
+    downPayment.value = 0;
+    financeTerm.value = '72';
+    apr.value = 9.99;
+    leaseTerm.value = '36';
+    leaseMiles.value = '12000';
+    setMode('finance');
+    calcResult.textContent = '';
+  });
+
+  // Default mode
+  setMode('finance');
+</script>
+
+<!-- Fade-in animations for grid cards -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const faders = document.querySelectorAll(".fade-in-section");
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  });
 </script>
 
 <!-- Tawk.to Live Chat -->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/xxxxxxxx/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://tawk.to/chat/686eef490ae360191763de7b/1ivolddes';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
 </script>
 
 </body>
