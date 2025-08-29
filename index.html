@@ -32,6 +32,23 @@
   .headline-section { max-width:1100px; margin:1.5rem auto 2rem; padding:0 1.5rem; text-align:center; color:#003366; }
   .headline-section h2 { font-size:2rem; font-weight:700; margin-bottom:.5rem; }
   .headline-section p.subheadline { font-size:1.1rem; font-weight:600; color:#0056b3; margin-top:0; }
+.google-reviews {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.google-reviews a {
+  color: #ffd700; /* Gold color to stand out */
+  text-decoration: none;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.google-reviews a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 8px #ffd700;
+}
 
   /* Grid: 2x2 on desktop, stacks on mobile */
   .container { max-width:1100px; margin:0 auto 3rem; padding:0 1.5rem 3rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; }
@@ -82,6 +99,11 @@
 <header>
   <h1>Kevin | Grapevine Honda</h1>
   <p class="slogan">The Power of Dreams</p>
+ <p class="google-reviews">
+  <a href="https://g.co/kgs/1XPhfgi" target="_blank" rel="noopener">
+    ⭐ Check out my reviews on Google
+  </a>
+</p>
   <img src="https://service.secureoffersites.com/images/GetLibraryImage?fileNameOrId=487225" alt="Grapevine Honda Dealership" class="dealership-photo">
 </header>
 
